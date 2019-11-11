@@ -5,8 +5,9 @@ const path = require("path")
 app.set("view engine", "ejs")
 
 app.use(express.static(path.resolve(__dirname, "public")))
-app.get("/", (req, res) => {
-	res.render("index")
+
+app.get("/:page", (req, res) => {
+	res.render(req.params.page, { link: "", title: "My Home" })
 })
 
 app.listen(3000, () => {
