@@ -1,0 +1,2 @@
+<body class="kt-header--fixed kt-header--minimize-menu kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent" 
+style="background-image: url(images/header.png); background-position: center top; background-size: 100% 350px;">
