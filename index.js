@@ -6,7 +6,7 @@ app.set("view engine", "ejs")
 app.use(express.static(path.resolve(__dirname, "public")))
 
 const routes = require("./routes")
-app.use("/", routes)
+app.use(routes)
 
 
 
