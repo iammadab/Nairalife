@@ -2,8 +2,6 @@ const { createValidator } = require("lazy-validator")
 const { hash } = require("../../lib/crypt")
 const userDb = require("../../data/db/user.db")
 
-console.log(hash("wisdom"))
-
 const createUserValidator = createValidator("fullname.string.lowercase, phone.number, email.string.lowercase, password.string")
 
 async function createUser(data){
@@ -12,6 +10,8 @@ async function createUser(data){
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 
 	let userData = validationResult.data
+	
+	userData.password = await hash(userData.password)
 	console.log(userData)
 	
 	let usersWithPhone = await userDb.findWith({ phone: userData.phone })
