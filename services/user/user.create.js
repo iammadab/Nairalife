@@ -18,6 +18,7 @@ async function createUser(data){
 		return phoneExist.response
 
 	let emailExist = await checkIfEmailExists(userData)
+	console.log(emailExist)
 	if(emailExist.error) 
 		return emailExist.response
 
@@ -41,6 +42,6 @@ async function checkIfPhoneExists(userData){
 async function checkIfEmailExists(userData){
 	let usersWithEmail = await userDb.findWith({ email: userData.email })
 	if(usersWithEmail.length > 0)
-		return { status: 403, code: "EMAIL_EXISTS", message: "User with email exists" }
+		return { error: true, response: { status: 403, code: "EMAIL_EXISTS", message: "User with email exists" }}
 	return usersWithEmail
 }
