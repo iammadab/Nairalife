@@ -8,7 +8,7 @@ app.use(bodyParser.json())
 app.use(express.static(path.resolve(__dirname, "public")))
 
 const routes = require("./routes")
-app.use(routes)
+app.use("/api", routes)
 
 
 

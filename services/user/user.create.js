@@ -1,6 +1,5 @@
-function createUser(data, res){
-	console.log(data)
-	res.send("User is being created")
+function createUser(data){
+
 }
 
 module.exports = createUser
