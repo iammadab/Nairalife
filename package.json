@@ -4,7 +4,7 @@
   "description": "A savings group for uber and taxify drivers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev-all": "nodemon index.js"
   },
   "repository": {
     "type": "git",

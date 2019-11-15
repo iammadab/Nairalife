@@ -19,9 +19,9 @@ app.use("/api", routes)
 
 
 
-// app.get("/:page", (req, res) => {
-// 	res.render(req.params.page, { link: "", title: "My Home" })
-// })
+app.get("/pages/:page", (req, res) => {
+	res.render(req.params.page, { link: "", title: "My Home" })
+})
 
 app.listen(3000, () => {
 	console.log("Application listening at port 3000")
