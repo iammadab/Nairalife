@@ -13,11 +13,11 @@ async function createUser(data){
 	
 	userData.password = await hash(userData.password)
 
-	let phoneExist = checkIfPhoneExists(userData)
+	let phoneExist = await checkIfPhoneExists(userData)
 	if(phoneExist.error) 
 		return phoneExist.response
 
-	let emailExist = checkIfEmailExists(userData)
+	let emailExist = await checkIfEmailExists(userData)
 	if(emailExist.error) 
 		return emailExist.response
 
@@ -35,10 +35,12 @@ async function checkIfPhoneExists(userData){
 	let usersWithPhone = await userDb.findWith({ phone: userData.phone })
 	if(usersWithPhone.length > 0)
 		return { error: true, response: { status: 403, code: "PHONE_EXISTS", message: "User with phone exists" }}
+	return usersWithPhone
 }
 
 async function checkIfEmailExists(userData){
 	let usersWithEmail = await userDb.findWith({ email: userData.email })
 	if(usersWithEmail.length > 0)
 		return { status: 403, code: "EMAIL_EXISTS", message: "User with email exists" }
+	return usersWithEmail
 }
