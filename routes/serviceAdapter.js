@@ -14,6 +14,6 @@ function createResponder(type){
 }
 
 module.exports = {
-	bodyResponder: createResponder("body")
+	bodyResponder: createResponder("body"),
 	paramResponder: createResponder("params")
 }
