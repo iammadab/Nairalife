@@ -10,8 +10,7 @@ async function createUser(data){
 
 	let userData = validationResult.data
 	let userObj = await userDb.createUser(userData)
-	console.log(userObj)
-	
+
 }
 
 module.exports = createUser
