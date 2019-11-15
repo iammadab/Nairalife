@@ -9,6 +9,8 @@ async function createUser(data){
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 
 	let userData = validationResult.data
+	// Make sure user does not exist
+
 	let userObj = await userDb.createUser(userData)
 
 	if(userObj)
