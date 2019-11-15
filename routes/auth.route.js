@@ -1,6 +1,8 @@
 const express = require("express")
 const authRouter = express.Router()
 
-authRouter.get("/", (req, res) => { res.send("Welcome to the auth router") })
+const userService = require("../services/user")
+
+authRouter.get("/", userService.createUser)
 
 module.exports = authRouter
