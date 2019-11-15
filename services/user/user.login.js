@@ -9,6 +9,9 @@ async function loginUser(data){
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 
 	let loginData = validationResult.data
+
+	let userObj = await userDb.findOneWith({ phone: logindata.phone })
+
 }
 
 module.exports = loginUser

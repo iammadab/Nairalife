@@ -5,6 +5,10 @@ function createDb(dbModel){
 		return dbModel.find(keyObj)
 	}
 
+	baseDbFunctions.findOneWith = async (keyObj) => {
+		return dbModel.findOne(keyObj)
+	}
+
 	return baseDbFunctions
 }
 
