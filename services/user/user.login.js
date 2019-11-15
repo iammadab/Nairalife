@@ -21,8 +21,8 @@ async function loginUser(data){
 		return { status: 403, code: "INAVLID_PASSWORD" }
 
 	let userToken = jwt.sign({ phone: loginData.phone }, process.env.SECRET_KEY, { expiresIn: 30 * 60 })
-	console.log(userToken)
-
+	
+	return { status: 200, code: "USER_LOGGED_IN", token: userToken }
 }
 
 module.exports = loginUser
