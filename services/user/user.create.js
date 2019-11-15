@@ -11,6 +11,8 @@ async function createUser(data){
 	let userData = validationResult.data
 	let userObj = await userDb.createUser(userData)
 
+	if(userObj)
+		return { status: 200, code: "USER_CREATED", data: userObj }
 }
 
 module.exports = createUser
