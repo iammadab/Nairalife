@@ -10,7 +10,9 @@ async function loginUser(data){
 
 	let loginData = validationResult.data
 
-	let userObj = await userDb.findOneWith({ phone: logindata.phone })
+	let userObj = await userDb.findOneWith({ phone: loginData.phone })
+	if(!userObj)
+		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
 }
 
