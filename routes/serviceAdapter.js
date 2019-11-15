@@ -6,9 +6,11 @@ function createResponder(type){
 		}
 
 		function sendResponse(res, responseData){
+			if(!responseData) 
+				return res.status(500).json({ code: "INTERNAL_SERVER_ERROR", message: "Something went wrong" })
 			if(!responseData.status)
 				responseData.status = 500
-			res.status(responseData.status).json(responseData)
+			return res.status(responseData.status).json(responseData)
 		}
 	}
 }
