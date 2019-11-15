@@ -4,6 +4,7 @@ const userDb = require("../../data/db/user.db")
 
 const createUserValidator = createValidator("fullname.string.lowercase, phone.number, email.string.lowercase, password.string")
 
+
 async function createUser(data){
 	let validationResult = createUserValidator.parse(data)
 	if(validationResult.error)
@@ -18,7 +19,6 @@ async function createUser(data){
 		return phoneExist.response
 
 	let emailExist = await checkIfEmailExists(userData)
-	console.log(emailExist)
 	if(emailExist.error) 
 		return emailExist.response
 
@@ -29,6 +29,10 @@ async function createUser(data){
 }
 
 module.exports = createUser
+
+
+
+
 
 
 
