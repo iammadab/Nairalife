@@ -1,4 +1,5 @@
 const { createValidator } = require("lazy-validator")
+const jwt = require("jsonwebtoken")
 const { compare } = require("../../lib/crypt")
 const userDb = require("../../data/db/user.db")
 
@@ -18,6 +19,9 @@ async function loginUser(data){
 	let samePassword = await compare(loginData.password, userObj.password)
 	if(!samePassword)
 		return { status: 403, code: "INAVLID_PASSWORD" }
+
+	let userToken = jwt.sign({ phone: loginData.phone }, process.env.SECRET_KEY, { expiresIn: "30 * 60" })
+	console.log(userToken)
 
 }
 
