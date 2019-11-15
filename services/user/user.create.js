@@ -10,6 +10,13 @@ async function createUser(data){
 
 	let userData = validationResult.data
 	// Make sure user does not exist
+	let usersWithPhone = await userDb.findWith({ phone: userData.phone })
+	if(usersWithPhone.length > 0)
+		return { status: 403, code: "PHONE_EXISTS", message: "User with phone exists" }
+
+	let usersWithEmail = await userDb.findWith({ email: userData.email })
+	if(usersWithEmail.length > 0)
+		return { status: 403, code: "EMAIL_EXISTS", message: "User with email exists" }
 
 	let userObj = await userDb.createUser(userData)
 
