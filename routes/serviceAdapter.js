@@ -7,7 +7,7 @@ function createResponder(type){
 
 		function sendResponse(res, responseData){
 			if(!responseData) 
-				return res.status(500).json({ code: "INTERNAL_SERVER_ERROR", message: "Something went wrong" })
+				return res.status(500).json({ code: "NO_RESPONSE", message: "Got no response from the server" })
 			if(!responseData.status)
 				responseData.status = 500
 			return res.status(responseData.status).json(responseData)
