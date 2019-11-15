@@ -12,15 +12,14 @@ async function createUser(data){
 	let userData = validationResult.data
 	
 	userData.password = await hash(userData.password)
-	console.log(userData)
-	
-	let usersWithPhone = await userDb.findWith({ phone: userData.phone })
-	if(usersWithPhone.length > 0)
-		return { status: 403, code: "PHONE_EXISTS", message: "User with phone exists" }
 
-	let usersWithEmail = await userDb.findWith({ email: userData.email })
-	if(usersWithEmail.length > 0)
-		return { status: 403, code: "EMAIL_EXISTS", message: "User with email exists" }
+	let phoneExist = checkIfPhoneExists(userData)
+	if(phoneExist.error) 
+		return phoneExist.response
+
+	let emailExist = checkIfEmailExists(userData)
+	if(emailExist.error) 
+		return emailExist.response
 
 	let userObj = await userDb.createUser(userData)
 
@@ -29,3 +28,17 @@ async function createUser(data){
 }
 
 module.exports = createUser
+
+
+
+async function checkIfPhoneExists(userData){
+	let usersWithPhone = await userDb.findWith({ phone: userData.phone })
+	if(usersWithPhone.length > 0)
+		return { error: true, response: { status: 403, code: "PHONE_EXISTS", message: "User with phone exists" }}
+}
+
+async function checkIfEmailExists(userData){
+	let usersWithEmail = await userDb.findWith({ email: userData.email })
+	if(usersWithEmail.length > 0)
+		return { status: 403, code: "EMAIL_EXISTS", message: "User with email exists" }
+}
