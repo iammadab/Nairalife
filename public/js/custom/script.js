@@ -5,3 +5,20 @@ function showView(viewName){
 	visibleViews.forEach(view => view.classList.remove("show"))
 	viewToShow.classList.add("show")
 }
+
+function showError(errorName, errorMessage){
+	let errorBox = document.querySelector(`.${errorName}`),
+		errorText = document.querySelector(`.${errorName} .alert-text`)
+
+	if(errorBox)
+		errorBox.style.display = "flex" 
+
+	if(errorText)
+		errorText.innerText = errorMessage
+}
+
+function hideError(errorName){
+	let errorBox = document.querySelector(`.${errorName}`)
+	if(errorBox)
+		errorBox.style.display = "none"
+}
