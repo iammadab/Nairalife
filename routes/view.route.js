@@ -13,4 +13,8 @@ viewRouter.get("/register", (req, res) => {
 	res.render("register")
 })
 
+viewRouter.get("/dashboard", (req, res) => {
+	res.render("dashboard")
+})
+
 module.exports = viewRouter

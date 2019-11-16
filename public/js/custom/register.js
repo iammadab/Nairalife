@@ -91,7 +91,7 @@ function registerUser(event){
 
 	store.userDetails.code = otpDetails.code
 
-	api("auth", userDetails)
+	api("auth", store.userDetails)
 		.then(handleRegistration)
 
 	function handleRegistration(response){

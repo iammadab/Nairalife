@@ -8,6 +8,7 @@
 	extractForm
 	addEvent
 	api
+	redirect
 */
 
 function showView(viewName){
@@ -71,4 +72,8 @@ function api(resourcePath, data){
 		},
 		body: JSON.stringify(data)
 	}).then(response => response.json())
+}
+
+function redirect(url){
+	window.location.href = url
 }
