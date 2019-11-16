@@ -6,7 +6,10 @@ let store = {
 
 	verifyOtpButton: document.querySelector(".verifyOtpButton"),
 	otpFormTag: ".otp-form",
-	otpInputs: Array.from(document.querySelectorAll(".otp-form input"))
+	otpInputs: Array.from(document.querySelectorAll(".otp-form input")),
+	resendOtpButton: document.querySelector(".resend-otp"),
+	otpCountdownContainer: document.querySelector(".otp-countdown-container"),
+	otpResendContainer: document.querySelector(".otp-resend-container")
 }
 
 ;(function attachEvents(){
@@ -15,6 +18,7 @@ let store = {
 
 	addEvent([store.verifyOtpButton], "click", registerUser)
 	addEvent(store.otpInputs, "input,focus", () => hideError("otp-error"))
+	addEvent([store.resendOtpButton], "click", resendOtp)
 })()
 
 
@@ -101,4 +105,30 @@ function registerUser(event){
 			showError("otp-error", "Invalid Otp")
 	}
 
+}
+
+
+function resendOtp(){
+	return api("otp/create", { phone: store.userDetails.phone })
+			.then(handleResend)
+
+	function handleResend(response){
+		if(response.status == 200)
+			getCounter(30, displayTimer, showResend)
+	}
+
+	function displayTimer(timeValue){
+		showTimer()
+		setValue([".otp-countdown"], timeValue)
+	}
+
+	function showTimer(){
+		store.otpCountdownContainer.style.display = "block"
+		store.otpResendContainer.style.display = "none"
+	}
+
+	function showResend(){
+		store.otpCountdownContainer.style.display = "none"
+		store.otpResendContainer.style.display = "block"
+	}
 }

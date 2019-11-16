@@ -9,6 +9,8 @@
 	addEvent
 	api
 	redirect
+	getCounter
+	setValue
 */
 
 function showView(viewName){
@@ -76,4 +78,30 @@ function api(resourcePath, data){
 
 function redirect(url){
 	window.location.href = url
+}
+
+function getCounter(seconds, cb, endcb){
+	let counter = setInterval(callCb, 1000)
+	function callCb(){
+		seconds -= 1
+		cb(toTimeString(seconds))
+		if(seconds <= 0){
+			clearInterval(counter)
+			endcb()
+		}
+	}
+
+	function toTimeString(seconds){
+		let secondsValue = seconds % 60, minutesValue = (seconds - secondsValue) / 60
+		return `${padZero(minutesValue)} : ${padZero(secondsValue)}`
+	}
+}
+
+function setValue(elements, value, condition){
+	let prop = condition ? condition : "innerText"
+	elements.forEach(element => {
+		let domElement = document.querySelector(element)
+		if(domElement)
+			domElement[prop] = value
+	})
 }
