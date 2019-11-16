@@ -20,23 +20,31 @@ function startRegistration(event){
 	checkIfPhoneExists()
 		.then(checkIfEmailExists)
 
+
+
+
+
+
+
 	function checkIfPhoneExists(){
-		return api("user/exists", { phone: userDetails.phone })
+		return api("user/exist", { phone: userDetails.phone })
 				.then(handleResponse)
 
 		function handleResponse(response){
 			if(!response.exists) return
 			showError("register-error", "Phone already exists")
+			throw new Error()
 		}
 	}
 
 	function checkIfEmailExists(){
-		return api("user/exists", { email: userDetails.email })
+		return api("user/exist", { email: userDetails.email })
 				.then(handleResponse)
 
 		function handleResponse(response){
 			if(!response.exists) return
 			showError("register-error", "Email already exists")
+			throw new Error()
 		}
 	}
 }
