@@ -62,7 +62,7 @@ function addEvent(elements, eventString, cb){
 }
 
 function api(resourcePath, data){
-	let url = `/api/v1/${resourcePath}`
+	let url = `/api/${resourcePath}`
 	if(!data) return fetch(url).then(response => response.json())
 	return fetch(url, {
 		method: "POST", 

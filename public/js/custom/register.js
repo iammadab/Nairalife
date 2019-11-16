@@ -16,5 +16,7 @@ function startRegistration(event){
 
 	if(missingKeys.length > 0)
 		return showError("register-error", `You didn't fill data for ${missingKeys[0]}`)
+
+	
 }
 
