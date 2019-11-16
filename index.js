@@ -27,8 +27,8 @@ app.use("/", viewRoutes)
 
 
 
-app.get("/pages/:page", (req, res) => {
-	res.render(req.params.page, { link: "", title: "My Home" })
+app.use((req, res) => {
+	res.send("404, Resource not found")
 })
 
 app.listen(3000, () => {
