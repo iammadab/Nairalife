@@ -9,6 +9,11 @@ function createDb(dbModel){
 		return dbModel.findOne(keyObj)
 	}
 
+	baseDbFunctions.create = async (dataObj) => {
+		let newDocument = new dbModel({ ...dataObj })
+		return newDocument.save()
+	}
+
 	return baseDbFunctions
 }
 
