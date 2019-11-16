@@ -17,6 +17,27 @@ function startRegistration(event){
 	if(missingKeys.length > 0)
 		return showError("register-error", `You didn't fill data for ${missingKeys[0]}`)
 
-	
+	checkIfPhoneExists()
+		.then(checkIfEmailExists)
+
+	function checkIfPhoneExists(){
+		return api("user/exists", { phone: userDetails.phone })
+				.then(handleResponse)
+
+		function handleResponse(response){
+			if(!response.exists) return
+			showError("register-error", "Phone already exists")
+		}
+	}
+
+	function checkIfEmailExists(){
+		return api("user/exists", { email: userDetails.email })
+				.then(handleResponse)
+
+		function handleResponse(response){
+			if(!response.exists) return
+			showError("register-error", "Email already exists")
+		}
+	}
 }
 
