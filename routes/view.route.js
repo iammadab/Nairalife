@@ -13,6 +13,10 @@ viewRouter.get("/register", (req, res) => {
 	res.render("register")
 })
 
+viewRouter.get("/account", (req, res) => {
+	res.render("account")
+})
+
 viewRouter.get("/dashboard", (req, res) => {
 	res.render("dashboard")
 })
