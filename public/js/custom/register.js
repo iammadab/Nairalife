@@ -1,17 +1,32 @@
 let store = {
 	registerButton: document.querySelector(".register-button"),
 	registerFormTag: ".register-form",
-	registrationInputs: Array.from(document.querySelectorAll(".register-form input"))
+	registrationInputs: Array.from(document.querySelectorAll(".register-form input")),
+	userDetails: {},
+
+	verifyOtpButton: document.querySelector(".verifyOtpButton"),
+	otpFormTag: ".otp-form"
 }
 
 ;(function attachEvents(){
 	addEvent([store.registerButton], "click", startRegistration)
 	addEvent(store.registrationInputs, "input,focus", () => hideError("register-error"))
+
+	addEvent([store.verifyOtpButton], "click", registerUser)
 })()
+
+
+
+
+
+
+
+
+
 
 function startRegistration(event){
 	event.preventDefault()
-	let userDetails = extractForm(store.registerFormTag)
+	let userDetails = store.userDetails = extractForm(store.registerFormTag)
 	let missingKeys = hasKeys(userDetails, ["fullname", "phone", "password"])
 
 	if(missingKeys.length > 0)
@@ -20,10 +35,6 @@ function startRegistration(event){
 	checkIfPhoneExists()
 		.then(checkIfEmailExists)
 		.then(createOtp)
-
-
-
-
 
 
 
@@ -62,3 +73,17 @@ function startRegistration(event){
 	}
 }
 
+
+
+
+
+
+
+function registerUser(event){
+	event.preventDefault()
+	let otpDetails = extractForm(store.otpFormTag)
+	let missingKeys = hasKeys(otpDetails, ["code"])
+
+	if(missingKeys.length > 0)
+		return showError("otp-error", `You didn't fill data for ${missingKeys[0]}`)
+}

@@ -115,11 +115,16 @@ By clicking on "Join Us" you agree with our <br>
 </div>
 
 <!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
-
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 otp-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
 
 
 <!--begin::Form-->
-<form class="kt-form" action="" novalidate="novalidate">
+<form class="kt-form otp-form" action="" novalidate="novalidate">
 <div class="form-group">
 <input class="form-control" type="text" placeholder="Enter OTP" name="username" autocomplete="off" 
 required="true">
@@ -127,7 +132,7 @@ required="true">
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary verifyOtpButton">
 <span>Verify <i class="kt-margin-l-5 la la-arrow-right"></i></span>
 </button>
 </div>
