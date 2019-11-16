@@ -5,6 +5,7 @@
 	hideError
 	hasKeys
 	extractForm
+	addEvent
 */
 function showView(viewName){
 	let viewToShow = document.querySelector(`#${viewName}`)
@@ -45,4 +46,14 @@ function extractForm(formId){
 			formData[input.name] = input.value
 	})
 	return formData
+}
+
+function addEvent(elements, eventString, cb){
+	let events = eventString.split(",").map(evt => evt.trim())
+	elements.forEach(element => {
+		events.forEach(event => {
+			if(!element) console.log("Can't find", element)
+			else element.addEventListener(event, cb)
+		})
+	})
 }
