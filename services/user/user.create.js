@@ -4,6 +4,7 @@ const userDb = require("../../data/db/user.db")
 
 const createUserValidator = createValidator("fullname.string.lowercase, phone.number, email.string.lowercase, password.string, code.number")
 
+const authenticationService = require("../authentication")
 
 async function createUser(data){
 	let validationResult = createUserValidator.parse(data)
@@ -12,6 +13,11 @@ async function createUser(data){
 
 	let userData = validationResult.data
 	
+	let otpVerificationResult = await authenticationService.verifyOtp({ phone: userData.phone, code: userDate.code })
+	console.log(otpVerificationResult)
+	if(otpVerificationResult.status != 200)
+		return otpVerificationResult
+
 	userData.password = await hash(userData.password)
 
 	let phoneExist = await checkIfPhoneExists(userData)
