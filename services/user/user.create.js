@@ -12,11 +12,6 @@ async function createUser(data){
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 
 	let userData = validationResult.data
-	
-	let otpVerificationResult = await authenticationService.verifyOtp({ phone: userData.phone, code: userDate.code })
-	console.log(otpVerificationResult)
-	if(otpVerificationResult.status != 200)
-		return otpVerificationResult
 
 	userData.password = await hash(userData.password)
 
@@ -27,6 +22,11 @@ async function createUser(data){
 	let emailExist = await checkIfEmailExists(userData)
 	if(emailExist.error) 
 		return emailExist.response
+
+	let otpVerificationResult = await authenticationService.verifyOtp({ phone: userData.phone, code: userData.code })
+	console.log(otpVerificationResult)
+	if(otpVerificationResult.status != 200)
+		return otpVerificationResult
 
 	let userObj = await userDb.createUser(userData)
 
