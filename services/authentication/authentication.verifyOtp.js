@@ -9,7 +9,6 @@ async function verifyOtp(data){
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 
 	let otpObj = await otpDb.findOneWith({ phone: data.phone, code: data.code })
-	console.log(otpObj)
 
 	if(!otpObj)
 		return { status: 403, code: "OTP_VERIFICATION_FAILED" }
