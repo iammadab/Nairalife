@@ -14,8 +14,12 @@ function createDb(dbModel){
 		return newDocument.save()
 	}
 
-	baseDbFunctions.delete = async (keyObj) => {
-		return dbModel.removeOne(keyObj)
+	baseDbFunctions.deleteOne = async (keyObj) => {
+		return dbModel.deleteOne(keyObj)
+	}
+
+	baseDbFunction.deleteMany = async (keyObj) => {
+		return dbModel.deleteMany(keyObj)
 	}
 
 	return baseDbFunctions
