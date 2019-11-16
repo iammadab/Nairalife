@@ -16,7 +16,7 @@ async function userExist(data){
 
 	if(!userObj)
 		return { status: 200, exists: false }
-	
+
 	return { status: 200, exists: true }
 }
 
