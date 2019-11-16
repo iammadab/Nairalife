@@ -1,5 +1,6 @@
 /*
 	Contents
+	--------
 	showView
 	showError
 	hideError
@@ -7,6 +8,7 @@
 	extractForm
 	addEvent
 */
+
 function showView(viewName){
 	let viewToShow = document.querySelector(`#${viewName}`)
 	if(!viewToShow) return
