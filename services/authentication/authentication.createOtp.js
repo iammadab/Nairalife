@@ -9,3 +9,9 @@ async function createOtp(data){
 }
 
 module.exports = createOtp
+
+
+
+function generateOtp(){
+	return (Math.floor((Math.random() * 90000)) + 10000)
+}
