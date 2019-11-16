@@ -7,6 +7,7 @@
 	hasKeys
 	extractForm
 	addEvent
+	api
 */
 
 function showView(viewName){
@@ -58,4 +59,16 @@ function addEvent(elements, eventString, cb){
 			else element.addEventListener(event, cb)
 		})
 	})
+}
+
+function api(resourcePath, data){
+	let url = `/api/v1/${resourcePath}`
+	if(!data) return fetch(url).then(response => response.json())
+	return fetch(url, {
+		method: "POST", 
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(data)
+	}).then(response => response.json())
 }
