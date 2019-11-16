@@ -24,7 +24,6 @@ async function createUser(data){
 		return emailExist.response
 
 	let otpVerificationResult = await authenticationService.verifyOtp({ phone: userData.phone, code: userData.code })
-	console.log(otpVerificationResult)
 	if(otpVerificationResult.status != 200)
 		return otpVerificationResult
 
