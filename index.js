@@ -15,6 +15,9 @@ connectToDb()
 const routes = require("./routes")
 app.use("/api", routes)
 
+const viewRoutes = require("./routes/view.route")
+app.use("/", viewRoutes)
+
 
 
 
