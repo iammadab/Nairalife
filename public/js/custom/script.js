@@ -4,6 +4,7 @@
 	showError
 	hideError
 	hasKeys
+	extractForm
 */
 function showView(viewName){
 	let viewToShow = document.querySelector(`#${viewName}`)
@@ -35,4 +36,13 @@ function hasKeys(obj, expectedKey){
 	return expectedKey.filter(key => {
 		return objKeys.includes(key) ? false : true
 	})
+}
+
+function extractForm(formId){
+	let inputs = Array.from(document.querySelectorAll(`${formId} input, ${formId} textarea`)), formData = {}
+	inputs.forEach(input => {
+		if(input.name && input.value)
+			formData[input.name] = input.value
+	})
+	return formData
 }
