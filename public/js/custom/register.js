@@ -98,7 +98,7 @@ function registerUser(event){
 		if(response.status == 200)
 			redirect("/dashboard")
 		else if(response.code == "OTP_VERIFICATION_FAILED")
-			showError("otp-error", "Invalid otp code")
+			showError("otp-error", "Invalid Otp")
 	}
 
 }
