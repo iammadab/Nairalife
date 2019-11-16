@@ -51,7 +51,14 @@ function startRegistration(event){
 
 	function createOtp(){
 		return api("otp/create", { phone: userDetails.phone })
-				.then(console.log)
+				.then(handleOtpGeneration)
+
+		function handleOtpGeneration(response){
+			if(response.status == 200)
+				showView("otp-section")
+			else
+				showError("register-error", "Problem generating otp, try again later")
+		}
 	}
 }
 
