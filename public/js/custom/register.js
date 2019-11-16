@@ -88,4 +88,14 @@ function registerUser(event){
 
 	if(missingKeys.length > 0)
 		return showError("otp-error", `You didn't fill data for ${missingKeys[0]}`)
+
+	store.userDetails.code = otpDetails.code
+
+	api("auth", userDetails)
+		.then(handleRegistration)
+
+	function handleRegistration(response){
+		console.log(response)
+	}
+
 }
