@@ -4,7 +4,7 @@ const createOtpValidator = createValidator("phone.number")
 
 async function createOtp(data){
 	let validationResult = createOtpValidator.parse(data)
-	if(validationResult.result)
+	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 }
 
