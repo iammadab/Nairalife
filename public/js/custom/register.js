@@ -19,6 +19,7 @@ function startRegistration(event){
 
 	checkIfPhoneExists()
 		.then(checkIfEmailExists)
+		.then(createOtp)
 
 
 
@@ -46,6 +47,11 @@ function startRegistration(event){
 			showError("register-error", "Email already exists")
 			throw new Error()
 		}
+	}
+
+	function createOtp(){
+		return api("otp/create", { phone: userDetails.phone })
+				.then(console.log)
 	}
 }
 
