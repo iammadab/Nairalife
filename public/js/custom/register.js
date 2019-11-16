@@ -5,7 +5,8 @@ let store = {
 	userDetails: {},
 
 	verifyOtpButton: document.querySelector(".verifyOtpButton"),
-	otpFormTag: ".otp-form"
+	otpFormTag: ".otp-form",
+	otpInputs: Array.from(document.querySelectorAll(".otp-form input"))
 }
 
 ;(function attachEvents(){
@@ -13,6 +14,7 @@ let store = {
 	addEvent(store.registrationInputs, "input,focus", () => hideError("register-error"))
 
 	addEvent([store.verifyOtpButton], "click", registerUser)
+	addEvent(store.otpInputs, "input,focus", () => hideError("otp-error"))
 })()
 
 
