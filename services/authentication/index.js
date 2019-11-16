@@ -5,3 +5,5 @@ const authenticationServices = {
 	createOtp,
 	verifyOtp
 }
+
+module.exports = authenticationServices
