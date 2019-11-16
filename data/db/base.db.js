@@ -18,7 +18,7 @@ function createDb(dbModel){
 		return dbModel.deleteOne(keyObj)
 	}
 
-	baseDbFunction.deleteMany = async (keyObj) => {
+	baseDbFunctions.deleteMany = async (keyObj) => {
 		return dbModel.deleteMany(keyObj)
 	}
 
