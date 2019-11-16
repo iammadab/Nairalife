@@ -95,7 +95,10 @@ function registerUser(event){
 		.then(handleRegistration)
 
 	function handleRegistration(response){
-		console.log(response)
+		if(response.status == 200)
+			redirect("/dashboard")
+		else if(response.code == "OTP_VERIFICATION_FAILED")
+			showError("otp-error", "Invalid otp code")
 	}
 
 }
