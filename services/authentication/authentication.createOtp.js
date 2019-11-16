@@ -8,7 +8,9 @@ async function createOtp(data){
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 
-	let otpObj = await otpDb.create({ phone: data.phone, code: generateCode() })
+	let code = generateCode()
+	console.log(code)
+	let otpObj = await otpDb.create({ phone: data.phone, code })
 
 	if(otpObj)
 		return { status: 200, code: "OTP_CREATED" }
