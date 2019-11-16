@@ -1,3 +1,10 @@
+/*
+	Contents
+	showView
+	showError
+	hideError
+	hasKeys
+*/
 function showView(viewName){
 	let viewToShow = document.querySelector(`#${viewName}`)
 	if(!viewToShow) return
@@ -21,4 +28,11 @@ function hideError(errorName){
 	let errorBox = document.querySelector(`.${errorName}`)
 	if(errorBox)
 		errorBox.style.display = "none"
+}
+
+function hasKeys(obj, expectedKey){
+	let objKeys = Object.keys(obj)
+	return expectedKey.filter(key => {
+		return objKeys.includes(key) ? false : true
+	})
 }
