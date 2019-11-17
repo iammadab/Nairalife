@@ -13,7 +13,7 @@ async function createUser(data){
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 
-	let userData = validationResult.data
+	let userData = validationResult.data, plainPassword = userData.password
 
 	userData.password = await hash(userData.password)
 
@@ -31,7 +31,7 @@ async function createUser(data){
 
 	let userObj = await userDb.createUser(userData)
 
-	let loginResult = await loginUser({ phone: userData.phone, password: userData.password })
+	let loginResult = await loginUser({ phone: userData.phone, password: plainPassword })
 	if(loginResult.status != 200)
 		return loginResult
 
