@@ -18,7 +18,7 @@ async function loginUser(data){
 
 	let samePassword = await compare(loginData.password, userObj.password)
 	if(!samePassword)
-		return { status: 403, code: "INAVLID_PASSWORD" }
+		return { status: 403, code: "INVALID_PASSWORD" }
 
 	let userToken = jwt.sign({ phone: loginData.phone }, process.env.SECRET_KEY, { expiresIn: "24h" })
 	
