@@ -10,4 +10,4 @@ function cookieNotFound(redirectUrl, param){
 	}
 }
 
-module.exports = cookieNotFound()
+module.exports = cookieNotFound
