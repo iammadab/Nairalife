@@ -20,7 +20,6 @@ function submitPreference(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
 		if(response.status == 200)
 			redirect("/home")
 	}

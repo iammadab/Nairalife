@@ -1,6 +1,7 @@
 const { createValidator } = require("lazy-validator")
 
-const userPreferenceValidator = createValidator("sex.string.lowercase, relationship.string.lowercase, title.string.lowercase, bio.string.lowercase, work.string.lowercase, work_description.string.lowercase, earning.string.lowercase, contribution_receive.string.lowercase, contribtuion_make.string.lowercase, contribution_use.string.lowercase")
+// const userPreferenceValidator = createValidator("sex.string.lowercase, relationship.string.lowercase, title.string.lowercase, bio.string.lowercase, work.string.lowercase, work_description.string.lowercase, earning.string.lowercase, contribution_receive.string.lowercase, contribtuion_make.string.lowercase, contribution_use.string.lowercase")
+const userPreferenceValidator = createValidator("sex.string")
 
 const userDb = require("../../data/db/user.db")
 
@@ -14,7 +15,9 @@ async function userPreference(data){
 	delete data.token
 
 	let userObj = await userDb.appendDoc({ phone: userPhone }, "about", data)
+	console.log(userObj)
 	userObj = await userDb.appendDoc({ phone: userPhone }, "stage", "active")
+	console.log(userObj)
 
 	if(userObj)
 		return { status: 200, code: "USER_PREFERENCE_SET" }
