@@ -1,12 +1,14 @@
 require("dotenv").config()
 const express = require("express")
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 const { connectToDb } = require("./runners/database_runner")
 
 const app = express()
 const path = require("path")
 
 app.set("view engine", "ejs")
+app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(express.static(path.resolve(__dirname, "public")))
 
