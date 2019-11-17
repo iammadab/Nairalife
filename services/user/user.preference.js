@@ -13,10 +13,10 @@ async function userPreference(data){
 	let userPhone = data.user.phone
 	delete data.user
 	delete data.token
-	console.log(data)
-	
+
 	let userObj = await userDb.appendDoc({ phone: userPhone }, "about", data)
-	console.log(userObj)
+	if(userObj)
+		return { status: 200, code: "USER_PREFERENCE_SET" }
 }
 
 module.exports = userPreference
