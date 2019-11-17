@@ -13,5 +13,4 @@ userDb.createUser = function({ fullname, phone, email, password }){
 	return newUser.save()
 }
 
-
 module.exports = userDb

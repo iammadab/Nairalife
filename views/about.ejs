@@ -33,23 +33,28 @@
 
 <!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
 
-
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 otp-error preference-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
 
 <!--begin::Form-->
-<form class="kt-form" action="" novalidate="novalidate">
+<form class="kt-form preference-form" action="" novalidate="novalidate">
 
 <div class="form-group">
-<select class="custom-select bank-name">
-<option>Choose your sex</option>
-<option value="Unity Bank">Male</option>
-<option value="Wema Bank">Female</option>
+<select class="custom-select bank-name" name="sex">
+<option value="">Choose your sex</option>
+<option value="male">Male</option>
+<option value="female">Female</option>
 </select>
 </div>
 
 
 <div class="form-group">
-<select class="custom-select bank-name">
-<option>Relationship status</option>
+<select class="custom-select bank-name" name="relationship">
+<option value="">Relationship status</option>
 <option value="Single">Single</option>
 <option value="Engaged">Engaged</option>
 <option value="Married">Married</option>
@@ -58,9 +63,9 @@
 
 
 <div class="form-group">
-<select class="custom-select bank-name">
-<option>What is your official title?</option>
-<option value="">None</option>
+<select class="custom-select bank-name" name="title">
+<option value="">What is your official title?</option>
+<option value="none">None</option>
 <option value="Mr.">Mr.</option>
 <option value="Mrs.">Mrs.</option>
 <option value="Miss.">Miss.</option>
@@ -74,7 +79,7 @@
 </div>
 
 <div class="form-group">
-<textarea class="form-control" name="bvn" style="height:95px" placeholder="Can you describe yourself?">
+<textarea class="form-control" name="bio" style="height:95px" placeholder="Can you describe yourself?">
 </textarea>
 </div>
 
@@ -100,11 +105,11 @@
 
 
 <div class="form-group">
-<select class="custom-select bank-name">
-<option>How do you earn a living</option>
-<option value="Unity Bank">Freelancing</option>
-<option value="Wema Bank">Cooperate Work</option>
-<option value="Wema Bank">Others</option>
+<select class="custom-select bank-name" name="work">
+<option value="">How do you earn a living</option>
+<option value="Freelancing">Freelancing</option>
+<option value="Cooperate Work">Cooperate Work</option>
+<option value="others">Others</option>
 </select>
 </div>
 
@@ -112,7 +117,7 @@
 
 
 <div class="form-group">
-<textarea class="form-control" name="bvn" style="height:95px" placeholder="Can you describe it?">
+<textarea class="form-control" name="work_description" style="height:95px" placeholder="Can you describe it?">
 </textarea>
 </div>
 
@@ -120,15 +125,15 @@
 
 
 <div class="form-group">
-<select class="custom-select bank-name">
-<option>How much do you earn monthly?</option>
-<option value="Unit Bank">Between 30,000 - 50,000</option>
-<option value="Wema Bank">Between 50,000 - 100,000</option>
-<option value="Wema Bank">Between 100,000 - 200,000</option>
-<option value="Wema Bank">Between 200,000 - 500,000</option>
-<option value="Wema Bank">Between 500,000 - 1,000,000</option>
-<option value="Wema Bank">Between 1,000,000 - 5,000,000</option>
-<option value="Wema Bank">Between 5,00,000 and above</option>
+<select class="custom-select bank-name" name="earning">
+<option value="">How much do you earn monthly?</option>
+<option value="30,000 - 50,000">Between 30,000 - 50,000</option>
+<option value="50,000 - 100,000">Between 50,000 - 100,000</option>
+<option value="100,000 - 200,000">Between 100,000 - 200,000</option>
+<option value="200,000 - 500,000">Between 200,000 - 500,000</option>
+<option value="500,000 - 1,000,000">Between 500,000 - 1,000,000</option>
+<option value="1,000,000 - 5,000,000">Between 1,000,000 - 5,000,000</option>
+<option value="5,00,000 and above">Between 5,00,000 and above</option>
 </select>
 </div>
 
@@ -162,28 +167,28 @@ your reputation on Nairalife.
 
 
 <div class="form-group">
-<select class="custom-select bank-name">
-<option>How much contributions do you want to receive?</option>
-<option value="Unit Bank">30,000 Monthly</option>
-<option value="Wema Bank">60,000 Monthly</option>
-<option value="Wema Bank">150,000 Yearly</option>
+<select class="custom-select bank-name" name="contribution_receive">
+<option value="">How much contributions do you want to receive?</option>
+<option value="30,000 Monthly">30,000 Monthly</option>
+<option value="60,000 Monthly">60,000 Monthly</option>
+<option value="150,000 Yearly">150,000 Yearly</option>
 </select>
 </div>
 
 
 <div class="form-group">
-<select class="custom-select bank-name">
-<option>How much contributions can you make?</option>
-<option value="Unit Bank">1,000 Daily</option>
-<option value="Wema Bank">5,000 Weekly</option>
-<option value="Wema Bank">10,000 Monthly</option>
+<select class="custom-select bank-name" name="contribution_make">
+<option value="">How much contributions can you make?</option>
+<option value="1,000 Daily">1,000 Daily</option>
+<option value="5,000 Weekly">5,000 Weekly</option>
+<option value="10,000 Monthly">10,000 Monthly</option>
 </select>
 </div>
 
 
 
 <div class="form-group">
-<textarea class="form-control" name="bvn" style="height:95px" 
+<textarea class="form-control" name="contribution_use" style="height:95px" 
 placeholder="What do you want to use the contributions for when you receive it?">
 </textarea>
 </div>
@@ -191,7 +196,7 @@ placeholder="What do you want to use the contributions for when you receive it?"
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary preference-submit">
 <span>Submit</span>
 </button>
 </div>
@@ -252,3 +257,6 @@ placeholder="What do you want to use the contributions for when you receive it?"
 </div>
 
 <!-- end:: Page -->
+
+<script type="text/javascript" src="js/custom/script.js"></script>
+<script type="text/javascript" src="js/custom/about.js"></script>

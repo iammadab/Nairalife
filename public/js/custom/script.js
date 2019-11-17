@@ -11,6 +11,7 @@
 	redirect
 	getCounter
 	setValue
+	getToken
 */
 
 function showView(viewName){
@@ -46,7 +47,8 @@ function hasKeys(obj, expectedKey){
 }
 
 function extractForm(formId){
-	let inputs = Array.from(document.querySelectorAll(`${formId} input, ${formId} textarea`)), formData = {}
+	let selectString = `${formId} input, ${formId} textarea, ${formId} select`
+	let inputs = Array.from(document.querySelectorAll(selectString)), formData = {}
 	inputs.forEach(input => {
 		if(input.name && input.value)
 			formData[input.name] = input.value
@@ -108,4 +110,14 @@ function setValue(elements, value, condition){
 		if(domElement)
 			domElement[prop] = value
 	})
+}
+
+function getToken(search){
+	let param = search ? search : "token", token
+	let cookieParts = document.cookie.split(";")
+	cookieParts.forEach(cookie => {
+		if(cookie.trim().indexOf(param) == 0)
+			token = cookie.split("=")[1]
+	})
+	return token
 }
