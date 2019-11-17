@@ -29,6 +29,7 @@ app.use("/", viewRoutes)
 
 
 
+
 app.use((req, res) => {
 	res.send("404, Resource not found")
 })
