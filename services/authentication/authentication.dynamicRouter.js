@@ -1,3 +1,5 @@
+const userDb = require("../../data/db/user.db")
+
 function dynamicRouter(){
 
 }
