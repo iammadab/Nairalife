@@ -20,7 +20,7 @@ viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 	res.render("register")
 })
 
-viewRouter.get("/account", (req, res) => {
+viewRouter.get("/account", cookieNotFound("/login"), (req, res) => {
 	res.render("account")
 })
 
