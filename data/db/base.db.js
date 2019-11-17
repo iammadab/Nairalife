@@ -23,8 +23,8 @@ function createDb(dbModel){
 	}
 
 	baseDbFunctions.appendDoc = async (keyObj, key, data) =>{
-		let dbObj = dbModel.findOne(keyObj)
-		dbObj[key] = data
+		let dbObj = await dbModel.findOne(keyObj)
+		dbObj._doc[key] = data
 		return dbObj.save()
 	}
 
