@@ -1,5 +1,6 @@
 let store = {
-	preferenceButton: document.querySelector(".preference-submit")
+	preferenceButton: document.querySelector(".preference-submit"),
+	preferenceFormTag: ".preference-form"
 }
 
 ;(function attachEvents(){
@@ -8,4 +9,6 @@ let store = {
 
 function submitPreference(event){
 	event.preventDefault()
+	let preferenceDetails = extractForm(store.preferenceFormTag)
+	console.log(preferenceDetails)
 }
