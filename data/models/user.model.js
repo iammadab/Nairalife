@@ -7,9 +7,9 @@ const userSchema = mongoose.Schema({
 	password: { type: String, required: true },
 	stage: { type: String, default: "enter_contribution_preference", enum: ["enter_card_details", "enter_contribution_preference", "active" ]},
 
+	user_id: { type: Number, required: true, unique: true },
 	nairascore: { type: Number, default: 0 },
 	nairapoints: { type: Number, default: 0 },
-	guarantor_code: { type: Number, required: true, unique: true },
 	balance: { type: Number, default: 0 }
 })
 
