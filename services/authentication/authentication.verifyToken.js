@@ -2,19 +2,17 @@ const { promisify } = require("util")
 const { createValidator } = require("lazy-validator")
 
 const verify = promisify(require("jsonwebtoken").verify)
-const validateTokenValidator = createValidator("token.string")
+const tokenValidator = createValidator("token.string")
 
 let validateToken = (req, res, next) => {
-	validateTokenValidator(req.body)
-		.catch(sendBadRequestError)
-		.then(verifyToken)
+	let tokenValidationResult = tokenValidator.parse(req.body)
+	if(tokenValidationResult.error)
+		res.status(400).json({ code: "BAD_REQUEST_BODY", errors: tokenValidationResult.errors })
+
+	verifyToken()
 		.then(attachUserInfo)
 		.then(next)
 		.catch(handleErrors)
-
-	function sendBadRequestError(errors){
-		throw lazyError.createError(400, "BAD_REQUEST_BODY", errors)
-	}
 
 	function verifyToken(token){
 		return verify(req.body.token, process.env.SECRET_KEY)
@@ -22,6 +20,7 @@ let validateToken = (req, res, next) => {
 
 	function attachUserInfo(decodedToken){
 		let user = decodedToken
+		console.log("Decoded Token: ", user)
 		req.body.user = user
 	}
 
@@ -30,10 +29,9 @@ let validateToken = (req, res, next) => {
 			res.status(403).json({ code: "TOKEN_EXPIRED" })
 		else if(error.name == "JsonWebTokenError")
 			res.status(403).json({ code: "TOKEN_INVALID" })
-		else if(error.code == "BAD_REQUEST_BODY")
-			res.status(400).json(error)
 		else
 			res.status(400).json({ code: "COULD_NOT_VALIDATE_TOKEN" })
 	}
 }
+
 module.exports = validateToken
