@@ -11,7 +11,7 @@ function createResponder(type){
 			if(!responseData.status)
 				responseData.status = 500
 			if(responseData.cookie)
-				res.cookie(cookie[0], responseData[cookie[0]])
+				res.cookie(responseData.cookie[0], responseData[responseData.cookie[0]])
 			return res.status(responseData.status).json(responseData)
 		}
 	}
