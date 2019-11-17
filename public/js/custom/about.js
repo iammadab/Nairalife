@@ -1,7 +1,7 @@
 let store = {
 	preferenceButton: document.querySelector(".preference-submit"),
 	preferenceFormTag: ".preference-form",
-	inputs: Array.all(document.querySelectorAll(".preference input, .preference textarea, .preference select"))
+	inputs: Array.from(document.querySelectorAll(".preference-form input, .preference-form textarea, .preference-form select"))
 }
 
 ;(function attachEvents(){
