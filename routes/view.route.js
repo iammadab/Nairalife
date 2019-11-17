@@ -20,8 +20,12 @@ viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 	res.render("register")
 })
 
-viewRouter.get("/account", cookieNotFound("/login"), verifyToken, stageRouter("enter_card_datails"), (req, res) => {
+viewRouter.get("/account", cookieNotFound("/login"), verifyToken, stageRouter("enter_card_details"), (req, res) => {
 	res.render("account")
+})
+
+viewRouter.get("/about", cookieNotFound("/login"), verifyToken, stageRouter("enter_contribution_preference"), (req, res) => {
+	res.render("about")
 })
 
 viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("active"), (req, res) => {
