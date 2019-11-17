@@ -8,6 +8,8 @@ const {
 	verifyToken
 } = require("../services/authentication")
 
+const pageService = require("../services/page")
+
 viewRouter.get("/", cookieFound("/home"), (req, res) => {
 	res.render("index")
 })
