@@ -20,11 +20,11 @@ viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 	res.render("register")
 })
 
-viewRouter.get("/account", cookieNotFound("/login"), (req, res) => {
+viewRouter.get("/account", cookieNotFound("/login"), verifyToken, stageRouter("enter_card_datails"), (req, res) => {
 	res.render("account")
 })
 
-viewRouter.get("/home", cookieNotFound("/login"), verifyToken, dynamicRouter, (req, res) => {
+viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("active"), (req, res) => {
 	res.render("dashboard", { title: "Dashboard", link: "" })
 })
 
