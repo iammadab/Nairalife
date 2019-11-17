@@ -3,6 +3,10 @@ const userDb = require("../../data/db/user.db")
 function stageRouter(allowedStage){
 	return async function accountStage(req, res, next){
 		let userObj = await userDb.findOneWith({ phone: req.body.user.phone })
+		if(!userObj){
+			res.clearCookie("token")
+			res.redirect("/login")
+		}
 		if(userObj.stage == allowedStage)
 			return next()
 		let pageToBe = mapStageToPage(userObj.stage)
