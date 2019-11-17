@@ -19,7 +19,7 @@ app.use("/api", routes)
 
 
 
-app.get("/pages/:page", (req, res) => {
+app.get("/:page", (req, res) => {
 	res.render(req.params.page, { link: "", title: "My Home" })
 })
 
