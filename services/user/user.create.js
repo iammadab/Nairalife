@@ -16,6 +16,7 @@ async function createUser(data){
 	let userData = validationResult.data, plainPassword = userData.password
 
 	userData.password = await hash(userData.password)
+	userData.user_id = await uniqueUserId()
 
 	let phoneExist = await checkIfPhoneExists(userData)
 	if(phoneExist.error) 
