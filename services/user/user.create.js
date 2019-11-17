@@ -64,3 +64,10 @@ function randomDigit(n){
 	let max = +("".padEnd(n, "9")), min = +("1".padEnd(n-1, "0"))
 	return Math.floor(Math.random() * (max - min)) + min
 }
+
+async function uniqueUserId(){
+	let randomId = randomDigit(4)
+	let userObj = await userDb.findOneWith({ user_id: randomId })
+	if(!userObj) return randomId
+	return uniqueUserId()
+}
