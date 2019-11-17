@@ -59,3 +59,8 @@ async function checkIfEmailExists(userData){
 		return { error: true, response: { status: 403, code: "EMAIL_EXISTS", message: "User with email exists" }}
 	return usersWithEmail
 }
+
+function randomDigit(n){
+	let max = +("".padEnd(n, "9")), min = +("1".padEnd(n-1, "0"))
+	return Math.floor(Math.random() * (max - min)) + min
+}
