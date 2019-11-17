@@ -4,7 +4,7 @@
   "description": "A savings group for uber and taxify drivers",
   "main": "index.js",
   "scripts": {
-    "dev-all": "start nodemon index.js && start mongod"
+    "dev-all": "start nodemon index.js --ignore public && start mongod"
   },
   "repository": {
     "type": "git",
