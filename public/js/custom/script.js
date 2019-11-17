@@ -1,7 +1,7 @@
 /*
 	Contents
 	--------
-	customJs
+	toggleNav
 	showView
 	showError
 	hideError
@@ -15,7 +15,7 @@
 	getToken
 */
 
-;(function customJs(){
+;(function toggleNav(){
     let topBarToggler = document.querySelector(".kt-header-mobile__toolbar-topbar-toggler")
     let landingToggle = document.querySelector(".landing-toggle")
     let userBar = document.querySelector(".user-dropdown")
