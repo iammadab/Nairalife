@@ -10,5 +10,5 @@ let store = {
 function submitPreference(event){
 	event.preventDefault()
 	let preferenceDetails = extractForm(store.preferenceFormTag)
-	console.log(preferenceDetails)
+	let missingDetails = hasKeys(preferenceDetails, ["sex"])
 }
