@@ -1,7 +1,11 @@
 const express = require("express")
 const viewRouter = express.Router()
 
-const { cookieFound, cookieNotFound } = require("../services/authentication")
+const { 
+	cookieFound, 
+	cookieNotFound,
+	dynamicRouter
+} = require("../services/authentication")
 
 viewRouter.get("/", cookieFound("/home"), (req, res) => {
 	res.render("index")
@@ -19,7 +23,7 @@ viewRouter.get("/account", (req, res) => {
 	res.render("account")
 })
 
-viewRouter.get("/home", cookieNotFound("/login"), (req, res) => {
+viewRouter.get("/home", cookieNotFound("/login"), dynamicRouter, (req, res) => {
 	res.render("dashboard", { title: "Dashboard", link: "" })
 })
 
