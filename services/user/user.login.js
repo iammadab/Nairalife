@@ -16,7 +16,6 @@ async function loginUser(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	console.log("Password", loginData.password)
 	let samePassword = await compare(loginData.password, userObj.password)
 	if(!samePassword)
 		return { status: 403, code: "INAVLID_PASSWORD" }

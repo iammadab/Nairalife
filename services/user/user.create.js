@@ -36,9 +36,6 @@ async function createUser(data){
 		return loginResult
 
 	return { status: 200, code: "USER_CREATED_AND_LOGGED_IN", token: loginResult.token }
-
-	// if(userObj)
-	// 	return { status: 200, code: "USER_CREATED", data: userObj }
 }
 
 module.exports = createUser
