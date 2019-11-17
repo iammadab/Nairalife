@@ -1,15 +1,17 @@
 const express = require("express")
 const viewRouter = express.Router()
 
-viewRouter.get("/", (req, res) => {
+const { cookieFound, cookieNotFound } = require("../services/authentication")
+
+viewRouter.get("/", cookieFound("/home"), (req, res) => {
 	res.render("index")
 })
 
-viewRouter.get("/login", (req, res) => {
+viewRouter.get("/login", cookieFound("/home"), (req, res) => {
 	res.render("login")
 })
 
-viewRouter.get("/register", (req, res) => {
+viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 	res.render("register")
 })
 
