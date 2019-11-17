@@ -11,6 +11,7 @@
 	redirect
 	getCounter
 	setValue
+	getToken
 */
 
 function showView(viewName){
@@ -109,4 +110,14 @@ function setValue(elements, value, condition){
 		if(domElement)
 			domElement[prop] = value
 	})
+}
+
+function getToken(search){
+	let param = search ? search : "token", token
+	let cookieParts = document.cookie.split(";")
+	cookieParts.forEach(cookie => {
+		if(cookie.trim().indexOf(param) == 0)
+			token = cookie.split("=")[1]
+	})
+	return token
 }

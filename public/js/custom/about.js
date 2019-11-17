@@ -15,4 +15,6 @@ function submitPreference(event){
 	let missingDetails = hasKeys(preferenceDetails, ["sex"])
 	if(missingDetails.length > 0)
 		return showError("preference-error", `You didn't fill a value for ${missingDetails[0]}`)
+
+	console.log(preferenceDetails)
 }
