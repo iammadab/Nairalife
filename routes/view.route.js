@@ -4,7 +4,7 @@ const viewRouter = express.Router()
 const { 
 	cookieFound, 
 	cookieNotFound,
-	dynamicRouter,
+	stageRouter,
 	verifyToken
 } = require("../services/authentication")
 

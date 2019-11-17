@@ -2,7 +2,7 @@ const createOtp = require("./authentication.createOtp")
 const verifyOtp = require("./authentication.verifyOtp")
 const cookieFound = require("./authentication.cookieFound")
 const cookieNotFound = require("./authentication.cookieNotFound")
-const dynamicRouter = require("./authentication.dynamicRouter")
+const stageRouter = require("./authentication.stageRouter")
 const verifyToken = require("./authentication.verifyToken")
 
 const authenticationServices = {
@@ -10,7 +10,7 @@ const authenticationServices = {
 	verifyOtp,
 	cookieFound,
 	cookieNotFound,
-	dynamicRouter,
+	stageRouter,
 	verifyToken
 }
 
