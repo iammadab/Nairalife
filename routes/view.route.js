@@ -32,4 +32,16 @@ viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("acti
 	res.render("dashboard", { title: "Dashboard", link: "" })
 })
 
+viewRouter.get("/admin/login", (req, res) => {
+	res.render("admin/login")
+})
+
+viewRouter.get("/admin/dashboard", (req, res) => {
+	res.render("admin/dashboard")
+})
+
+viewRouter.get("/admin/members", (req, res) => {
+	res.render("admin/members")
+})
+
 module.exports = viewRouter

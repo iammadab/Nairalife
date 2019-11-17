@@ -1,5 +1,5 @@
 <% include meta %>
-<link href="css/login.css" rel="stylesheet" type="text/css" />
+<link href="/css/login.css" rel="stylesheet" type="text/css" />
 
 <!-- begin::Body -->
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
@@ -27,56 +27,26 @@
 <div class="kt-login__form">
 <% include formhead %>
 <div class="kt-login__title">
-<h3>Login Account</h3>
-<p>Enter your account details below</p>
+<h3>Admin Account</h3>
+<p>Enter your administrator account details below</p>
 </div>
-
-<!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
-
-
-<div class="alert alert-danger alert-bold fade show kt-margin-b-20 login-error" role="alert">
-<div class="alert-icon"><i class="flaticon-warning"></i></div>
-<div class="alert-text">
-Invalid Phone Number or Password
-</div>
-</div>
-
-<div class="alert alert-success alert-bold fade show kt-margin-b-20 none login-success" role="alert">
-<div class="alert-icon"><i class="flaticon-warning"></i></div>
-<div class="alert-text">
-Your password has been changed successfully. Login below
-</div>
-</div>
-
 
 <!--begin::Form-->
 <form class="kt-form login-form" action="" novalidate="novalidate">
 <div class="form-group">
-	<input class="form-control" type="text" placeholder="Phone Number" name="phone" autocomplete="off" required="true">
+<input class="form-control" type="text" placeholder="Email Address" name="eadd" autocomplete="off" required="true">
 </div>
 <div class="form-group">
-	<input class="form-control" type="password" placeholder="Password" name="password" required="true">
+<input class="form-control" type="password" placeholder="Password" name="password" required="true">
 </div>
-
-
-
 <div class="kt-login__btn">
 <button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary login-button">
-<i class="la la-unlock"></i><span>Enter Account </span>
+<i class="la la-unlock"></i><span>Admin Login </span>
 </button>
 </div>
-
-<!--begin::Action-->
-<div class="kt-login__actions">
-<a href="/forgot" class="kt-link kt-login__link-forgot">Forgot Password?</a>
-</div>
-<!--end::Action-->
-
-
-
 </form>
-
 <!--end::Form-->
+
 
 <!--begin::Divider-->
 <div class="kt-login__divider">
@@ -90,16 +60,16 @@ Your password has been changed successfully. Login below
 
 <!--begin::Options-->
 <div class="kt-login__bottom">
-<span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
-<a href="/register" class="kt-link kt-login__signup-link">Register</a>
+<span class="kt-login__signup-label">Did you miss you way here?</span>&nbsp;&nbsp;
+<a href="/" class="kt-link kt-login__signup-link">Go Back</a>
 </div>
 
 <!--end::Options-->
-</div>
 
+
+</div>
 <!--end::Signin-->
 </div>
-
 <!--end::Body-->
 
 
@@ -144,6 +114,3 @@ Your password has been changed successfully. Login below
 </div>
 
 <!-- end:: Page -->
-
-<script type="text/javascript" src="js/custom/script.js"></script>
-<script type="text/javascript" src="js/custom/login.js"></script>
