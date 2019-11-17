@@ -20,7 +20,6 @@ let validateToken = (req, res, next) => {
 
 	function attachUserInfo(decodedToken){
 		let user = decodedToken
-		console.log("Decoded Token: ", user)
 		req.body.user = user
 	}
 
