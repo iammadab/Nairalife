@@ -31,7 +31,7 @@ viewRouter.get("/about", cookieNotFound("/login"), verifyToken, stageRouter("ent
 })
 
 viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.dashboard, (req, res) => {
-	res.render("dashboard", { title: "Dashboard", link: "", user: req.pageData.user })
+	res.render("dashboard", { title: "Dashboard", link: "", user: req.body.pageData.user })
 })
 
 module.exports = viewRouter
