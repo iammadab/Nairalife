@@ -4,4 +4,4 @@ const pageServices = {
 	dashboard
 }
 
-module.exports = dashboard
+module.exports = pageServices

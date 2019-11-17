@@ -30,7 +30,8 @@ viewRouter.get("/about", cookieNotFound("/login"), verifyToken, stageRouter("ent
 	res.render("about")
 })
 
-viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("active"), (req, res) => {
+viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.dashboard, (req, res) => {
+	console.log(req.pageData)
 	res.render("dashboard", { title: "Dashboard", link: "" })
 })
 
