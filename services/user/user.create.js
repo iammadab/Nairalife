@@ -29,7 +29,7 @@ async function createUser(data){
 	let otpVerificationResult = await authenticationService.verifyOtp({ phone: userData.phone, code: userData.code })
 	if(otpVerificationResult.status != 200)
 		return otpVerificationResult
-	console.log(userData)
+	
 	let userObj = await userDb.createUser(userData)
 
 	let loginResult = await loginUser({ phone: userData.phone, password: plainPassword })
