@@ -5,7 +5,8 @@ const userDb = require("../../data/db/user.db")
 const createUserValidator = createValidator("fullname.string.lowercase, phone.number, email.string.lowercase, password.string, code.number")
 
 const authenticationService = require("../authentication")
-const userService = require("../user")
+const loginUser = require("./user.login")
+
 
 async function createUser(data){
 	let validationResult = createUserValidator.parse(data)
@@ -30,7 +31,7 @@ async function createUser(data){
 
 	let userObj = await userDb.createUser(userData)
 
-	let loginResult = await userService.loginUser({ phone: userData.phone, password: userData.password })
+	let loginResult = await loginUser({ phone: userData.phone, password: userData.password })
 	if(loginResult.status != 200)
 		return loginResult
 
