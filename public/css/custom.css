@@ -1,0 +1,7 @@
+.kt-grid.kt-grid--ver.kt-grid--root .view{
+	display: none;
+}
+
+.kt-grid.kt-grid--ver.kt-grid--root .view.show{
+	display: flex;
+}
