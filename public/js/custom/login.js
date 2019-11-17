@@ -17,5 +17,11 @@ function startLogin(event){
 		return showError("login-error", `You didn't fill a value for ${missingDetails[0]}`)
 
 	return api("auth/login", { phone: loginDetails.phone, password: loginDetails.password })
-				.then(console.log)
+				.then(handleLogin)
+
+	function handleLogin(response){
+		if(response.status == 200)
+			redirect("/dashboard")
+		
+	}
 }
