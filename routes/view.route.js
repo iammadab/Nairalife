@@ -19,7 +19,7 @@ viewRouter.get("/account", (req, res) => {
 	res.render("account")
 })
 
-viewRouter.get("/home", (req, res) => {
+viewRouter.get("/home", cookieNotFound("/login"), (req, res) => {
 	res.render("dashboard", { title: "Dashboard", link: "" })
 })
 
