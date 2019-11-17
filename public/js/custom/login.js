@@ -16,5 +16,6 @@ function startLogin(event){
 	if(missingDetails.length > 0)
 		return showError("login-error", `You didn't fill a value for ${missingDetails[0]}`)
 
-
+	return api("auth/login", { phone: loginDetails.phone, password: loginDetails.password })
+				.then(console.log)
 }
