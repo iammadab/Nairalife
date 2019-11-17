@@ -5,7 +5,7 @@ function stageRouter(allowedStage){
 		let userObj = await userDb.findOneWith({ phone: req.body.user.phone })
 		if(!userObj){
 			res.clearCookie("token")
-			res.redirect("/login")
+			return res.redirect("/login")
 		}
 		if(userObj.stage == allowedStage)
 			return next()
