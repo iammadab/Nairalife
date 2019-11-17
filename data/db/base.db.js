@@ -22,6 +22,10 @@ function createDb(dbModel){
 		return dbModel.deleteMany(keyObj)
 	}
 
+	baseDbFunctions.appendDoc = async (keyObj, key, data) =>{
+		return dbModel.update(keyObj, { $set: { [key]: data }})
+	}
+
 	return baseDbFunctions
 }
 
