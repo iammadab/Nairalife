@@ -11,7 +11,6 @@ const userSchema = mongoose.Schema({
 	nairapoints: { type: Number, default: 0 },
 	guarantor_code: { type: Number, required: true, unique: true },
 	balance: { type: Number, default: 0 }
-
 })
 
 const userModel = mongoose.model("User", userSchema)
