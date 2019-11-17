@@ -21,7 +21,7 @@ function startLogin(event){
 
 	function handleLogin(response){
 		if(response.status == 200)
-			redirect("/dashboard")
+			redirect("/home")
 		else if(response.code == "USER_DOES_NOT_EXIST")
 			return showError("login-error", "No account has that phone number")
 		else if(response.code == "INVALID_PASSWORD")

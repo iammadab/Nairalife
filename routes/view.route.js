@@ -17,8 +17,8 @@ viewRouter.get("/account", (req, res) => {
 	res.render("account")
 })
 
-viewRouter.get("/dashboard", (req, res) => {
-	res.render("dashboard")
+viewRouter.get("/home", (req, res) => {
+	res.render("dashboard", { title: "Dashboard", link: "" })
 })
 
 module.exports = viewRouter
