@@ -20,7 +20,6 @@ function startLogin(event){
 				.then(handleLogin)
 
 	function handleLogin(response){
-		console.log(response)
 		if(response.status == 200)
 			redirect("/dashboard")
 		else if(response.code == "USER_DOES_NOT_EXIST")
