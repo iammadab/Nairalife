@@ -2,7 +2,7 @@ const userDb = require("../../data/db/user.db")
 
 function stageRouter(allowedStage){
 	return async function accountStage(req, res, next){
-		let userObj = await userDb.findOneWith({ phone: req.body.user.phone })
+		let userObj = await userDb.findOneWith({ _id: req.body.user.id })
 		if(!userObj){
 			res.clearCookie("token")
 			return res.redirect("/login")
