@@ -17,7 +17,6 @@ async function createUser(data){
 
 	userData.password = await hash(userData.password)
 	userData.user_id = await uniqueUserId()
-	console.log(userData.user_id)
 
 	let phoneExist = await checkIfPhoneExists(userData)
 	if(phoneExist.error) 
