@@ -1,10 +1,17 @@
 let store = {
+	// Profile information section
 	saveInformationButton: document.querySelector(".save-information-button"),
 	profileElementTag: ".profile-section",
 	profileInputs: document.querySelectorAll(`.profile-section input, .profile-section select, .profile-section textarea`)
+
+	//Password section
+	changePasswordButton: document.querySelector(".change-password-button"),
+	passwordFormElementTag: ".password-section",
+	passwordInputs: document.querySelectorAll(`.password-section input, .password-section select, .password-section textarea`)
 }
 
 ;(function attachEvents(){
+	// Profile information section
 	addEvent([store.saveInformationButton], "click", saveInformation)
 	addEvent(store.profileInputs, "input,focus", () => hideError("profile-error"))
 })()
