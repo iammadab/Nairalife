@@ -12,5 +12,5 @@ function saveInformation(event){
 	let profileDetails = extractForm(store.profileElementTag)
 	let missingKeys = hasKeys(profileDetails, ["fullname", "phone", "email", "sex", "title", "relationship", "bio"])
 	if(missingKeys.length > 0)
-		console.log(missingKeys)
+		return showError("profile-error", `You didn't fill data for ${missingKeys[0]}`)
 }
