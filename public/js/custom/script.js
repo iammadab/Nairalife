@@ -3,6 +3,7 @@
 	--------
 	toggleNav
 	attachLogout
+	setDefaultOption
 	showView
 	showError
 	hideError
@@ -46,6 +47,13 @@
 		deleteCookie("token")
 		redirect("/login")
 	}
+})()
+
+;(function setDefaultOption(){
+	let elementsWithDefaults = Array.from(document.querySelectorAll("[data-defaultValue]"))
+	elementsWithDefaults.forEach(element => {
+		element.value = element.dataset["defaultvalue"]
+	})
 })()
 
 function showView(viewName){

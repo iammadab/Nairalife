@@ -10,7 +10,7 @@ include 'link.php';
 <% include header %>
 <% include link %>
 
-<% let match = (a,b) => String(a).lowerCase() == String(b).lowerCase() ? "selected=selected" : "" %>
+<% let match = (a,b) => String(a).lowerCase() == String(b).lowerCase() ? "selected" : "" %>
 
 <!--begin::Portlet-->
 <div class="kt-portlet btopzero">
@@ -64,16 +64,16 @@ include 'link.php';
 
 <div class="form-group">
 <label>Sex</label>	
-<select class="custom-select bank-name" style="height:55px;">
-<option value="Single">Male</option>
-<option value="Engaged">Female</option>
+<select data-defaultvalue="<%= user.about.sex %>" class="custom-select bank-name" style="height:55px;">
+<option value="female">Female</option>
+<option value="male">Male</option>
 </select>
 </div>
 
 
 <div class="form-group">
 <label>Official Title</label>	
-<select class="custom-select bank-name" style="height:55px;">
+<select data-defaultvalue="<%= user.about.title %>" class="custom-select bank-name" style="height:55px;">
 <option value="Mr.">Mr.</option>
 <option value="Mrs.">Mrs.</option>
 <option value="Miss.">Miss.</option>
@@ -89,7 +89,7 @@ include 'link.php';
 
 <div class="form-group">
 <label>Relationship Status</label>	
-<select class="custom-select bank-name" style="height:55px;">
+<select data-defaultvalue="<%= user.about.relationship %>" class="custom-select bank-name" style="height:55px;">
 <option value="Single">Single</option>
 <option value="Engaged">Engaged</option>
 <option value="Married">Married</option>
