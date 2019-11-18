@@ -22,6 +22,8 @@ async function updateProfile(data){
 	
 	if(userObj)
 		return { status: 200, code: "UPDATED_USER_PROFILE" }
+
+	return { status: 500, code: "PROBLEM_UPDATING_USER" }
 }
 
 module.exports = updateProfile
