@@ -2,7 +2,7 @@ let store = {
 	// Profile information section
 	saveInformationButton: document.querySelector(".save-information-button"),
 	profileElementTag: ".profile-section",
-	profileInputs: document.querySelectorAll(`.profile-section input, .profile-section select, .profile-section textarea`)
+	profileInputs: document.querySelectorAll(`.profile-section input, .profile-section select, .profile-section textarea`),
 
 	//Password section
 	changePasswordButton: document.querySelector(".change-password-button"),
@@ -14,6 +14,9 @@ let store = {
 	// Profile information section
 	addEvent([store.saveInformationButton], "click", saveInformation)
 	addEvent(store.profileInputs, "input,focus", () => hideError("profile-error"))
+
+	// Password section
+	addEvent([store.changePasswordButton], "click", changePassword)
 })()
 
 function saveInformation(event){
@@ -32,4 +35,13 @@ function saveInformation(event){
 			redirect(window.location.href)
 		}
 	}
+}
+
+function changePassword(event){
+	event.preventDefault()
+	let passwordDetails = extractForm(store.passwordFormElementTag)
+	console.log(passwordDetails)
+	let missingKeys = hasKeys(passwordDetails, ["oldPassword", "newPassword", "newPassword2"])
+	if(missingKeys.length > 0)
+		console.log(missingKeys)
 }
