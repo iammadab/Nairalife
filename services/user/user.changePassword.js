@@ -11,8 +11,19 @@ async function changePassword(data){
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
-	
+	if(!userObj)
+		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
+	let samePassword = await compare(loginData.password, userObj.password)
+	if(!samePassword)
+		return { status: 403, code: "INVALID_PASSWORD" }
+
+	let newPasswordHash = await hash(data.newPassword)
+	console.log("New password", newPasswordHash)
+
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "password", newPasswordHash)
+	if(userObj)
+		return { status: 200, code: "UPDATED_PASSWORD" }
 }
 
 module.exports = changePassword
