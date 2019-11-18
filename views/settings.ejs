@@ -44,7 +44,7 @@ include 'link.php';
 
 
 
-<div class="tab-pane active" id="kt_tabs_7_1" role="tabpanel">
+<div class="tab-pane active profile-section" id="kt_tabs_7_1" role="tabpanel">
 
 	
 <div class="form-group">
@@ -64,7 +64,7 @@ include 'link.php';
 
 <div class="form-group">
 <label>Sex</label>	
-<select data-defaultvalue="<%= user.about.sex %>" class="custom-select bank-name" style="height:55px;">
+<select name="sex" data-defaultvalue="<%= user.about.sex %>" class="custom-select bank-name" style="height:55px;">
 <option value="female">Female</option>
 <option value="male">Male</option>
 </select>
@@ -73,7 +73,7 @@ include 'link.php';
 
 <div class="form-group">
 <label>Official Title</label>	
-<select data-defaultvalue="<%= user.about.title %>" class="custom-select bank-name" style="height:55px;">
+<select  name="title" data-defaultvalue="<%= user.about.title %>" class="custom-select bank-name" style="height:55px;">
 <option value="mr.">Mr.</option>
 <option value="mrs.">Mrs.</option>
 <option value="miss.">Miss.</option>
@@ -98,7 +98,7 @@ include 'link.php';
 
 <div class="form-group">
 <label>Bio</label>	
-<textarea class="form-control" name="bvn" style="height:95px"><%= user.about.bio %></textarea>
+<textarea class="form-control" name="bio" style="height:95px"><%= user.about.bio %></textarea>
 </div>
 
 
@@ -224,5 +224,5 @@ include 'link.php';
 <!--end::Portlet-->
 
 
-
 <% include footer %>
+<script type="text/javascript" src="js/custom/settings.js"></script>
