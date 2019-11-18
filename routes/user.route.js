@@ -8,5 +8,6 @@ const authenticationService = require("../services/authentication")
 
 userRouter.post("/exist", bodyResponder(userService.userExist))
 userRouter.post("/preference", authenticationService.verifyToken, bodyResponder(userService.userPreference))
+userRouter.post("/profile", bodyResponder(userService.updateProfile))
 
 module.exports = userRouter
