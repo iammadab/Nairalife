@@ -41,7 +41,8 @@
 	if(!logoutButton) return
 	addEvent([logoutButton], "click", logout)
 	
-	function logout(){
+	function logout(event){
+		event.preventDefault()
 		deleteCookie("token")
 		redirect("/login")
 	}
