@@ -1,10 +1,12 @@
 let store = {
 	saveInformationButton: document.querySelector(".save-information-button"),
-	profileElementTag: ".profile-section"
+	profileElementTag: ".profile-section",
+	profileInputs: document.querySelectorAll(`.profile-section input, .profile-section select, .profile-section textarea`)
 }
 
 ;(function attachEvents(){
 	addEvent([store.saveInformationButton], "click", saveInformation)
+	addEvent(store.profileInputs, "input,focus", () => hideError("profile-error"))
 })()
 
 function saveInformation(event){
