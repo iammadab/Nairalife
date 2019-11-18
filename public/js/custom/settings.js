@@ -18,6 +18,7 @@ let store = {
 	// Password section
 	addEvent([store.changePasswordButton], "click", changePassword)
 	addEvent(store.passwordInputs, "input,focus", () => hideError("password-error"))
+	addEvent(store.passwordInputs, "input,focus", () => hideError("password-success"))
 })()
 
 function saveInformation(event){
@@ -59,6 +60,6 @@ function changePassword(event){
 			store.passwordInputs.forEach(input => input.value = "")
 		}
 		else if(response.code == "INVALID_PASSWORD")
-			showAlert("password-error", "Invalid Password")
+			showAlert("password-error", "Your old password is incorrect")
 	}
 }
