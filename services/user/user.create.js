@@ -17,6 +17,7 @@ async function createUser(data){
 
 	userData.password = await hash(userData.password)
 	userData.user_id = await uniqueUserId()
+	console.log(userData.user_id)
 
 	let phoneExist = await checkIfPhoneExists(userData)
 	if(phoneExist.error) 
@@ -70,6 +71,9 @@ async function uniqueUserId(count){
 	count = count || 1
 	let randomId = randomDigit(4)
 	let userObj = await userDb.findOneWith({ user_id: randomId })
-	if(!userObj) { console.log(`Found unique code in ${count} attempt`); return randomId }
+	if(!userObj) { 
+		console.log(`Found unique code in ${count} attempt`); 
+		return randomId 
+	}
 	return uniqueUserId()
 }
