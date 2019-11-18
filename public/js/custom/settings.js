@@ -10,5 +10,7 @@ let store = {
 function saveInformation(event){
 	event.preventDefault()
 	let profileDetails = extractForm(store.profileElementTag)
-	console.log(profileDetails)
+	let missingKeys = hasKeys(profileDetails, ["fullname", "phone", "email", "sex", "title", "relationship", "bio"])
+	if(missingKeys.length > 0)
+		console.log(missingKeys)
 }
