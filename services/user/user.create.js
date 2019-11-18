@@ -66,9 +66,10 @@ function randomDigit(n){
 	return Math.floor(Math.random() * (max - min)) + min
 }
 
-async function uniqueUserId(){
+async function uniqueUserId(count){
+	count = count || 1
 	let randomId = randomDigit(4)
 	let userObj = await userDb.findOneWith({ user_id: randomId })
-	if(!userObj) return randomId
+	if(!userObj) { console.log(`Found unique code in ${count} attempt`); return randomId }
 	return uniqueUserId()
 }
