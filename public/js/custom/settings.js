@@ -20,8 +20,9 @@ function saveInformation(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
-		if(response.status == 200)
-			console.log("Yay")
+		if(response.status == 200){
+			showAlert("profile-success", "Profile updated successfully")
+			redirect(window.location.href)
+		}
 	}
 }

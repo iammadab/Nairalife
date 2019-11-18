@@ -6,7 +6,9 @@
 	setDefaultOption
 	showView
 	showError
+	showAlert
 	hideError
+	hideAlert
 	hasKeys
 	extractForm
 	addEvent
@@ -75,11 +77,15 @@ function showError(errorName, errorMessage){
 		errorText.innerText = errorMessage
 }
 
+let showAlert = showError
+
 function hideError(errorName){
 	let errorBox = document.querySelector(`.${errorName}`)
 	if(errorBox)
 		errorBox.style.display = "none"
 }
+
+let hideAlert = hideError
 
 function hasKeys(obj, expectedKey){
 	let objKeys = Object.keys(obj)
