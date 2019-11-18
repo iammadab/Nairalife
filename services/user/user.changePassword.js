@@ -1,4 +1,5 @@
 const { createValidator } = require("lazy-validator")
+const { hash, compare } = require("../../lib/crypt")
 
 const changePasswordValidator = createValidator("oldPassword.string, newPassword.string")
 
@@ -10,7 +11,8 @@ async function changePassword(data){
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
-	console.log(userObj)
+	
+
 }
 
 module.exports = changePassword
