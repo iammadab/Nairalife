@@ -17,6 +17,7 @@ let store = {
 
 	// Password section
 	addEvent([store.changePasswordButton], "click", changePassword)
+	addEvent(store.passwordInputs, "input,focus", () => hideError("password-error"))
 })()
 
 function saveInformation(event){
@@ -39,9 +40,14 @@ function saveInformation(event){
 
 function changePassword(event){
 	event.preventDefault()
+	
 	let passwordDetails = extractForm(store.passwordFormElementTag)
-	console.log(passwordDetails)
 	let missingKeys = hasKeys(passwordDetails, ["oldPassword", "newPassword", "newPassword2"])
 	if(missingKeys.length > 0)
-		console.log(missingKeys)
+		return showAlert("password-error", `You didn't fill data for ${missingKeys[0]}`)
+
+	if(passwordDetails.newPassword != passwordDetails.newPassword2)
+		return showAlert("password-error", "New password's do not match")
+
+	
 }
