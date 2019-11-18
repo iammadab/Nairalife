@@ -2,6 +2,7 @@
 	Contents
 	--------
 	toggleNav
+	attachLogout
 	showView
 	showError
 	hideError
@@ -33,6 +34,17 @@
             landingDropdown.classList.toggle("show")
             landingDropdown.classList.toggle("show-menu-landing")
         }
+})()
+
+;(function attachLogout(){
+	let logoutButton = document.querySelector(".logout")
+	if(!logoutButton) return
+	addEvent([logoutButton], "click", logout)
+	
+	function logout(){
+		deleteCookie("token")
+		redirect("/login")
+	}
 })()
 
 function showView(viewName){
