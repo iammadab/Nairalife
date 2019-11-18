@@ -1,5 +1,5 @@
 const dashboard = require("./page.dashboard")
-const settings = require("./page/settings")
+const settings = require("./page.settings")
 
 const pageServices = {
 	dashboard,

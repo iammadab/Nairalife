@@ -35,7 +35,9 @@ viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("acti
 })
 
 viewRouter.get("/settings", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.settings, (req, res) => {
-	res.render("settings", { title: "Settings", link: "settings", user: req.body.pageData.user })
+	console.log(req.body.pageData.user)
+	console.log(req.body.pageData.user.about)
+	res.render("settings", { title: "Settings", link: "settings", user: req.body.pageData.user._doc })
 })
 
 viewRouter.get("/admin/login", (req, res) => {
