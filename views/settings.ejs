@@ -74,15 +74,15 @@ include 'link.php';
 <div class="form-group">
 <label>Official Title</label>	
 <select data-defaultvalue="<%= user.about.title %>" class="custom-select bank-name" style="height:55px;">
-<option value="Mr.">Mr.</option>
-<option value="Mrs.">Mrs.</option>
-<option value="Miss.">Miss.</option>
-<option value="Dr.">Dr.</option>
-<option value="Mazi">Mazi</option>
-<option value="Ogbeni">Ogbeni</option>
-<option value="Otunba">Otunba</option>
-<option value="Chairman">Chairman</option>
-<option value="Chairwoman">Chairwoman</option>
+<option value="mr.">Mr.</option>
+<option value="mrs.">Mrs.</option>
+<option value="miss.">Miss.</option>
+<option value="dr.">Dr.</option>
+<option value="mazi">Mazi</option>
+<option value="ogbeni">Ogbeni</option>
+<option value="otunba">Otunba</option>
+<option value="chairman">Chairman</option>
+<option value="chairwoman">Chairwoman</option>
 </select>
 </div>
 
@@ -90,17 +90,15 @@ include 'link.php';
 <div class="form-group">
 <label>Relationship Status</label>	
 <select data-defaultvalue="<%= user.about.relationship %>" class="custom-select bank-name" style="height:55px;">
-<option value="Single">Single</option>
-<option value="Engaged">Engaged</option>
-<option value="Married">Married</option>
+<option value="single">Single</option>
+<option value="engaged">Engaged</option>
+<option value="married">Married</option>
 </select>
 </div>
 
-
 <div class="form-group">
 <label>Bio</label>	
-<textarea class="form-control" name="bvn" style="height:95px" value="<%= user.about.bio %>">
-</textarea>
+<textarea class="form-control" name="bvn" style="height:95px"><%= user.about.bio %></textarea>
 </div>
 
 
