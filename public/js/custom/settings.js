@@ -49,5 +49,13 @@ function changePassword(event){
 	if(passwordDetails.newPassword != passwordDetails.newPassword2)
 		return showAlert("password-error", "New password's do not match")
 
-	
+	return api("user/password", { ...passwordDetails, token: getToken() })
+			.then(handleResponse)
+
+	function handleResponse(response){
+		if(response.status == 200)
+			showAlert("password-success", "Password changed successfully")
+		else if(response.code == "INVALID_PASSWORD")
+			showAlert("password-error", "Invalid Password")
+	}
 }
