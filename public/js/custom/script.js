@@ -13,6 +13,7 @@
 	getCounter
 	setValue
 	getToken
+	deleteCookie
 */
 
 ;(function toggleNav(){
@@ -140,4 +141,8 @@ function getToken(search){
 			token = cookie.split("=")[1]
 	})
 	return token
+}
+
+function deleteCookie(cookieName){
+	document.cookie = cookieName + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;"
 }
