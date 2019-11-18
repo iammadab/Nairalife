@@ -53,8 +53,11 @@ function changePassword(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		if(response.status == 200)
+
+		if(response.status == 200){
 			showAlert("password-success", "Password changed successfully")
+			store.passwordInputs.forEach(input => input.value = "")
+		}
 		else if(response.code == "INVALID_PASSWORD")
 			showAlert("password-error", "Invalid Password")
 	}
