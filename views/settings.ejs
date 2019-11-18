@@ -10,6 +10,7 @@ include 'link.php';
 <% include header %>
 <% include link %>
 
+<% let match = (a,b) => String(a).lowerCase() == String(b).lowerCase() ? "selected=selected" : "" %>
 
 <!--begin::Portlet-->
 <div class="kt-portlet btopzero">
