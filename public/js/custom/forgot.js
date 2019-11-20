@@ -41,7 +41,6 @@ function sendOtp(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
 		if(response.status == 200)
 			showView("otp-section")
 		else if(response.code == "USER_DOES_NOT_EXIST")
@@ -80,11 +79,28 @@ function changePassword(event){
 	if(passwordDetails.password != passwordDetails.password2)
 		return showAlert("password-error", "Passwords do not match")
 
+	store.password = passwordDetails.password
+
 	return api("user/password/forgot", { phone: store.phone, code: store.code, password: passwordDetails.password })
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
+		if(response.status == 200)
+			loginUser()
+		else
+			showAlert("password-error", "Problem changing password. Try again later")
 	}
+}
 
+function loginUser(){
+	return api("auth/login", { phone: store.phone, password: store.password })
+			.then(handleResponse)
+
+	function handleResponse(response){
+		if(response.status == 200)
+			redirect("/home")
+		else 
+			redirect("/login")
+	}
+	
 }
