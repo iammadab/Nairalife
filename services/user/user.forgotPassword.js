@@ -1,6 +1,6 @@
 const { createValidator } = require("lazy-validator")
 
-const forgotPasswordValidator = createValidator("code.number, password.string")
+const forgotPasswordValidator = createValidator("code.number, phone.number, password.string")
 
 const userDb = require("../../data/db/user.db")
 const otpDb = require("../../data/db/otp.db")
