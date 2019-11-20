@@ -43,7 +43,17 @@ async function verifyAccountNumber(account_number, bank_code){
 
 
 async function verifyBvn(bvn){
-	
+	return axios(`https://api.paystack.co/bank/resolve_bvn/${bvn}`, requestOptions)
+			.then(handleSuccess)
+			.catch(handleFailure)
+
+	function handleSuccess(response){
+		console.log(response.data)
+	}
+
+	function handleFailue(response){
+		console.log(response.response.data)
+	}
 }
 
 module.exports = verifyBank
