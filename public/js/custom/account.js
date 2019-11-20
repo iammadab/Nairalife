@@ -12,7 +12,16 @@ function verifyBank(event){
 	event.preventDefault()
 	let bankDetails = extractForm(store.bankFormTag)
 	let missingDetails = hasKeys(bankDetails, ["account_number", "bank_code", "bvn"])
-	console.log(missingDetails)
 	if(missingDetails.length > 0)
 		return showAlert("bank-error", `You didn't fill data for ${missingDetails[0]}`)
+
+	let { account_number, bank_code, bvn } = bankDetails
+	return api("bank/verify", { account_number, bank_code, bvn, token: getToken() })
+			.then(handleResponse)
+
+	function handleResponse(response){
+		console.log(response)
+		if(response.status == 200)
+			redirect("/home")
+	}
 }

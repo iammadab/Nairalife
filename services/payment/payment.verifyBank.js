@@ -27,9 +27,9 @@ async function verifyBank(data){
 	// if(bvnVerificationResult.status != 200)
 	// 	return bvnVerificationResult
 
-	// let userObj = await userDb.findOneWith({ _id: data.user.id })
-	// if(!userObj)
-	// 	return { status: 403, code: "USER_DOES_NOT_EXIST" }
+	let userObj = await userDb.findOneWith({ _id: data.user.id })
+	if(!userObj)
+		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
 	// if(!hasAll(userObj.fullname, bvnVerificationResult.data.first_name, bvnVerificationResult.data.last_name))
 	// 	return { status: 403, code: "BVN_VERIFICATION_FAILED", message: "Name mismatch" }
@@ -38,7 +38,11 @@ async function verifyBank(data){
 	if(addBankResult.status != 200)
 		return addBankResult
 
-	return { status: 200, code: "BANK_VERIFIED_AND_ADDED" }
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "enter_contribution_preference")
+	if(userObj)
+		return { status: 200, code: "BANK_VERIFIED_AND_ADDED" }
+	
+	return { status: 500, code: "PROBLEM_ADDING_BANK" }
 }
 
 
@@ -50,6 +54,7 @@ async function verifyAccountNumber(account_number, bank_code){
 			.catch(handleFailure)
 
 	function handleSuccess(response){
+		console.log(response)
 		if(response.data.status == true)
 			return { status: 200, code: "ACCOUNT_VERIFICATION_SUCCESSFUL", data: response.data.data }
 	}
