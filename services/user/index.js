@@ -4,6 +4,7 @@ const userExist = require("./user.exist")
 const userPreference = require("./user.preference")
 const updateProfile = require("./user.updateProfile")
 const changePassword = require("./user.changePassword")
+const forgotPassword = require("./user.forgotPassword")
 
 let userService = {
 	createUser,
@@ -11,7 +12,8 @@ let userService = {
 	userExist,
 	userPreference,
 	updateProfile,
-	changePassword
+	changePassword,
+	forgotPassword
 }
 
 module.exports = userService
