@@ -38,7 +38,7 @@ async function verifyBank(data){
 	if(addBankResult.status != 200)
 		return addBankResult
 
-	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "enter_contribution_preference")
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "enter_card_details")
 	if(userObj)
 		return { status: 200, code: "BANK_VERIFIED_AND_ADDED" }
 	
