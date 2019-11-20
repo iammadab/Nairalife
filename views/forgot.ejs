@@ -181,14 +181,14 @@ required="true">
 <!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
 
 
-<div class="alert alert-danger alert-bold fade show kt-margin-b-20 login-error" role="alert">
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 password-error" role="alert">
 <div class="alert-icon"><i class="flaticon-warning"></i></div>
 <div class="alert-text">
 Invalid Phone Number or Password
 </div>
 </div>
 
-<div class="alert alert-success alert-bold fade show kt-margin-b-20 none login-success" role="alert">
+<div class="alert alert-success alert-bold fade show kt-margin-b-20 none password-success" role="alert">
 <div class="alert-icon"><i class="flaticon-warning"></i></div>
 <div class="alert-text">
 Your password has been changed successfully. Login below
@@ -197,18 +197,18 @@ Your password has been changed successfully. Login below
 
 
 <!--begin::Form-->
-<form class="kt-form login-form" action="" novalidate="novalidate">
+<form class="kt-form password-form" action="" novalidate="novalidate">
 <div class="form-group">
-	<input class="form-control" type="password" placeholder="New Password" name="phone" autocomplete="off" required="true">
+	<input class="form-control" type="password" placeholder="New Password" name="password" autocomplete="off" required="true">
 </div>
 <div class="form-group">
-	<input class="form-control" type="password" placeholder="Confirm New Password" name="password" required="true">
+	<input class="form-control" type="password" placeholder="Confirm New Password" name="password2" required="true">
 </div>
 
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary login-button">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary change-password-button">
 <i class="la la-unlock"></i><span>Change Password</span>
 </button>
 </div>

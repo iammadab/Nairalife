@@ -9,7 +9,12 @@ let store = {
 	// Otp section
 	verifyOtpButton: document.querySelector(".verifyOtpButton"),
 	otpFormTag: ".otp-form",
-	otpInputs: Array.from(document.querySelectorAll(".otp-form input"))
+	otpInputs: Array.from(document.querySelectorAll(".otp-form input")),
+
+	// Password section
+	changePasswordButton: document.querySelector(".change-password-button"),
+	passwordFormTag: ".password-form",
+	passwordInputs: Array.from(document.querySelectorAll(".password-form, input"))
 }
 
 ;(function attachEvent(){
@@ -18,6 +23,9 @@ let store = {
 
 	addEvent([store.verifyOtpButton], "click", verifyOtp)
 	addEvent(store.otpInputs, "input,focus", () => hideAlert("otp-error"))
+
+	addEvent([store.changePasswordButton], "click", changePassword)
+	addEvent(store.passwordInputs, "input,focus", () => hideAlert("password-error"))
 })()
 
 function sendOtp(event){
@@ -58,4 +66,16 @@ function verifyOtp(event){
 		else if(response.code == "OTP_VERIFICATION_FAILED")
 			showAlert("otp-error", "Phone verification failed")
 	}
+}
+
+function changePassword(event){
+	event.preventDefault()
+	let passwordDetails = extractForm(store.passwordFormTag)
+	let missingDetails = hasKeys(passwordDetails, ["password", "password2"])
+	if(missingDetails.length > 0)
+		return showAlert("password-error", `You didn't fill data for ${missingDetails[0]}`)
+
+	if(passwordDetails.password != passwordDetails.password2)
+		return showAlert("password-error", "Passwords do not match")
+
 }
