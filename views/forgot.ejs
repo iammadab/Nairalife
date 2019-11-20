@@ -93,6 +93,76 @@ Your password has been changed successfully. Login below
 
 
 
+<!-- start otp section -->
+
+<div class="kt-login__body view" id="otp-section">
+
+<!--begin::Signin-->
+<div class="kt-login__form">
+<% include formhead %>
+<div class="kt-login__title">
+<h3>Phone Verification</h3>
+<p>Please verify your phone number below</p>
+</div>
+
+<!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 otp-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
+
+
+<!--begin::Form-->
+<form class="kt-form otp-form" action="" novalidate="novalidate">
+<div class="form-group">
+<input class="form-control" type="text" placeholder="Enter OTP" name="code" autocomplete="off" 
+required="true">
+</div>
+
+
+<div class="kt-login__btn">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary verifyOtpButton">
+<span>Verify <i class="kt-margin-l-5 la la-arrow-right"></i></span>
+</button>
+</div>
+
+
+</form>
+
+<!--end::Form-->
+
+<!--begin::Divider-->
+<div class="kt-login__divider">
+<div class="kt-divider">
+<span></span>
+<span>OR</span>
+<span></span>
+</div>
+</div>
+<!--end::Divider-->
+
+<!--begin::Options-->
+<div class="kt-login__bottom otp-resend-container">
+<span class="kt-login__signup-label">Didn't get OTP?</span>&nbsp;&nbsp;
+<a href="#" class="kt-link kt-login__signup-link resend-otp">Resend</a>
+</div>
+<div class="kt-login__bottom otp-countdown-container none">
+<span class="kt-login__signup-label">You can resend otp in</span>&nbsp;&nbsp;
+<a href="#" class="kt-link kt-login__signup-link otp-countdown">02 : 30</a>
+</div>
+
+
+<!--end::Options-->
+</div>
+
+<!--end::Signin-->
+</div>
+<!-- end body -->
+
+
+
 
 
 
