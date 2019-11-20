@@ -11,7 +11,6 @@ async function createOtp(data){
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 
 	if(String(data.type).toLowerCase() == "reset"){
-		console.log("Got in here")
 		let userObj = await userDb.findOneWith({ phone: data.phone })
 		if(!userObj)
 			return { status: 403, code: "USER_DOES_NOT_EXIST" }
