@@ -10,7 +10,8 @@ async function createOtp(data){
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 
-	if(String(data.type).toLowerCase == "reset"){
+	if(String(data.type).toLowerCase() == "reset"){
+		console.log("Got in here")
 		let userObj = await userDb.findOneWith({ phone: data.phone })
 		if(!userObj)
 			return { status: 403, code: "USER_DOES_NOT_EXIST" }
@@ -19,7 +20,7 @@ async function createOtp(data){
 	let code = generateCode()
 	console.log(code)
 
-	let otpObj = await otpObj.create({ phone: data.phone, code, type: data.type })
+	let otpObj = await otpDb.create({ phone: data.phone, code, type: data.type })
 	if(otpObj)
 		return { status: 200, code: "OTP_CREATED" }
 
