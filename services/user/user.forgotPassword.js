@@ -5,6 +5,8 @@ const forgotPasswordValidator = createValidator("code.number, phone.number, pass
 const userDb = require("../../data/db/user.db")
 const otpDb = require("../../data/db/otp.db")
 
+const authenticationService = require("../authentication")
+
 async function forgotPassword(data){
 	let validationResult = forgotPasswordValidator.parse(data)
 	if(validationResult.error)
@@ -13,6 +15,10 @@ async function forgotPassword(data){
 	let userObj = await userDb.findOneWith({ phone: data.phone })
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
+
+	let otpVerification = await authenticationService.verifyOtp({ phone: data.phone, code: data.code })
+	if(otpVerification.status != 200)
+		return otpVerification
 }
 
 module.exports = forgotPassword
