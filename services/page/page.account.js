@@ -10,11 +10,14 @@ async function account(req, res, next){
 		.then(handleFailure)
 
 	function handleSuccess(response){
-		console.log(response)
+		req.body.pageData = {
+			banks: response.data.data
+		}
+		next()
 	}
 
 	function handleFailure(response){
-		console.log(response)
+		req.body.pageData = { banks: [] }
 	}
 }
 
