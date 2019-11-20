@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
 	stage: { type: String, default: "enter_card_details", enum: ["enter_card_details", "enter_contribution_preference", "active" ]},
 
 	 // Format: bank: { account: {account_number, account_name, bank_id}, 
-	 				// bvn: {first_name, last_name, dob, formatted_dob, mobile, bvn } } 
+     //                 bvn: {first_name, last_name, dob, formatted_dob, mobile, bvn } } 
 	bank: { type: Array, default: [] },
 	card: { type: Array, default: [] },
 
