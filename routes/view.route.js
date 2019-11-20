@@ -26,7 +26,7 @@ viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 	res.render("register")
 })
 
-viewRouter.get("/account", cookieNotFound("/login"), verifyToken, stageRouter("enter_card_details"), pageService.account, (req, res) => {
+viewRouter.get("/account", cookieNotFound("/login"), verifyToken, stageRouter("enter_account_details"), pageService.account, (req, res) => {
 	res.render("account", { banks: req.body.pageData.banks })
 })
 
@@ -34,7 +34,7 @@ viewRouter.get("/about", cookieNotFound("/login"), verifyToken, stageRouter("ent
 	res.render("about")
 })
 
-viewRouter.get("/fee", cookieNotFound("/login"), (req, res) => {
+viewRouter.get("/fee", cookieNotFound("/login"), verifyToken, stageRoute("enter_card_details"), (req, res) => {
 	res.render("fees")
 })
 
