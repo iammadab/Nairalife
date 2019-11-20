@@ -51,14 +51,14 @@ Your password has been changed successfully. Login below
 
 
 <!--begin::Form-->
-<form class="kt-form" action="" novalidate="novalidate">
+<form class="kt-form phone-form" action="" novalidate="novalidate">
 <div class="form-group">
-	<input class="form-control" type="text" placeholder="Enter your phone number" name="username" autocomplete="off" required="true">
+	<input class="form-control" type="number" placeholder="Enter your phone number" name="phone" autocomplete="off" required="true">
 </div>
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary recover-password-button">
 <i class="la la-lock"></i><span>Recover Password</span>
 </button>
 </div>
@@ -288,3 +288,6 @@ Your password has been changed successfully. Login below
 </div>
 
 <!-- end:: Page -->
+
+<script type="text/javascript" src="js/custom/script.js"></script>
+<script type="text/javascript" src="js/custom/forgot.js"></script>
