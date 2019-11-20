@@ -49,5 +49,13 @@ function verifyOtp(event){
 	if(missingDetails.length > 0)
 		return showAlert("otp-error", `You didn't fill data for ${missingDetails[0]}`)
 
-	// return api("ot")
+	return api("otp/verify", { phone: store.phone, code: otpDetails.code })
+			.then(handleResponse)
+
+	function handleResponse(response){
+		if(response.status == 200)
+			console.log("Yay")
+		else if(response.status == "OTP_VERIFICATION_FAILED")
+			showAlert("otp-error", "Phone verification failed")
+	}
 }
