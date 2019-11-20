@@ -22,7 +22,11 @@ async function forgotPassword(data){
 		return otpVerification
 
 	let passwordHash = await hash(data.password)
-	console.log(passwordHash)
+	userObj = await userDb.appendDoc({ phone: data.phone }, "password", passwordHash)
+
+	if(userObj)
+		return { status: 200, code: "NEW_PASSWORD_SET" }
+	return { status: 500, code: "PROBLEM_SETTING_PASSWORD" }
 }
 
 module.exports = forgotPassword
