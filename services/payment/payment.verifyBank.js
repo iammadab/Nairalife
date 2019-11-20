@@ -22,6 +22,11 @@ async function verifyBank(data){
 	if(bvnVerificationResult.status != 200)
 		return bvnVerificationResult
 
+	let userObj = await userDb.findOneWith({ _id: data.user.id })
+	console.log(userObj)
+	console.log(verificationResult)
+	console.log(bvnVerificationResult)
+
 }
 
 
@@ -57,6 +62,15 @@ async function verifyBvn(bvn){
 	function handleFailure(response){
 		return { status: response.response.status, code: "BVN_VERIFICATION_FAILED", message: response.response.data.message }
 	}
+}
+
+function hasAll(container, ...pieces){
+	let result = true
+	pieces.forEach(piece => {
+		if(container.toLowerCase().indexOf(piece.toLowerCase()) == -1)
+			result = false
+	})
+	return result
 }
 
 module.exports = verifyBank
