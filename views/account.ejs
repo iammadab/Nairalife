@@ -32,11 +32,16 @@
 </div>
 
 <!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
-
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 bank-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
 
 
 <!--begin::Form-->
-<form class="kt-form" action="" novalidate="novalidate">
+<form class="kt-form bank-form" action="" novalidate="novalidate">
 
 <div class="form-group">
 <input class="form-control" type="text" placeholder="Account No" 
@@ -83,7 +88,7 @@ name="username" autocomplete="off" required="true">
 </div>
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary login-button">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary verify-bank-button">
 <i class="la la-unlock"></i><span>Verify Bank</span>
 </button>
 </div>
@@ -188,4 +193,5 @@ required="true">
 
 <!-- end:: Page -->
 
+<script type="text/javascript" src="js/custom/script.js"></script>
 <script type="text/javascript" src="js/custom/account.js"></script>
