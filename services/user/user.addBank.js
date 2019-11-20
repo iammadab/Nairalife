@@ -16,7 +16,7 @@ async function addBank(data){
 	let bankDetails = { account: data.accountResult, bvn: data.bvnResult }
 
 	let userObjCopy = Object.assign({}, userObj._doc)
-	userObjCopy.bank.push(bankDetails)
+	userObjCopy.bank[0] = bankDetails
 	
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "bank", userObjCopy.bank)
 
