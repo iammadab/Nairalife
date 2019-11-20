@@ -1,12 +1,23 @@
 let store = {
+	phone: null,
+
+	// Phone section
 	recoverPasswordButton: document.querySelector(".recover-password-button"),
 	phoneElementTag: ".phone-form",
-	phoneInputs: Array.from(document.querySelectorAll(".phone-form input"))
+	phoneInputs: Array.from(document.querySelectorAll(".phone-form input")),
+
+	// Otp section
+	verifyOtpButton: document.querySelector(".verifyOtpButton"),
+	otpFormTag: ".otp-form",
+	otpInputs: Array.from(document.querySelectorAll(".otp-form input"))
 }
 
 ;(function attachEvent(){
 	addEvent([ store.recoverPasswordButton ], "click", sendOtp)
 	addEvent(store.phoneInputs, "input,focus", () => hideAlert("phone-error"))
+
+	addEvent([store.verifyOtpButton], "click", verifyOtp)
+	addEvent(store.otpInputs, "input,focus", () => hideAlert("otp-error"))
 })()
 
 function sendOtp(event){
@@ -15,6 +26,8 @@ function sendOtp(event){
 	let missingDetails = hasKeys(phoneDetails, ["phone"])
 	if(missingDetails.length > 0)
 		showAlert("phone-error", `You didn't fill data for ${missingDetails[0]}`)
+
+	store.phone = phoneDetails.phone
 
 	return api("otp/create", { phone: phoneDetails.phone, type: "reset" })
 			.then(handleResponse)
@@ -26,4 +39,15 @@ function sendOtp(event){
 		else if(response.code == "USER_DOES_NOT_EXIST")
 			showAlert("phone-error", "Account not found")
 	}
+}
+
+
+function verifyOtp(event){
+	event.preventDefault()
+	let otpDetails = extractForm(store.otpFormTag)
+	let missingDetails = hasKeys(otpDetails, ["code"])
+	if(missingDetails.length > 0)
+		return showAlert("otp-error", `You didn't fill data for ${missingDetails[0]}`)
+
+	// return api("ot")
 }
