@@ -9,6 +9,7 @@ let requestOptions = {
 	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}
 }
 
+
 async function verifyBank(data){
 	let validationResult = verifyBankValidator.parse(data)
 	if(validationResult.error)
@@ -23,10 +24,13 @@ async function verifyBank(data){
 		return bvnVerificationResult
 
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
-	console.log(userObj)
-	console.log(verificationResult)
-	console.log(bvnVerificationResult)
+	if(!userObj)
+		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
+	if(!hasAll(userObj.fullname, bvnVerificationResult.data.first_name, bvnVerificationResult.data.last_name))
+		return { status: 403, code: "BVN_VERIFICATION_FAILED", message: "Name mismatch" }
+	
+	return { status: 200, code: "BANK_VERIFIED" }
 }
 
 
