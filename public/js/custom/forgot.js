@@ -78,4 +78,11 @@ function changePassword(event){
 	if(passwordDetails.password != passwordDetails.password2)
 		return showAlert("password-error", "Passwords do not match")
 
+	return api("user/password/forgot", { phone: store.phone, code: store.code, password: passwordDetails.password })
+			.then(handleResponse)
+
+	function handleResponse(response){
+		console.log(response)
+	}
+
 }
