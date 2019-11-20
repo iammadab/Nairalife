@@ -18,6 +18,10 @@ viewRouter.get("/login", cookieFound("/home"), (req, res) => {
 	res.render("login")
 })
 
+viewRouter.get("/forgot", cookieFound("/home"), (req, res) => {
+	res.render("forgot")
+})
+
 viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 	res.render("register")
 })
