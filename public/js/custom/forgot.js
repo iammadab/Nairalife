@@ -54,7 +54,7 @@ function verifyOtp(event){
 
 	function handleResponse(response){
 		if(response.status == 200)
-			console.log("Yay")
+			showView("password-section")
 		else if(response.code == "OTP_VERIFICATION_FAILED")
 			showAlert("otp-error", "Phone verification failed")
 	}
