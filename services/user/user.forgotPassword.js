@@ -21,6 +21,8 @@ async function forgotPassword(data){
 	if(otpVerification.status != 200)
 		return otpVerification
 
+	await otpDb.deleteMany({ phone: data.phone, type: "reset" })
+
 	let passwordHash = await hash(data.password)
 	userObj = await userDb.appendDoc({ phone: data.phone }, "password", passwordHash)
 
