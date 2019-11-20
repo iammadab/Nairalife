@@ -5,6 +5,8 @@ const verifyBankValidator = createValidator("account_number.string, bank_code.st
 
 const userDb = require("../../data/db/user.db")
 
+const userService = require("../user")
+
 let requestOptions = {
 	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}
 }
@@ -15,21 +17,27 @@ async function verifyBank(data){
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
-	let verificationResult = await verifyAccountNumber(data.account_number, data.bank_code)
+	let verificationResult = { data: {} }, bvnVerificationResult = { data: {} }
+
+	verificationResult = await verifyAccountNumber(data.account_number, data.bank_code)
 	if(verificationResult.status != 200)
 		return verificationResult
 
-	let bvnVerificationResult = await verifyBvn(data.bvn)
-	if(bvnVerificationResult.status != 200)
-		return bvnVerificationResult
+	// bvnVerificationResult = await verifyBvn(data.bvn)
+	// if(bvnVerificationResult.status != 200)
+	// 	return bvnVerificationResult
 
-	let userObj = await userDb.findOneWith({ _id: data.user.id })
-	if(!userObj)
-		return { status: 403, code: "USER_DOES_NOT_EXIST" }
+	// let userObj = await userDb.findOneWith({ _id: data.user.id })
+	// if(!userObj)
+	// 	return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	if(!hasAll(userObj.fullname, bvnVerificationResult.data.first_name, bvnVerificationResult.data.last_name))
-		return { status: 403, code: "BVN_VERIFICATION_FAILED", message: "Name mismatch" }
+	// if(!hasAll(userObj.fullname, bvnVerificationResult.data.first_name, bvnVerificationResult.data.last_name))
+	// 	return { status: 403, code: "BVN_VERIFICATION_FAILED", message: "Name mismatch" }
 	
+	let addBankResult = await userService.addBank({ accountResult: verificationResult.data, bvnResult: bvnVerificationResult.data, ...data })
+	if(addBankResult.status != 200)
+		return addBankResult
+
 	return { status: 200, code: "BANK_VERIFIED" }
 }
 
