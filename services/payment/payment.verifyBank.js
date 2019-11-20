@@ -3,6 +3,8 @@ const { createValidator } = require("lazy-validator")
 
 const verifyBankValidator = createValidator("account_number.string, bank_code.string, bvn.string")
 
+const userDb = require("../../data/db/user.db")
+
 let requestOptions = {
 	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}
 }
