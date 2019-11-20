@@ -27,7 +27,7 @@ viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 })
 
 viewRouter.get("/account", cookieNotFound("/login"), verifyToken, stageRouter("enter_card_details"), pageService.account, (req, res) => {
-	res.render("account")
+	res.render("account", { banks: req.body.pageData.banks })
 })
 
 viewRouter.get("/about", cookieNotFound("/login"), verifyToken, stageRouter("enter_contribution_preference"), (req, res) => {
