@@ -21,5 +21,9 @@ function sendOtp(event){
 
 	function handleResponse(response){
 		console.log(response)
+		if(response.status == 200)
+			showView("otp-section")
+		else if(response.code == "USER_DOES_NOT_EXIST")
+			showAlert("phone-error", "Account not found")
 	}
 }
