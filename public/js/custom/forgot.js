@@ -1,6 +1,6 @@
 let store = {
 	phone: null,
-
+	code: null,
 	// Phone section
 	recoverPasswordButton: document.querySelector(".recover-password-button"),
 	phoneElementTag: ".phone-form",
@@ -56,6 +56,8 @@ function verifyOtp(event){
 	let missingDetails = hasKeys(otpDetails, ["code"])
 	if(missingDetails.length > 0)
 		return showAlert("otp-error", `You didn't fill data for ${missingDetails[0]}`)
+
+	store.code = otpDetails.code
 
 	return api("otp/verify", { phone: store.phone, code: otpDetails.code })
 			.then(handleResponse)
