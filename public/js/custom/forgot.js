@@ -1,6 +1,8 @@
 let store = {
 	phone: null,
 	code: null,
+	password: null, 
+	
 	// Phone section
 	recoverPasswordButton: document.querySelector(".recover-password-button"),
 	phoneElementTag: ".phone-form",
