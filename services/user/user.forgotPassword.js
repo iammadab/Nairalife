@@ -1,4 +1,5 @@
 const { createValidator } = require("lazy-validator")
+const { hash } = require("../../lib/crypt")
 
 const forgotPasswordValidator = createValidator("code.number, phone.number, password.string")
 
@@ -19,6 +20,9 @@ async function forgotPassword(data){
 	let otpVerification = await authenticationService.verifyOtp({ phone: data.phone, code: data.code })
 	if(otpVerification.status != 200)
 		return otpVerification
+
+	let passwordHash = await hash(data.password)
+	console.log(passwordHash)
 }
 
 module.exports = forgotPassword
