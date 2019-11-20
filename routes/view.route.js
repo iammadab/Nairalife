@@ -34,7 +34,7 @@ viewRouter.get("/about", cookieNotFound("/login"), verifyToken, stageRouter("ent
 	res.render("about")
 })
 
-viewRouter.get("/fee", cookieNotFound("/login"), verifyToken, stageRoute("enter_card_details"), (req, res) => {
+viewRouter.get("/fee", cookieNotFound("/login"), verifyToken, stageRouter("enter_card_details"), (req, res) => {
 	res.render("fees")
 })
 
