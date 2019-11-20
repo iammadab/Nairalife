@@ -10,5 +10,6 @@ userRouter.post("/exist", bodyResponder(userService.userExist))
 userRouter.post("/preference", authenticationService.verifyToken, bodyResponder(userService.userPreference))
 userRouter.post("/profile", authenticationService.verifyToken, bodyResponder(userService.updateProfile))
 userRouter.post("/password", authenticationService.verifyToken, bodyResponder(userService.changePassword))
+userRouter.post("/password/forgot", bodyResponder(userService.forgotPassword))
 
 module.exports = userRouter
