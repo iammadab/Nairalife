@@ -16,6 +16,10 @@ async function verifyBank(data){
 	if(verificationResult.status != 200)
 		return verificationResult
 
+	let bvnVerificationResult = await verifyBvn(data.bvn)
+	if(bvnVerificationResult.status != 200)
+		return bvnVerificationResult
+
 }
 
 
@@ -27,15 +31,19 @@ async function verifyAccountNumber(account_number, bank_code){
 			.catch(handleFailure)
 
 	function handleSuccess(response){
-		console.log(response.data)
 		if(response.data.status == true)
 			return { status: 200, code: "ACCOUNT_VERIFICATION_SUCCESSFUL", data: response.data.data }
 	}
 
 	function handleFailure(response){
-		console.log(response.response.data)
 		if(response.response.data.status == false)
 			return { status: response.response.status, code: "ACCOUNT_VERIFICATION_FAILED", message: response.response.data.message }
 	}
 }
+
+
+async function verifyBvn(bvn){
+	
+}
+
 module.exports = verifyBank
