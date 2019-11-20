@@ -44,9 +44,12 @@ name="username" autocomplete="off" required="true">
 </div>
 
 <div class="form-group">
-<select class="custom-select bank-name">
-<option>Select Bank</option>
-<option value="Access Bank">Access Bank</option>
+<select class="custom-select bank-name" name="bank_code">
+<option value="">Select Bank</option>
+<% banks.forEach(bank => { %>
+<option value="<%= bank.code %>"><%= bank.name %></option>
+<% }) %>
+<!-- <option value="Access Bank">Access Bank</option>
 <option value="Diamond (Access) Bank">Diamond (Access) Bank</option>
 <option value="First Bank Nigeria">First Bank Nigeria</option>
 <option value="First City Monument Bank">First City Monument Bank</option>
@@ -68,7 +71,7 @@ name="username" autocomplete="off" required="true">
 <option value="Standard Chartered Bank Nigeria">Standard Chartered Bank Nigeria</option>
 <option value="Suntrust Bank">Suntrust Bank</option>
 <option value="Unity Bank">Unity Bank</option>
-<option value="Wema Bank">Wema Bank</option>
+<option value="Wema Bank">Wema Bank</option> -->
 </select>
 </div>
 
