@@ -1,5 +1,7 @@
 const { createValidator } = require("lazy-validator")
+
 const otpDb = require("../../data/db/otp.db")
+const userDb = require("../../data/db/user.db")
 
 const createOtpValidator = createValidator("phone.number")
 
@@ -9,11 +11,18 @@ async function createOtp(data){
 		return { status: 400, code: "BAD_REQUEST_BODY", errors: validationResult.errors }
 
 	let code = generateCode()
-	console.log(code)
-	let otpObj = await otpDb.create({ phone: data.phone, code })
 
+	if(String(data.type).toLowerCase == "reset"){
+		let userObj = await userDb.findOneWith({ phone: data.phone })
+		if(!userObj)
+			return { status: 403, code: "USER_DOES_NOT_EXIST" }
+	}
+
+	console.log(code)
+	let otpObj = await otpObj.create({ phone: data.phone, code, type: data.type })
 	if(otpObj)
 		return { status: 200, code: "OTP_CREATED" }
+	
 }
 
 module.exports = createOtp
