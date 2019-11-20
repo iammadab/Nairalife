@@ -48,11 +48,12 @@ async function verifyBvn(bvn){
 			.catch(handleFailure)
 
 	function handleSuccess(response){
-		console.log(response.data)
+		if(response.data.status == true)
+			return { status: 200, code: "BVN_VERIFICATION_SUCCESSFUL", data: response.data.data }
 	}
 
-	function handleFailue(response){
-		console.log(response.response.data)
+	function handleFailure(response){
+		return { status: response.response.status, code: "BVN_VERIFICATION_FAILED", message: response.response.data.message }
 	}
 }
 
