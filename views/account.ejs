@@ -46,9 +46,11 @@ name="username" autocomplete="off" required="true">
 <div class="form-group">
 <select class="custom-select bank-name" name="bank_code">
 <option value="">Select Bank</option>
+
 <% banks.forEach(bank => { %>
 <option value="<%= bank.code %>"><%= bank.name %></option>
 <% }) %>
+
 <!-- <option value="Access Bank">Access Bank</option>
 <option value="Diamond (Access) Bank">Diamond (Access) Bank</option>
 <option value="First Bank Nigeria">First Bank Nigeria</option>
@@ -185,3 +187,5 @@ required="true">
 </div>
 
 <!-- end:: Page -->
+
+<script type="text/javascript" src="js/custom/account.js"></script>
