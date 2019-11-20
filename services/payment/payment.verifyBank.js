@@ -54,7 +54,7 @@ async function verifyAccountNumber(account_number, bank_code){
 			.catch(handleFailure)
 
 	function handleSuccess(response){
-		console.log(response)
+		// console.log(response)
 		if(response.data.status == true)
 			return { status: 200, code: "ACCOUNT_VERIFICATION_SUCCESSFUL", data: response.data.data }
 	}

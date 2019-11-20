@@ -6,6 +6,7 @@ let store = {
 
 ;(function attachEvent(){
 	addEvent([store.verifyBankButton], "click", verifyBank)
+	addEvent(store.bankFormInputs, "input,focus", () => hideAlert("bank-error"))
 })()	
 
 function verifyBank(event){
@@ -20,8 +21,12 @@ function verifyBank(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
+		// console.log(response)
 		if(response.status == 200)
 			redirect("/home")
+		else if(response.code == "ACCOUNT_VERIFICATION_FAILED")
+			return showAlert("bank-error", response.message)
+		else if(response.code == "BVN_VERIFICATION_FAILED")
+			return showAlert("bank-error", response.message)
 	}
 }
