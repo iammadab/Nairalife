@@ -44,7 +44,7 @@ required="true">
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary">
+<button id="kt_login_signin_submit" onclick="payWithPaystack()" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary">
 <span>Pay N1000 yearly membership fee</span>
 </button>
 </div>
@@ -120,3 +120,31 @@ required="true">
 </div>
 
 <!-- end:: Page -->
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+  function payWithPaystack(){
+    var handler = PaystackPop.setup({
+      key: 'sk_test_f87f0e75cf64bd82344bda5df1d2cd98e95e6ded',
+      email: 'customer@email.com',
+      amount: 100000,
+      currency: "NGN",
+      metadata: {
+         custom_fields: [
+            {
+                display_name: "Mobile Number",
+                variable_name: "mobile_number",
+                value: "+2348012345678"
+            }
+         ]
+      },
+      callback: function(response){
+          alert('success. transaction ref is ' + response.reference);
+      },
+      onClose: function(){
+          alert('window closed');
+      }
+    });
+    handler.openIframe();
+  }
+</script>
