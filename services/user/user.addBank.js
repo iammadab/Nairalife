@@ -13,7 +13,7 @@ async function addBank(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	let bankDetails = { account: data.accountResult, bvn: data.bvnResult }
+	let bankDetails = { account: { ...data.accountResult, bank_code: data.bank_code }, bvn: data.bvnResult }
 
 	let userObjCopy = Object.assign({}, userObj._doc)
 	userObjCopy.bank[0] = bankDetails
@@ -24,7 +24,6 @@ async function addBank(data){
 		return { status: 200, code: "ADDED_BANK" }
 
 	return { satus: 500, code: "PROBLEM_ADDING_BANK" }
-
 }
 
 module.exports = addBank
