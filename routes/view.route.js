@@ -58,4 +58,59 @@ viewRouter.get("/admin/members", (req, res) => {
 	res.render("admin/members")
 })
 
+viewRouter.get("/admin/auto", (req, res) => {
+	res.render("admin/auto")
+})
+
+viewRouter.get("/admin/profile", (req, res) => {
+	res.render("admin/profile")
+})
+	
+
+viewRouter.get("/admin/transactions", (req, res) => {
+	res.render("admin/transactions")
+})
+
+
+viewRouter.get("/admin/withdrawals", (req, res) => {
+	res.render("admin/withdrawals")
+})
+
+viewRouter.get("/admin/points", (req, res) => {
+	res.render("admin/points")
+})
+
+
+viewRouter.get("/admin/groups", (req, res) => {
+	res.render("admin/groups")
+})
+
+viewRouter.get("/admin/group", (req, res) => {
+	res.render("admin/group")
+})
+
+viewRouter.get("/admin/contributions", (req, res) => {
+	res.render("admin/contributions")
+})
+
+viewRouter.get("/admin/create", (req, res) => {
+	res.render("admin/create")
+})
+
+viewRouter.get("/admin/change", (req, res) => {
+	res.render("admin/change")
+})
+
+viewRouter.get("/admin/add", (req, res) => {
+	res.render("admin/add")
+})
+
+viewRouter.get("/admin/remove", (req, res) => {
+	res.render("admin/remove")
+})
+
+viewRouter.get("/admin/pay", (req, res) => {
+	res.render("admin/pay")
+})
+
 module.exports = viewRouter
