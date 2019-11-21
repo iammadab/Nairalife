@@ -1,5 +1,6 @@
 const axios = require("axios")
 const { createValidator } = require("lazy-validator")
+const { compare } = require("../../lib/crypt")
 
 const withdrawValidator = createValidator("amount.number, password.string")
 
@@ -20,6 +21,10 @@ async function withdraw(data){
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
+
+	let samePassword = await compare(data.password, userObj.password)
+	if(!samePassword)
+		return { status: 403, code: "INVALID_PASSWORD" }
 
 	if(userObj.balance < data.amount)
 		return { status: 403, code: "INSUFFICIENT_BALANCE" }
