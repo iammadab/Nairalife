@@ -1,7 +1,7 @@
 const axios = require("axios")
 const { createValidator } = require("lazy-validator")
 
-const withdrawValidator = createValidator("amount.number")
+const withdrawValidator = createValidator("amount.number, password.string")
 
 const requestOptions = {
 	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}
