@@ -35,6 +35,9 @@ async function withdraw(data){
 	if(recieptResult.status != 200)
 		return recieptResult
 
+	let newBalance = +userObj.balance - data.amount
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "balance", newBalance)
+
 	// console.log(recieptResult)
 	let transferResult = await initiateTransfer({
 		amount: data.amount,
@@ -42,6 +45,9 @@ async function withdraw(data){
 	})
 	if(transferResult.status != 200)
 		return transferResult
+
+
+	return { status: 200, code: "WITHDRAWAL_SUCCESSFUL" }
 
 }
 
@@ -76,6 +82,8 @@ function createReceipt({ name, account_number, bank_code }){
 		return { status: response.response.status, code: "FAILED_TRANSFER_RECEIPT", message: response.response.data.message }
 	}
 }
+
+
 
 
 
