@@ -54,10 +54,11 @@ function createReceipt({ name, account_number, bank_code }){
 				.catch(handleFailure)
 
 	function handleSuccess(response){
-		console.log(response)
+		if(response.data.status)
+			return { status: 200, code: "CREATED_TRANSFER_RECEIPT", data: response.data.data }
 	}
 
 	function handleFailure(response){
-		console.log(response)
+		return { status: response.response.status, code: "FAILED_TRANSFER_RECEIPT" message: response.response.data.message }
 	}
 }
