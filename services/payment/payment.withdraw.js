@@ -4,7 +4,7 @@ const { createValidator } = require("lazy-validator")
 const withdrawValidator = createValidator("amount.number")
 
 const requestOptions = {
-	headers: { Authorization: `Bearer ${process.env.PAYSTACK_PUBLIC_KEY}`}
+	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}
 }
 
 const userDb = require("../../data/db/user.db")
@@ -29,8 +29,8 @@ async function withdraw(data){
 
 	let recieptResult = await createReceipt({
 		name: userObj.fullname,
-		account_number: userObj.bank.account.account_number,
-		bank_code: userObj.bank.account.bank_code
+		account_number: userObj.bank[0].account.account_number,
+		bank_code: userObj.bank[0].account.bank_code
 	})
 
 }
