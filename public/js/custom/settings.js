@@ -53,25 +53,29 @@ function saveInformation(event){
 let passwordButton = createButton(".password-text", "Change Password", "Changing Password...")
 function changePassword(event){
 	event.preventDefault()
-	
+	passwordButton()
 	let passwordDetails = extractForm(store.passwordFormElementTag)
 	let missingKeys = hasKeys(passwordDetails, ["oldPassword", "newPassword", "newPassword2"])
-	if(missingKeys.length > 0)
+	if(missingKeys.length > 0){
+		passwordButton("normal")
 		return showAlert("password-error", `You didn't fill data for ${missingKeys[0]}`)
+	}
 
-	if(passwordDetails.newPassword != passwordDetails.newPassword2)
+	if(passwordDetails.newPassword != passwordDetails.newPassword2){
+		passwordButton("normal")
 		return showAlert("password-error", "New password's do not match")
+	}
 
 	return api("user/password", { ...passwordDetails, token: getToken() })
 			.then(handleResponse)
 
 	function handleResponse(response){
-
 		if(response.status == 200){
 			showAlert("password-success", "Password changed successfully")
 			store.passwordInputs.forEach(input => input.value = "")
 		}
 		else if(response.code == "INVALID_PASSWORD")
 			showAlert("password-error", "Your old password is incorrect")
+		passwordButton("normal")
 	}
 }
