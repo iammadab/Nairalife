@@ -22,7 +22,8 @@ function withdrawFunds(event){
 		return showAlert("withdraw-error", `You didn't fill data for ${missingDetails[0]}`)
 	}
 
-	return api("user/withdraw", { amount: withdrawDetails.amount, token: getToken() })
+	let { amount, password } = withdrawDetails
+	return api("user/withdraw", { amount, password, withtoken: getToken() })
 			.then(handleResponse)
 
 	function handleResponse(response){
