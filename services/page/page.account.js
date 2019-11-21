@@ -1,24 +1,11 @@
-const axios = require("axios")
-
-let requestOptions = {
-	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}
-}
+const pageFunctions = require("./functions")
 
 async function account(req, res, next){
-	axios("https://api.paystack.co/bank", requestOptions)
-		.then(handleSuccess)
-		.then(handleFailure)
-
-	function handleSuccess(response){
-		req.body.pageData = {
-			banks: response.data.data
-		}
-		next()
+	let banks = await pageFunctions.fetchBanks()
+	req.body.pageData = {
+		banks
 	}
-
-	function handleFailure(response){
-		req.body.pageData = { banks: [] }
-	}
+	next()
 }
 
 module.exports = account

@@ -5,9 +5,9 @@ let requestOptions = {
 }
 
 async function fetchBanks(){
-	axios("https://api.paystack.co/bank", requestOptions)
-		.then(handleSuccess)
-		.then(handleFailure)
+	return axios("https://api.paystack.co/bank", requestOptions)
+			.then(handleSuccess)
+			.catch(handleFailure)
 
 	function handleSuccess(response){
 		return response.data.data
