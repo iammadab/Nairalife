@@ -15,14 +15,15 @@ async function verifyBvn(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	let bvnData = { first_name: "wiz", bvn: data.bvn }
+	let bvnVerificationResult = await verifyBvn(data.bvn)
+	if(bvnVerificationResult.status != 200)
+		return bvnVerificationResult
 
-	let addBankResult = await userService.addBank({ bvnResult: bvnData, ...data })
+	let addBankResult = await userService.addBank({ bvnResult: bvnVerificationResult, ...data })
 	if(addBankResult.status != 200)
 		return addBankResult
 
 	return { status: 200, code: "BVN_VERIFIED" }
-
 }
 
 module.exports = verifyBvn
