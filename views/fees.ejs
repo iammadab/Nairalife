@@ -36,7 +36,7 @@
 
 
 <!--begin::Form-->
-<form class="kt-form" action="" novalidate="novalidate">
+<!-- <form class="kt-form" action="" novalidate="novalidate"> -->
 <!-- <div class="form-group">
 <input class="form-control" type="text" placeholder="Enter OTP" name="username" autocomplete="off" 
 required="true">
@@ -50,7 +50,7 @@ required="true">
 </div>
 
 
-</form>
+<!-- </form> -->
 
 <!--end::Form-->
 
@@ -123,9 +123,9 @@ required="true">
 
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
-  function payWithPaystack(){
+  function payWithPaystack(event){
     var handler = PaystackPop.setup({
-      key: 'sk_test_f87f0e75cf64bd82344bda5df1d2cd98e95e6ded',
+      key: 'pk_test_2014aa26f655324d23669a89561d0ac82e05e90d',
       email: 'customer@email.com',
       amount: 100000,
       currency: "NGN",
