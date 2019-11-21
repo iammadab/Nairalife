@@ -27,12 +27,19 @@ async function withdraw(data){
 	if(userObj.bank.length < 1)
 		return { status: 403, code: "BANK_NOT_ADDED" }
 
+	let recieptResult = await createReceipt({
+		name: userObj.fullname,
+		account_number: userObj.bank.account.account_number,
+		bank_code: userObj.bank.account.bank_code
+	})
+
 }
 
 module.exports = withdraw
 
 
-function createReceipt(name, account_number, bank_code){
+function createReceipt({ name, account_number, bank_code }){
+	console.log(arguments)
 	let data = {
 		type: "nuban", 
 		name,
