@@ -40,6 +40,9 @@ async function withdraw(data){
 module.exports = withdraw
 
 
+
+
+
 function createReceipt({ name, account_number, bank_code }){
 	console.log(arguments)
 	let data = {
@@ -63,5 +66,29 @@ function createReceipt({ name, account_number, bank_code }){
 
 	function handleFailure(response){
 		return { status: response.response.status, code: "FAILED_TRANSFER_RECEIPT", message: response.response.data.message }
+	}
+}
+
+
+
+function initiateTransfer({ amount, recipient }){
+	let data = {
+		source: "balance",
+		amount,
+		currency: "NGN",
+		reason: "Nairalife Withdrawal",
+		recipient
+	}
+
+	return axios.post("https://api.paystack.co/transfer", data, recipient)
+				.then(handleSuccess)
+				.catch(handleFailure)
+
+	function handleSuccess(response){
+		console.log(response)
+	}
+
+	function handleFailure(response){
+		console.log(response)
 	}
 }
