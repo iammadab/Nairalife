@@ -5,9 +5,12 @@ const verifyCardValidator = createValidator("reference.string")
 
 const userDb = require("../../data/db/user.db")
 
+const userService = require("../user")
+
 const requestOptions = {
 	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY} `}
 }
+
 
 async function verifyCard(data){
 	let validationResult = verifyCardValidator.parse(data)
@@ -22,10 +25,11 @@ async function verifyCard(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	
+	let addCardResult = await userService.addCard({})
+	if(addCardResult.status != 200)
+		return addCardResult
 
 	return verificationResult
-
 }
 
 function verifyTransaction(reference){
