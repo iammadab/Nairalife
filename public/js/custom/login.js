@@ -1,6 +1,7 @@
 let store = {
 	loginButton: document.querySelector(".login-button"),
 	loginFormTag: ".login-form",
+	loginText: document.querySelector(".login-text"),
 	loginInputs: Array.from(document.querySelectorAll(".login-form input"))
 }
 
@@ -27,4 +28,8 @@ function startLogin(event){
 		else if(response.code == "INVALID_PASSWORD")
 			return showError("login-error", "Invalid phone and password combination")
 	}
+}
+
+function loginButton(state){
+
 }
