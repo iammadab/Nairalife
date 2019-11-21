@@ -21,12 +21,16 @@ let store = {
 	addEvent(store.passwordInputs, "input,focus", () => hideError("password-success"))
 })()
 
+let saveButton = createButton(".save-text", "Save Information", "Saving")
 function saveInformation(event){
 	event.preventDefault()
+	saveButton()
 	let profileDetails = extractForm(store.profileElementTag)
 	let missingKeys = hasKeys(profileDetails, ["fullname", "phone", "email", "sex", "title", "relationship", "bio"])
-	if(missingKeys.length > 0)
+	if(missingKeys.length > 0){
+		saveButton("normal")
 		return showError("profile-error", `You didn't fill data for ${missingKeys[0]}`)
+	}
 
 	return api("user/profile", { ...profileDetails, token: getToken() })
 			.then(handleResponse)
@@ -36,9 +40,17 @@ function saveInformation(event){
 			showAlert("profile-success", "Profile updated successfully")
 			redirect(window.location.href)
 		}
+		saveButton("normal")
 	}
 }
 
+
+
+
+
+
+
+let passwordButton = createButton(".password-text", "Change Password", "Changing Password...")
 function changePassword(event){
 	event.preventDefault()
 	
