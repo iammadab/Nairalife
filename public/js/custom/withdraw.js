@@ -1,5 +1,7 @@
 let store = {
-	withdrawButton: document.querySelector(".withdraw-button")
+	withdrawButton: document.querySelector(".withdraw-button"),
+	withdrawFormTag: ".withdraw-form",
+	withdrawInputs: Array.from(document.querySelectorAll(".withdraw-form input"))
 }
 
 ;(function attachEvents(){
@@ -8,4 +10,6 @@ let store = {
 
 function withdrawFunds(event){
 	event.preventDefault()
+	let withdrawDetails = extractForm(store.withdrawFormTag)
+	console.log(withdrawDetails)
 }
