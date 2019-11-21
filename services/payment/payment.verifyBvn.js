@@ -1,3 +1,4 @@
+const axios = require("axios")
 const { createValidator } = require("lazy-validator")
 
 const bvnValidator = createValidator("bvn.number")
@@ -6,19 +7,25 @@ const userDb = require("../../data/db/user.db")
 
 const userService = require("../user")
 
+let requestOptions = {
+	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}
+}
+
+
+
 async function verifyBvn(data){
 	let validationResult = bvnValidator.parse(data)
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_CODE", errors: validationResult.errors }
-
+	
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	let bvnVerificationResult = await verifyBvn(data.bvn)
+	let bvnVerificationResult = await verifyBvnFn(data.bvn)
 	if(bvnVerificationResult.status != 200)
 		return bvnVerificationResult
-
+	
 	let addBankResult = await userService.addBank({ bvnResult: bvnVerificationResult, ...data })
 	if(addBankResult.status != 200)
 		return addBankResult
