@@ -12,7 +12,7 @@ let store = {
 	//Account section
 	updateBankButton: document.querySelector(".update-bank-button"),
 	bankFormElementTag: ".bank-section",
-	bankInputs: document.querySelectorAll(`.password-section input, .password-section select, .password-section textarea`)
+	bankInputs: document.querySelectorAll(`.bank-section input, .bank-section select, .bank-section textarea`)
 }
 
 ;(function attachEvents(){
@@ -88,4 +88,13 @@ function changePassword(event){
 			showAlert("password-error", "Your old password is incorrect")
 		passwordButton("normal")
 	}
+}
+
+
+function updateBank(event){
+	event.preventDefault()
+	let bankDetails = extractForm(store.bankFormElementTag)
+	let missingKeys = hasKeys(bankDetails, ["account_number", "bank_code"])
+	if(missingKeys.length > 0)
+		return showAlert("bank-error", `You didn't fill data for ${missingKeys[0]}`)
 }
