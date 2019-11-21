@@ -48,7 +48,6 @@ async function withdraw(data){
 		return transferResult
 	}
 
-
 	return { status: 200, code: "WITHDRAWAL_SUCCESSFUL" }
 
 }
