@@ -7,18 +7,28 @@ let store = {
 	//Password section
 	changePasswordButton: document.querySelector(".change-password-button"),
 	passwordFormElementTag: ".password-section",
-	passwordInputs: document.querySelectorAll(`.password-section input, .password-section select, .password-section textarea`)
+	passwordInputs: document.querySelectorAll(`.password-section input, .password-section select, .password-section textarea`),
+
+	//Account section
+	updateBankButton: document.querySelector(".update-bank-button"),
+	bankFormElementTag: ".bank-section",
+	bankInputs: document.querySelectorAll(`.password-section input, .password-section select, .password-section textarea`)
 }
 
 ;(function attachEvents(){
 	// Profile information section
 	addEvent([store.saveInformationButton], "click", saveInformation)
-	addEvent(store.profileInputs, "input,focus", () => hideError("profile-error"))
+	addEvent(store.profileInputs, "input,focus", () => hideAlert("profile-error"))
 
 	// Password section
 	addEvent([store.changePasswordButton], "click", changePassword)
-	addEvent(store.passwordInputs, "input,focus", () => hideError("password-error"))
-	addEvent(store.passwordInputs, "input,focus", () => hideError("password-success"))
+	addEvent(store.passwordInputs, "input,focus", () => hideAlert("password-error"))
+	addEvent(store.passwordInputs, "input,focus", () => hideAlert("password-success"))
+
+	// Account section
+	addEvent([store.updateBankButton], "click", updateBank)
+	addEvent(store.bankInputs, "input,focus", () => hideAlert("bank-error"))
+	addEvent(store.bankInputs, "input,focus", () => hideAlert("bank-success"))
 })()
 
 let saveButton = createButton(".save-text", "Save Information", "Saving")

@@ -29,7 +29,7 @@ async function verifyBank(data){
 	if(addBankResult.status != 200)
 		return addBankResult
 	
-	return { status: 500, code: "BANK_VERIFIED_AND_ADDED" }
+	return { status: 200, code: "BANK_VERIFIED_AND_ADDED" }
 }
 
 

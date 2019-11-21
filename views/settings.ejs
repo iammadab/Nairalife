@@ -129,16 +129,28 @@ Invalid Username or Password
 
 
 
-<div class="tab-pane" id="kt_tabs_7_2" role="tabpanel">
+<div class="tab-pane bank-section" id="kt_tabs_7_2" role="tabpanel">
 
 <!-- <div class="form-group">
 <label>Account Name</label>
 <input type="text" class="form-control form-control-lg info-account-name" name="account_name" value="Akin Wumi">
 </div> -->
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 otp-error bank-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
+<div class="alert alert-success alert-bold fade show kt-margin-b-20 otp-error bank-success" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
 
 <div class="form-group">
 <label>Account Number</label>
-<input type="text" class="form-control form-control-lg info-account-number" name="account_number" value="0088236241">
+<input type="text" class="form-control form-control-lg info-account-number" name="account_number" value="<%= user.bank[0].account.account_number %>">
 </div>
 
 <div class="form-group">
@@ -156,7 +168,7 @@ Invalid Username or Password
 </div> -->
 
 <div class="kt-form__actions kt-text-align-center-mobile kt-margin-t-30">
-<button class="btn btn-primary btn-taller btn-wide kt-font-bold save-information">
+<button class="btn btn-primary btn-taller btn-wide kt-font-bold update-bank-button">
 <i class="la la-edit"></i><span class="bank-text">Update Bank</span>
 </button>
 </div>
