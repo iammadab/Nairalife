@@ -1,12 +1,14 @@
 let store = {
 	verifyBankButton: document.querySelector(".verify-bank-button"),
 	bankFormTag: ".bank-form",
-	bankFormInputs: Array.from(document.querySelectorAll(".bank-form input, .bank-form select"))
+	bankFormInputs: Array.from(document.querySelectorAll(".bank-form input, .bank-form select")),
+	bvnInput: document.querySelector(".bvn-input")
 }
 
 ;(function attachEvent(){
 	addEvent([store.verifyBankButton], "click", verifyBank)
 	addEvent(store.bankFormInputs, "input,focus", () => hideAlert("bank-error"))
+	addEvent([store.bvnInput], "input,focus", () =>showAlert("bvn-warn"))
 })()	
 
 function verifyBank(event){
