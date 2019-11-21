@@ -6,6 +6,7 @@ let store = {
 	// Phone section
 	recoverPasswordButton: document.querySelector(".recover-password-button"),
 	phoneElementTag: ".phone-form",
+	recoverText: document.querySelector(".recover-text"),
 	phoneInputs: Array.from(document.querySelectorAll(".phone-form input")),
 
 	// Otp section

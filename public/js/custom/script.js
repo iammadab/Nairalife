@@ -18,6 +18,7 @@
 	setValue
 	getToken
 	deleteCookie
+	createButton
 */
 
 ;(function toggleNav(){
@@ -172,4 +173,10 @@ function getToken(search){
 
 function deleteCookie(cookieName){
 	document.cookie = cookieName + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+}
+
+function createButton(element, normal, active){
+	return function(state){
+		element.innerText = state == "normal" ? normal : active
+	}
 }
