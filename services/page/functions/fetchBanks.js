@@ -18,4 +18,4 @@ async function fetchBanks(){
 	}
 }
 
-module.exports = account
+module.exports = fetchBanks
