@@ -35,7 +35,7 @@ async function withdraw(data){
 	if(recieptResult.status != 200)
 		return recieptResult
 
-	let newBalance = +userObj.balance - data.amount
+	let oldBalance = +userObj.balance, newBalance = oldBalance - data.amount
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "balance", newBalance)
 
 	// console.log(recieptResult)
@@ -43,8 +43,10 @@ async function withdraw(data){
 		amount: data.amount,
 		recipient: recieptResult.data.recipient_code
 	})
-	if(transferResult.status != 200)
+	if(transferResult.status != 200){
+		await userDb.appendDoc({ _id: data.user.id }, "balance", oldBalance)
 		return transferResult
+	}
 
 
 	return { status: 200, code: "WITHDRAWAL_SUCCESSFUL" }
