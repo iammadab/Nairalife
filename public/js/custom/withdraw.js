@@ -22,8 +22,10 @@ function withdrawFunds(event){
 
 	function handleResponse(response){
 		console.log(response)
-		if(response.status == 200)
-			showAlert("withdraw-success", "Withdraw was successfull")
+		if(response.status == 200){
+			showAlert("withdraw-success", "Withdrawal was successful")
+			store.withdrawInputs.forEach(input => input.value = "")
+		}
 		else if(response.code == "NEGATIVE_AMOUNT")
 			showAlert("withdraw-error", "You entered a negative amount")
 		else if(response.code == "INSUFFICIENT_BALANCE")
