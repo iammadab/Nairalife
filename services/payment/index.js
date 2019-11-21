@@ -1,5 +1,5 @@
 const verifyBank = require("./payment.verifyBank")
-const verifyCard = require("./payment.verifyBank")
+const verifyCard = require("./payment.verifyCard")
 
 const paymentServices = {
 	verifyBank,
