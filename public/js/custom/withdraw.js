@@ -16,7 +16,7 @@ function withdrawFunds(event){
 	event.preventDefault()
 	withdrawButton()
 	let withdrawDetails = extractForm(store.withdrawFormTag)
-	let missingDetails = hasKeys(withdrawDetails, ["amount"])
+	let missingDetails = hasKeys(withdrawDetails, ["amount", "password"])
 	if(missingDetails.length > 0){
 		withdrawButton("normal")
 		return showAlert("withdraw-error", `You didn't fill data for ${missingDetails[0]}`)
