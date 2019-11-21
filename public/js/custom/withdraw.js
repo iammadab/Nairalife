@@ -23,7 +23,7 @@ function withdrawFunds(event){
 	}
 
 	let { amount, password } = withdrawDetails
-	return api("user/withdraw", { amount, password, withtoken: getToken() })
+	return api("user/withdraw", { amount, password, token: getToken() })
 			.then(handleResponse)
 
 	function handleResponse(response){

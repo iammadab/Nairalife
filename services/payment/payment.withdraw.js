@@ -22,6 +22,7 @@ async function withdraw(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
+	console.log("Got here")
 	let samePassword = await compare(data.password, userObj.password)
 	if(!samePassword)
 		return { status: 403, code: "INVALID_PASSWORD" }
