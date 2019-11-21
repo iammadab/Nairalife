@@ -35,10 +35,10 @@ async function withdraw(data){
 	if(recieptResult.status != 200)
 		return recieptResult
 
-
+	console.log(recieptResult)
 	let transferResult = await initiateTransfer({
 		amount: data.amount,
-		recipient: recieptResult.recipient_code
+		recipient: recieptResult.data.recipient_code
 	})
 
 }
@@ -87,15 +87,18 @@ function initiateTransfer({ amount, recipient }){
 		recipient
 	}
 
-	return axios.post("https://api.paystack.co/transfer", data, recipient)
+	return axios.post("https://api.paystack.co/transfer", data, requestOptions)
 				.then(handleSuccess)
 				.catch(handleFailure)
 
 	function handleSuccess(response){
-		console.log(response)
+		if(response.data.status)
+			return { status: 200, code: "TRANSFER_SUCCESSFUL", data: response.data.data }
+		return { status: 500, code: "TRANSFER_FAILED" }
 	}
 
 	function handleFailure(response){
-		console.log(response)
+		console.log(response.response.data)
+		return { status: 500, code: "TRANSFER_FAILED" }
 	}
 }
