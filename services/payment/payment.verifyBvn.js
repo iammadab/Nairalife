@@ -17,7 +17,7 @@ async function verifyBvn(data){
 
 	let bvnData = { first_name: "wiz", bvn: data.bvn }
 
-	let addBankResult = await userService.addBank({ bvnResult: bvnData })
+	let addBankResult = await userService.addBank({ bvnResult: bvnData, ...data })
 	if(addBankResult.status != 200)
 		return addBankResult
 

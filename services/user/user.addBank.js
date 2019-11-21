@@ -1,6 +1,7 @@
 const { createValidator } = require("lazy-validator")
 
-const addBankValidator = createValidator("accountResult.object, bvnResult.object, user.object")
+// const addBankValidator = createValidator("accountResult.object, bvnResult.object, user.object")
+const addBankValidator = createValidator("user.object")
 
 const userDb = require("../../data/db/user.db")
 
