@@ -25,7 +25,7 @@ async function verifyCard(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	let addCardResult = await userService.addCard({})
+	let addCardResult = await userService.addCard({ authorization: verificationResult.authorization, ...data })
 	if(addCardResult.status != 200)
 		return addCardResult
 
