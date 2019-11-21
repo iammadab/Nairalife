@@ -35,6 +35,12 @@ async function withdraw(data){
 	if(recieptResult.status != 200)
 		return recieptResult
 
+
+	let transferResult = await initiateTransfer({
+		amount: data.amount,
+		recipient: recieptResult.recipient_code
+	})
+
 }
 
 module.exports = withdraw
@@ -72,6 +78,7 @@ function createReceipt({ name, account_number, bank_code }){
 
 
 function initiateTransfer({ amount, recipient }){
+	console.log(arguments)
 	let data = {
 		source: "balance",
 		amount,
