@@ -12,6 +12,7 @@ let store = {
 
 function startLogin(event){
 	event.preventDefault()
+	loginButton()
 	let loginDetails = extractForm(store.loginFormTag)
 	let missingDetails = hasKeys(loginDetails, ["phone", "password"])
 	if(missingDetails.length > 0)
@@ -27,9 +28,13 @@ function startLogin(event){
 			return showError("login-error", "No account has that phone number")
 		else if(response.code == "INVALID_PASSWORD")
 			return showError("login-error", "Invalid phone and password combination")
+		loginButton("normal")
 	}
 }
 
 function loginButton(state){
-
+	if(state == "normal")
+		store.loginText.innerText = "Logging in..."
+	else
+		store.loginText.innerText = "Enter Account"
 }
