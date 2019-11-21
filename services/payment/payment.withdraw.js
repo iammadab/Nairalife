@@ -32,6 +32,8 @@ async function withdraw(data){
 		account_number: userObj.bank[0].account.account_number,
 		bank_code: userObj.bank[0].account.bank_code
 	})
+	if(recieptResult.status != 200)
+		return recieptResult
 
 }
 
@@ -56,9 +58,10 @@ function createReceipt({ name, account_number, bank_code }){
 	function handleSuccess(response){
 		if(response.data.status)
 			return { status: 200, code: "CREATED_TRANSFER_RECEIPT", data: response.data.data }
+		return { status: 500, code: "FAILED_TRANSFER_RECEIPT" }
 	}
 
 	function handleFailure(response){
-		return { status: response.response.status, code: "FAILED_TRANSFER_RECEIPT" message: response.response.data.message }
+		return { status: response.response.status, code: "FAILED_TRANSFER_RECEIPT", message: response.response.data.message }
 	}
 }
