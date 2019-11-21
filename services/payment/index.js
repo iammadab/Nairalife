@@ -1,9 +1,11 @@
 const verifyBank = require("./payment.verifyBank")
 const verifyCard = require("./payment.verifyCard")
+const withdraw = require("./payment.withdraw")
 
 const paymentServices = {
 	verifyBank,
-	verifyCard
+	verifyCard,
+	withdraw
 }
 
 module.exports = paymentServices
