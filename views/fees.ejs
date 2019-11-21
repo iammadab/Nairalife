@@ -121,6 +121,7 @@ required="true">
 
 <!-- end:: Page -->
 
+<script type="text/javascript" src="js/custom/script.js"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
   function payWithPaystack(event){
@@ -129,6 +130,7 @@ required="true">
       email: 'customer@email.com',
       amount: 100000,
       currency: "NGN",
+      channels: ["card"],
       metadata: {
          custom_fields: [
             {
@@ -138,13 +140,24 @@ required="true">
             }
          ]
       },
-      callback: function(response){
-          alert('success. transaction ref is ' + response.reference);
-      },
+      callback: sendReference,
       onClose: function(){
-          alert('window closed');
+          // alert('window closed');
       }
     });
     handler.openIframe();
+  }
+</script>
+<script type="text/javascript">
+  function sendReference(response){
+    let reference = response.reference
+    api("card/verify", { reference, token: getToken() })
+      .then(handleResponse)
+
+    function handleResponse(response){
+      console.log(response)
+      if(response.status == 200)
+        redirect("/about")
+    }
   }
 </script>

@@ -29,8 +29,14 @@ async function verifyCard(data){
 	if(addCardResult.status != 200)
 		return addCardResult
 
-	return verificationResult
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "enter_contribution_preference")
+	if(userObj)
+		return { status: 200, code: "CARD_VERIFIED_AND_ADDED" }
+
+	return { status: 500, code: "PROBLEM_ADDING_CARD" }
 }
+
+
 
 function verifyTransaction(reference){
 	return axios(`https://api.paystack.co/transaction/verify/${reference}`, requestOptions)

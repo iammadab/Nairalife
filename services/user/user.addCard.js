@@ -15,7 +15,6 @@ async function addCard(data){
 
 	let cardDetails = { reference: data.reference, authorization: data.authorization }
 
-	console.log(cardDetails)
 	let userObjCopy = Object.assign({}, userObj._doc)
 	userObjCopy.card[0] = cardDetails
 
