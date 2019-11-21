@@ -42,8 +42,8 @@ viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("acti
 	res.render("dashboard", { title: "Dashboard", link: "", user: req.body.pageData.user })
 })
 
-viewRouter.get("/withdraw", (req, res) => {
-	res.render("withdraw")
+viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken, stageRouter("active"), (req, res) => {
+	res.render("withdraw", { title: "Withdraw", link: "withdraw" })
 })
 
 viewRouter.get("/settings", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.settings, (req, res) => {
