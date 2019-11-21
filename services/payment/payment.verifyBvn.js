@@ -2,10 +2,43 @@ const { createValidator } = require("lazy-validator")
 
 const bvnValidator = createValidator("bvn.number")
 
+const userDb = require("../../data/db/user.db")
+
+const userService = require("../user")
+
 async function verifyBvn(data){
 	let validationResult = bvnValidator.parse(data)
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_CODE", errors: validationResult.errors }
+
+	let userObj = await userDb.findOneWith({ _id: data.user.id })
+	if(!userObj)
+		return { status: 403, code: "USER_DOES_NOT_EXIST" }
+
+	let bvnData = { first_name: "wiz", bvn: data.bvn }
+
+	let addBankResult = await userService.addBank({ bvnResult: bvnData })
+	if(addBankResult.status != 200)
+		return addBankResult
+
+	return { status: 200, code: "BVN_VERIFIED" }
+
 }
 
 module.exports = verifyBvn
+
+
+async function verifyBvnFn(bvn){
+	return axios(`https://api.paystack.co/bank/resolve_bvn/${bvn}`, requestOptions)
+			.then(handleSuccess)
+			.catch(handleFailure)
+
+	function handleSuccess(response){
+		if(response.data.status == true)
+			return { status: 200, code: "BVN_VERIFICATION_SUCCESSFUL", data: response.data.data }
+	}
+
+	function handleFailure(response){
+		return { status: response.response.status, code: "BVN_VERIFICATION_FAILED", message: response.response.data.message }
+	}
+}
