@@ -3,6 +3,8 @@ const { createValidator } = require("lazy-validator")
 
 const verifyCardValidator = createValidator("reference.string")
 
+const userDb = require("../../data/db/user.db")
+
 const requestOptions = {
 	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY} `}
 }
@@ -15,6 +17,12 @@ async function verifyCard(data){
 	let verificationResult = await verifyTransaction(data.reference)
 	if(verificationResult.status != 200)
 		return verificationResult
+
+	let userObj = await userDb.findOneWith({ _id: data.user.id })
+	if(!userObj)
+		return { status: 403, code: "USER_DOES_NOT_EXIST" }
+
+	
 
 	return verificationResult
 
