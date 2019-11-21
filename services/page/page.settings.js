@@ -1,7 +1,7 @@
-const userDb = require("../../data/db/user.db")
+const pageFunctions = require("./functions")
 
 async function settings(req, res, next){
-	let userObj = await userDb.findOneWith({ _id: req.body.user.id })
+	let userObj = await pageFunctions.fetchUser(req.body.user.id)
 	req.body.pageData = {
 		user: userObj
 	}
