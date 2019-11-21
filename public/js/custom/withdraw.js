@@ -11,5 +11,5 @@ let store = {
 function withdrawFunds(event){
 	event.preventDefault()
 	let withdrawDetails = extractForm(store.withdrawFormTag)
-	console.log(withdrawDetails)
+	let missingDetails = hasKeys(withdrawDetails, ["amount"])
 }
