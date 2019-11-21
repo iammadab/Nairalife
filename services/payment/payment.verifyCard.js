@@ -16,6 +16,8 @@ async function verifyCard(data){
 	if(verificationResult.status != 200)
 		return verificationResult
 
+	return verificationResult
+
 }
 
 function verifyTransaction(reference){
