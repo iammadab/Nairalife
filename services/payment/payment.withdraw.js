@@ -2,6 +2,8 @@ const { createValidator } = require("lazy-validator")
 
 const withdrawValidator = createValidator("amount.number")
 
+const userDb = require("../../data/db/user.db")
+
 async function withdraw(data){
 	let validationResult = withdrawValidator.parse(data)
 	if(validationResult.error)
@@ -9,6 +11,11 @@ async function withdraw(data){
 
 	if(data.amount < 0)
 		return { status: 403, code: "NEGATIVE_AMOUNT" }
+
+	let userObj = await userDb.findOneWith({ _id: data.user.id })
+	if(!userObj)
+		return { status: 403, code: "USER_DOES_NOT_EXIST" }
+
 }
 
 module.exports = withdraw
