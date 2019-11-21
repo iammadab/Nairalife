@@ -17,7 +17,7 @@ async function verifyCard(data){
 }
 
 function verifyTransaction(reference){
-	return axios(`https://api.paystack.co/transaction/verify/${reference}`)
+	return axios(`https://api.paystack.co/transaction/verify/${reference}`, requestOptions)
 			.then(handleSuccess)
 			.catch(handleFailure)
 
@@ -26,7 +26,7 @@ function verifyTransaction(reference){
 	}
 
 	function handleFailure(response){
-		console.log(response)
+		return { status: response.response.status, code: "CARD_VERIFICATION_FAILED", messagge: response.response.data.message }
 	}
 }
 
