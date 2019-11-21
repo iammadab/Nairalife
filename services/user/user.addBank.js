@@ -14,7 +14,25 @@ async function addBank(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	let bankDetails = { account: { ...data.accountResult, bank_code: data.bank_code }, bvn: data.bvnResult }
+	// I wanted to be able to send either just the account details, the bvn details or both
+	// The program should only update the new thing I send
+	// So first I had to check if there is any old data
+	// If there is, I get them for update
+	let hasOld = userObj.bank.length > 0, accountObj = {}, bvnObj = {}
+	if(hasOld){
+		accountObj = userObj.bank[0].account
+		bvnObj = userObj.bank[0].bvn
+	}
+	// Here, I check for the one I was given, then updated the old or empty data with what I was given
+	if(data.accountResult){
+		accountObj = { ...data.accountResult, bank_code: data.bank_code }
+	}
+	if(data.bvnResult){
+		bvnObj = data.bvnResult
+	}
+
+	// So at this point, I should have the updated version of the account and bvn then I save :)
+	let bankDetails = { account: accountObj, bvn: bvnObj }
 
 	let userObjCopy = Object.assign({}, userObj._doc)
 	userObjCopy.bank[0] = bankDetails
