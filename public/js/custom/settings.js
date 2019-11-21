@@ -91,10 +91,27 @@ function changePassword(event){
 }
 
 
+
+let bankButton = createButton(".bank-text", "Update Bank", "Updating Bank...")
 function updateBank(event){
 	event.preventDefault()
+	bankButton()
 	let bankDetails = extractForm(store.bankFormElementTag)
 	let missingKeys = hasKeys(bankDetails, ["account_number", "bank_code"])
-	if(missingKeys.length > 0)
+	if(missingKeys.length > 0){
+		bankButton("normal")
 		return showAlert("bank-error", `You didn't fill data for ${missingKeys[0]}`)
+	}
+
+	let { account_number, bank_code } = bankDetails
+	return api("bank/verify", { token: getToken(), account_number, bank_code })
+			.then(handleResponse)
+
+	function handleResponse(response){
+		if(response.status == 200)
+			showAlert("bank-success", "Bank Updated")
+		else if(response.code == "ACCOUNT_VERIFICATION_FAILED")
+			showAlert("bank-error", response.message)
+		bankButton("normal")
+	}
 }
