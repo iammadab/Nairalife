@@ -30,9 +30,6 @@ async function verifyBank(data){
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
-
-	// if(!hasAll(userObj.fullname, bvnVerificationResult.data.first_name, bvnVerificationResult.data.last_name))
-	// 	return { status: 403, code: "BVN_VERIFICATION_FAILED", message: "Name mismatch" }
 	
 	let addBankResult = await userService.addBank({ accountResult: verificationResult.data, bvnResult: bvnVerificationResult.data, ...data })
 	if(addBankResult.status != 200)
@@ -79,15 +76,6 @@ async function verifyBvn(bvn){
 	function handleFailure(response){
 		return { status: response.response.status, code: "BVN_VERIFICATION_FAILED", message: response.response.data.message }
 	}
-}
-
-function hasAll(container, ...pieces){
-	let result = true
-	pieces.forEach(piece => {
-		if(container.toLowerCase().indexOf(piece.toLowerCase()) == -1)
-			result = false
-	})
-	return result
 }
 
 module.exports = verifyBank

@@ -25,8 +25,11 @@ async function verifyBvn(data){
 	let bvnVerificationResult = await verifyBvnFn(data.bvn)
 	if(bvnVerificationResult.status != 200)
 		return bvnVerificationResult
+
+	if(!hasAll(userObj.fullname, bvnVerificationResult.data.first_name, bvnVerificationResult.data.last_name))
+		return { status: 403, code: "BVN_VERIFICATION_FAILED", message: "Name mismatch" }
 	
-	let addBankResult = await userService.addBank({ bvnResult: bvnVerificationResult, ...data })
+	let addBankResult = await userService.addBank({ bvnResult: bvnVerificationResult.data, ...data })
 	if(addBankResult.status != 200)
 		return addBankResult
 
@@ -49,4 +52,13 @@ async function verifyBvnFn(bvn){
 	function handleFailure(response){
 		return { status: response.response.status, code: "BVN_VERIFICATION_FAILED", message: response.response.data.message }
 	}
+}
+
+function hasAll(container, ...pieces){
+	let result = true
+	pieces.forEach(piece => {
+		if(container.toLowerCase().indexOf(piece.toLowerCase()) == -1)
+			result = false
+	})
+	return result
 }
