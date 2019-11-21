@@ -35,11 +35,13 @@ async function withdraw(data){
 	if(recieptResult.status != 200)
 		return recieptResult
 
-	console.log(recieptResult)
+	// console.log(recieptResult)
 	let transferResult = await initiateTransfer({
 		amount: data.amount,
 		recipient: recieptResult.data.recipient_code
 	})
+	if(transferResult.status != 200)
+		return transferResult
 
 }
 
