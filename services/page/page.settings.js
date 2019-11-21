@@ -8,7 +8,7 @@ async function settings(req, res, next){
 		user: userObj,
 		banks: banks
 	}
-	
+
 	next()
 }
 

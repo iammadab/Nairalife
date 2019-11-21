@@ -39,7 +39,7 @@ viewRouter.get("/fee", cookieNotFound("/login"), verifyToken, stageRouter("enter
 })
 
 viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.dashboard, (req, res) => {
-	res.render("dashboard", { title: "Dashboard", link: "", user: req.body.pageData.user })
+	res.render("dashboard", { title: "Dashboard", link: "", ...req.body.pageData })
 })
 
 viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken, stageRouter("active"), (req, res) => {
@@ -47,7 +47,7 @@ viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken, stageRouter("
 })
 
 viewRouter.get("/settings", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.settings, (req, res) => {
-	res.render("settings", { title: "Settings", link: "settings", user: req.body.pageData.user._doc })
+	res.render("settings", { title: "Settings", link: "settings", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/login", (req, res) => {

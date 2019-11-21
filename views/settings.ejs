@@ -142,13 +142,22 @@ Invalid Username or Password
 </div>
 
 <div class="form-group">
+<select class="custom-select bank-name" data-defaultvalue="<%= user.bank[0].account.bank_code %>" name="bank_code">
+<option value="">Select Bank</option>
+
+<% banks.forEach(bank => { %>
+<option value="<%= bank.code %>"><%= bank.name %></option>
+<% }) %>
+</select>
+</div>	
+<!-- <div class="form-group">
 <label>Bank Name</label>
 <input type="text" class="form-control form-control-lg info-bank-name" name="bank_name" value="Access Bank (Diamond)">
-</div>
+</div> -->
 
 <div class="kt-form__actions kt-text-align-center-mobile kt-margin-t-30">
 <button class="btn btn-primary btn-taller btn-wide kt-font-bold save-information">
-<i class="la la-edit"></i> Save Information
+<i class="la la-edit"></i><span class="bank-text">Update Bank</span>
 </button>
 </div>
 <!--end: Form Actions -->
