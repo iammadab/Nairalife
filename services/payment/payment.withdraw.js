@@ -16,6 +16,9 @@ async function withdraw(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
+	if(userObj.balance < data.amount)
+		return { status: 403, code: "INSUFFICIENT_BALANCE" }
+
 }
 
 module.exports = withdraw
