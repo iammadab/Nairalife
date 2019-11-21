@@ -10,6 +10,8 @@ const userSchema = mongoose.Schema({
 	 // Format: bank: { account: {account_number, account_name, bank_id}, 
      //                 bvn: {first_name, last_name, dob, formatted_dob, mobile, bvn } } 
 	bank: { type: Array, default: [] },
+	//Format card: { reference,
+	//               authorization: authorization_code, bank, bin, brand, card_type, channel, country_code, ex_month, exp_year, last4, reuseable, signature }
 	card: { type: Array, default: [] },
 
 	user_id: { type: Number, required: true, unique: true },
