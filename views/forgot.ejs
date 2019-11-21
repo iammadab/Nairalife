@@ -1,5 +1,6 @@
 <% include meta %>
 <link href="css/login.css" rel="stylesheet" type="text/css" />
+<link href="css/custom.css" rel="stylesheet" type="text/css" />
 
 <!-- begin::Body -->
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
@@ -21,7 +22,7 @@
 <!--end::Head-->
 
 <!--begin::Body-->
-<div class="kt-login__body" id="login-section">
+<div class="kt-login__body view show" id="phone-section">
 
 <!--begin::Signin-->
 <div class="kt-login__form">
@@ -34,7 +35,7 @@
 <!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
 
 
-<div class="alert alert-danger alert-bold fade show kt-margin-b-20 login-error" role="alert">
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 login-error phone-error" role="alert">
 <div class="alert-icon"><i class="flaticon-warning"></i></div>
 <div class="alert-text">
 Invalid Phone Number or Password
@@ -50,14 +51,14 @@ Your password has been changed successfully. Login below
 
 
 <!--begin::Form-->
-<form class="kt-form" action="" novalidate="novalidate">
+<form class="kt-form phone-form" action="" novalidate="novalidate">
 <div class="form-group">
-	<input class="form-control" type="text" placeholder="Enter your phone number" name="username" autocomplete="off" required="true">
+	<input class="form-control" type="number" placeholder="Enter your phone number" name="phone" autocomplete="off" required="true">
 </div>
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary recover-password-button">
 <i class="la la-lock"></i><span>Recover Password</span>
 </button>
 </div>
@@ -81,6 +82,160 @@ Your password has been changed successfully. Login below
 <div class="kt-login__bottom">
 <span class="kt-login__signup-label">Remember password now?</span>&nbsp;&nbsp;
 <a href="/login" class="kt-link kt-login__signup-link">Login</a>
+</div>
+
+<!--end::Options-->
+</div>
+
+<!--end::Signin-->
+</div>
+
+<!--end::Body-->
+
+
+
+<!-- start otp section -->
+
+<div class="kt-login__body view" id="otp-section">
+
+<!--begin::Signin-->
+<div class="kt-login__form">
+<% include formhead %>
+<div class="kt-login__title">
+<h3>Phone Verification</h3>
+<p>Please verify your phone number below</p>
+</div>
+
+<!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 otp-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
+
+
+<!--begin::Form-->
+<form class="kt-form otp-form" action="" novalidate="novalidate">
+<div class="form-group">
+<input class="form-control" type="number" placeholder="Enter OTP" name="code" autocomplete="off" 
+required="true">
+</div>
+
+
+<div class="kt-login__btn">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary verifyOtpButton">
+<span>Verify <i class="kt-margin-l-5 la la-arrow-right"></i></span>
+</button>
+</div>
+
+
+</form>
+
+<!--end::Form-->
+
+<!--begin::Divider-->
+<div class="kt-login__divider">
+<div class="kt-divider">
+<span></span>
+<span>OR</span>
+<span></span>
+</div>
+</div>
+<!--end::Divider-->
+
+<!--begin::Options-->
+<div class="kt-login__bottom otp-resend-container">
+<span class="kt-login__signup-label">Didn't get OTP?</span>&nbsp;&nbsp;
+<a href="#" class="kt-link kt-login__signup-link resend-otp">Resend</a>
+</div>
+<div class="kt-login__bottom otp-countdown-container none">
+<span class="kt-login__signup-label">You can resend otp in</span>&nbsp;&nbsp;
+<a href="#" class="kt-link kt-login__signup-link otp-countdown">02 : 30</a>
+</div>
+
+
+<!--end::Options-->
+</div>
+
+<!--end::Signin-->
+</div>
+<!-- end body -->
+
+
+
+
+
+
+<!--begin::Body-->
+<div class="kt-login__body view" id="password-section">
+
+<!--begin::Signin-->
+<div class="kt-login__form">
+<% include formhead %>
+<div class="kt-login__title">
+<h3>New Password</h3>
+<p>Enter your new password details below</p>
+</div>
+
+<!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
+
+
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 password-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Phone Number or Password
+</div>
+</div>
+
+<div class="alert alert-success alert-bold fade show kt-margin-b-20 none password-success" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Your password has been changed successfully. Login below
+</div>
+</div>
+
+
+<!--begin::Form-->
+<form class="kt-form password-form" action="" novalidate="novalidate">
+<div class="form-group">
+	<input class="form-control" type="password" placeholder="New Password" name="password" autocomplete="off" required="true">
+</div>
+<div class="form-group">
+	<input class="form-control" type="password" placeholder="Confirm New Password" name="password2" required="true">
+</div>
+
+
+
+<div class="kt-login__btn">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary change-password-button">
+<i class="la la-unlock"></i><span>Change Password</span>
+</button>
+</div>
+
+<!--begin::Action-->
+<!--end::Action-->
+
+
+
+</form>
+
+<!--end::Form-->
+
+<!--begin::Divider-->
+<div class="kt-login__divider">
+<div class="kt-divider">
+<span></span>
+<span>OR</span>
+<span></span>
+</div>
+</div>
+<!--end::Divider-->
+
+<!--begin::Options-->
+<div class="kt-login__bottom">
+<span class="kt-login__signup-label">Don't have an account yet?</span>&nbsp;&nbsp;
+<a href="/register" class="kt-link kt-login__signup-link">Register</a>
 </div>
 
 <!--end::Options-->
@@ -133,3 +288,6 @@ Your password has been changed successfully. Login below
 </div>
 
 <!-- end:: Page -->
+
+<script type="text/javascript" src="js/custom/script.js"></script>
+<script type="text/javascript" src="js/custom/forgot.js"></script>

@@ -14,7 +14,8 @@ async function verifyOtp(data){
 		return { status: 403, code: "OTP_VERIFICATION_FAILED" }
 	
 	// Delete all the otps for that phone number
-	await otpDb.deleteMany({ phone: data.phone })
+	if(String(otpObj.type).toLowerCase() != "reset")
+		await otpDb.deleteMany({ phone: data.phone })
 
 	return { status: 200, code: "OTP_VERIFICATION_SUCCESS" }
 }

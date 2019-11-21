@@ -16,6 +16,7 @@ async function createUser(data){
 	let userData = validationResult.data, plainPassword = userData.password
 
 	userData.password = await hash(userData.password)
+	userData.user_id = await uniqueUserId()
 
 	let phoneExist = await checkIfPhoneExists(userData)
 	if(phoneExist.error) 
@@ -28,7 +29,7 @@ async function createUser(data){
 	let otpVerificationResult = await authenticationService.verifyOtp({ phone: userData.phone, code: userData.code })
 	if(otpVerificationResult.status != 200)
 		return otpVerificationResult
-
+	
 	let userObj = await userDb.createUser(userData)
 
 	let loginResult = await loginUser({ phone: userData.phone, password: plainPassword })
@@ -58,4 +59,20 @@ async function checkIfEmailExists(userData){
 	if(usersWithEmail.length > 0)
 		return { error: true, response: { status: 403, code: "EMAIL_EXISTS", message: "User with email exists" }}
 	return usersWithEmail
+}
+
+function randomDigit(n){
+	let max = +("".padEnd(n, "9")), min = +("1".padEnd(n-1, "0"))
+	return Math.floor(Math.random() * (max - min)) + min
+}
+
+async function uniqueUserId(count){
+	count = count || 1
+	let randomId = randomDigit(4)
+	let userObj = await userDb.findOneWith({ user_id: randomId })
+	if(!userObj) { 
+		console.log(`Found unique code in ${count} attempt`); 
+		return randomId 
+	}
+	return uniqueUserId()
 }

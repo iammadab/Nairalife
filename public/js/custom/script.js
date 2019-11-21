@@ -1,9 +1,14 @@
 /*
 	Contents
 	--------
+	toggleNav
+	attachLogout
+	setDefaultOption
 	showView
 	showError
+	showAlert
 	hideError
+	hideAlert
 	hasKeys
 	extractForm
 	addEvent
@@ -12,7 +17,46 @@
 	getCounter
 	setValue
 	getToken
+	deleteCookie
 */
+
+;(function toggleNav(){
+    let topBarToggler = document.querySelector(".kt-header-mobile__toolbar-topbar-toggler")
+    let landingToggle = document.querySelector(".landing-toggle")
+    let userBar = document.querySelector(".user-dropdown")
+    let landingDropdown = document.querySelector(".landing-dropdown")
+
+    if(topBarToggler)
+        topBarToggler.onclick = function(event){
+            userBar.classList.toggle("show")
+            userBar.classList.toggle("show-menu")
+        }
+
+    if(landingToggle)
+        landingToggle.onclick = function(event){
+            landingDropdown.classList.toggle("show")
+            landingDropdown.classList.toggle("show-menu-landing")
+        }
+})()
+
+;(function attachLogout(){
+	let logoutButton = document.querySelector(".logout")
+	if(!logoutButton) return
+	addEvent([logoutButton], "click", logout)
+	
+	function logout(event){
+		event.preventDefault()
+		deleteCookie("token")
+		redirect("/login")
+	}
+})()
+
+;(function setDefaultOption(){
+	let elementsWithDefaults = Array.from(document.querySelectorAll("[data-defaultValue]"))
+	elementsWithDefaults.forEach(element => {
+		element.value = element.dataset["defaultvalue"]
+	})
+})()
 
 function showView(viewName){
 	let viewToShow = document.querySelector(`#${viewName}`)
@@ -33,11 +77,15 @@ function showError(errorName, errorMessage){
 		errorText.innerText = errorMessage
 }
 
+let showAlert = showError
+
 function hideError(errorName){
 	let errorBox = document.querySelector(`.${errorName}`)
 	if(errorBox)
 		errorBox.style.display = "none"
 }
+
+let hideAlert = hideError
 
 function hasKeys(obj, expectedKey){
 	let objKeys = Object.keys(obj)
@@ -120,4 +168,8 @@ function getToken(search){
 			token = cookie.split("=")[1]
 	})
 	return token
+}
+
+function deleteCookie(cookieName){
+	document.cookie = cookieName + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;"
 }

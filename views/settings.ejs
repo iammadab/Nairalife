@@ -10,6 +10,7 @@ include 'link.php';
 <% include header %>
 <% include link %>
 
+<% let match = (a,b) => String(a).lowerCase() == String(b).lowerCase() ? "selected" : "" %>
 
 <!--begin::Portlet-->
 <div class="kt-portlet btopzero">
@@ -43,64 +44,80 @@ include 'link.php';
 
 
 
-<div class="tab-pane active" id="kt_tabs_7_1" role="tabpanel">
+<div class="tab-pane active profile-section" id="kt_tabs_7_1" role="tabpanel">
 
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 otp-error profile-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
+
+<div class="alert alert-success alert-bold fade show kt-margin-b-20 otp-error profile-success" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
 	
 <div class="form-group">
 <label>Full Name</label>
-<input type="text" class="form-control form-control-lg info-name" name="name" value="Akin Wumi">
+<input type="text" class="form-control form-control-lg info-name" name="fullname" value="<%= user.fullname %>">
 </div>
 
 <div class="form-group">
 <label>Phone Number</label>
-<input type="text" class="form-control form-control-lg info-phone" name="phone" value="08127596979" readonly="readonly">
+<input type="text" class="form-control form-control-lg info-phone" name="phone" value="<%= user.phone %>" readonly="readonly">
+</div>
+
+<div class="form-group">
+<label>Email Address</label>
+<input type="text" class="form-control form-control-lg info-phone" name="email" value="<%= user.email %>" readonly="readonly">
 </div>
 
 <div class="form-group">
 <label>Sex</label>	
-<select class="custom-select custom-select-lg">
-<option value="Single">Male</option>
-<option value="Engaged">Female</option>
+<select name="sex" data-defaultvalue="<%= user.about.sex %>" class="custom-select bank-name" style="height:55px;">
+<option value="female">Female</option>
+<option value="male">Male</option>
 </select>
 </div>
 
 
 <div class="form-group">
 <label>Official Title</label>	
-<select class="custom-select custom-select-lg">
-<option value="Mr.">Mr.</option>
-<option value="Mrs.">Mrs.</option>
-<option value="Miss.">Miss.</option>
-<option value="Dr.">Dr.</option>
-<option value="Mazi">Mazi</option>
-<option value="Ogbeni">Ogbeni</option>
-<option value="Otunba">Otunba</option>
-<option value="Chairman">Chairman</option>
-<option value="Chairwoman">Chairwoman</option>
+<select  name="title" data-defaultvalue="<%= user.about.title %>" class="custom-select bank-name" style="height:55px;">
+<option value="mr.">Mr.</option>
+<option value="mrs.">Mrs.</option>
+<option value="miss.">Miss.</option>
+<option value="dr.">Dr.</option>
+<option value="mazi">Mazi</option>
+<option value="ogbeni">Ogbeni</option>
+<option value="otunba">Otunba</option>
+<option value="chairman">Chairman</option>
+<option value="chairwoman">Chairwoman</option>
 </select>
 </div>
 
 
 <div class="form-group">
 <label>Relationship Status</label>	
-<select class="custom-select custom-select-lg">
-<option value="Single">Single</option>
-<option value="Engaged">Engaged</option>
-<option value="Married">Married</option>
+<select name="relationship" data-defaultvalue="<%= user.about.relationship %>" class="custom-select bank-name" style="height:55px;">
+<option value="single">Single</option>
+<option value="engaged">Engaged</option>
+<option value="married">Married</option>
 </select>
 </div>
 
-
 <div class="form-group">
 <label>Bio</label>	
-<textarea class="form-control form-control-lg" name="bvn" placeholder="I am a pan-africanist. Passionate about creating wealth for all Africans">
-</textarea>
+<textarea class="form-control" name="bio" style="height:95px"><%= user.about.bio %></textarea>
 </div>
 
 
 
 <div class="kt-form__actions kt-text-align-center-mobile kt-margin-t-30">
-<button class="btn btn-primary btn-taller btn-wide kt-font-bold save-information">
+<button class="btn btn-primary btn-taller btn-wide kt-font-bold save-information-button">
 <i class="la la-edit"></i> Save Information
 </button>
 </div>
@@ -179,29 +196,43 @@ include 'link.php';
 
 
 
-<div class="tab-pane" id="kt_tabs_7_4" role="tabpanel">
+<div class="tab-pane password-section" id="kt_tabs_7_4" role="tabpanel">
+
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 otp-error password-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
+
+<div class="alert alert-success alert-bold fade show kt-margin-b-20 otp-error password-success" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
 
 <div class="form-group">
 <label>Current Password</label>
-<input type="password" class="form-control form-control-lg current-password" name="fname">
+<input type="password" class="form-control form-control-lg current-password" name="oldPassword">
 </div>
 
 <div class="form-group">
 <label>New Password</label>
-<input type="password" class="form-control form-control-lg new-password" name="lname">
+<input type="password" class="form-control form-control-lg new-password" name="newPassword">
 <p class="settings-pass-error" style="color: red; display: none;">password must be at least 6 characters</p>
 </div>
 
 
 <div class="form-group">
 <label>Repeat New Password</label>
-<input type="password" class="form-control form-control-lg repeat-new-password" name="lname">
+<input type="password" class="form-control form-control-lg repeat-new-password" name="newPassword2">
 </div>
 
 
 
 <div class="kt-form__actions kt-text-align-center-mobile kt-margin-t-30">
-<button class="btn btn-primary btn-taller btn-wide kt-font-bold change-password">
+<button class="btn btn-primary btn-taller btn-wide kt-font-bold change-password-button">
 <i class="la la-unlock"></i> Change Password
 </button>
 </div>
@@ -220,5 +251,5 @@ include 'link.php';
 <!--end::Portlet-->
 
 
-
 <% include footer %>
+<script type="text/javascript" src="js/custom/settings.js"></script>

@@ -32,21 +32,31 @@
 </div>
 
 <!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
-
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 otp-error bank-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
 
 
 <!--begin::Form-->
-<form class="kt-form" action="" novalidate="novalidate">
+<form class="kt-form bank-form" action="" novalidate="novalidate">
 
 <div class="form-group">
-<input class="form-control" type="text" placeholder="Account No" 
-name="username" autocomplete="off" required="true">
+<input class="form-control" type="number" placeholder="Account No" 
+name="account_number" autocomplete="off" required="true">
 </div>
 
 <div class="form-group">
-<select class="custom-select bank-name">
-<option>Select Bank</option>
-<option value="Access Bank">Access Bank</option>
+<select class="custom-select bank-name" name="bank_code">
+<option value="">Select Bank</option>
+
+<% banks.forEach(bank => { %>
+<option value="<%= bank.code %>"><%= bank.name %></option>
+<% }) %>
+
+<!-- <option value="Access Bank">Access Bank</option>
 <option value="Diamond (Access) Bank">Diamond (Access) Bank</option>
 <option value="First Bank Nigeria">First Bank Nigeria</option>
 <option value="First City Monument Bank">First City Monument Bank</option>
@@ -68,37 +78,43 @@ name="username" autocomplete="off" required="true">
 <option value="Standard Chartered Bank Nigeria">Standard Chartered Bank Nigeria</option>
 <option value="Suntrust Bank">Suntrust Bank</option>
 <option value="Unity Bank">Unity Bank</option>
-<option value="Wema Bank">Wema Bank</option>
+<option value="Wema Bank">Wema Bank</option> -->
 </select>
 </div>
 
 <div class="form-group">
-<input class="form-control" type="text" placeholder="Enter BVN" name="bvn" autocomplete="off" required="true">
+<input class="form-control" type="number" placeholder="Enter BVN" name="bvn" autocomplete="off" required="true">
 <p class="passerror kt-margin-l-10" style="color:red;">We only use your BVN to verify your identity (name and account no)</p>
 </div>
 
+<div class="kt-login__btn">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary verify-bank-button">
+<i class="la la-unlock"></i><span>Verify Bank</span>
+</button>
+</div>
+
 <!--begin::Divider-->
-<div class="kt-login__divider kt-margin-t-30">
+<!-- <div class="kt-login__divider kt-margin-t-30">
 <div class="kt-divider">
 <span></span>
 <span>AND</span>
 <span></span>
 </div>
 </div>
-<!--end::Divider-->
+ --><!--end::Divider-->
 
-<div class="kt-login__title">
+<!-- <div class="kt-login__title">
 <p>
 Pay 1,000 naira Nairalife cooperative society membership fee <br>
 We will automatically charge this card for your contributions
 </p>
 </div>
-
+ -->
 
 
 
 <!--begin::Form-->
-<div class="form-group">
+<!-- <div class="form-group">
 <input class="form-control" type="text" placeholder="Card No" name="username" autocomplete="off" 
 required="true">
 </div>
@@ -122,7 +138,7 @@ required="true">
 
 
 </form>
-
+ -->
 <!--end::Form-->
 
 
@@ -176,3 +192,6 @@ required="true">
 </div>
 
 <!-- end:: Page -->
+
+<script type="text/javascript" src="js/custom/script.js"></script>
+<script type="text/javascript" src="js/custom/account.js"></script>
