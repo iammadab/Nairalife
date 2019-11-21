@@ -177,6 +177,7 @@ function deleteCookie(cookieName){
 
 function createButton(element, normal, active){
 	return function(state){
-		element.innerText = state == "normal" ? normal : active
+		let elementObj = document.querySelector(element)
+		elementObj.innerText = state == "normal" ? normal : active
 	}
 }

@@ -5,6 +5,8 @@ let store = {
 	loginInputs: Array.from(document.querySelectorAll(".login-form input"))
 }
 
+let loginButton = createButton(".login-text", "Enter Account", "Logging in...")
+
 ;(function attachEvents(){
 	addEvent([store.loginButton], "click", startLogin)
 	addEvent(store.loginInputs, "input,focus", () => hideError("login-error"))
@@ -15,8 +17,10 @@ function startLogin(event){
 	loginButton()
 	let loginDetails = extractForm(store.loginFormTag)
 	let missingDetails = hasKeys(loginDetails, ["phone", "password"])
-	if(missingDetails.length > 0)
+	if(missingDetails.length > 0){
+		loginButton("normal")
 		return showError("login-error", `You didn't fill a value for ${missingDetails[0]}`)
+	}
 
 	return api("auth/login", { phone: loginDetails.phone, password: loginDetails.password })
 				.then(handleLogin)
@@ -30,11 +34,4 @@ function startLogin(event){
 			return showError("login-error", "Invalid phone and password combination")
 		loginButton("normal")
 	}
-}
-
-function loginButton(state){
-	if(state == "normal")
-		store.loginText.innerText = "Logging in..."
-	else
-		store.loginText.innerText = "Enter Account"
 }

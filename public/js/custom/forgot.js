@@ -6,7 +6,6 @@ let store = {
 	// Phone section
 	recoverPasswordButton: document.querySelector(".recover-password-button"),
 	phoneElementTag: ".phone-form",
-	recoverText: document.querySelector(".recover-text"),
 	phoneInputs: Array.from(document.querySelectorAll(".phone-form input")),
 
 	// Otp section
@@ -31,12 +30,27 @@ let store = {
 	addEvent(store.passwordInputs, "input,focus", () => hideAlert("password-error"))
 })()
 
+
+
+
+
+
+
+
+
+
+
+let recoverButton = createButton(".recover-text", "Recover Password", "Sending Otp...")
+
 function sendOtp(event){
 	event.preventDefault()
+	recoverButton()
 	let phoneDetails = extractForm(store.phoneElementTag)
 	let missingDetails = hasKeys(phoneDetails, ["phone"])
-	if(missingDetails.length > 0)
+	if(missingDetails.length > 0){
+		recoverButton("normal")
 		showAlert("phone-error", `You didn't fill data for ${missingDetails[0]}`)
+	}
 
 	store.phone = phoneDetails.phone
 
@@ -48,16 +62,25 @@ function sendOtp(event){
 			showView("otp-section")
 		else if(response.code == "USER_DOES_NOT_EXIST")
 			showAlert("phone-error", "Account not found")
+		recoverButton("normal")
 	}
 }
 
 
+
+
+
+let verifyButton = createButton(".verify-text", "Verify", "Verifying Otp...")
+
 function verifyOtp(event){
 	event.preventDefault()
+	verifyButton()
 	let otpDetails = extractForm(store.otpFormTag)
 	let missingDetails = hasKeys(otpDetails, ["code"])
-	if(missingDetails.length > 0)
+	if(missingDetails.length > 0){
+		verifyButton("normal")
 		return showAlert("otp-error", `You didn't fill data for ${missingDetails[0]}`)
+	}
 
 	store.code = otpDetails.code
 
@@ -69,18 +92,35 @@ function verifyOtp(event){
 			showView("password-section")
 		else if(response.code == "OTP_VERIFICATION_FAILED")
 			showAlert("otp-error", "Phone verification failed")
+		verifyButton("normal")
 	}
 }
 
+
+
+
+
+
+
+
+
+
+let passwordButton = createButton(".password-text", "Change Password", "Changing Password...")
+
 function changePassword(event){
 	event.preventDefault()
+	passwordButton()
 	let passwordDetails = extractForm(store.passwordFormTag)
 	let missingDetails = hasKeys(passwordDetails, ["password", "password2"])
-	if(missingDetails.length > 0)
+	if(missingDetails.length > 0){
+		passwordButton("normal")
 		return showAlert("password-error", `You didn't fill data for ${missingDetails[0]}`)
+	}
 
-	if(passwordDetails.password != passwordDetails.password2)
+	if(passwordDetails.password != passwordDetails.password2){
+		passwordButton("normal")
 		return showAlert("password-error", "Passwords do not match")
+	}
 
 	store.password = passwordDetails.password
 
@@ -92,6 +132,7 @@ function changePassword(event){
 			loginUser()
 		else
 			showAlert("password-error", "Problem changing password. Try again later")
+		passwordButton("normal")
 	}
 }
 
