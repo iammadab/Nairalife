@@ -12,7 +12,9 @@ async function verifyCard(data){
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
-	verifyTransaction(data.reference)
+	let verificationResult = await verifyTransaction(data.reference)
+	if(verificationResult.status != 200)
+		return verificationResult
 
 }
 
@@ -22,7 +24,10 @@ function verifyTransaction(reference){
 			.catch(handleFailure)
 
 	function handleSuccess(response){
-		console.log(response)
+		let authorization = response.data.data.authorization
+		if(authorization.reusable)
+			return { status: 200, code: "VERIFIED_CARD", authorization }
+		return { status: 403, code: "CARD_CANNOT_BE_REUSED" }
 	}
 
 	function handleFailure(response){
