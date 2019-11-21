@@ -32,6 +32,8 @@ function withdrawFunds(event){
 			showAlert("withdraw-success", "Withdrawal was successful")
 			store.withdrawInputs.forEach(input => input.value = "")
 		}
+		else if(response.code == "INVALID_PASSWORD")
+			showAlert("withdraw-error", "Invalid Password")
 		else if(response.code == "NEGATIVE_AMOUNT")
 			showAlert("withdraw-error", "You entered a negative amount")
 		else if(response.code == "INSUFFICIENT_BALANCE")
