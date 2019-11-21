@@ -33,7 +33,12 @@ async function verifyBvn(data){
 	if(addBankResult.status != 200)
 		return addBankResult
 
-	return { status: 200, code: "BVN_VERIFIED" }
+	// Ideally, the change state route should be connected to the veify bank and bvn, not just one
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "enter_card_details")
+	if(userObj)
+		return { status: 200, code: "BVN_VERIFIED_AND_ADDED" }
+
+	return { status: 500, code: "PROBLEM_ADDING_BVN" }
 }
 
 module.exports = verifyBvn
