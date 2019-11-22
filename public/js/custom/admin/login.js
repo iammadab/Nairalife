@@ -24,7 +24,7 @@ function loginAdmin(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
+		// console.log(response)
 		if(response.status == 200)
 			redirect("/admin/dashboard")
 		else if(response.code == "USER_DOES_NOT_EXIST")

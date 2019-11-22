@@ -2,9 +2,10 @@ const { promisify } = require("util")
 const { createValidator } = require("lazy-validator")
 
 const verify = promisify(require("jsonwebtoken").verify)
-const tokenValidator = createValidator("token.string")
 
-let validateToken = (req, res, next) => {
+let validateToken = tokenName => (req, res, next) => {
+	tokenName = tokenName || "token"
+	let tokenValidator = createValidator(`${tokenName}.string`)
 	let tokenValidationResult = tokenValidator.parse(req.body)
 	if(tokenValidationResult.error)
 		res.status(400).json({ code: "BAD_REQUEST_BODY", errors: tokenValidationResult.errors })
