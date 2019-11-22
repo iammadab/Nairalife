@@ -1,6 +1,6 @@
 const { createValidator } = require("lazy-validator")
 
-const createGroupValidator = createValidator("group_title.string, group_description.string, group_goals.string, total_members.number, contribution_amount.number, contribution_period.string")
+const createGroupValidator = createValidator("group_title.string, group_description.string, group_goals.string, total_members.number, contribution_amount.number, contribution_period.string.lowercase")
 
 const groupDb = require("../../data/db/group.db")
 
