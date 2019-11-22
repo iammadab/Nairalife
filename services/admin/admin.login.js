@@ -1,4 +1,5 @@
 const { createValidator } = require("lazy-validator")
+const jwt = require("jsonwebtoken")
 const { compare } = require("../../lib/crypt")
 
 const adminLoginValidator = createValidator("phone.number, password.string")
@@ -20,6 +21,10 @@ async function loginAdmin(data){
 	let samePassword = await compare(data.password, userObj.password)
 	if(!samePassword)
 		return { status: 403, code: "INVALID_PASSWORD" }
+
+	let adminToken = jwt.sign({ id: userObj._id, role: "admin", email: userObj.email, phone: data.phone }, process.env.SECRET_KEY, { expiresIn: "24h" })
+	console.log(adminToken)
+
 }
 
 module.exports = loginAdmin
