@@ -12,6 +12,12 @@ async function createGroup(data){
 	let groupData = validationResult.data
 	groupData.group_id = await uniqueGroupId()
 
+	let groupObj = await groupDb.createGroup(groupData)
+
+	if(!groupData)
+		return { status: 500, code: "PROBLEM_CREATING_GROUP" }
+	
+	return { status: 200, code: "GROUP_CREATED_SUCCESSFULLY" }
 
 }
 
