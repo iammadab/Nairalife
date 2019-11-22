@@ -9,14 +9,18 @@ let store = {
 	addEvent(store.loginInputs, "input,focus", () => hideAlert("login-error"))
 })()
 
+let loginButton = createButton(".login-text", "Admin Login", "Logging in...")
 function loginAdmin(event){
 	event.preventDefault()
+	loginButton()
 	let loginDetails = extractForm(store.loginFormTag)
 	let missingDetails = hasKeys(loginDetails, ["phone", "password"])
-	if(missingDetails.length > 1)
+	if(missingDetails.length > 1){
+		loginButton("normal")
 		return showAlert("login-error", `You didn't fill data for ${missingDetails[0]}`)
+	}
 
-	return api("admin/login", { phone: data.phone, password: data.password })
+	return api("admin/login", { phone: loginDetails.phone, password: loginDetails.password })
 			.then(handleResponse)
 
 	function handleResponse(response){
@@ -29,5 +33,6 @@ function loginAdmin(event){
 			return showAlert("login-error", "Account not authorized")
 		else if(response.code == "INVALID_PASSWORD")
 			return showAlert("login-error", "Invalid password")
+		loginButton("normal")
 	}	
 }
