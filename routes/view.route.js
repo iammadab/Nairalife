@@ -51,7 +51,6 @@ viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter
 })
 
 viewRouter.get("/admin/login", cookieFound("/admin/dashboard", "atoken"), (req, res) => {
-	console.log(req.cookies)
 	res.render("admin/login")
 })
 

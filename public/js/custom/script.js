@@ -48,7 +48,8 @@
 	
 	function logout(event){
 		event.preventDefault()
-		deleteCookie("token")
+		let tokenName = window.location.href.includes("admin") ? "atoken" : "token"
+		deleteCookie(tokenName)
 		redirect("/login")
 	}
 })()
