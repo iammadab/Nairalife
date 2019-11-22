@@ -62,6 +62,11 @@ viewRouter.get("/admin/create", cookieNotFound("/admin/login", "atoken"), verify
 	res.render("admin/create")
 })
 
+viewRouter.get("/admin/groups", pageService.groups, (req, res) => {
+	res.render("admin/groups")
+})
+
+
 viewRouter.get("/admin/members", (req, res) => {
 	res.render("admin/members")
 })
@@ -86,11 +91,6 @@ viewRouter.get("/admin/withdrawals", (req, res) => {
 
 viewRouter.get("/admin/points", (req, res) => {
 	res.render("admin/points")
-})
-
-
-viewRouter.get("/admin/groups", (req, res) => {
-	res.render("admin/groups")
 })
 
 viewRouter.get("/admin/group", (req, res) => {
