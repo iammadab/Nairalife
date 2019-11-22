@@ -12,6 +12,9 @@ async function loginAdmin(data){
 	let userObj = await userDb.findOneWith({ phone: data.phone })
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
+
+	if(userObj.role != "admin")
+		return { status: 403, code: "USER_NOT_AUTHORIZED" }
 }
 
 module.exports = loginAdmin
