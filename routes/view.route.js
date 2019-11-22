@@ -26,27 +26,27 @@ viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 	res.render("register")
 })
 
-viewRouter.get("/account", cookieNotFound("/login"), verifyToken, stageRouter("enter_account_details"), pageService.account, (req, res) => {
+viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter("enter_account_details"), pageService.account, (req, res) => {
 	res.render("account", { banks: req.body.pageData.banks })
 })
 
-viewRouter.get("/about", cookieNotFound("/login"), verifyToken, stageRouter("enter_contribution_preference"), (req, res) => {
+viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("enter_contribution_preference"), (req, res) => {
 	res.render("about")
 })
 
-viewRouter.get("/fee", cookieNotFound("/login"), verifyToken, stageRouter("enter_card_details"), (req, res) => {
+viewRouter.get("/fee", cookieNotFound("/login"), verifyToken(), stageRouter("enter_card_details"), (req, res) => {
 	res.render("fees")
 })
 
-viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.dashboard, (req, res) => {
+viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.dashboard, (req, res) => {
 	res.render("dashboard", { title: "Dashboard", link: "", ...req.body.pageData })
 })
 
-viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken, stageRouter("active"), (req, res) => {
+viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
 	res.render("withdraw", { title: "Withdraw", link: "withdraw" })
 })
 
-viewRouter.get("/settings", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.settings, (req, res) => {
+viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
 	res.render("settings", { title: "Settings", link: "settings", ...req.body.pageData })
 })
 
