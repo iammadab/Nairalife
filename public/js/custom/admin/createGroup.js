@@ -1,1 +1,3 @@
-alert("We move")
+let store = {
+	
+}
