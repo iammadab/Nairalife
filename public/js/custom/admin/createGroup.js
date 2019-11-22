@@ -16,4 +16,15 @@ function createGroup(event){
 	let missingDetails = hasKeys(groupDetails, ["group_title", "group_description", "group_goals", "total_members", "contribution_amount", "contribution_period"])
 	if(missingDetails.length > 0)
 		return showAlert("create-error", `You didn't fill data for ${missingDetails[0]}`)
+
+	return api("group", { ...groupDetails })
+			.then(handleResponse)
+
+	function handleResponse(response){
+		console.log(response)
+		if(response.status == 200){
+			showAlert("create-success", "Group created successfully")
+			store.createGroupInputs.forEach(input => input.value = "")
+		}
+	}
 }
