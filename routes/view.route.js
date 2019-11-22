@@ -63,7 +63,7 @@ viewRouter.get("/admin/create", cookieNotFound("/admin/login", "atoken"), verify
 })
 
 viewRouter.get("/admin/groups", pageService.groups, (req, res) => {
-	res.render("admin/groups")
+	res.render("admin/groups", { ...req.body.pageData })
 })
 
 
