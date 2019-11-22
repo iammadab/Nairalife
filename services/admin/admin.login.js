@@ -1,4 +1,5 @@
 const { createValidator } = require("lazy-validator")
+const { compare } = require("../../lib/crypt")
 
 const adminLoginValidator = createValidator("phone.number, password.string")
 
@@ -15,6 +16,10 @@ async function loginAdmin(data){
 
 	if(userObj.role != "admin")
 		return { status: 403, code: "USER_NOT_AUTHORIZED" }
+
+	let samePassword = await compare(data.password, userObj.password)
+	if(!samePassword)
+		return { status: 403, code: "INVALID_PASSWORD" }
 }
 
 module.exports = loginAdmin
