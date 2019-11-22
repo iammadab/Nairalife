@@ -38,6 +38,7 @@ function saveInformation(event){
 	let profileDetails = extractForm(store.profileElementTag)
 	let missingKeys = hasKeys(profileDetails, ["fullname", "phone", "email", "sex", "title", "relationship", "bio"])
 	if(missingKeys.length > 0){
+		scrollTo(0, 100)
 		saveButton("normal")
 		return showAlert("profile-error", `You didn't fill data for ${missingKeys[0]}`)
 	}
@@ -50,6 +51,7 @@ function saveInformation(event){
 			showAlert("profile-success", "Profile updated successfully")
 			redirect(window.location.href)
 		}
+		scrollTo(0, 100)
 		saveButton("normal")
 	}
 }

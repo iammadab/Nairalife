@@ -4,6 +4,7 @@
 	toggleNav
 	attachLogout
 	setDefaultOption
+	scrollTop
 	showView
 	showError
 	showAlert
@@ -57,6 +58,27 @@
 	elementsWithDefaults.forEach(element => {
 		element.value = element.dataset["defaultvalue"]
 	})
+})()
+
+;(function scrollTop(){
+	const elements = {
+		chatIcon: document.querySelector(".kt-scrolltop")
+	}
+
+	;(function attachEvents(){
+		window.addEventListener("scroll", () => {
+			let scrollTop = getScrollTop()
+			if(scrollTop > 150)
+				document.body.classList.add("kt-scrolltop--on")
+			else
+				document.body.classList.remove("kt-scrolltop--on")
+		})
+	})()
+
+	function getScrollTop(){
+		var scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
+		return scrollTop
+	}
 })()
 
 function showView(viewName){
