@@ -55,7 +55,7 @@ viewRouter.get("/admin/login", cookieFound("/admin/dashboard", "atoken"), (req, 
 	res.render("admin/login")
 })
 
-viewRouter.get("/admin/dashboard", cookieNotFound("/admin/login"), verifyToken("atoken"), (req, res) => {
+viewRouter.get("/admin/dashboard", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
 	res.render("admin/dashboard")
 })
 

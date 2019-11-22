@@ -16,7 +16,7 @@ let validateToken = tokenName => (req, res, next) => {
 		.catch(handleErrors)
 
 	function verifyToken(token){
-		return verify(req.body.token, process.env.SECRET_KEY)
+		return verify(req.body[tokenName], process.env.SECRET_KEY)
 	}
 
 	function attachUserInfo(decodedToken){
