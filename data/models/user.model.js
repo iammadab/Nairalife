@@ -17,7 +17,9 @@ const userSchema = mongoose.Schema({
 	user_id: { type: Number, required: true, unique: true },
 	nairascore: { type: Number, default: 0 },
 	nairapoints: { type: Number, default: 0 },
-	balance: { type: Number, default: 0 }
+	balance: { type: Number, default: 0 },
+
+	role: { type: String, default: "user" } // user or admin
 })
 
 const userModel = mongoose.model("User", userSchema)
