@@ -4,7 +4,8 @@ const groupRouter = express.Router()
 const { bodyResponder } = require("./serviceAdapter")
 
 const groupService = require("../services/group")
+const authenticationService = require("../services/authentication")
 
-groupRouter.post("/", bodyResponder(groupService.createGroup))
+groupRouter.post("/", authenticationService.verifyToken("token"), bodyResponder(groupService.createGroup))
 
 module.exports = groupRouter
