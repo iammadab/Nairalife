@@ -50,12 +50,12 @@ viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter
 	res.render("settings", { title: "Settings", link: "settings", ...req.body.pageData })
 })
 
-viewRouter.get("/admin/login", cookieFount("/admin/dashboard"), (req, res) => {
+viewRouter.get("/admin/login", cookieFound("/admin/dashboard", "atoken"), (req, res) => {
 	console.log(req.cookies)
 	res.render("admin/login")
 })
 
-viewRouter.get("/admin/dashboard", verifyToken("a-token"), (req, res) => {
+viewRouter.get("/admin/dashboard", cookieNotFound("/admin/login"), verifyToken("atoken"), (req, res) => {
 	res.render("admin/dashboard")
 })
 
