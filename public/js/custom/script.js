@@ -49,8 +49,12 @@
 	function logout(event){
 		event.preventDefault()
 		let tokenName = window.location.href.includes("admin") ? "atoken" : "token"
+		let cookieData = {
+			"atoken": { path: "/admin", redirect: "/admin/login" },
+			"token": { path: "/", redirect: "/login" }
+		}
 		deleteCookie(tokenName)
-		redirect("/login")
+		redirect(cookieData[tokenName].redirect)
 	}
 })()
 
