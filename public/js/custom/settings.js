@@ -39,7 +39,7 @@ function saveInformation(event){
 	let missingKeys = hasKeys(profileDetails, ["fullname", "phone", "email", "sex", "title", "relationship", "bio"])
 	if(missingKeys.length > 0){
 		saveButton("normal")
-		return showError("profile-error", `You didn't fill data for ${missingKeys[0]}`)
+		return showAlert("profile-error", `You didn't fill data for ${missingKeys[0]}`)
 	}
 
 	return api("user/profile", { ...profileDetails, token: getToken() })

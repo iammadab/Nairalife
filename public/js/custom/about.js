@@ -6,7 +6,7 @@ let store = {
 
 ;(function attachEvents(){
 	addEvent([store.preferenceButton], "click", submitPreference)
-	addEvent(store.inputs, "input,focus", () => hideError("preference-error"))
+	addEvent(store.inputs, "input,focus", () => hideAlert("preference-error"))
 })()	
 
 function submitPreference(event){
@@ -14,7 +14,7 @@ function submitPreference(event){
 	let preferenceDetails = extractForm(store.preferenceFormTag)
 	let missingDetails = hasKeys(preferenceDetails, ["sex"])
 	if(missingDetails.length > 0)
-		return showError("preference-error", `You didn't fill a value for ${missingDetails[0]}`)
+		return showAlert("preference-error", `You didn't fill a value for ${missingDetails[0]}`)
 
 	return api("user/preference", { ...preferenceDetails, token: getToken() })
 			.then(handleResponse)

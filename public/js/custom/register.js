@@ -14,10 +14,10 @@ let store = {
 
 ;(function attachEvents(){
 	addEvent([store.registerButton], "click", startRegistration)
-	addEvent(store.registrationInputs, "input,focus", () => hideError("register-error"))
+	addEvent(store.registrationInputs, "input,focus", () => hideAlert("register-error"))
 
 	addEvent([store.verifyOtpButton], "click", registerUser)
-	addEvent(store.otpInputs, "input,focus", () => hideError("otp-error"))
+	addEvent(store.otpInputs, "input,focus", () => hideAlert("otp-error"))
 	addEvent([store.resendOtpButton], "click", resendOtp)
 })()
 
@@ -39,7 +39,7 @@ function startRegistration(event){
 
 	if(missingKeys.length > 0){
 		registerButton("normal")
-		return showError("register-error", `You didn't fill data for ${missingKeys[0]}`)
+		return showAlert("register-error", `You didn't fill data for ${missingKeys[0]}`)
 	}
 
 	checkIfPhoneExists()
@@ -55,7 +55,7 @@ function startRegistration(event){
 		function handleResponse(response){
 			if(!response.exists) return
 			registerButton("normal")
-			showError("register-error", "Phone already exists")
+			showAlert("register-error", "Phone already exists")
 			throw new Error()
 		}
 	}
@@ -67,7 +67,7 @@ function startRegistration(event){
 		function handleResponse(response){
 			if(!response.exists) return
 			registerButton("normal")
-			showError("register-error", "Email already exists")
+			showAlert("register-error", "Email already exists")
 			throw new Error()
 		}
 	}
@@ -80,7 +80,7 @@ function startRegistration(event){
 			if(response.status == 200)
 				showView("otp-section")
 			else
-				showError("register-error", "Problem generating otp, try again later")
+				showAlert("register-error", "Problem generating otp, try again later")
 			registerButton("normal")
 		}
 	}
@@ -101,7 +101,7 @@ function registerUser(event){
 
 	if(missingKeys.length > 0){
 		otpButton("normal")
-		return showError("otp-error", `You didn't fill data for ${missingKeys[0]}`)
+		return showAlert("otp-error", `You didn't fill data for ${missingKeys[0]}`)
 	}
 
 	store.userDetails.code = otpDetails.code
@@ -113,7 +113,7 @@ function registerUser(event){
 		if(response.status == 200)
 			redirect("/account")
 		else if(response.code == "OTP_VERIFICATION_FAILED")
-			showError("otp-error", "Invalid Otp")
+			showAlert("otp-error", "Invalid Otp")
 		otpButton("normal")
 	}
 
