@@ -55,7 +55,7 @@ viewRouter.get("/admin/login", (req, res) => {
 	res.render("admin/login")
 })
 
-viewRouter.get("/admin/dashboard", (req, res) => {
+viewRouter.get("/admin/dashboard", verifyToken("a-token"), (req, res) => {
 	res.render("admin/dashboard")
 })
 
