@@ -4,7 +4,6 @@ const { createValidator } = require("lazy-validator")
 const verify = promisify(require("jsonwebtoken").verify)
 
 let validateToken = tokenName => (req, res, next) => {
-	console.log(req.body)
 	tokenName = tokenName || "token"
 	let tokenValidator = createValidator(`${tokenName}.string`)
 	let tokenValidationResult = tokenValidator.parse(req.body)
