@@ -13,21 +13,24 @@
 <th class="kt-font-bolder">Comments</th>
 <th class="kt-font-bolder">Status</th>
 <th class="kt-font-bolder"></th>
+<% for(let i = 0; i < groups.length; i++){ %>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
-<td>1256799ADD</td>
-<td>30,000 daily contributions</td>
-<td>30</td>
+<td><%= i + 1 %></td>
+<td><%= groups[i].group_id %></td>
+<td><%= groups[i].group_title %></td>
+<td><%= groups[i].total_members %></td>
 <td>&#8358;190,000</td>
 <td>18%</td>
 <td>20</td>
-<td class="text-capitalize kt-font-info">Active</td>
+<td class="text-capitalize kt-font-info"><%= groups[i].status %></td>
 <td><a href="#" class="btn btn-secondary btn-sm">View</a></td>
 </tr>
-<tr>
+<% } %>
+
+<!-- <tr>
 <td>2</td>
 <td>0826541OSE</td>
 <td>40,000 weekly contributions</td>
@@ -71,7 +74,7 @@
 <td class="text-capitalize kt-font-success">Ended</td>
 <td><a href="#" class="btn btn-secondary btn-sm">View</a></td>
 </tr>
-</tbody>	
+ --></tbody>	
 </table>
 </div>
 </div>
