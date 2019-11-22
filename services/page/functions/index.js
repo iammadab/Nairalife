@@ -1,9 +1,11 @@
 const fetchUser = require("./fetchUser")
 const fetchBanks = require("./fetchBanks")
+const fetchGroups = require("./fetchGroups")
 
 const pageFunctions = {
 	fetchUser,
-	fetchBanks
+	fetchBanks,
+	fetchGroups
 }
 
 module.exports = pageFunctions
