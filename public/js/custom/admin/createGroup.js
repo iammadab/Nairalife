@@ -10,6 +10,7 @@ let store = {
 	addEvent(store.createGroupInputs, "input,focus", () => hideAlert("create-success"))
 })()
 
+let createGroupButton = createButton(".create-text", "Create Group", "Creating group...")
 function createGroup(event){
 	event.preventDefault()
 	let groupDetails = extractForm(store.createGroupFormTag)
@@ -21,7 +22,6 @@ function createGroup(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
 		if(response.status == 200){
 			showAlert("create-success", "Group created successfully")
 			store.createGroupInputs.forEach(input => input.value = "")
