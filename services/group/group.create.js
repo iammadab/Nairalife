@@ -14,14 +14,18 @@ async function createGroup(data){
 
 	let groupObj = await groupDb.createGroup(groupData)
 
-	if(!groupData)
+	if(!groupObj)
 		return { status: 500, code: "PROBLEM_CREATING_GROUP" }
-	
+
 	return { status: 200, code: "GROUP_CREATED_SUCCESSFULLY" }
 
 }
 
 module.exports = createGroup
+
+
+
+
 
 async function uniqueGroupId(count){
 	count = count || 1
