@@ -25,10 +25,21 @@ function verifyBank(event){
 	function handleResponse(response){
 		// console.log(response)
 		if(response.status == 200)
-			redirect("/about")
+			sendBvn(bankDetails.bvn)
 		else if(response.code == "ACCOUNT_VERIFICATION_FAILED")
 			return showAlert("bank-error", response.message)
+	}
+}
+
+function sendBvn(bvn){
+	return api("bvn/verify", { bvn, token: getToken() })
+			.then(handleResponse)
+
+	function handleResponse(response){
+		console.log(response)
+		if(response.status == 200)
+			redirect("/about")
 		else if(response.code == "BVN_VERIFICATION_FAILED")
 			return showAlert("bank-error", response.message)
-	}
+	}	
 }
