@@ -17,7 +17,7 @@ function createGroup(event){
 	if(missingDetails.length > 0)
 		return showAlert("create-error", `You didn't fill data for ${missingDetails[0]}`)
 
-	return api("group", { ...groupDetails })
+	return api("group", { ...groupDetails, token: getToken("atoken") })
 			.then(handleResponse)
 
 	function handleResponse(response){
