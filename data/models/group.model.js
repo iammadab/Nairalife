@@ -10,7 +10,8 @@ const groupSchema = mongoose.Schema({
 	contribution_period: { type: String, required: true, enum: ["daily", "weekly", "monthly"]},
 
 	status: { type: String, default: "active", enum: ["active", "ended"] },
-	total_contribution: { type: Number, default: 0 }
+	total_contribution: { type: Number, default: 0 },
+	default_rate: { tyep: Number, default: 0 }
 })
 
 const groupModel = mongoose.model("Group", groupSchema)
