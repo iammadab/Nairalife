@@ -50,7 +50,7 @@ viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter
 	res.render("settings", { title: "Settings", link: "settings", ...req.body.pageData })
 })
 
-viewRouter.get("/admin/login", (req, res) => {
+viewRouter.get("/admin/login", cookieFount("/admin/dashboard"), (req, res) => {
 	console.log(req.cookies)
 	res.render("admin/login")
 })
