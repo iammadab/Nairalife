@@ -25,6 +25,7 @@ async function loginAdmin(data){
 	let adminToken = jwt.sign({ id: userObj._id, role: "admin", email: userObj.email, phone: data.phone }, process.env.SECRET_KEY, { expiresIn: "24h" })
 	console.log(adminToken)
 
+	return { status: 200, code: "ADMIN_LOGGED_IN", atoken: adminToken, cookie: ["atoken"] }
 }
 
 module.exports = loginAdmin
