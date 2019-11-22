@@ -25,7 +25,7 @@ function verifyBank(event){
 	function handleResponse(response){
 		// console.log(response)
 		if(response.status == 200)
-			redirect("/home")
+			redirect("/about")
 		else if(response.code == "ACCOUNT_VERIFICATION_FAILED")
 			return showAlert("bank-error", response.message)
 		else if(response.code == "BVN_VERIFICATION_FAILED")
