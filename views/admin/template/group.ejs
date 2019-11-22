@@ -28,7 +28,7 @@
 
 <% let statusType = groups[i].status == "active" ? "info" : "success" %>
 <td class="text-capitalize kt-font-<%= statusType %>"><%= groups[i].status %></td>
-<td><a href="#" class="btn btn-secondary btn-sm">View</a></td>
+<td><a href="/admin/group/<%= groups[i].group_id %>" class="btn btn-secondary btn-sm">View</a></td>
 </tr>
 <% } %>
 
