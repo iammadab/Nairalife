@@ -28,11 +28,11 @@ function loginAdmin(event){
 		if(response.status == 200)
 			console.log("Yay")
 		else if(response.code == "USER_DOES_NOT_EXIST")
-			return showAlert("login-error", "Account not found")
+			showAlert("login-error", "Account not found")
 		else if(response.code == "USER_NOT_AUTHORIZED")
-			return showAlert("login-error", "Account not authorized")
+			showAlert("login-error", "Account not authorized")
 		else if(response.code == "INVALID_PASSWORD")
-			return showAlert("login-error", "Invalid password")
+			showAlert("login-error", "Invalid password")
 		loginButton("normal")
 	}	
 }
