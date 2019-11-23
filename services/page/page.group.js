@@ -7,3 +7,5 @@ async function group(req, res, next){
 	console.log(groupObj)
 	next()
 }
+
+module.exports = group
