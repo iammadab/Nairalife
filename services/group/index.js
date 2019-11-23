@@ -1,7 +1,9 @@
 const createGroup = require("./group.create")
+const addMember = require("./group.addMember")
 
 const groupServices = {
-	createGroup
+	createGroup,
+	addMember
 }
 
 module.exports = groupServices
