@@ -12,7 +12,9 @@ const groupSchema = mongoose.Schema({
 	status: { type: String, default: "active", enum: ["active", "ended"] },
 	total_contribution: { type: Number, default: 0 },
 	default_rate: { type: Number, default: 0 },
-	comments: { type: Number, default: 0 }
+	comments: { type: Number, default: 0 },
+
+	members: { type: Array, default: [] }
 })
 
 const groupModel = mongoose.model("Group", groupSchema)
