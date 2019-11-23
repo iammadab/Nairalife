@@ -14,9 +14,10 @@
 </tr>
 </thead>
 <tbody>
+<% group.members.forEach(member => { %>
 <tr>
-<td>Akin Wumi Owolabi</td>
-<td>30 days ago</td>
+<td><%= member.fullname %></td>
+<td><%= member.join_date %></td>
 <td>18,000 naira</td>
 <td>69</td>
 <td>1st</td>
@@ -24,7 +25,9 @@
 <td class="text-capitalize kt-font-success">Received</td>
 <td><a href="#" class="btn btn-secondary btn-sm">Remove</a></td>
 </tr>
-<tr>
+<% }) %>
+
+<!-- <tr>
 <td>Wisdom Madab</td>
 <td>30 days ago</td>
 <td>18,000 naira</td>
@@ -63,7 +66,7 @@
 <td>05-12-2019</td>
 <td class="text-capitalize kt-font-info">Waiting</td>
 <td><a href="#" class="btn btn-secondary btn-sm">Remove</a></td>
-</tr>
+</tr> -->
 </tbody>
 </table>
 </div>

@@ -12,7 +12,6 @@ let store = {
 
 function addMember(event){
 	event.preventDefault()
-	console.log("Adding member")
 	let addDetails = extractForm(store.addMemberFormTag)
 	let missingDetails = hasKeys(addDetails, ["user_id", "group_id"])
 	if(missingDetails.length > 0)
