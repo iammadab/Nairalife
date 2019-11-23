@@ -42,6 +42,16 @@ viewRouter.get("/settings", cookieNotFound("/login"), verifyToken, stageRouter("
 	res.render("settings", { title: "Settings", link: "settings", user: req.body.pageData.user._doc })
 })
 
+
+viewRouter.get("/higher", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.settings, (req, res) => {
+	res.render("higher", { title: "Get Higher Purchase", link: "higher purchase", user: req.body.pageData.user._doc })
+})
+
+viewRouter.get("/auto", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.settings, (req, res) => {
+	res.render("auto", { title: "Nairalife Autosave"})
+})
+
+
 viewRouter.get("/admin/login", (req, res) => {
 	res.render("admin/login")
 })
