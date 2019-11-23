@@ -17,6 +17,17 @@ async function addMember(data){
 	let groupObj = await groupDb.findOneWith({ group_id: data.group_id })
 	if(!groupObj)
 		return { status: 403, code: "GROUP_DOES_NOT_EXIST" }
+
+	let groupMembers = groupObj.members
+	groupMembers.push({
+		user_id: data.user_id,
+		fullname: userObj.fullname,
+		join_date: new Date()
+	})
+
+	console.log(groupMembers)
+
+	console.log(memberData)
 }
 
 module.exports = addMember
