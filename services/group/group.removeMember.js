@@ -20,6 +20,9 @@ async function removeMember(data){
 	if(!groupObj)
 		return { status: 403, code: "GROUP_DOES_NOT_EXIST" }
 
+	if(!userObj.group)
+		return { status: 403, code: "USER_HAS_NO_GROUP" }
+
 
 }
 
