@@ -28,8 +28,10 @@ async function removeMember(data){
 
 	let members = groupObj.members
 	members = members.map(member => {
-		if(member.user_id == data.user_id)
+		if(member.user_id == data.user_id && !member.removed){
 			member.removed = true
+			member.removed_date = new Date()
+		}
 		return member
 	})
 
