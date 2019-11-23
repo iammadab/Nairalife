@@ -3,7 +3,7 @@ const pageFunctions = require("./functions")
 async function dashboard(req, res, next){
 	let userObj = await pageFunctions.fetchUser(req.body.user.id)
 	let groupObj = await pageFunctions.fetchGroup(userObj.group)
-	console.log(groupObj)
+	
 	req.body.pageData = {
 		user: userObj,
 		group: groupObj
