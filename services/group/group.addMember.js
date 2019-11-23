@@ -28,7 +28,13 @@ async function addMember(data){
 		join_date: new Date()
 	})
 
-	console.log(groupMembers)
+	userObj = await userDb.appendDoc({ user_id: data.user_id }, "group", data.group_id)
+	if(!userObj)
+		return { status: 500, code: "PROBLEM_ADDING_USER", message: "Occured when adding group to member" }
+
+	groupObj = await groupDb.appendDoc({ group_id: data.group_id }, "members", groupMembers)
+	if(!groupObj)
+		return { status: 500, code: "PROBLEM_ADDING_USER", message: "Occured when adding member to group"}
 }
 
 module.exports = addMember
