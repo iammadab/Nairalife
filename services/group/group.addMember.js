@@ -18,6 +18,9 @@ async function addMember(data){
 	if(!groupObj)
 		return { status: 403, code: "GROUP_DOES_NOT_EXIST" }
 
+	if(userObj.group)
+		return { status: 403, code: "USER_HAS_GROUP" }
+
 	let groupMembers = groupObj.members
 	groupMembers.push({
 		user_id: data.user_id,
@@ -26,8 +29,6 @@ async function addMember(data){
 	})
 
 	console.log(groupMembers)
-
-	console.log(memberData)
 }
 
 module.exports = addMember
