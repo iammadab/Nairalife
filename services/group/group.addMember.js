@@ -35,6 +35,8 @@ async function addMember(data){
 	groupObj = await groupDb.appendDoc({ group_id: data.group_id }, "members", groupMembers)
 	if(!groupObj)
 		return { status: 500, code: "PROBLEM_ADDING_USER", message: "Occured when adding member to group"}
+
+	return { status: 200, code: "ADDED_USER_TO_GROUP" }
 }
 
 module.exports = addMember
