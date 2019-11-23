@@ -1,33 +1,33 @@
 <div class="kt-portlet btopzero">
-<div class="kt-portlet__body kt-padding-10">
+<div class="kt-portlet__body kt-padding-10 kt-padding-b-0">
 <div class="kt-section__content table-responsive">
-<table class="table">
+<table class="table kt-margin-b-0">
 <thead>
 <tr>
-<th class="kt-font-bolder" colspan="2">My Nairalife Statistics</th>
+<th class="kt-font-bolder" style="color:#008000;" colspan="2">My Nairalife Account Summary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="kt-font-bold">My Nairascore:</td>
-<td class="text-right" data-format="number"><%= user.nairascore %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">My Nairapoints:</td>
-<td class="text-right" data-format="number"><%= user.nairapoints %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">My Guarantor Code:</td>
-<td class="text-right"><%= user.user_id %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">My Contributions:</td>
+<td class="kt-font-bold">Current Balance:</td>
 <td class="text-right" data-format="number">&#8358;0</td>
 </tr>
 <tr>
-<td class="kt-font-bold">My Balance:</td>
+<td class="kt-font-bold">Available Balance:</td>
 <td class="text-right" data-format="number">&#8358;<%= user.balance %></td>
 </tr>
+<tr>
+<td class="kt-font-bold">Nairalife Score:</td>
+<td class="text-right" data-format="number">7<%= user.nairascore %> / 100</td>
+</tr>
+<tr>
+<td class="kt-font-bold">Nairalife Points:</td>
+<td class="text-right" data-format="number"><%= user.nairapoints %></td>
+</tr>
+<!-- <tr>
+<td class="kt-font-bold">Guarantor Code:</td>
+<td class="text-right"><%= user.user_id %></td>
+</tr> -->
 </tbody>
 </table>
 </div>
