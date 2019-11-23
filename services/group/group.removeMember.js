@@ -26,6 +26,15 @@ async function removeMember(data){
 	if(userObj.group != data.group_id)
 		return { status: 403, code: "USER_DOES_NOT_BELONG_TO_GROUP" }
 
+	let members = groupObj.members
+	console.log(members)
+	members = members.map(member => {
+		if(member.user_id == data.user_id)
+			member.removed = true
+		return member
+	})
+	console.log(members)
+
 
 }
 
