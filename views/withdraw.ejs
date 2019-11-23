@@ -21,14 +21,31 @@ Please, enter the amount you want to withdraw below.
 </div>
 </div>
 
+<div class="alert alert-danger alert-bold fade show kt-margin-t-20 kt-margin-b-20 otp-error withdraw-error" role="alert">
+<div class="alert-text">
+Please, enter the amount you want to withdraw below.
+</div>
+</div>
 
-<div class="form-group">
+<div class="alert alert-success alert-bold fade show kt-margin-t-20 kt-margin-b-20 otp-error withdraw-success" role="alert">
+<div class="alert-text">
+Please, enter the amount you want to withdraw below.
+</div>
+</div>
+
+
+<div class="form-group withdraw-form">
 <label>Enter Amount</label>
-<input type="text" class="form-control form-control-lg">
+<input type="number" name="amount" class="form-control form-control-lg" autocomplete="off">
+
+<label>Enter Password (for security reasons)</label>
+<input type="password" name="password" class="form-control form-control-lg" autocomplete="off">
 </div>
 
 <div class="kt-form__actions kt-text-align-center-mobile">
-<button type="button" class="btn btn-tall btn-primary"><i class="la la-slack kt-margin-r-5"></i> Withdraw</button>
+<button type="button" class="btn btn-tall btn-primary withdraw-button"><i class="la la-slack kt-margin-r-5"></i>
+<span class="withdraw-text">Withdraw</span>
+</button>
 </div>
 
 
@@ -36,5 +53,5 @@ Please, enter the amount you want to withdraw below.
 <!--end::Portlet-head-->
 </div>
 <!--end::Portlet-->
-
-<?php include 'footer.php';?>
+<% include footer %>
+<script type="text/javascript" src="js/custom/withdraw.js"></script>

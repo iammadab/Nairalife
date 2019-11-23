@@ -4,6 +4,7 @@
 	toggleNav
 	attachLogout
 	setDefaultOption
+	scrollTop
 	showView
 	showError
 	showAlert
@@ -18,6 +19,7 @@
 	setValue
 	getToken
 	deleteCookie
+	createButton
 */
 
 ;(function toggleNav(){
@@ -46,8 +48,13 @@
 	
 	function logout(event){
 		event.preventDefault()
-		deleteCookie("token")
-		redirect("/login")
+		let tokenName = window.location.href.includes("admin") ? "atoken" : "token"
+		let cookieData = {
+			"atoken": { path: "/admin", redirect: "/admin/login" },
+			"token": { path: "/", redirect: "/login" }
+		}
+		deleteCookie(tokenName)
+		redirect(cookieData[tokenName].redirect)
 	}
 })()
 
@@ -56,6 +63,27 @@
 	elementsWithDefaults.forEach(element => {
 		element.value = element.dataset["defaultvalue"]
 	})
+})()
+
+;(function scrollTop(){
+	const elements = {
+		chatIcon: document.querySelector(".kt-scrolltop")
+	}
+
+	;(function attachEvents(){
+		window.addEventListener("scroll", () => {
+			let scrollTop = getScrollTop()
+			if(scrollTop > 150)
+				document.body.classList.add("kt-scrolltop--on")
+			else
+				document.body.classList.remove("kt-scrolltop--on")
+		})
+	})()
+
+	function getScrollTop(){
+		var scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop
+		return scrollTop
+	}
 })()
 
 function showView(viewName){
@@ -172,4 +200,11 @@ function getToken(search){
 
 function deleteCookie(cookieName){
 	document.cookie = cookieName + "=;expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+}
+
+function createButton(element, normal, active){
+	return function(state){
+		let elementObj = document.querySelector(element)
+		elementObj.innerText = state == "normal" ? normal : active
+	}
 }

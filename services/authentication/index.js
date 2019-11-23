@@ -4,6 +4,7 @@ const cookieFound = require("./authentication.cookieFound")
 const cookieNotFound = require("./authentication.cookieNotFound")
 const stageRouter = require("./authentication.stageRouter")
 const verifyToken = require("./authentication.verifyToken")
+const validateAdmin = require("./authentication.validateAdmin")
 
 const authenticationServices = {
 	createOtp,
@@ -11,7 +12,8 @@ const authenticationServices = {
 	cookieFound,
 	cookieNotFound,
 	stageRouter,
-	verifyToken
+	verifyToken,
+	validateAdmin
 }
 
 module.exports = authenticationServices

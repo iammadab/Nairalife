@@ -26,20 +26,20 @@ viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 	res.render("register")
 })
 
-viewRouter.get("/account", cookieNotFound("/login"), verifyToken, stageRouter("enter_card_details"), pageService.account, (req, res) => {
+viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter("enter_account_details"), pageService.account, (req, res) => {
 	res.render("account", { banks: req.body.pageData.banks })
 })
 
-viewRouter.get("/about", cookieNotFound("/login"), verifyToken, stageRouter("enter_contribution_preference"), (req, res) => {
+viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("enter_contribution_preference"), (req, res) => {
 	res.render("about")
 })
 
-viewRouter.get("/home", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.dashboard, (req, res) => {
-	res.render("dashboard", { title: "Dashboard", link: "", user: req.body.pageData.user })
+viewRouter.get("/fee", cookieNotFound("/login"), verifyToken(), stageRouter("enter_card_details"), (req, res) => {
+	res.render("fees")
 })
 
-viewRouter.get("/settings", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.settings, (req, res) => {
-	res.render("settings", { title: "Settings", link: "settings", user: req.body.pageData.user._doc })
+viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.dashboard, (req, res) => {
+	res.render("dashboard", { title: "Dashboard", link: "", ...req.body.pageData })
 })
 
 
@@ -52,12 +52,24 @@ viewRouter.get("/auto", cookieNotFound("/login"), verifyToken, stageRouter("acti
 })
 
 
-viewRouter.get("/admin/login", (req, res) => {
+viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
+	res.render("withdraw", { title: "Withdraw", link: "withdraw" })
+})
+
+viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
+	res.render("settings", { title: "Settings", link: "settings", ...req.body.pageData })
+})
+
+viewRouter.get("/admin/login", cookieFound("/admin/dashboard", "atoken"), (req, res) => {
 	res.render("admin/login")
 })
 
-viewRouter.get("/admin/dashboard", (req, res) => {
+viewRouter.get("/admin/dashboard", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
 	res.render("admin/dashboard")
+})
+
+viewRouter.get("/admin/create", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
+	res.render("admin/create")
 })
 
 viewRouter.get("/admin/members", (req, res) => {
@@ -97,10 +109,6 @@ viewRouter.get("/admin/group", (req, res) => {
 
 viewRouter.get("/admin/contributions", (req, res) => {
 	res.render("admin/contributions")
-})
-
-viewRouter.get("/admin/create", (req, res) => {
-	res.render("admin/create")
 })
 
 viewRouter.get("/admin/change", (req, res) => {

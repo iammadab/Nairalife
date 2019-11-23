@@ -6,37 +6,51 @@ Create A New Nairalife Group
 </h3>
 </div>
 </div>	
-<div class="kt-portlet__body">
+<div class="kt-portlet__body create-form">
+
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 otp-error create-error" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
+
+<div class="alert alert-success alert-bold fade show kt-margin-b-20 otp-error create-success" role="alert">
+<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
 
 <div class="form-group">
 <label>Group Title</label>
-<input type="text" class="form-control form-control-lg">
+<input type="text" name="group_title" class="form-control form-control-lg">
 </div>
 
 <div class="form-group">
 <label>Group Description</label>
-<textarea class="form-control form-control-lg"></textarea>
+<textarea name="group_description" class="form-control form-control-lg"></textarea>
 </div>
 
 <div class="form-group">
 <label>Group Goals</label>
-<textarea class="form-control form-control-lg"></textarea>
+<textarea name="group_goals" class="form-control form-control-lg"></textarea>
 </div>
 
 <div class="form-group">
 <label>Total Members</label>
-<input type="text" class="form-control form-control-lg">
+<input type="number" name="total_members" class="form-control form-control-lg">
 </div>
 
 <div class="form-group">
 <label>Contribution Amount (&#8358;)</label>
-<input type="text" class="form-control form-control-lg">
+<input type="number" name="contribution_amount" class="form-control form-control-lg">
 </div>
 
 <div class="form-group">
 <label>Contribution Period</label>
-<select class="custom-select custom-select-lg">
-<option></option>
+<select name="contribution_period" class="custom-select custom-select-lg">
+<option value=""></option>
 <option value="Daily">Daily</option>
 <option value="Weekly">Weekly</option>
 <option value="Monthly">Monthly</option>
@@ -44,7 +58,7 @@ Create A New Nairalife Group
 </div>
 
 <div class="kt-form__actions kt-text-align-center-mobile">
-<button type="button" class="btn btn-tall btn-primary"><i class="la la-edit"></i>Create Group</button>
+<button type="button" class="btn btn-tall btn-primary create-group-button"><i class="la la-edit"></i>Create Group</button>
 </div>
 
 </div>

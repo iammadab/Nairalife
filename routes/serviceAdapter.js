@@ -10,8 +10,11 @@ function createResponder(type){
 				return res.status(500).json({ code: "NO_RESPONSE", message: "Got no response from the server" })
 			if(!responseData.status)
 				responseData.status = 500
-			if(responseData.cookie)
-				res.cookie(responseData.cookie[0], responseData[responseData.cookie[0]])
+			if(responseData.cookie){
+				let [cookieName, path] = responseData.cookie[0].split(".")
+				path = path ? `/${path}` : "/"
+				res.cookie(cookieName, responseData[cookieName], { path })
+			}
 			return res.status(responseData.status).json(responseData)
 		}
 	}

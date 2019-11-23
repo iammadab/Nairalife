@@ -14,10 +14,10 @@ let store = {
 
 ;(function attachEvents(){
 	addEvent([store.registerButton], "click", startRegistration)
-	addEvent(store.registrationInputs, "input,focus", () => hideError("register-error"))
+	addEvent(store.registrationInputs, "input,focus", () => hideAlert("register-error"))
 
 	addEvent([store.verifyOtpButton], "click", registerUser)
-	addEvent(store.otpInputs, "input,focus", () => hideError("otp-error"))
+	addEvent(store.otpInputs, "input,focus", () => hideAlert("otp-error"))
 	addEvent([store.resendOtpButton], "click", resendOtp)
 })()
 
@@ -29,14 +29,18 @@ let store = {
 
 
 
+let registerButton = createButton(".register-text", "Join Us", "Registering...")
 
 function startRegistration(event){
 	event.preventDefault()
+	registerButton()
 	let userDetails = store.userDetails = extractForm(store.registerFormTag)
 	let missingKeys = hasKeys(userDetails, ["fullname", "phone", "password"])
 
-	if(missingKeys.length > 0)
-		return showError("register-error", `You didn't fill data for ${missingKeys[0]}`)
+	if(missingKeys.length > 0){
+		registerButton("normal")
+		return showAlert("register-error", `You didn't fill data for ${missingKeys[0]}`)
+	}
 
 	checkIfPhoneExists()
 		.then(checkIfEmailExists)
@@ -50,7 +54,8 @@ function startRegistration(event){
 
 		function handleResponse(response){
 			if(!response.exists) return
-			showError("register-error", "Phone already exists")
+			registerButton("normal")
+			showAlert("register-error", "Phone already exists")
 			throw new Error()
 		}
 	}
@@ -61,7 +66,8 @@ function startRegistration(event){
 
 		function handleResponse(response){
 			if(!response.exists) return
-			showError("register-error", "Email already exists")
+			registerButton("normal")
+			showAlert("register-error", "Email already exists")
 			throw new Error()
 		}
 	}
@@ -74,7 +80,8 @@ function startRegistration(event){
 			if(response.status == 200)
 				showView("otp-section")
 			else
-				showError("register-error", "Problem generating otp, try again later")
+				showAlert("register-error", "Problem generating otp, try again later")
+			registerButton("normal")
 		}
 	}
 }
@@ -84,14 +91,18 @@ function startRegistration(event){
 
 
 
+let otpButton = createButton(".otp-text", "Verify", "Verifying...")
 
 function registerUser(event){
 	event.preventDefault()
+	otpButton()
 	let otpDetails = extractForm(store.otpFormTag)
 	let missingKeys = hasKeys(otpDetails, ["code"])
 
-	if(missingKeys.length > 0)
-		return showError("otp-error", `You didn't fill data for ${missingKeys[0]}`)
+	if(missingKeys.length > 0){
+		otpButton("normal")
+		return showAlert("otp-error", `You didn't fill data for ${missingKeys[0]}`)
+	}
 
 	store.userDetails.code = otpDetails.code
 
@@ -100,9 +111,10 @@ function registerUser(event){
 
 	function handleRegistration(response){
 		if(response.status == 200)
-			redirect("/account")
+			redirect("/fee")
 		else if(response.code == "OTP_VERIFICATION_FAILED")
-			showError("otp-error", "Invalid Otp")
+			showAlert("otp-error", "Invalid Otp")
+		otpButton("normal")
 	}
 
 }
