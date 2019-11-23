@@ -27,15 +27,21 @@ async function removeMember(data){
 		return { status: 403, code: "USER_DOES_NOT_BELONG_TO_GROUP" }
 
 	let members = groupObj.members
-	console.log(members)
 	members = members.map(member => {
 		if(member.user_id == data.user_id)
 			member.removed = true
 		return member
 	})
-	console.log(members)
 
+	groupObj = await groupDb.appendDoc({ group_id: data.group_id }, "members", members)
+	if(!groupObj)
+		return { status: 500, code: "PROBLEM_ADDING_USER", message: "Occured when updating the group"}
 
+	userObj = await userDb.appendDoc({ user_id: data.user_id }, "group", "")
+	if(!userObj)
+		return { status: 500, code: "PROBLEM_ADDING_USER", message: "Occured when adding group to member" }
+
+	return { status: 200, code: "REMOVED_USER_FROM_GROUP" }
 }
 
 module.exports = removeMember
