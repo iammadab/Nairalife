@@ -23,11 +23,13 @@ function withdrawFunds(event){
 	}
 
 	let { amount, password } = withdrawDetails
+	console.log(amount, password)
 	return api("user/withdraw", { amount, password, token: getToken() })
 			.then(handleResponse)
 
 	function handleResponse(response){
-		// console.log(response)
+		console.log("got response")
+		console.log(response)
 		if(response.status == 200){
 			showAlert("withdraw-success", "Withdrawal was successful")
 			store.withdrawInputs.forEach(input => input.value = "")

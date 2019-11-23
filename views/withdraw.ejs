@@ -1,26 +1,17 @@
-<!-- <?php 
-include 'meta.php';
-include 'header.php';
-$title='Withdraw Money';
-$link='withdraw';
-include 'link.php';
-?> -->
-
 <% include meta %>
 <% include header %>
 <% include link %>
 
 <div class="kt-portlet btopzero">
-
+<div class="kt-portlet__head" style="margin-bottom:0">
+<div class="kt-portlet__head-label">
+<h3 class="kt-portlet__head-title">
+Make Withdrawal
+</h3>
+</div>
+</div>
 
 <div class="kt-portlet__body">
-<div class="alert alert-secondary alert-bold fade show kt-margin-t-20 kt-margin-b-20" role="alert">
-<div class="alert-icon"><i class="la la-info-circle kt-font-brand"></i></div>
-<div class="alert-text">
-Please, enter the amount you want to withdraw below.
-</div>
-</div>
-
 <div class="alert alert-danger alert-bold fade show kt-margin-t-20 kt-margin-b-20 otp-error withdraw-error" role="alert">
 <div class="alert-text">
 Please, enter the amount you want to withdraw below.
@@ -38,12 +29,12 @@ Please, enter the amount you want to withdraw below.
 <label>Enter Amount</label>
 <input type="number" name="amount" class="form-control form-control-lg" autocomplete="off">
 
-<label>Enter Password (for security reasons)</label>
+<label class="kt-margin-t-20">Enter Password (for security reasons)</label>
 <input type="password" name="password" class="form-control form-control-lg" autocomplete="off">
 </div>
 
 <div class="kt-form__actions kt-text-align-center-mobile">
-<button type="button" class="btn btn-tall btn-primary withdraw-button"><i class="la la-slack kt-margin-r-5"></i>
+<button type="button" class="btn btn-tall btn-primary withdraw-button"><i class="la la-slack"></i>
 <span class="withdraw-text">Withdraw</span>
 </button>
 </div>

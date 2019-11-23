@@ -43,7 +43,7 @@ viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("ac
 })
 
 
-viewRouter.get("/higher", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.settings, (req, res) => {
+viewRouter.get("/higher", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
 	res.render("higher", { title: "Get Higher Purchase", link: "higher purchase", user: req.body.pageData.user._doc })
 })
 
@@ -53,7 +53,7 @@ viewRouter.get("/auto", cookieNotFound("/login"), verifyToken, stageRouter("acti
 
 
 viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
-	res.render("withdraw", { title: "Withdraw", link: "withdraw" })
+	res.render("withdraw", { title: "Withdraw Money", link: "withdraw" })
 })
 
 viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
