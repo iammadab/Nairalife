@@ -15,6 +15,7 @@
 </thead>
 <tbody>
 <% group.members.forEach(member => { %>
+<% if(!member.removed){ %>
 <tr>
 <td><%= member.fullname %></td>
 <td><%= member.join_date %></td>
@@ -25,6 +26,7 @@
 <td class="text-capitalize kt-font-success">Received</td>
 <td><a href="#" class="btn btn-secondary btn-sm">Remove</a></td>
 </tr>
+<% } %>
 <% }) %>
 
 <!-- <tr>
