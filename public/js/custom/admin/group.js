@@ -16,7 +16,7 @@ function removeMember(event){
 	return api("group/member/remove", { group_id, user_id, token: getToken() })
 			.then(handleResponse)
 
-	function handlResponse(response){
+	function handleResponse(response){
 		if(response.status == 200)
 			redirect(window.location.href)
 		else
