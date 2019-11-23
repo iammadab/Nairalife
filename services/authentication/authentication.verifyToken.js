@@ -8,7 +8,7 @@ let validateToken = tokenName => (req, res, next) => {
 	let tokenValidator = createValidator(`${tokenName}.string`)
 	let tokenValidationResult = tokenValidator.parse(req.body)
 	if(tokenValidationResult.error)
-		res.status(400).json({ code: "BAD_REQUEST_BODY", errors: tokenValidationResult.errors })
+		return res.status(400).json({ code: "BAD_REQUEST_BODY", errors: tokenValidationResult.errors })
 
 	verifyToken()
 		.then(attachUserInfo)
