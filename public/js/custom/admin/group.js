@@ -8,5 +8,9 @@ let store = {
 
 function removeMember(event){
 	event.preventDefault()
+	let allowed = confirm("Are you sure you want to delete this user?")
+	if(!allowed) return
+		
 	let { group_id, user_id } = event.target.dataset
+
 }
