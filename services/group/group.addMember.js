@@ -25,7 +25,8 @@ async function addMember(data){
 	groupMembers.push({
 		user_id: data.user_id,
 		fullname: userObj.fullname,
-		join_date: new Date()
+		join_date: new Date(),
+		removed: false
 	})
 
 	userObj = await userDb.appendDoc({ user_id: data.user_id }, "group", data.group_id)
