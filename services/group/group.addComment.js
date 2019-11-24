@@ -5,6 +5,8 @@ const addCommentValidator = createValidator("comment.string, group_id.number")
 const groupDb = require("../../data/db/group.db")
 const userDb = require("../../data/db/user.db")
 
+const commentService = require("../comment")
+
 async function addComment(data){
 	let validationResult = addCommentValidator.parse(data)
 	if(validationResult.error)
@@ -20,8 +22,15 @@ async function addComment(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	if(userObj.group != group_id)
+	if(userObj.group != validData.group_id)
 		return { status: 403, code: "USER_NOT_IN_GROUP" }
+
+	let createCommentResult = commentService.createComment({
+		username: userObj.fullname,
+		comment: validData.comment,
+		user_id: userObj.user_id,
+		group_id: userObj.group_id
+	})
 
 }
 
