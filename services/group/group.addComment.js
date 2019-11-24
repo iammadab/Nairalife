@@ -32,6 +32,11 @@ async function addComment(data){
 		group_id: userObj.group_id
 	})
 
+	if(createCommentResult.status != 200)
+		return createCommentResult
+
+	
+
 }
 
 module.exports = addComment
