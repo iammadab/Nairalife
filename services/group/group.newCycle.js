@@ -51,7 +51,7 @@ async function newCycle(data){
 	newGroupObj = await groupDb.appendDoc({ group_id: newGroupObj.group_id }, "started_by", userObj.fullname)
 
 	// Start the newly created group
-	let startGroupResult = await startGroup({ group_id: newGroupObj.group_id })
+	let startGroupResult = await startGroup({ group_id: newGroupObj.group_id, ...data })
 	if(startGroupResult.status != 200)
 		return startGroupResult
 
