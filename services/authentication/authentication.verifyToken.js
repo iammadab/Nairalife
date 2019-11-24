@@ -10,6 +10,8 @@ let validateToken = tokenName => (req, res, next) => {
 	if(tokenValidationResult.error)
 		return res.status(400).json({ code: "BAD_REQUEST_BODY", errors: tokenValidationResult.errors })
 
+	let cookiePath = req.url.includes("admin") ? "/admin/" : "/"
+
 	verifyToken()
 		.then(attachUserInfo)
 		.then(next)
@@ -25,8 +27,8 @@ let validateToken = tokenName => (req, res, next) => {
 	}
 
 	function handleErrors(error){
-		res.clearCookie(tokenName)
-		res.redirect("/login")
+		res.clearCookie(tokenName, { path: cookiePath })
+		res.redirect(`${cookiePath}login`)
 		if(error.name == "TokenExpiredError")
 			res.status(403).json({ code: "TOKEN_EXPIRED" })
 		else if(error.name == "JsonWebTokenError")
