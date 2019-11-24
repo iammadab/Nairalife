@@ -38,6 +38,8 @@ function withdrawFunds(event){
 			showAlert("withdraw-error", "Invalid Password")
 		else if(response.code == "NEGATIVE_AMOUNT")
 			showAlert("withdraw-error", "You entered a negative amount")
+		else if(response.code == "CAN_NOT_WITHDRAW_ZERO")
+			showAlert("withdraw-error", "You cannot withdraw 0")
 		else if(response.code == "INSUFFICIENT_BALANCE")
 			showAlert("withdraw-error", "You don't have sufficient balance")
 		else if(response.code == "BANK_NOT_ADDED")
