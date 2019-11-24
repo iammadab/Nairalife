@@ -21,10 +21,11 @@ async function startGroup(data){
 	for(let i = 0; i < members.length; i++){
 		membersMap[members[i].user_id] = await userDb.findOneWith({ user_id: members[i].user_id })
 	}
-	// console.log(members)
-	// console.log("")
-	// members.sort(orderFunction)
-	// console.log(members)
+	
+	console.log(members)
+	console.log("")
+	members.sort(orderFunction)
+	console.log(members)
 
 
 	// if you return -1 a comes before b
@@ -35,7 +36,12 @@ async function startGroup(data){
 
 		if(userA.nairascore > userB.nairascore) return -1
 		if(userA.nairascore > userB.nairascore) return 1
-		if(userA.nairascore == userB.nairascore) return 0
+		
+		let userAJoinDate = userA._id.getTimestamp(), userBJoinDate = userB._id.getTimestamp()
+		if(userAJoinDate > userBJoinDate) return -1
+		if(userAJoinDate > userBJoinDate) return 1
+
+		return 0
 	}
 }
 
