@@ -18,15 +18,42 @@ async function addMember(data){
 	if(!groupObj)
 		return { status: 403, code: "GROUP_DOES_NOT_EXIST" }
 
+	if(groupObj.status == "ended")
+		return { status: 403, code: "GROUP_HAS_ENDED" }
+
 	if(userObj.group)
 		return { status: 403, code: "USER_HAS_GROUP" }
 
-	let groupMembers = groupObj.members
+	let groupMembers = groupObj.members, receiving_date
+
+	// If the group is already active, we don't order the members based on their nairascore and the day they entered nairalife
+	// Instead, we just add them to the bottom of the group list
+	// But we also have to give them a receiving date, so this block gets the date of the last person and then adds the group period
+	// To get the next date
+	if(groupObj.status == "active"){
+		let lastMember = groupMembers[groupMembers.length - 1]
+		console.log("Last member", lastMember)
+		let lastDate = lastMember.receiving_date
+		console.log("Last date", lastDate)
+
+		
+	}
+
+
+
+
+
+
+
+
+
+
 	groupMembers.push({
 		user_id: data.user_id,
 		fullname: userObj.fullname,
 		join_date: new Date(),
-		removed: false
+		removed: false,
+		receiving_date
 	})
 
 	userObj = await userDb.appendDoc({ user_id: data.user_id }, "group", data.group_id)
