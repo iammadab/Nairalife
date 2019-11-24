@@ -10,6 +10,9 @@ async function startGroup(data){
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
+	let groupObj = await groupDb.findOneWith({ group_id: data.group_id })
+	if(!groupObj)
+		return { status: 403, code: "GROUP_NOT_FOUND" }
 
 }
 
