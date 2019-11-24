@@ -35,7 +35,7 @@ async function addComment(data){
 	if(createCommentResult.status != 200)
 		return createCommentResult
 
-	let groupComments = groupObj.comments || []
+	let groupComments = Object.assign([], groupObj.comments)
 	groupComments.push(createCommentResult.comment._id)
 
 	groupObj = groupDb.appendDoc({ group_id: userObj.group }, "comments", groupComments)
