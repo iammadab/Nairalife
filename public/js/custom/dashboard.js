@@ -13,7 +13,7 @@ let commentButton = createButton(".comment-text", "Add Comment", "Adding comment
 function addComment(event){
 	event.preventDefault()
 	commentButton()
-	let { group_id } = event.target.dataset
+	let { group_id } = store.addCommentButton.dataset
 	let commentData = store.commentBox.value
 	if(!commentData){
 		commentButton("normal")
