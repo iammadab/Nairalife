@@ -48,6 +48,7 @@ async function startGroup(data){
 
 
 	// groupObj = groupDb.appendDoc({ group_id: data.group_id }, "started_by", userObj.fullname)
+	// groupObj = groupDb.appendDoc({ group_id: data.group_id }, "members", members)
 
 
 
