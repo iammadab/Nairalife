@@ -25,6 +25,8 @@ let validateToken = tokenName => (req, res, next) => {
 	}
 
 	function handleErrors(error){
+		res.clearCookie(tokenName)
+		res.redirect("/login")
 		if(error.name == "TokenExpiredError")
 			res.status(403).json({ code: "TOKEN_EXPIRED" })
 		else if(error.name == "JsonWebTokenError")
