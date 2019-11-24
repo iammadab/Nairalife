@@ -5,7 +5,7 @@ const userDb = require("../../data/db/user.db")
 async function dashboard(req, res, next){
 	let userObj = await pageFunctions.fetchUser(req.body.user.id)
 	let groupObj = await pageFunctions.fetchGroup(userObj.group)
-	let members = []
+	let members = [], comments = []
 
 	if(groupObj){
 		for(let i = 0; i < groupObj.members.length; i++){
@@ -15,11 +15,16 @@ async function dashboard(req, res, next){
 			members.push({ ...memberObj._doc, join_date: member.join_date })
 		}
 	}
+
+	if(groupObj){
+		comments = await pageFunctions.fetchComments({ group_id: groupObj.group_id })
+	}
 	
 	req.body.pageData = {
 		user: userObj,
 		group: groupObj,
-		members
+		members,
+		comments
 	}
 
 	next()
