@@ -12,7 +12,6 @@ const groupSchema = mongoose.Schema({
 	status: { type: String, default: "inactive", enum: ["inactive", "active", "ended"] },
 	total_contribution: { type: Number, default: 0 },
 	default_rate: { type: Number, default: 0 },
-	comment_count: { type: Number, default: 0 },
 
 	members: { type: Array, default: [] },
 	comments: { type: Array, default: [] },
