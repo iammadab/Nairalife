@@ -36,7 +36,9 @@ async function addMember(data){
 		let lastDate = lastMember.receiving_date
 		console.log("Last date", lastDate)
 
-		
+		let periodMap = { daily: 1,	weekly: 7, monthly: 30 }, groupPeriod = periodMap[groupObj.contribution_period]
+
+
 	}
 
 
@@ -68,3 +70,11 @@ async function addMember(data){
 }
 
 module.exports = addMember
+
+
+
+function addDays(date, days) {
+	const newDate = new Date(Number(date))
+ 	newDate.setDate(date.getDate() + days)
+ 	return newDate
+}
