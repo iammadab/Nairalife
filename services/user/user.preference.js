@@ -10,13 +10,13 @@ async function userPreference(data){
 	if(userPreferenceValidationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: userPreferenceValidationResult.errors }
 	
-	data = userPreferenceValidationResult.data
+	validData = userPreferenceValidationResult.data
 	// let user_id = data.user.id
 	// delete data.user
 	// delete data.token
 
-	let userObj = await userDb.appendDoc({ _id: user_id }, "about", data)
-	userObj = await userDb.appendDoc({ _id: user_id }, "stage", "active")
+	let userObj = await userDb.appendDoc({ _id: data.user.id }, "about", validData)
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "active")
 
 	if(userObj)
 		return { status: 200, code: "USER_PREFERENCE_SET" }
