@@ -1,10 +1,7 @@
 const commentDb = require("../../../data/db/comment.db")
 
-async function fetchComments(querySpecifier, options){
-	let cursor = commentDb.findWith(querySpecifier)
-	if(options.sort)
-		cursor = cursor.sort(options.sort)
-	return cursor
+async function fetchComments(querySpecifier){
+	return commentDb.findWith(querySpecifier)
 }
 
 module.exports = fetchComments
