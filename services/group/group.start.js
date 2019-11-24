@@ -47,8 +47,14 @@ async function startGroup(data){
 	})
 
 
-	// groupObj = groupDb.appendDoc({ group_id: data.group_id }, "started_by", userObj.fullname)
-	// groupObj = groupDb.appendDoc({ group_id: data.group_id }, "members", members)
+	groupObj = await groupDb.appendDoc({ group_id: data.group_id }, "started_by", userObj.fullname)
+	groupObj = await groupDb.appendDoc({ group_id: data.group_id }, "members", members)
+	groupObj = await groupDb.appendDoc({ group_id: data.group_id }, "status", "active")
+	
+	if(!groupObj)
+		return { status: 500, code: "PROBLEM_STARTING_GROUP" }
+
+	return { status: 200, code: "GROUP_STARTED" }
 
 
 
