@@ -17,7 +17,7 @@ async function createGroup(data){
 	if(!groupObj)
 		return { status: 500, code: "PROBLEM_CREATING_GROUP" }
 
-	return { status: 200, code: "GROUP_CREATED_SUCCESSFULLY" }
+	return { status: 200, code: "GROUP_CREATED_SUCCESSFULLY", group: groupObj }
 
 }
 
