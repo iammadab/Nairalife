@@ -7,13 +7,15 @@ async function dashboard(req, res, next){
 	let groupObj = await pageFunctions.fetchGroup(userObj.group)
 	let members = []
 
-	for(let i = 0; i < groupObj.members.length; i++){
-		let member = groupObj.members[i]
-		if(member.removed) continue
-		let memberObj = await userDb.findOneWith({ user_id: member.user_id })
-		members.push({ ...memberObj._doc, join_date: member.join_date })
+	if(groupObj){
+		for(let i = 0; i < groupObj.members.length; i++){
+			let member = groupObj.members[i]
+			if(member.removed) continue
+			let memberObj = await userDb.findOneWith({ user_id: member.user_id })
+			members.push({ ...memberObj._doc, join_date: member.join_date })
+		}
 	}
-
+	
 	req.body.pageData = {
 		user: userObj,
 		group: groupObj,
