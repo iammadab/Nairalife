@@ -46,3 +46,10 @@ async function startGroup(data){
 }
 
 module.exports = startGroup
+
+
+function addDays(date, days) {
+	const newDate = new Date(Number(date))
+ 	newDate.setDate(date.getDate() + days)
+ 	return newDate
+}
