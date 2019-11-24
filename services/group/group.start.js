@@ -17,6 +17,13 @@ async function startGroup(data){
 	if(groupObj.status != "inactive")
 		return { status: 403, code: "GROUP_HAS_STARTED" }
 
+	let members = groupObj.members
+	console.log(members)
+	console.log("")
+	members.sort()
+	console.log(members)
+
+
 
 }
 
