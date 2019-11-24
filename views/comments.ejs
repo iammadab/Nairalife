@@ -8,8 +8,31 @@
 <div class="kt-widget3">
 
 
-
+<% comments.forEach(comment => { %>
 <div class="kt-widget3__item">
+<div class="kt-widget3__header">
+<div class="kt-widget__pic">AW</div>
+<div class="kt-widget3__info">
+<a href="#" class="kt-widget3__username">
+<%= comment.username %>
+</a>
+<br>
+<span class="kt-widget3__time">
+<%= comment.created_at %>
+</span>
+</div>
+</div>
+<div class="kt-widget3__body">
+<p class="kt-widget3__text">
+<%= comment.comment %>
+</p>
+</div>
+</div>
+<% }) %>
+
+
+
+<!-- <div class="kt-widget3__item">
 <div class="kt-widget3__header">
 <div class="kt-widget__pic">AW</div>
 <div class="kt-widget3__info">
@@ -31,7 +54,6 @@ You represent excitment and life. The friend and family represent the mundane an
 
 
 
-
 <div class="kt-widget3__item">
 <div class="kt-widget3__header">
 <div class="kt-widget__pic">AW</div>
@@ -51,29 +73,7 @@ You represent excitment and life. The friend and family represent the mundane an
 </p>
 </div>
 </div>
-
-
-
-<div class="kt-widget3__item">
-<div class="kt-widget3__header">
-<div class="kt-widget__pic">AW</div>
-<div class="kt-widget3__info">
-<a href="#" class="kt-widget3__username">
-Akin Wumi
-</a>
-<br>
-<span class="kt-widget3__time">
-16 of Sept, 2019
-</span>
-</div>
-</div>
-<div class="kt-widget3__body">
-<p class="kt-widget3__text">
-You represent excitment and life. The friend and family represent the mundane and it is incredible that his words begin to have an effect. Herding is not only an effective tactic but also psychological.
-</p>
-</div>
-</div>
-
+ -->
 
 
 </div>
