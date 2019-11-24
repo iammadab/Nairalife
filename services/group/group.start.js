@@ -21,13 +21,11 @@ async function startGroup(data){
 	for(let i = 0; i < members.length; i++){
 		membersMap[members[i].user_id] = await userDb.findOneWith({ user_id: members[i].user_id })
 	}
-	
-	console.log(members)
-	console.log("")
+
+	// Using the order function, we sort the members based on their nairascore and the date they joined the platform
 	members.sort(orderFunction)
-	console.log(members)
 
-
+	// This is needed to know how many days to add between the members as the receiving date is dynamically generated
 	let periodMap = {
 		daily: 1,
 		weekly: 7,
@@ -36,6 +34,7 @@ async function startGroup(data){
 
 	let currentDate = new Date(), groupPeriod = periodMap[groupObj.contribution_period]
 	members.forEach(member => {
+		if(member.removed) return 
 		member.receiving_date = addDays(currentDate, groupPeriod)
 		currentDate = member.receiving_date
 		console.log(member.receiving_date)
