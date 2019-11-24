@@ -47,8 +47,7 @@ async function startGroup(data){
 	})
 
 
-
-	// groupObj = groupDb.findOneWith
+	// groupObj = groupDb.appendDoc({ group_id: data.group_id }, "started_by", userObj.fullname)
 
 
 
