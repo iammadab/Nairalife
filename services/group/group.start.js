@@ -28,6 +28,21 @@ async function startGroup(data){
 	console.log(members)
 
 
+	let periodMap = {
+		daily: 1,
+		weekly: 7,
+		monthly: 30
+	}
+
+	let currentDate = new Date(), groupPeriod = periodMap[groupObj.contribution_period]
+	members.forEach(member => {
+		member.receiving_date = addDays(currentDate, groupPeriod)
+		currentDate = member.receiving_date
+		console.log(member.receiving_date)
+	})
+	// console.log(members)
+
+
 	// if you return -1 a comes before b
 	// if you return 1 b comes before a
 	// if you return 0 they remain in their positions
