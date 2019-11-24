@@ -14,7 +14,8 @@ const groupSchema = mongoose.Schema({
 	default_rate: { type: Number, default: 0 },
 	comments: { type: Number, default: 0 },
 
-	members: { type: Array, default: [] }
+	members: { type: Array, default: [] },
+	comments: { type: Array, default: [] }
 })
 
 const groupModel = mongoose.model("Group", groupSchema)
