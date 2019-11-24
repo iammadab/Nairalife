@@ -38,7 +38,7 @@ async function addMember(data){
 
 		let periodMap = { daily: 1,	weekly: 7, monthly: 30 }, groupPeriod = periodMap[groupObj.contribution_period]
 
-
+		receiving_date = addDays(lastDate, groupPeriod)
 	}
 
 
