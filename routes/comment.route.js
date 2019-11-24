@@ -6,3 +6,5 @@ const { bodyResponder } = require("./serviceAdapter")
 const commentService = require("../services/comment")
 
 commentRouter.post("/", bodyResponder(commentService.createComment))
+
+module.exports = commentRouter
