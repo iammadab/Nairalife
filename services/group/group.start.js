@@ -13,7 +13,7 @@ async function startGroup(data){
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!userObj)
 		return { status: 403, code: "USER_NOT_FOUND" }
-	
+
 	let groupObj = await groupDb.findOneWith({ group_id: data.group_id })
 	if(!groupObj)
 		return { status: 403, code: "GROUP_NOT_FOUND" }
@@ -27,6 +27,7 @@ async function startGroup(data){
 		membersMap[members[i].user_id] = await userDb.findOneWith({ user_id: members[i].user_id })
 	}
 
+
 	// Using the order function, we sort the members based on their nairascore and the date they joined the platform
 	members.sort(orderFunction)
 
@@ -37,13 +38,23 @@ async function startGroup(data){
 		monthly: 30
 	}
 
+	// Add the receiving date to each member
 	let currentDate = new Date(), groupPeriod = periodMap[groupObj.contribution_period]
 	members.forEach(member => {
 		if(member.removed) return 
 		member.receiving_date = addDays(currentDate, groupPeriod)
 		currentDate = member.receiving_date
 	})
-	// console.log(members)
+
+
+
+	// groupObj = groupDb.findOneWith
+
+
+
+
+
+
 
 
 	// if you return -1 a comes before b

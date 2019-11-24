@@ -15,7 +15,9 @@ const groupSchema = mongoose.Schema({
 	comments: { type: Number, default: 0 },
 
 	members: { type: Array, default: [] },
-	comments: { type: Array, default: [] }
+	comments: { type: Array, default: [] },
+
+	started_by: { type: String }
 })
 
 const groupModel = mongoose.model("Group", groupSchema)
