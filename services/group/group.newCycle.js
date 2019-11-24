@@ -27,7 +27,14 @@ async function newCycle(data){
 	if(newGroupResult.status != 200)
 		return newGroupResult
 
+	// Gotten the new group
 	let newGroupObj = newGroupResult.group
+
+	//The next step is to get the members of the old group into the new one
+	//and the comments also
+	newGroupObj = await groupDb.appendDoc({ group_id: newGroupObj.group_id }, "members", groupObj.members)
+	newGroupObj = await groupDb.appendDoc({ group_id: newGroupObj.group_id }, "comments", groupObj.comments)
+
 
 }
 
