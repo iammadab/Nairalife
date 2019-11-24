@@ -10,9 +10,14 @@ async function startGroup(data){
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
+	let userObj = await userDb.findOneWith({ _id: data.user.id })
+	if(!userObj)
+		return { status: 403, code: "USER_NOT_FOUND" }
+	
 	let groupObj = await groupDb.findOneWith({ group_id: data.group_id })
 	if(!groupObj)
 		return { status: 403, code: "GROUP_NOT_FOUND" }
+
 
 	if(groupObj.status != "inactive")
 		return { status: 403, code: "GROUP_HAS_STARTED" }
@@ -37,7 +42,6 @@ async function startGroup(data){
 		if(member.removed) return 
 		member.receiving_date = addDays(currentDate, groupPeriod)
 		currentDate = member.receiving_date
-		console.log(member.receiving_date)
 	})
 	// console.log(members)
 
