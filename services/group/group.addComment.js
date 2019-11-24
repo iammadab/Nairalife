@@ -16,6 +16,13 @@ async function addComment(data){
 	if(!groupObj)
 		return { status: 403, code: "GROUP_DOES_NOT_EXIST" }
 
+	let userObj = await userDb.findOneWith({ _id: data.user.id })
+	if(!userObj)
+		return { status: 403, code: "USER_DOES_NOT_EXIST" }
+
+	if(userObj.group != group_id)
+		return { status: 403, code: "USER_NOT_IN_GROUP" }
+
 }
 
 module.exports = addComment
