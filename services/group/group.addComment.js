@@ -25,18 +25,24 @@ async function addComment(data){
 	if(userObj.group != validData.group_id)
 		return { status: 403, code: "USER_NOT_IN_GROUP" }
 
-	let createCommentResult = commentService.createComment({
+	let createCommentResult = await commentService.createComment({
 		username: userObj.fullname,
 		comment: validData.comment,
 		user_id: userObj.user_id,
-		group_id: userObj.group_id
+		group_id: userObj.group
 	})
 
 	if(createCommentResult.status != 200)
 		return createCommentResult
 
-	
+	let groupComments = groupObj.comments || []
+	groupComments.push(createCommentResult.comment._id)
 
+	groupObj = groupDb.appendDoc({ group_id: userObj.group }, "comments", groupComments)
+	if(!groupObj)
+		return { status: 500, code: "PROBLEM_ADDING_COMMENT" }
+
+	return { status: 200, code: "ADDED_COMMENT" }
 }
 
 module.exports = addComment
