@@ -10,5 +10,6 @@ groupRouter.post("/", authenticationService.verifyToken(), authenticationService
 groupRouter.post("/member", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(groupService.addMember))
 groupRouter.post("/member/remove", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(groupService.removeMember))
 groupRouter.post("/comment", authenticationService.verifyToken(), bodyResponder(groupService.addComment))
+groupRouter.post("/start", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(groupService.startGroup))
 
 module.exports = groupRouter
