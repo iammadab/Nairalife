@@ -14,7 +14,7 @@ async function newCycle(data){
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
-	if(!groupObj)
+	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
 	let groupObj = await groupDb.findOneWith({ group_id: data.group_id })
