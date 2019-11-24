@@ -29,8 +29,15 @@ async function startGroup(data){
 
 module.exports = startGroup
 
+// if you return -1 a comes before b
+// if you return 1 b comes before a
+// if you return 0 they remain in their positions
+async function orderFunction(a, b){
+	let userA = await userDb.findOneWith({ user_id: a.user_id })
+	let userB = await userDb.findOneWith({ user_id: b.user_id })
 
-function orderFunction(a, b){
-	console.log(a, b)
-	return 0
+	if(userA.nairascore > userB.nairascore) return -1
+	if(userA.nairascore > userB.nairascore) return 1
+	if(userA.nairascore == userB.nairascore) return 0
+		
 }
