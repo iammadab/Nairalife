@@ -11,7 +11,7 @@ async function dashboard(req, res, next){
 		let member = groupObj.members[i]
 		if(member.removed) continue
 		let memberObj = await userDb.findOneWith({ user_id: member.user_id })
-		members.push({ ...memberObj._doc, member.join_date })
+		members.push({ ...memberObj._doc, join_date: member.join_date })
 	}
 
 	req.body.pageData = {
