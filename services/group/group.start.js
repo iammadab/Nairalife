@@ -14,6 +14,10 @@ async function startGroup(data){
 	if(!groupObj)
 		return { status: 403, code: "GROUP_NOT_FOUND" }
 
+	if(groupObj.status != "inactive")
+		return { status: 403, code: "GROUP_HAS_STARTED" }
+
+
 }
 
 module.exports = startGroup
