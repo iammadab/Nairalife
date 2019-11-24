@@ -20,7 +20,7 @@ async function startGroup(data){
 	let members = groupObj.members
 	console.log(members)
 	console.log("")
-	members.sort()
+	members.sort(orderFunction)
 	console.log(members)
 
 
@@ -28,3 +28,9 @@ async function startGroup(data){
 }
 
 module.exports = startGroup
+
+
+function orderFunction(a, b){
+	console.log(a, b)
+	return 0
+}
