@@ -15,7 +15,7 @@ function addComment(event){
 	let commentData = document.querySelector(".comment-box").value
 	if(!commentData){
 		commentButton("normal")
-		return console.log("You didn't add a comment")
+		return showAlert(".comment-error", "Comment empty")
 	}
 
 	return api("group/comment", { token: getToken(), group_id, comment: commentData })
