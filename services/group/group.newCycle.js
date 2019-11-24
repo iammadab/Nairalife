@@ -6,6 +6,7 @@ const groupDb = require("../../data/db/group.db")
 const userDb = require("../../data/db/user.db")
 
 const createGroup = require("./group.create")
+const startGroup = require("./group.start")
 
 async function newCycle(data){
 	let validationResult = newCycleValidator.parse(data)
@@ -15,7 +16,7 @@ async function newCycle(data){
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!groupObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
-	
+
 	let groupObj = await groupDb.findOneWith({ group_id: data.group_id })
 	if(!groupObj)
 		return { status: 403, code: "GROUP_DOES_NOT_EXIST" }
@@ -46,9 +47,27 @@ async function newCycle(data){
 	newGroupObj = await groupDb.appendDoc({ group_id: newGroupObj.group_id }, "previous_group", groupObj.group_id)
 	groupObj = await groupDb.appendDoc({ group_id: groupObj.group_id }, "next_group", newGroupObj.group_id)
 
+	// Add the admin that started the group
+	newGroupObj = await groupDb.appendDoc({ group_id: newGroupObj.group_id }, "started_by", userObj.fullname)
+
+	// Start the newly created group
+	let startGroupResult = await startGroup({ group_id: newGroupObj.group_id })
+	if(startGroupResult.status != 200)
+		return startGroupResult
+
+	// Get all the users in the new group and replace their group with the new group id
+	for(let i = 0; i < newGroupObj.members; i++){
+		let tempUser = await userDb.appendDoc({ user_id: newGroupObj.members[i].user_id })
+		console.log(tempUser)
+	}
+
+	// Set the status of the old group to ended
+	groupObj = await groupDb.appendDoc({ group_id: groupObj.group_id }, "status", "ended")
+
 	console.log(groupObj)
 	console.log(newGroupObj)
 
+	return { status: 200, code: "NEW_CYCLE_STARTED" }
 
 }
 
