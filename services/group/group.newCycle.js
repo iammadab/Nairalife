@@ -35,6 +35,11 @@ async function newCycle(data){
 	newGroupObj = await groupDb.appendDoc({ group_id: newGroupObj.group_id }, "members", groupObj.members)
 	newGroupObj = await groupDb.appendDoc({ group_id: newGroupObj.group_id }, "comments", groupObj.comments)
 
+	//I will be creating a linked list, so as to keep track of the groups and all the groups that have been created from them
+	// So, I have to set the prev of the new group to the old group and the next group of the old group to the new group
+	newGroupObj = await groupDb.appendDoc({ group_id: newGroupObj.group_id }, "previous_group", groupObj.group_id)
+	groupObj = await groupDb.appendDoc({ group_id: groupObj }, "next_group", newGroupObj.group_id)
+
 
 }
 
