@@ -20,7 +20,7 @@ async function startGroup(data){
 
 
 	if(groupObj.status != "inactive")
-		return { status: 403, code: "GROUP_HAS_STARTED" }
+		return { status: 403, code: "GROUP_ALREADY_STARTED" }
 
 	let members = groupObj.members, membersMap = {}
 	for(let i = 0; i < members.length; i++){
