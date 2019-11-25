@@ -5,8 +5,9 @@ const transactionSchema = mongoose.Schema({
 	user_id: { type: Number, required: true },
 	amount: { type: Number, required: true },
 	reference: { type: String, required: true },
+	type: { type: String, required: true, enum: ["withdrawal", "autosave", "contribution", "unknowtype"]}
 	status: { type: String, required: true, enum: ["success", "pending", "failed"] },
-	attempts: { type: Number },
+	attempts: { type: Number, default: 1 },
 	data: { type: Object, default: {} }
 })
 
