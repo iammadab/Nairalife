@@ -57,7 +57,19 @@ async function withdraw(data){
 		return transferResult
 	}
 
-	console.log("Transfer result", transferResult)
+
+	//Once the transfer is successful, we record the transaction with the reference
+	let withdrawTransaction = await transactionDb.createTransaction({
+		username: userObj.fullname,
+		user_id: userObj.user_id,
+		amount: data.amount,
+		reference: transferResult.data.reference,
+		type: "withdrawal",
+		status: "success",
+		data: { transfer_code: transferResult.data.transfer_code }
+	})
+	console.log(withdrawTransaction)
+	// console.log("Transfer result", transferResult)
 
 	return { status: 200, code: "WITHDRAWAL_SUCCESSFUL" }
 
