@@ -58,6 +58,7 @@ async function newCycle(data){
 
 	// Get all the users in the new group and replace their group with the new group id
 	for(let i = 0; i < newGroupObj.members.length; i++){
+		if(newGroupObj.members[i].removed) continue
 		let tempUser = await userDb.appendDoc({ user_id: newGroupObj.members[i].user_id }, "group", newGroupObj.group_id)
 	}
 
