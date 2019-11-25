@@ -82,6 +82,8 @@ function createReceipt({ name, account_number, bank_code }){
 				.catch(handleFailure)
 
 	function handleSuccess(response){
+		console.log(response.data)
+		console.log(response)
 		if(response.data.status)
 			return { status: 200, code: "CREATED_TRANSFER_RECEIPT", data: response.data.data }
 		return { status: 500, code: "FAILED_TRANSFER_RECEIPT" }
@@ -112,12 +114,14 @@ function initiateTransfer({ amount, recipient }){
 				.catch(handleFailure)
 
 	function handleSuccess(response){
+		console.log(response.data)
 		if(response.data.status)
 			return { status: 200, code: "TRANSFER_SUCCESSFUL", data: response.data.data }
 		return { status: 500, code: "TRANSFER_FAILED" }
 	}
 
 	function handleFailure(response){
+		console.log(response.response)
 		console.log(response.response.data)
 		return { status: 500, code: "TRANSFER_FAILED" }
 	}

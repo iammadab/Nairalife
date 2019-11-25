@@ -20,6 +20,8 @@ async function dashboard(req, res, next){
 		comments = await pageFunctions.fetchComments({ group_id: groupObj.group_id }, { sort: { created_at: -1 }})
 	}
 	
+	console.log(members)
+	console.log(comments)
 	req.body.pageData = {
 		user: userObj,
 		group: groupObj,
