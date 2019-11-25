@@ -9,7 +9,7 @@ const requestOptions = {
 }
 
 const userDb = require("../../data/db/user.db")
-const transactionDb = requie("../../data/da/transaction.db")
+const transactionDb = require("../../data/da/transaction.db")
 
 async function withdraw(data){
 	let validationResult = withdrawValidator.parse(data)
@@ -57,6 +57,8 @@ async function withdraw(data){
 		return transferResult
 	}
 
+	console.log("Transfer result", transferResult)
+
 	return { status: 200, code: "WITHDRAWAL_SUCCESSFUL" }
 
 }
@@ -83,15 +85,12 @@ function createReceipt({ name, account_number, bank_code }){
 				.catch(handleFailure)
 
 	function handleSuccess(response){
-		console.log(response.data)
-		console.log(response)
 		if(response.data.status)
 			return { status: 200, code: "CREATED_TRANSFER_RECEIPT", data: response.data.data }
 		return { status: 500, code: "FAILED_TRANSFER_RECEIPT" }
 	}
 
 	function handleFailure(response){
-		console.log(response)
 		return { status: response.response.status, code: "FAILED_TRANSFER_RECEIPT", message: response.response.data.message }
 	}
 }
@@ -101,7 +100,7 @@ function createReceipt({ name, account_number, bank_code }){
 
 
 function initiateTransfer({ amount, recipient }){
-	console.log(arguments)
+	// console.log(arguments)
 	let data = {
 		source: "balance",
 		amount,
@@ -122,8 +121,6 @@ function initiateTransfer({ amount, recipient }){
 	}
 
 	function handleFailure(response){
-		console.log(response.response)
-		console.log(response.response.data)
 		return { status: 500, code: "TRANSFER_FAILED" }
 	}
 }
