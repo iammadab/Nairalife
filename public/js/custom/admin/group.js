@@ -1,9 +1,12 @@
 let store = {
-	removeButtons: document.querySelectorAll(".remove-member")
+	removeButtons: document.querySelectorAll(".remove-member"),
+
+	restartButton: document.querySelector(".restart-cycle-button")
 }
 
 ;(function attachEvents(){
 	addEvent(store.removeButtons, "click", removeMember)
+	addEvent([store.restartButton], "click", restartCycle)
 })()
 
 function removeMember(event){
@@ -23,4 +26,20 @@ function removeMember(event){
 			console.log(response.code)
 	}
 
+}
+
+
+function restartCycle(event){
+	event.preventDefault()
+	let { group_id } = store.restartButton.dataset
+	if(!group_id) return console.log("No group id. Contact support")
+
+	return api("group/cycle", { token: getToken("atoken"), group_id })
+			.then(handleResponse)
+
+	function handleResponse(response){
+		console.log(response)
+		if(response.status == 200)
+			redirect("/admin/groups")
+	}
 }
