@@ -11,31 +11,49 @@ const {
 const pageService = require("../services/page")
 
 viewRouter.get("/", cookieFound("/home"), (req, res) => {
-	res.render("index")
+	res.render("index",{ title: "Nairalife Savings Group"})
 })
 
+viewRouter.get("/aboutus", (req, res) => {
+	res.render("aboutus",{ title: "About Nairalife"})
+})
+
+viewRouter.get("/contact", (req, res) => {
+	res.render("contact",{ title: "Contact Us"})
+})
+
+
+viewRouter.get("/privacy", (req, res) => {
+	res.render("privacy",{ title: "Privacy Policy"})
+})
+
+viewRouter.get("/terms", (req, res) => {
+	res.render("terms",{ title: "Terms Of Service"})
+})
+
+
 viewRouter.get("/login", cookieFound("/home"), (req, res) => {
-	res.render("login")
+	res.render("login",{ title: "Nairalife Login"})
 })
 
 viewRouter.get("/forgot", cookieFound("/home"), (req, res) => {
-	res.render("forgot")
+	res.render("forgot",{ title: "Forgot Password"})
 })
 
 viewRouter.get("/register", cookieFound("/home"), (req, res) => {
-	res.render("register")
+	res.render("register",{ title: "Register on Nairalife"})
 })
 
 viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter("enter_account_details"), pageService.account, (req, res) => {
-	res.render("account", { banks: req.body.pageData.banks })
+	res.render("account", { title: "Bank Account", banks: req.body.pageData.banks })
 })
 
 viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("enter_contribution_preference"), (req, res) => {
-	res.render("about")
+	res.render("about",{ title: "Welcome"})
 })
 
 viewRouter.get("/fee", cookieNotFound("/login"), verifyToken(), stageRouter("enter_card_details"), (req, res) => {
-	res.render("fees")
+	res.render("fees",{ title: "Pay Fee"})
 })
 
 viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.dashboard, (req, res) => {
@@ -47,7 +65,7 @@ viewRouter.get("/higher", cookieNotFound("/login"), verifyToken(), stageRouter("
 	res.render("higher", { title: "Get Higher Purchase", link: "higher purchase", user: req.body.pageData.user._doc })
 })
 
-viewRouter.get("/auto", cookieNotFound("/login"), verifyToken, stageRouter("active"), pageService.settings, (req, res) => {
+viewRouter.get("/auto", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
 	res.render("auto", { title: "Nairalife Autosave"})
 })
 
@@ -57,7 +75,7 @@ viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken(), stageRouter
 })
 
 viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
-	res.render("settings", { title: "Settings", link: "settings", ...req.body.pageData })
+	res.render("settings", { title: "Account Settings", link: "settings", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/login", cookieFound("/admin/dashboard", "atoken"), (req, res) => {

@@ -1,197 +1,70 @@
 <% include meta %>
 <link href="css/login.css" rel="stylesheet" type="text/css" />
-
 <!-- begin::Body -->
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
-
 <!-- begin:: Page -->
 <div class="kt-grid kt-grid--ver kt-grid--root">
 <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
-
-
 <!--begin::Content-->
 <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
-
 <!--begin::Head-->
-<div class="kt-login__bottom">
-
-</div>
-
-<!--end::Head-->
-
 <!--begin::Body-->
 <div class="kt-login__body" id="login-section">
-
 <!--begin::Signin-->
 <div class="kt-login__form">
 <% include formhead %>
 <div class="kt-login__title">
-<h3>Enter Bank Information</h3>
-<p>Please enter your bank account information below <br>so as to be able to process your withdrawal</p>
+<h3>Your Bank Account</h3>
+<p>In order to withdraw the money you have saved or received as contributions, you need to set a withdrawal account.</p>
 </div>
-
-<!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
 <div class="alert alert-danger alert-bold fade show kt-margin-b-20 otp-error bank-error" role="alert">
-<div class="alert-icon"><i class="flaticon-warning"></i></div>
+<div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
 </div>
 </div>
-
-
 <!--begin::Form-->
 <form class="kt-form bank-form" action="" novalidate="novalidate">
-
 <div class="form-group">
-<input class="form-control" type="number" placeholder="Account No" 
-name="account_number" autocomplete="off" required="true">
+<input class="form-control" type="number" placeholder="Account Number" name="account_number" autocomplete="off" required="true">
 </div>
-
 <div class="form-group">
 <select class="custom-select bank-name" name="bank_code">
 <option value="">Select Bank</option>
-
 <% banks.forEach(bank => { %>
 <option value="<%= bank.code %>"><%= bank.name %></option>
 <% }) %>
-
-<!-- <option value="Access Bank">Access Bank</option>
-<option value="Diamond (Access) Bank">Diamond (Access) Bank</option>
-<option value="First Bank Nigeria">First Bank Nigeria</option>
-<option value="First City Monument Bank">First City Monument Bank</option>
-<option value="Guarantee Trust Bank">Guarantee Trust Bank</option>
-<option value="Zenith Bank">Zenith Bank</option>
-<option value="United Bank Of Africa">United Bank Of Africa</option>
-<option value="Polaris Bank">Polaris Bank</option>
-<option value="Providius Bank">Providius Bank</option>
-<option value="Sterling Bank">Sterling Bank</option>
-<option value="Union Bank Of Nigeria">Union Bank Of Nigeria</option>
-<option value="Ecobank Bank">Ecobank Bank</option>
-<option value="Fidelity Bank Nigeria">Fidelity Bank Nigeria</option>
-<option value="Heritage Bank">Heritage Bank</option>
-<option value="Jaiz Bank">Jaiz Bank</option>
-<option value="Keystone Bank">Keystone Bank</option>
-<option value="New Prudential Bank">New Prudential Bank</option>
-<option value="Nigeria International Bank (CITIGROUP)">Nigeria International Bank (CITIGROUP)</option>
-<option value="Stanbic Ibtc Bank">Stanbic Ibtc Bank</option>
-<option value="Standard Chartered Bank Nigeria">Standard Chartered Bank Nigeria</option>
-<option value="Suntrust Bank">Suntrust Bank</option>
-<option value="Unity Bank">Unity Bank</option>
-<option value="Wema Bank">Wema Bank</option> -->
 </select>
 </div>
-
 <div class="form-group">
 <input class="form-control bvn-input" type="number" placeholder="Enter BVN" name="bvn" autocomplete="off" required="true">
-<p class="bvn-warn kt-margin-l-10 otp-error" style="color:red;">We only use your BVN to verify your identity (name and account no)</p>
+<div style="margin:5px 15px 0 15px;">
+<span class="text-muted">
+<b>Please note:</b> We only request for your BVN to verify your identity and ensure that the account belongs to you.
+</span>
 </div>
-
+</div>
 <div class="kt-login__btn">
 <button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary verify-bank-button">
 <i class="la la-unlock"></i><span>Verify Bank</span>
 </button>
 </div>
-
-<!--begin::Divider-->
-<!-- <div class="kt-login__divider kt-margin-t-30">
-<div class="kt-divider">
-<span></span>
-<span>AND</span>
-<span></span>
+<p class="border-dash"></p>
+<div class="text-center">
+<span class="text-muted">
+Nairalife uses the highest levels of security to protect your bank account information and our payment partner Paystack is PCI DSS certified and highly reputable with partners including taxify, MTN etc. making use of their services. 
+</span>
 </div>
 </div>
- --><!--end::Divider-->
-
-<!-- <div class="kt-login__title">
-<p>
-Pay 1,000 naira Nairalife cooperative society membership fee <br>
-We will automatically charge this card for your contributions
-</p>
-</div>
- -->
-
-
-
-<!--begin::Form-->
-<!-- <div class="form-group">
-<input class="form-control" type="text" placeholder="Card No" name="username" autocomplete="off" 
-required="true">
-</div>
-<div class="form-group">
-<input class="form-control" type="text" placeholder="CVV" name="username" autocomplete="off" 
-required="true">
-</div>
-<div class="form-group">
-<input class="form-control" type="password" placeholder="PIN" name="password" required="true">
-</div>
-<div class="form-group">
-<input class="form-control" type="text" placeholder="Expiry Date" name="password" required="true">
-</div>
-
-
-<div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary">
-<span>Submit</span>
-</button>
-</div>
-
-
-</form>
- -->
-<!--end::Form-->
-
-
-
-</div>
-
 <!--end::Signin-->
 </div>
-
 <!--end::Body-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 <!--end::Content-->
-
 </div>
 </div>
 </div>
-
 <!-- end:: Page -->
-
 <script type="text/javascript" src="js/custom/script.js"></script>
 <script type="text/javascript" src="js/custom/account.js"></script>

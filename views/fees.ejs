@@ -1,163 +1,86 @@
 <% include meta %>
 <link href="css/login.css" rel="stylesheet" type="text/css" />
-
 <!-- begin::Body -->
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
-
 <!-- begin:: Page -->
 <div class="kt-grid kt-grid--ver kt-grid--root">
 <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
-
-
 <!--begin::Content-->
 <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
-
-<!--begin::Head-->
-<div class="kt-login__bottom">
-
-</div>
-
-<!--end::Head-->
-
 <!--begin::Body-->
 <div class="kt-login__body" id="otp-section">
-
 <!--begin::Signin-->
 <div class="kt-login__form">
 <% include formhead %>
-<!-- <div class="kt-login__title">
-<h3>Phone Verification</h3>
-<p>Please verify your phone number below</p>
-</div> -->
-
-<!-- <div class="error" style="display:none;">Invalid Username or Password</div> -->
-
-
-
-<!--begin::Form-->
-<!-- <form class="kt-form" action="" novalidate="novalidate"> -->
-<!-- <div class="form-group">
-<input class="form-control" type="text" placeholder="Enter OTP" name="username" autocomplete="off" 
-required="true">
-</div> -->
-
-
+<div class="kt-login__title">
+<h3>Nairalife Membership Fee</h3>
+<h4>Pay &#8358;1,000 Yearly</h4>
+</div>
+<div class="text-center">
+<p>To complete your registration on Nairalife, you have to pay our yearly membership fee.</p>
+<p>This fee will be used to process all charges on your withdrawals and settle sms alerts.</p>
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" onclick="payWithPaystack()" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary">
-<span>Pay N1000 yearly membership fee</span>
+<button id="kt_login_signin_submit" onclick="payWithPaystack()" class="btn btn-primary btn-taller btn-pill btn-widest">
+<i class="la la-slack"></i><span>Pay Online Now</span>
 </button>
 </div>
-
-
-<!-- </form> -->
-
-<!--end::Form-->
-
-<!--begin::Divider-->
-<!-- <div class="kt-login__divider">
-<div class="kt-divider">
-<span></span>
-<span>OR</span>
-<span></span>
+<p class="border-dash"></p>
+<div class="text-center">
+<span class="text-muted">
+Nairalife uses the highest levels of security to protect your card information and our payment partner Paystack is PCI DSS certified and highly reputable with partners including taxify, MTN etc. making use of their services.
+</span>
+<p><img src="/images/paystack.png" style="width:100%;margin:0 auto;"></p>
+<span class="text-muted">
+<b>Please note:</b> the card you use to pay our membership fee will also be used automatically for your autosave and groupsave on Nairalife and to change it, you'll have to contact us.
+</span>
 </div>
-</div> -->
-<!--end::Divider-->
-
-<!--begin::Options-->
-<!-- <div class="kt-login__bottom">
-<span class="kt-login__signup-label">Didn't get OTP?</span>&nbsp;&nbsp;
-<a href="#" class="kt-link kt-login__signup-link">Resend</a>
 </div>
- -->
-<!--end::Options-->
-</div>
-
 <!--end::Signin-->
 </div>
-
 <!--end::Body-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 <!--end::Content-->
-
 </div>
 </div>
 </div>
-
 <!-- end:: Page -->
 
 <script type="text/javascript" src="js/custom/script.js"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
-  function payWithPaystack(event){
-    var handler = PaystackPop.setup({
-      key: 'pk_test_c390fc7c87abac72d463b6de024098319a6e92f3',
-      email: 'customer@email.com',
-      amount: 100000,
-      currency: "NGN",
-      channels: ["card"],
-      metadata: {
-         custom_fields: [
-            {
-                display_name: "Mobile Number",
-                variable_name: "mobile_number",
-                value: "+2348012345678"
-            }
-         ]
-      },
-      callback: sendReference,
-      onClose: function(){
-          // alert('window closed');
-      }
-    });
-    handler.openIframe();
-  }
+function payWithPaystack(event){
+var handler = PaystackPop.setup({
+key: 'pk_test_c390fc7c87abac72d463b6de024098319a6e92f3',
+email: 'customer@email.com',
+amount: 100000,
+currency: "NGN",
+channels: ["card"],
+metadata: {
+custom_fields: [
+{
+display_name: "Mobile Number",
+variable_name: "mobile_number",
+value: "+2348012345678"
+}
+]
+},
+callback: sendReference,
+onClose: function(){}
+});
+handler.openIframe();
+}
 </script>
 <script type="text/javascript">
-  function sendReference(response){
-    let reference = response.reference
-    api("card/verify", { reference, token: getToken() })
-      .then(handleResponse)
+function sendReference(response){
+let reference = response.reference
+api("card/verify", { reference, token: getToken() })
+.then(handleResponse)
 
-    function handleResponse(response){
-      // console.log(response)
-      if(response.status == 200)
-        redirect("/account")
-    }
-  }
+function handleResponse(response){
+// console.log(response)
+if(response.status == 200)
+redirect("/account")
+}
+}
 </script>

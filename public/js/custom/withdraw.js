@@ -35,15 +35,15 @@ function withdrawFunds(event){
 			store.withdrawInputs.forEach(input => input.value = "")
 		}
 		else if(response.code == "INVALID_PASSWORD")
-			showAlert("withdraw-error", "Invalid Password")
+			showAlert("withdraw-error", "Please enter the correct password for your Nairalife account")
 		else if(response.code == "NEGATIVE_AMOUNT")
-			showAlert("withdraw-error", "You entered a negative amount")
+			showAlert("withdraw-error", "Sorry, you entered a negative amount")
 		else if(response.code == "INSUFFICIENT_BALANCE")
-			showAlert("withdraw-error", "You don't have sufficient balance")
+			showAlert("withdraw-error", "Sorry, you currently don't have up to this amount in your Nairalife balance")
 		else if(response.code == "BANK_NOT_ADDED")
-			showAlert("withdraw-error", "You have not added your bank")
+			showAlert("withdraw-error", "Sorry, you have not added your bank on Nairalife")
 		else
-			showAlert("withdraw-error", "Withdraw failed. Try again later or contact us")
+			showAlert("withdraw-error", "Sorry, Withdrawal failed. Try again later or contact us")
 		withdrawButton("normal")
 	}
 }

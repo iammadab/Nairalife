@@ -2,34 +2,64 @@
 <link href="css/login.css" rel="stylesheet" type="text/css" />
 <!-- begin::Body -->
 <body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+
 <!-- begin:: Page -->
 <div class="kt-grid kt-grid--ver kt-grid--root">
 <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
 <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+
+
 <!--begin::Content-->
 <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
+
+<!--begin::Head-->
+<div class="kt-login__bottom">
+
+</div>
+
+<!--end::Head-->
+
 <!--begin::Body-->
-<div class="kt-login__body" id="login-section">
+<div class="kt-login__body">
+
 <!--begin::Signin-->
 <div class="kt-login__form">
 <% include formhead %>
 <div class="kt-login__title">
-<h3>Nigeria's first Digital Savings Group</h3>
-<h4>For Uber and Bolt Drivers Only</h4>
+<h3>404 Error</h3>
 </div>
+
+
 <div class="text-center">
-<p>We are currently accepting members who want to make and receive contributions and get cars on higher purchase.</p>
+<p>
+Sorry, this Nairalife page is currently unavailable or does not exist. Please go back to previous page below.
+</p>
 </div>
-<% include btn %>
+
+
+<div class="kt-login__btn">
+<a href="#" class="btn btn-primary btn-tall btn-wide btn-pill kt-margin-b-10 back-button"><i class="la la-arrow-left"></i> Go Back</a>
 </div>
+
+
+</div>
+
 <!--end::Signin-->
 </div>
+
 <!--end::Body-->
-<% include footer2 %>
 </div>
+
 <!--end::Content-->
 </div>
 </div>
 </div>
 
-<!-- end:: Page
+<script type="text/javascript">
+document.querySelector(".back-button").addEventListener("click", function(event){
+	event.preventDefault()
+	history.back()
+})
+</script>
+
+<!-- end:: Page -->

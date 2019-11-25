@@ -26,8 +26,8 @@ async function verifyBvn(data){
 	if(bvnVerificationResult.status != 200)
 		return bvnVerificationResult
 
-	if(!hasAll(userObj.fullname, bvnVerificationResult.data.first_name, bvnVerificationResult.data.last_name))
-		return { status: 403, code: "BVN_VERIFICATION_FAILED", message: "Name mismatch" }
+	// if(!hasAll(userObj.fullname, bvnVerificationResult.data.first_name, bvnVerificationResult.data.last_name))
+	// 	return { status: 403, code: "BVN_VERIFICATION_FAILED", message: "Name mismatch" }
 	
 	let addBankResult = await userService.addBank({ bvnResult: bvnVerificationResult.data, ...data })
 	if(addBankResult.status != 200)
