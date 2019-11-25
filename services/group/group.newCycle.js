@@ -21,6 +21,8 @@ async function newCycle(data){
 	if(!groupObj)
 		return { status: 403, code: "GROUP_DOES_NOT_EXIST" }
 
+	if(groupObj.status != "active")
+		return { status: 403, code: "CANNOT_RESTART_GROUP" }
 
 	// Creating the new group based on the data of the old group
 	let newGroupResult = await createGroup({
