@@ -68,7 +68,7 @@ async function withdraw(data){
 		status: "success",
 		data: { transfer_code: transferResult.data.transfer_code }
 	})
-	console.log(withdrawTransaction)
+	// console.log(withdrawTransaction)
 	// console.log("Transfer result", transferResult)
 
 	return { status: 200, code: "WITHDRAWAL_SUCCESSFUL" }
@@ -82,7 +82,7 @@ module.exports = withdraw
 
 
 function createReceipt({ name, account_number, bank_code }){
-	console.log(arguments)
+	// console.log(arguments)
 	let data = {
 		type: "nuban", 
 		name,
@@ -126,7 +126,6 @@ function initiateTransfer({ amount, recipient }){
 				.catch(handleFailure)
 
 	function handleSuccess(response){
-		console.log(response.data)
 		if(response.data.status)
 			return { status: 200, code: "TRANSFER_SUCCESSFUL", data: response.data.data }
 		return { status: 500, code: "TRANSFER_FAILED" }
