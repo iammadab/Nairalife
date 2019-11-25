@@ -9,6 +9,7 @@ const requestOptions = {
 }
 
 const userDb = require("../../data/db/user.db")
+const transactionDb = requie("../../data/da/transaction.db")
 
 async function withdraw(data){
 	let validationResult = withdrawValidator.parse(data)
