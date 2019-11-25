@@ -51,14 +51,14 @@ async function newCycle(data){
 	newGroupObj = await groupDb.appendDoc({ group_id: newGroupObj.group_id }, "started_by", userObj.fullname)
 
 	// Start the newly created group
-	let startGroupResult = await startGroup({ group_id: newGroupObj.group_id, ...data })
+	// Beware that the data already has group_id, I am putting it ahead so that the new group id overides it
+	let startGroupResult = await startGroup({ ...data, group_id: newGroupObj.group_id })
 	if(startGroupResult.status != 200)
 		return startGroupResult
 
 	// Get all the users in the new group and replace their group with the new group id
-	for(let i = 0; i < newGroupObj.members; i++){
-		let tempUser = await userDb.appendDoc({ user_id: newGroupObj.members[i].user_id })
-		console.log(tempUser)
+	for(let i = 0; i < newGroupObj.members.length; i++){
+		let tempUser = await userDb.appendDoc({ user_id: newGroupObj.members[i].user_id }, "group", newGroupObj.group_id)
 	}
 
 	// Set the status of the old group to ended
@@ -66,7 +66,6 @@ async function newCycle(data){
 
 	console.log(groupObj)
 	console.log(newGroupObj)
-
 	return { status: 200, code: "NEW_CYCLE_STARTED" }
 
 }
