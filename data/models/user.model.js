@@ -19,7 +19,8 @@ const userSchema = mongoose.Schema({
 	nairapoints: { type: Number, default: 0 },
 	balance: { type: Number, default: 0 },
 
-	role: { type: String, default: "user" } // user or admin
+	role: { type: String, default: "user" }, // user or admin
+	group: { type: String }
 })
 
 const userModel = mongoose.model("User", userSchema)

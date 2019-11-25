@@ -5,28 +5,28 @@
 <tr style="border-top:0">
 <td class="kt-font-bold" style="border-top:0">Title:</td>
 <td class="text-right" style="border-top:0">
-30,000 naira monthly group for 30 members
+<%= group.group_title %>
 </td>
 </tr>
 <tr>
 <td class="kt-font-bold">Description:</td>
 <td class="text-right">
-30 members will contribute 1,000 naira daily and one member will receive it. This cycle continues for 30 days.
+<%= group.group_description %>
 </td>
 </tr>
 <tr>
 <td class="kt-font-bold">Goals:</td>
 <td class="text-right">
-If you want to remit delivery money, or saving for upcoming expenses etc.	
+<%= group.group_goals %>
 </td>
 </tr>
 <tr>
 <td class="kt-font-bold">Total Members:</td>
-<td class="text-right"><span data-format="decimal">80</span></td>
+<td class="text-right"><span data-format="decimal"><%= group.total_members %></span></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Total Contributions:</td>
-<td class="text-right"><small class="nairacur">&#8358;</small><span data-format="decimal">60,000</span></td>
+<td class="text-right"><small class="nairacur">&#8358;</small><span data-format="decimal"><%= group.total_contribution %></span></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Receiving Next:</td>
@@ -34,15 +34,15 @@ If you want to remit delivery money, or saving for upcoming expenses etc.
 </tr>
 <tr>
 <td class="kt-font-bold">Contribution Per Member:</td>
-<td class="text-right"><small class="nairacur">&#8358;</small>60,000</td>
+<td class="text-right"><small class="nairacur">&#8358;</small><%= group.contribution_amount %></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Contribution Period:</td>
-<td class="text-right">Every Day</td>
+<td class="text-right"><%= group.contribution_period %></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Default Rate:</td>
-<td class="text-right">12%</td>
+<td class="text-right"><%= group.default_rate %>%</td>
 </tr>
 <tr>
 <td class="kt-font-bold">Insurance Status:</td>

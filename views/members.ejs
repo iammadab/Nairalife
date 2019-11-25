@@ -8,31 +8,31 @@
 <div class="kt-widget3">
 
 
-
+<% members.forEach(member => { %>
 <div class="kt-widget3__item">
 <div class="kt-widget3__header">
 <div class="kt-widget__pic">AW</div>
 <div class="kt-widget3__info">
 <a href="#" class="kt-widget3__username">
-Akin Wumi
+<%= member.fullname %>
 </a>
 <br>
 <span class="kt-widget3__time">
-Joined 30 Days Ago
+Joined <%= member.join_date %>
 </span>
 </div>
 </div>
 <div class="kt-widget3__body">
 <p class="kt-widget3__text">
-You represent excitment and life. The friend and family represent the mundane and it is incredible.
+<%= member.about.bio %>
 </p>
 </div>
 </div>
+<% }) %>
 
 
 
-
-<div class="kt-widget3__item">
+<!-- <div class="kt-widget3__item">
 <div class="kt-widget3__header">
 <div class="kt-widget__pic">WM</div>
 <div class="kt-widget3__info">
@@ -73,7 +73,7 @@ I am in the diaspora and this is such an effective society to make my savings.
 </p>
 </div>
 </div>
-
+ -->
 
 
 </div>

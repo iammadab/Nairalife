@@ -1,8 +1,8 @@
 function createDb(dbModel){
 	let baseDbFunctions = {}
 
-	baseDbFunctions.findWith = async (keyObj, specifier) => {
-		return dbModel.find(keyObj, specifier)
+	baseDbFunctions.findWith = async (keyObj, specifier, sort, limit) => {
+		return dbModel.find(keyObj, specifier).sort(sort).limit(limit)
 	}
 
 	baseDbFunctions.findOneWith = async (keyObj, specifier) => {

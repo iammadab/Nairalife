@@ -9,10 +9,16 @@ const groupSchema = mongoose.Schema({
 	contribution_amount: { type: Number, required: true },
 	contribution_period: { type: String, required: true, enum: ["daily", "weekly", "monthly"]},
 
-	status: { type: String, default: "active", enum: ["active", "ended"] },
+	status: { type: String, default: "inactive", enum: ["inactive", "active", "ended"] },
 	total_contribution: { type: Number, default: 0 },
 	default_rate: { type: Number, default: 0 },
-	comments: { type: Number, default: 0 }
+
+	members: { type: Array, default: [] },
+	comments: { type: Array, default: [] },
+
+	started_by: { type: String },
+	previous_group: { type: Number },
+	next_group: { type: Number }
 })
 
 const groupModel = mongoose.model("Group", groupSchema)

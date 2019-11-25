@@ -22,13 +22,15 @@ async function withdraw(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	console.log("Got here")
 	let samePassword = await compare(data.password, userObj.password)
 	if(!samePassword)
 		return { status: 403, code: "INVALID_PASSWORD" }
 
 	if(userObj.balance < data.amount)
 		return { status: 403, code: "INSUFFICIENT_BALANCE" }
+
+	if(data.amount == 0)
+		return { status: 403, code: "CAN_NOT_WITHDRAW_ZERO" }
 
 	if(userObj.bank.length < 1)
 		return { status: 403, code: "BANK_NOT_ADDED" }
@@ -86,6 +88,7 @@ function createReceipt({ name, account_number, bank_code }){
 	}
 
 	function handleFailure(response){
+		console.log(response)
 		return { status: response.response.status, code: "FAILED_TRANSFER_RECEIPT", message: response.response.data.message }
 	}
 }
