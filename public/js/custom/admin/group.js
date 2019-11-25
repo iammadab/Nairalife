@@ -16,7 +16,7 @@ function removeMember(event){
 
 	let { group_id, user_id } = event.target.dataset
 	
-	return api("group/member/remove", { group_id, user_id, token: getToken() })
+	return api("group/member/remove", { group_id, user_id, token: getToken("atoken") })
 			.then(handleResponse)
 
 	function handleResponse(response){
