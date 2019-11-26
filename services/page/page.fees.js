@@ -1,4 +1,4 @@
-const pageFunctions = required("./functions")
+const pageFunctions = require("./functions")
 
 async function fees(req, res, next){
 	let userObj = await pageFunctions.fetchUser(req.body.user.id)
