@@ -4,6 +4,7 @@ const { createValidator } = require("lazy-validator")
 const chargeValidator = createValidator("user_id.number, amount.number")
 
 const userDb = require("../../data/db/user.db")
+const transactionDb = require("../../data/db/transaction.db")
 
 const requestOptions = {
 	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`}
@@ -36,9 +37,9 @@ async function charge(data){
 	if(chargeResult.status != 200)
 		return chargeResult
 
-	console.log(chargeResult)
-
-	// At thi
+	// The creation of the transaction should happen outside this service
+	// This service should be used as the payment structure
+	return chargeResult
 
 }
 
