@@ -17,7 +17,7 @@ function addMember(event){
 	if(missingDetails.length > 0)
 		return showAlert("member-error", `You didn't fill data for ${missingDetails[0]}`)
 
-	return api("group/member", { token: getToken("atoken"), ...addDetails })
+	return api("group/member", { token: getToken("atoken"), user_id: addDetails.user_id, group_id: addDetails.group_id })
 			.then(handleResponse)
 
 	function handleResponse(response){

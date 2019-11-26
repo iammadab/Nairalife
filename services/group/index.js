@@ -4,6 +4,7 @@ const removeMember = require("./group.removeMember")
 const addComment = require("./group.addComment")
 const startGroup = require("./group.start")
 const newCycle = require("./group.newCycle")
+const getContributions = require("./group.getContributions")
 
 const groupServices = {
 	createGroup,
@@ -11,7 +12,8 @@ const groupServices = {
 	removeMember,
 	addComment,
 	startGroup,
-	newCycle
+	newCycle,
+	getContributions
 }
 
 module.exports = groupServices
