@@ -41,8 +41,7 @@ async function getContributions(data){
 			reference: chargeResult.data.reference,
 			type: "contribution",
 			status: "pending"
-		})
-		
+		})		
 	}
 
 }
