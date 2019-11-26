@@ -52,7 +52,7 @@ Nairalife uses the highest levels of security to protect your card information a
 function payWithPaystack(event){
 var handler = PaystackPop.setup({
 key: 'pk_test_c390fc7c87abac72d463b6de024098319a6e92f3',
-email: 'customer@email.com',
+email: '<%= user.email %>',
 amount: 100000,
 currency: "NGN",
 channels: ["card"],
