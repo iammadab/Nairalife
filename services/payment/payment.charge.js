@@ -29,8 +29,8 @@ async function charge(data){
 	let chargeResult = await chargeUser({
 		authorization_code: userObj.card[0].authorization.authorization_code,
 		amount: validData.amount,
-		// email: userObj.email
-		email: "customer@email.com"
+		email: userObj.email
+		// email: "customer@email.com"
 	})
 
 }
