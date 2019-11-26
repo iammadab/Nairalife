@@ -25,11 +25,12 @@ async function charge(data){
 
 	if(!userObj.card)
 		return { status: 403, code: "NO_CARD_FOUND" }
-	console.log(userObj.card.authorization.authorization_code)
 
-	// let chargeResult = await charge({
-	// 	authorization_code
-	// })
+	let chargeResult = await charge({
+		authorization_code: userObj.card[0].authorization.authorization_code,
+		amount: validData.amount,
+		email: userObj.email
+	})
 
 }
 
@@ -42,6 +43,8 @@ async function chargeUser({ authorization_code, email, amount }){
 		email,
 		amount
 	}
+
+	console.log(data)
 
 	return axios.post("https://api.paystack.co/transaction/charge_authorization", data, requestOptions)
 				.then(handleSuccess)
