@@ -26,12 +26,19 @@ async function charge(data){
 	if(!userObj.card)
 		return { status: 403, code: "NO_CARD_FOUND" }
 
+	// Charge the user
 	let chargeResult = await chargeUser({
 		authorization_code: userObj.card[0].authorization.authorization_code,
 		amount: validData.amount,
 		email: userObj.email
 		// email: "customer@email.com"
 	})
+	if(chargeResult.status != 200)
+		return chargeResult
+
+	console.log(chargeResult)
+
+	// At thi
 
 }
 
@@ -55,10 +62,11 @@ async function chargeUser({ authorization_code, email, amount }){
 		console.log(response)
 		if(response.data.status)
 			return { status: 200, code: "CHARGE_ATTEMPTED", data: response.data.data }
-		return { status: 200, code: "CHARGE_FAILED", data: response.data.data }
+		return { status: 500, code: "CHARGE_FAILED", data: response.data.data }
 	}
 
 	function handleFailure(response){
 		console.log(response)
+		return { status: response.response.status, code: "CHARGE_FAILED", data: response.response.data }
 	}
 }
