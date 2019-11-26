@@ -53,6 +53,9 @@ async function chargeUser({ authorization_code, email, amount }){
 
 	function handleSuccess(response){
 		console.log(response)
+		if(response.data.status)
+			return { status: 200, code: "CHARGE_ATTEMPTED", data: response.data.data }
+		return { status: 200, code: "CHARGE_FAILED" }
 	}
 
 	function handleFailure(response){
