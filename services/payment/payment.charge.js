@@ -18,7 +18,11 @@ async function charge(data){
 	if(validData.amount < 1000)
 		return { status: 403, code: "MINIMUM_CHARGE_1000" }
 
-	
 }
 
 module.exports = charge
+
+
+async function chargeUser(){
+
+}
