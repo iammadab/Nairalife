@@ -26,7 +26,7 @@ async function charge(data){
 	if(!userObj.card)
 		return { status: 403, code: "NO_CARD_FOUND" }
 
-	let chargeResult = await charge({
+	let chargeResult = await chargeUser({
 		authorization_code: userObj.card[0].authorization.authorization_code,
 		amount: validData.amount,
 		email: userObj.email
