@@ -12,5 +12,6 @@ groupRouter.post("/member/remove", authenticationService.verifyToken(), authenti
 groupRouter.post("/comment", authenticationService.verifyToken(), bodyResponder(groupService.addComment))
 groupRouter.post("/start", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(groupService.startGroup))
 groupRouter.post("/cycle", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(groupService.newCycle))
+groupRouter.post("/contributions/charge", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponser(groupService.getContributions))
 
 module.exports = groupRouter
