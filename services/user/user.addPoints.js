@@ -15,9 +15,9 @@ async function addPoints(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
-	let oldPoints = userobj.points, newPoints = oldPoints + validData.points
+	let oldPoints = userObj.nairapoint, newPoints = oldPoints + validData.points
 	console.log(oldPoints, newPoints)
-	userObj = await userObj.appendDoc({ user_id: validData.user_id }, "points", newPoints)
+	userObj = await userDb.appendDoc({ user_id: validData.user_id }, "nairapoints", newPoints)
 
 	console.log(userObj)
 
