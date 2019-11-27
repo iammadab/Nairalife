@@ -12,11 +12,16 @@ let store = {
 })()	
 
 function verifyBank(event){
+	let nameMap = {
+		account_number: "enter your account number",
+		bank_code: "select your bank",
+		bvn: "enter your bank verification number"
+	}
 	event.preventDefault()
 	let bankDetails = extractForm(store.bankFormTag)
 	let missingDetails = hasKeys(bankDetails, ["account_number", "bank_code", "bvn"])
 	if(missingDetails.length > 0)
-		return showAlert("bank-error", `You didn't fill data for ${missingDetails[0]}`)
+		return showAlert("bank-error", `Sorry, you didn't ${nameMap[missingDetails[0]]}`)
 
 	let { account_number, bank_code, bvn } = bankDetails
 	return api("bank/verify", { account_number, bank_code, bvn, token: getToken() })

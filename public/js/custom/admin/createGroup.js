@@ -18,7 +18,7 @@ function createGroup(event){
 	let missingDetails = hasKeys(groupDetails, ["group_title", "group_description", "group_goals", "total_members", "contribution_amount", "contribution_period"])
 	if(missingDetails.length > 0){
 		createGroupButton("normal")
-		return showAlert("create-error", `You didn't fill data for ${missingDetails[0]}`)
+		return showAlert("create-error", `Sorry, you didn't enter ${missingDetails[0]}`)
 	}
 
 	return api("group", { ...groupDetails, token: getToken("atoken") })

@@ -13,13 +13,17 @@ addEvent(store.withdrawInputs, "input,focus", () => hideAlert("withdraw-success"
 let withdrawButton = createButton(".withdraw-text", "Withdraw", "Withdrawing...")
 
 function withdrawFunds(event){
+let nameMap = {
+		amount: "enter the amount you want to withdraw",
+		password: "enter your Nairalife account password"
+	}	
 event.preventDefault()
 withdrawButton()
 let withdrawDetails = extractForm(store.withdrawFormTag)
 let missingDetails = hasKeys(withdrawDetails, ["amount", "password"])
 if(missingDetails.length > 0){
 withdrawButton("normal")
-return showAlert("withdraw-error", `You didn't fill data for ${missingDetails[0]}`)
+return showAlert("withdraw-error", `Sorry, you didn't ${nameMap[missingDetails[0]]}`)
 }
 
 let { amount, password } = withdrawDetails
@@ -45,7 +49,7 @@ showAlert("withdraw-error", "Sorry, you currently don't have up to this amount i
 else if(response.code == "BANK_NOT_ADDED")
 showAlert("withdraw-error", "Sorry, you have not added your bank on Nairalife")
 else
-showAlert("withdraw-error", "Sorry, Withdrawal failed. Try again later or contact us")
+showAlert("withdraw-error", "Sorry, Nairalife withdrawal failed. Try again later or contact us")
 withdrawButton("normal")
 }
 }
