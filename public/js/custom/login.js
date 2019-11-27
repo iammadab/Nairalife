@@ -13,13 +13,17 @@ let loginButton = createButton(".login-text", "Enter Account", "Logging in...")
 })()
 
 function startLogin(event){
+	let nameMap = {
+		phone: "phone number",
+		password: "password"
+	}
 	event.preventDefault()
 	loginButton()
 	let loginDetails = extractForm(store.loginFormTag)
 	let missingDetails = hasKeys(loginDetails, ["phone", "password"])
 	if(missingDetails.length > 0){
 		loginButton("normal")
-		return showAlert("login-error", `You didn't fill a value for ${missingDetails[0]}`)
+		return showAlert("login-error", `Sorry, you didn't enter your ${nameMap[missingDetails[0]]}`)
 	}
 
 	return api("auth/login", { phone: loginDetails.phone, password: loginDetails.password })
@@ -29,9 +33,9 @@ function startLogin(event){
 		if(response.status == 200)
 			redirect("/home")
 		else if(response.code == "USER_DOES_NOT_EXIST")
-			return showAlert("login-error", "No account has that phone number")
+			return showAlert("login-error", "Sorry, no Nairalife account has that phone number")
 		else if(response.code == "INVALID_PASSWORD")
-			return showAlert("login-error", "Invalid phone and password combination")
+			return showAlert("login-error", "Sorry, invalid phone number and password combination")
 		loginButton("normal")
 	}
 }

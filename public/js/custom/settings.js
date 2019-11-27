@@ -31,7 +31,7 @@ let store = {
 	addEvent(store.bankInputs, "input,focus", () => hideAlert("bank-success"))
 })()
 
-let saveButton = createButton(".save-text", "Save Information", "Saving")
+let saveButton = createButton(".save-text", "Save Profile", "Saving...")
 function saveInformation(event){
 	event.preventDefault()
 	saveButton()
@@ -40,7 +40,7 @@ function saveInformation(event){
 	if(missingKeys.length > 0){
 		scrollTo(0, 100)
 		saveButton("normal")
-		return showAlert("profile-error", `You didn't fill data for ${missingKeys[0]}`)
+		return showAlert("profile-error", `Sorry, you didn't enter ${missingKeys[0]}`)
 	}
 
 	return api("user/profile", { ...profileDetails, token: getToken() })
@@ -48,7 +48,7 @@ function saveInformation(event){
 
 	function handleResponse(response){
 		if(response.status == 200){
-			showAlert("profile-success", "Profile updated successfully")
+			showAlert("profile-success", "Nairalife Profile updated successfully")
 			redirect(window.location.href)
 		}
 		scrollTo(0, 100)
@@ -70,12 +70,12 @@ function changePassword(event){
 	let missingKeys = hasKeys(passwordDetails, ["oldPassword", "newPassword", "newPassword2"])
 	if(missingKeys.length > 0){
 		passwordButton("normal")
-		return showAlert("password-error", `You didn't fill data for ${missingKeys[0]}`)
+		return showAlert("password-error", `Sorry, You didn't enter ${missingKeys[0]}`)
 	}
 
 	if(passwordDetails.newPassword != passwordDetails.newPassword2){
 		passwordButton("normal")
-		return showAlert("password-error", "New password's do not match")
+		return showAlert("password-error", "Sorry, new passwords do not match")
 	}
 
 	return api("user/password", { ...passwordDetails, token: getToken() })
@@ -87,7 +87,7 @@ function changePassword(event){
 			store.passwordInputs.forEach(input => input.value = "")
 		}
 		else if(response.code == "INVALID_PASSWORD")
-			showAlert("password-error", "Your old password is incorrect")
+			showAlert("password-error", "Sorry, your old Nairalife password is incorrect")
 		passwordButton("normal")
 	}
 }
@@ -102,7 +102,7 @@ function updateBank(event){
 	let missingKeys = hasKeys(bankDetails, ["account_number", "bank_code"])
 	if(missingKeys.length > 0){
 		bankButton("normal")
-		return showAlert("bank-error", `You didn't fill data for ${missingKeys[0]}`)
+		return showAlert("bank-error", `Sorry, you didn't enter ${missingKeys[0]}`)
 	}
 
 	let { account_number, bank_code } = bankDetails

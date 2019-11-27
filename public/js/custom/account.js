@@ -14,13 +14,19 @@ let store = {
 const verifyButton = createButton(".verify-text", "Verify Bank", "Verifying")
 
 function verifyBank(event){
+	let nameMap = {
+		account_number: "enter your account number",
+		bank_code: "select your bank",
+		bvn: "enter your bank verification number"
+	}
 	event.preventDefault()
 	verifyButton()
 	let bankDetails = extractForm(store.bankFormTag)
 	let missingDetails = hasKeys(bankDetails, ["account_number", "bank_code", "bvn"])
+
 	if(missingDetails.length > 0){
 		verifyButton("normal")
-		return showAlert("bank-error", `You didn't fill data for ${missingDetails[0]}`)
+		return showAlert("bank-error", `Sorry, you didn't ${nameMap[missingDetails[0]]}`)
 	}
 
 	let { account_number, bank_code, bvn } = bankDetails

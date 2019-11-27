@@ -43,13 +43,16 @@ let store = {
 let recoverButton = createButton(".recover-text", "Recover Password", "Sending Otp...")
 
 function sendOtp(event){
+	let nameMap = {
+		phone: "enter your phone number"
+	}
 	event.preventDefault()
 	recoverButton()
 	let phoneDetails = extractForm(store.phoneElementTag)
 	let missingDetails = hasKeys(phoneDetails, ["phone"])
 	if(missingDetails.length > 0){
 		recoverButton("normal")
-		showAlert("phone-error", `You didn't fill data for ${missingDetails[0]}`)
+		showAlert("phone-error", `Sorry, you didn't ${nameMap[missingDetails[0]]}`)
 	}
 
 	store.phone = phoneDetails.phone
@@ -61,7 +64,7 @@ function sendOtp(event){
 		if(response.status == 200)
 			showView("otp-section")
 		else if(response.code == "USER_DOES_NOT_EXIST")
-			showAlert("phone-error", "Account not found")
+			showAlert("phone-error", "Sorry, Nairalife account was not found")
 		recoverButton("normal")
 	}
 }
@@ -79,7 +82,7 @@ function verifyOtp(event){
 	let missingDetails = hasKeys(otpDetails, ["code"])
 	if(missingDetails.length > 0){
 		verifyButton("normal")
-		return showAlert("otp-error", `You didn't fill data for ${missingDetails[0]}`)
+		return showAlert("otp-error", `Sorry, you didn't enter ${missingDetails[0]}`)
 	}
 
 	store.code = otpDetails.code
@@ -114,12 +117,12 @@ function changePassword(event){
 	let missingDetails = hasKeys(passwordDetails, ["password", "password2"])
 	if(missingDetails.length > 0){
 		passwordButton("normal")
-		return showAlert("password-error", `You didn't fill data for ${missingDetails[0]}`)
+		return showAlert("password-error", `Sorry, you didn't enter ${missingDetails[0]}`)
 	}
 
 	if(passwordDetails.password != passwordDetails.password2){
 		passwordButton("normal")
-		return showAlert("password-error", "Passwords do not match")
+		return showAlert("password-error", "Sorry, Passwords do not match. Please try again below")
 	}
 
 	store.password = passwordDetails.password
@@ -131,7 +134,7 @@ function changePassword(event){
 		if(response.status == 200)
 			loginUser()
 		else
-			showAlert("password-error", "Problem changing password. Try again later")
+			showAlert("password-error", "Sorry, we have encountered a problem changing password. Please try again later")
 		passwordButton("normal")
 	}
 }

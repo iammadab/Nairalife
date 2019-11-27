@@ -17,7 +17,7 @@ function loginAdmin(event){
 	let missingDetails = hasKeys(loginDetails, ["phone", "password"])
 	if(missingDetails.length > 1){
 		loginButton("normal")
-		return showAlert("login-error", `You didn't fill data for ${missingDetails[0]}`)
+		return showAlert("login-error", `Sorry, you didn't enter ${missingDetails[0]}`)
 	}
 
 	return api("admin/login", { phone: loginDetails.phone, password: loginDetails.password })

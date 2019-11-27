@@ -32,6 +32,12 @@ let store = {
 let registerButton = createButton(".register-text", "Join Us", "Registering...")
 
 function startRegistration(event){
+	let nameMap = {
+		fullname: "full name",
+		phone: "phone number",
+		password: "password"
+	}
+
 	event.preventDefault()
 	registerButton()
 	let userDetails = store.userDetails = extractForm(store.registerFormTag)
@@ -39,7 +45,7 @@ function startRegistration(event){
 
 	if(missingKeys.length > 0){
 		registerButton("normal")
-		return showAlert("register-error", `You didn't fill data for ${missingKeys[0]}`)
+		return showAlert("register-error", `Sorry, you didn't enter your ${nameMap[missingKeys[0]]}`)
 	}
 
 	checkIfPhoneExists()
@@ -55,7 +61,7 @@ function startRegistration(event){
 		function handleResponse(response){
 			if(!response.exists) return
 			registerButton("normal")
-			showAlert("register-error", "Phone already exists")
+			showAlert("register-error", "Sorry, phone number already exists on Nairalife")
 			throw new Error()
 		}
 	}
@@ -67,7 +73,7 @@ function startRegistration(event){
 		function handleResponse(response){
 			if(!response.exists) return
 			registerButton("normal")
-			showAlert("register-error", "Email already exists")
+			showAlert("register-error", "Sorry, email address already exists on Nairalife")
 			throw new Error()
 		}
 	}
@@ -80,7 +86,7 @@ function startRegistration(event){
 			if(response.status == 200)
 				showView("otp-section")
 			else
-				showAlert("register-error", "Problem generating otp, try again later")
+				showAlert("register-error", "Sorry, we have a problem generating otp, please try again later")
 			registerButton("normal")
 		}
 	}
@@ -101,7 +107,7 @@ function registerUser(event){
 
 	if(missingKeys.length > 0){
 		otpButton("normal")
-		return showAlert("otp-error", `You didn't fill data for ${missingKeys[0]}`)
+		return showAlert("otp-error", `Sorry, you didn't enter ${missingKeys[0]}`)
 	}
 
 	store.userDetails.code = otpDetails.code
