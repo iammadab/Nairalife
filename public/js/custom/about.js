@@ -12,7 +12,7 @@ let store = {
 function submitPreference(event){
 	event.preventDefault()
 	let preferenceDetails = extractForm(store.preferenceFormTag)
-	let missingDetails = hasKeys(preferenceDetails, ["sex", "relationship", "title", "bio", "work", "work_description", "earning", "contribution_receive", "contribution_make", "contribution_use"])
+	let missingDetails = hasKeys(preferenceDetails, ["sex", "relationship", "title", "bio", "partner", "work_description", "own_car", "earning", "contribution_make", "contribution_period", "contribution_use"])
 	if(missingDetails.length > 0)
 		return showAlert("preference-error", `You didn't fill a value for ${missingDetails[0]}`)
 
