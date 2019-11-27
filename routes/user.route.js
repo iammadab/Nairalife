@@ -14,5 +14,6 @@ userRouter.post("/password", authenticationService.verifyToken(), bodyResponder(
 userRouter.post("/password/forgot", bodyResponder(userService.forgotPassword))
 userRouter.post("/withdraw", authenticationService.verifyToken(), bodyResponder(paymentService.withdraw))
 userRouter.post("/points", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(userService.addPoints))
+userRouter.post("/balance", bodyResponder(userService.addBalance))
 
 module.exports = userRouter
