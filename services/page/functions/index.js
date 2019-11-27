@@ -3,13 +3,15 @@ const fetchBanks = require("./fetchBanks")
 const fetchGroups = require("./fetchGroups")
 const fetchGroup = require("./fetchGroup")
 const fetchComments = require("./fetchComments")
+const fetchContributions = require("./fetchContributions")
 
 const pageFunctions = {
 	fetchUser,
 	fetchBanks,
 	fetchGroups,
 	fetchGroup,
-	fetchComments
+	fetchComments,
+	fetchContributions
 }
 
 module.exports = pageFunctions
