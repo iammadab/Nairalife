@@ -1,7 +1,9 @@
 let store = {
 	removeButtons: document.querySelectorAll(".remove-member"),
 
-	restartButton: document.querySelector(".restart-cycle-button")
+	restartButton: document.querySelector(".restart-cycle-button"),
+
+	contributionsButton: document.querySelector(".get-contribution-button")
 }
 
 ;(function attachEvents(){
