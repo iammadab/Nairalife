@@ -5,6 +5,7 @@ const getContributionsValidator = createValidator("group_id.number")
 const groupDb = require("../../data/db/group.db")
 const userDb = require("../../data/db/user.db")
 const transactionDb = require("../../data/db/transaction.db")
+const contributionDb = require("../../data/db/contribution.db")
 
 const paymentService = require("../payment")
 
