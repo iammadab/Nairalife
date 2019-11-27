@@ -15,6 +15,7 @@ async function addPoints(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
+	// Get the old points, replace with 0 if it doesn't exist , calculate the new point and update the user
 	let oldPoints = userObj.nairapoints || 0, newPoints = oldPoints + validData.points
 	userObj = await userDb.appendDoc({ user_id: validData.user_id }, "nairapoints", newPoints)
 
@@ -22,7 +23,6 @@ async function addPoints(data){
 		return { status: 403, code: "PROBLEM_ADDING_POINTS" }
 
 	return { status: 200, code: "UPDATED_USER_POINTS" }
-
 }
 
 module.exports = addPoints
