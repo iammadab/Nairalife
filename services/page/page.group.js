@@ -9,7 +9,8 @@ async function group(req, res, next){
 		return res.redirect("/admin/groups")
 
 	req.body.pageData = {
-		group: groupObj
+		group: groupObj,
+		contributions
 	}
 	
 	next()
