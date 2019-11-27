@@ -11,6 +11,10 @@ async function addPoints(data){
 
 	let validData = validationResult.data
 
+	let adminObj = await userDb.findOneWith({ _id: data.user.id })
+	if(!adminObj)
+		return { status: 403, code: "UNAUTHORIZED" }
+
 	let userObj = await userDb.findOneWith({ user_id: validData.user_id })
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
