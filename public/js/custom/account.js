@@ -36,7 +36,7 @@ function sendBvn(bvn){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
+		// console.log(response)
 		if(response.status == 200)
 			redirect("/about")
 		else if(response.code == "BVN_MUST_BE_11_DIGITS")
