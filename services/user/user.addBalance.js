@@ -37,17 +37,17 @@ async function addBalance(data){
 	// This means the user owes us money, hence we can't give them the complete cash
 	// So we have to subtract how much they owe us from how much we are giving them
 	// Since the amount is going to be negative we can just add
-	// if(nairalife_balance < 0 && amount >= 0){
-	// 	let netAmount = amount + nairalife_balance
-	// 	if(netAmount < 0){ // They still owe us money
-	// 		new_nairalife_balance = netAmount
-	// 		new_balance = 0
-	// 	}
-	// 	else if(netAmount >= 0){
-	// 		new_nairalife_balance = (-1 * netAmount)
-	// 		new_balance = netAmount
-	// 	}
-	// }
+	if(nairalife_balance < 0 && amount >= 0){
+		let netAmount = amount + nairalife_balance
+		if(netAmount < 0){ // They still owe us money
+			new_nairalife_balance = netAmount
+			new_balance = 0
+		}
+		else if(netAmount >= 0){
+			new_nairalife_balance = (-1 * netAmount)
+			new_balance = netAmount
+		}
+	}
 
 
 	// Case 3: Nairalife balance is negative and the amount we are adding is negative
