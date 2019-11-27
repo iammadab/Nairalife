@@ -23,9 +23,7 @@ async function getContributions(data){
 	let adminObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!adminObj)
 		return { status: 200, code: "ADMIN_NOT_FOUND" }
-
-	console.log(adminObj)
-
+	
 
 	// Since we are going to be charging each user in the group
 	// We need to keep track of each contribution group
