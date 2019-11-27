@@ -42,9 +42,9 @@
 })()
 
 ;(function attachLogout(){
-	let logoutButton = document.querySelector(".logout")
-	if(!logoutButton) return
-	addEvent([logoutButton], "click", logout)
+	let logoutButtons = Array.from(document.querySelectorAll(".logout"))
+	if(logoutButtons.length == 0) return
+	addEvent(logoutButtons, "click", logout)
 	
 	function logout(event){
 		event.preventDefault()
