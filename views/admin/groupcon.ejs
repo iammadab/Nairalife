@@ -14,11 +14,11 @@
 </tr>
 </thead>
 <tbody>
-<% contributions.forEach(contribution => { %>
+<% contributions.forEach((contribution, i) => { %>
 <tr>
-<td>6</td>
-<td>162436645OBA</td>
-<td>Adeleke Kemi</td>
+<td><%= i + 1 %></td>
+<td><%= contribution._id %></td>
+<td><%= contribution.admin %></td>
 <td>30-12-2019</td>
 <td>6:08 PM</td>
 <td>10%</td>
