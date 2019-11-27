@@ -51,8 +51,13 @@ async function addBalance(data){
 
 
 	// Case 3: Nairalife balance is negative and the amount we are adding is negative
-	// In this case, the user is alreay owing us cash and we are decductin more cash
+	// In this case, the user is alreay owing us cash and we are decducting more cash
 	// In this case, we subtract the amount from total balance which, effectively adds them up
+	if(nairalife_balance < 0 && amount < 0){
+		new_nairalife_balance = nairalife_balance + amount
+		new_balance = 0
+	}
+
 
 
 	// Case 4: Nairalife balance is positive and the amount we are adding is negative
