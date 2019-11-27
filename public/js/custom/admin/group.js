@@ -54,6 +54,9 @@ function getContributions(event){
 				.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
+		if(response.status == 200)
+			redirect(window.location.href)
+		else
+			console.log(response)
 	}
 }
