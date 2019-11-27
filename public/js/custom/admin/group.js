@@ -47,5 +47,13 @@ function restartCycle(event){
 
 function getContributions(event){
 	event.preventDefault()
-	console.log("Fetching contributions")
+	let { group_id } = store.contributionsButton.dataset
+	if(!group_id) return console.log("No group id. Contact support")
+
+	return api("group/contributions/charge", { group_id, token: getToken("atoken") })
+				.then(handleResponse)
+
+	function handleResponse(response){
+		console.log(response)
+	}
 }
