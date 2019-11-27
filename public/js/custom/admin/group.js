@@ -1,14 +1,13 @@
 let store = {
 	removeButtons: document.querySelectorAll(".remove-member"),
-
 	restartButton: document.querySelector(".restart-cycle-button"),
-
 	contributionsButton: document.querySelector(".get-contribution-button")
 }
 
 ;(function attachEvents(){
 	addEvent(store.removeButtons, "click", removeMember)
 	addEvent([store.restartButton], "click", restartCycle)
+	addEvent([store.contributionsButton], "click", getContributions)
 })()
 
 function removeMember(event){
@@ -44,4 +43,9 @@ function restartCycle(event){
 		if(response.status == 200)
 			redirect("/admin/groups")
 	}
+}
+
+function getContributions(event){
+	event.preventDefault()
+	console.log("Fetching contributions")
 }
