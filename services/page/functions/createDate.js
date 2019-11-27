@@ -15,7 +15,9 @@ function createDate(dateInput){
 	}
 
 	function getHypenDate(){
-
+		let dateString = dateObj.toLocaleDateString()
+		let dateParts = dateString.split("/")
+		return `${dateParts[1]}-${dateParts[0]}-${dateParts[2]}`
 	}
 
 	return {
@@ -29,3 +31,4 @@ function createDate(dateInput){
 let dateGuy = createDate(new Date())
 console.log(dateGuy.getTime())
 console.log(dateGuy.getDate())
+console.log(dateGuy.getHypenDate())
