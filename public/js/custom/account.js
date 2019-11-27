@@ -39,6 +39,8 @@ function sendBvn(bvn){
 		console.log(response)
 		if(response.status == 200)
 			redirect("/about")
+		else if(response.code == "BVN_MUST_BE_11_DIGITS")
+			return showAlert("bank-error", "Bvn number must be 11 digits long")
 		else if(response.code == "BVN_VERIFICATION_FAILED")
 			return showAlert("bank-error", response.message)
 	}	
