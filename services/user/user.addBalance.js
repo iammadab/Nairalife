@@ -9,7 +9,7 @@ async function addBalance(data){
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
-	let validData = validationResult.data
+	let validData = validationResult.data, amount = validData.amount
 
 	let userObj = await userDb.findOneWith({ user_id: validData.user_id })
 	if(!userObj)
@@ -76,10 +76,12 @@ async function addBalance(data){
 	userObj = await userDb.appendDoc({ user_id: validData.user_id }, "nairalife_balance", new_nairalife_balance)
 	userObj = await userDb.appendDoc({ user_id: validData.user_id }, "balance", (balance + new_balance))
 
-	if(!userObj)
-		return { status: 403, "PROBLEM_ADDING_BALANCE" }
+	console.log(userObj)
 
-	return { sttus: 200, code: "UPDATED_USER_BALANCE" }
+	if(!userObj)
+		return { status: 403, code: "PROBLEM_ADDING_BALANCE" }
+
+	return { status: 200, code: "UPDATED_USER_BALANCE" }
 
 }
 
