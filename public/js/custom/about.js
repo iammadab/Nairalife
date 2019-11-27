@@ -12,10 +12,13 @@ let store = {
 let submitButton = createButton(".preference-text", "Complete Registration", "Submitting...")
 function submitPreference(event){
 	event.preventDefault()
+	submitButton()
 	let preferenceDetails = extractForm(store.preferenceFormTag)
 	let missingDetails = hasKeys(preferenceDetails, ["sex", "relationship", "title", "bio", "partner", "work_description", "own_car", "earning", "contribution_make", "contribution_period", "contribution_use"])
-	if(missingDetails.length > 0)
+	if(missingDetails.length > 0){
+		submitButton("normal")
 		return showAlert("preference-error", `You didn't fill a value for ${missingDetails[0]}`)
+	}
 
 	preferenceDetails.token = getToken()
 	return api("user/preference", preferenceDetails)
@@ -24,6 +27,7 @@ function submitPreference(event){
 	function handleResponse(response){
 		if(response.status == 200)
 			redirect("/home")
+		submitButton("normal")
 	}
 
 }
