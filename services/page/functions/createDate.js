@@ -8,11 +8,17 @@ function createDate(dateInput){
 		return `${timeParts[0]}:${timeParts[1]} ${period}`
 	}
 
+	function getDate(){
+
+	}
+
 	return {
-		getTime
+		getTime,
+		getDate
 	}
 
 }
 
 let dateGuy = createDate(new Date())
 console.log(dateGuy.getTime())
+console.log(dateGuy.getDate())
