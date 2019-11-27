@@ -15,6 +15,9 @@ async function addBalance(data){
 	if(!userObj)
 		return { status: 403, code: "USER_NOT_FOUND" }
 
+	let { nairalife_balance, balance } = userObj
+	console.log(nairalife_balance, balance)
+
 }
 
 module.exports = addBalance
