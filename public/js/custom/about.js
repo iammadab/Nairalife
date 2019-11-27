@@ -5,11 +5,11 @@ let store = {
 }
 
 ;(function attachEvents(){
-	console.log("Button", store.preferenceButton)
 	addEvent([store.preferenceButton], "click", submitPreference)
 	addEvent(store.inputs, "input,focus", () => hideAlert("preference-error"))
 })()	
 
+let submitButton = createButton(".preference-text", "Complete Registration", "Submitting...")
 function submitPreference(event){
 	event.preventDefault()
 	let preferenceDetails = extractForm(store.preferenceFormTag)
