@@ -1,7 +1,18 @@
 function createDate(dateInput){
 	if(!dateInput) return {}
 	let dateObj = new Date(dateInput)
-	console.log(dateObj)
+		
+	function getTime(){
+		let timeString = dateObj.toLocaleTimeString()
+		let timeParts = timeString.split(":"), period = timeParts[2].split(" ")[1]
+		return `${timeParts[0]}:${timeParts[1]} ${period}`
+	}
+
+	return {
+		getTime
+	}
+
 }
 
-console.log(createDate(new Date()))
+let dateGuy = createDate(new Date())
+console.log(dateGuy.getTime())
