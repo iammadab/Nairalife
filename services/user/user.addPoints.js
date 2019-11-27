@@ -36,8 +36,6 @@ async function addPoints(data){
 		admin: adminObj.fullname
 	})
 
-	console.log(newPoint)
-
 	return { status: 200, code: "UPDATED_USER_POINTS" }
 }
 
