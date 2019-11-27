@@ -52,8 +52,8 @@ viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("e
 	res.render("about",{ title: "Welcome"})
 })
 
-viewRouter.get("/fee", cookieNotFound("/login"), verifyToken(), stageRouter("enter_card_details"), (req, res) => {
-	res.render("fees",{ title: "Pay Fee"})
+viewRouter.get("/fee", cookieNotFound("/login"), verifyToken(), stageRouter("enter_card_details"), pageService.fees, (req, res) => {
+	res.render("fees",{ title: "Pay Fee", ...req.body.pageData })
 })
 
 viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.dashboard, (req, res) => {
