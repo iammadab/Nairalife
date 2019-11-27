@@ -28,7 +28,4 @@ function createDate(dateInput){
 
 }
 
-let dateGuy = createDate(new Date())
-console.log(dateGuy.getTime())
-console.log(dateGuy.getDate())
-console.log(dateGuy.getHypenDate())
+module.exports = createDate
