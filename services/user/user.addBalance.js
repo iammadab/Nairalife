@@ -64,7 +64,10 @@ async function addBalance(data){
 	// This means we owe the user some money, but now we are removing money from the user
 	// This effectively means that we don't owe the user as much
 	// So we subtract what we want to deduct, from the nairalife balance to get the new nairalife balance
-
+	if(nairalife_balance >= 0 && amount < 0){
+		new_nairalife_balance = nairalife_balance + amount
+		new_balance = 0
+	}
 
 }
 
