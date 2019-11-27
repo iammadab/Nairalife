@@ -4,6 +4,7 @@ const fetchGroups = require("./fetchGroups")
 const fetchGroup = require("./fetchGroup")
 const fetchComments = require("./fetchComments")
 const fetchContributions = require("./fetchContributions")
+const createDate = require("./createDate")
 
 const pageFunctions = {
 	fetchUser,
@@ -11,7 +12,8 @@ const pageFunctions = {
 	fetchGroups,
 	fetchGroup,
 	fetchComments,
-	fetchContributions
+	fetchContributions,
+	createDate
 }
 
 module.exports = pageFunctions
