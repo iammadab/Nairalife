@@ -33,9 +33,9 @@ function startLogin(event){
 		if(response.status == 200)
 			redirect("/home")
 		else if(response.code == "USER_DOES_NOT_EXIST")
-			return showAlert("login-error", "Sorry, no Nairalife account has that phone number")
+			showAlert("login-error", "Sorry, no Nairalife account has that phone number")
 		else if(response.code == "INVALID_PASSWORD")
-			return showAlert("login-error", "Sorry, invalid phone number and password combination")
+			showAlert("login-error", "Sorry, invalid phone number and password combination")
 		loginButton("normal")
 	}
 }
