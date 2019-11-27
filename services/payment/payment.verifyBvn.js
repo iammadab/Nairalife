@@ -22,6 +22,9 @@ async function verifyBvn(data){
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
+	if(("" + data.bvn).length != 11)
+		return { status: 403, code: "BVN_MUST_BE_11_DIGITS" }
+
 	let bvnVerificationResult = await verifyBvnFn(data.bvn)
 	if(bvnVerificationResult.status != 200)
 		return bvnVerificationResult

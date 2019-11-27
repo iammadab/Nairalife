@@ -9,6 +9,7 @@ let store = {
 	addEvent(store.inputs, "input,focus", () => hideAlert("preference-error"))
 })()	
 
+let submitButton = createButton(".preference-text", "Complete Registration", "Submitting...")
 function submitPreference(event){
 	let nameMap = {
 		sex: "choose your sex",
@@ -24,17 +25,23 @@ function submitPreference(event){
 		contribution_use: "enter your contribution goals",
 	}
 	event.preventDefault()
+	submitButton()
 	let preferenceDetails = extractForm(store.preferenceFormTag)
-	let missingDetails = hasKeys(preferenceDetails, ["sex", "relationship", "title", "bio", "work", "work_description", "car_status", "earning", "contribution_freq", "contribution_make", "contribution_use"])
-	if(missingDetails.length > 0)
-		return showAlert("preference-error", `Sorry, you didn't ${nameMap[missingDetails[0]]}`)
 
-	return api("user/preference", { ...preferenceDetails, token: getToken() })
+	let missingDetails = hasKeys(preferenceDetails, ["sex", "relationship", "title", "bio", "partner", "work_description", "own_car", "earning", "contribution_make", "contribution_period", "contribution_use"])
+	if(missingDetails.length > 0){
+		submitButton("normal")
+		return showAlert("preference-error", `Sorry, you didn't ${nameMap[missingDetails[0]]}`)
+	}
+
+	preferenceDetails.token = getToken()
+	return api("user/preference", preferenceDetails)
 			.then(handleResponse)
 
 	function handleResponse(response){
 		if(response.status == 200)
 			redirect("/home")
+		submitButton("normal")
 	}
 
 }

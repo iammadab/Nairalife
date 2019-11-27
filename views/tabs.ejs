@@ -1,6 +1,5 @@
 <!--Begin::Section-->
-<% if(group) { %>
-
+<% if(group && group.status == "active") { %>
 <!--begin::Portlet-->
 <div class="kt-portlet">
 <div class="kt-portlet__body kt-padding-t-10 kt-padding-b-10">
@@ -51,7 +50,7 @@
 <!--end::Portlet-->
 <% } %>
 
-<% if(!group) { %>
+<% if(!group || group.status != "active") { %>
 
 <% include autohistory %>	
 

@@ -30,7 +30,7 @@ async function charge(data){
 	// Charge the user
 	let chargeResult = await chargeUser({
 		authorization_code: userObj.card[0].authorization.authorization_code,
-		amount: validData.amount,
+		amount: validData.amount * 100, // Converting to kobo for paystack
 		email: userObj.email
 		// email: "customer@email.com"
 	})

@@ -2,7 +2,7 @@ const { createValidator } = require("lazy-validator")
 const { hash } = require("../../lib/crypt")
 const userDb = require("../../data/db/user.db")
 
-const createUserValidator = createValidator("fullname.string.lowercase, phone.number, email.string.lowercase, password.string, code.number")
+const createUserValidator = createValidator("fullname.string, phone.number, email.string.lowercase, password.string, code.number")
 
 const authenticationService = require("../authentication")
 const loginUser = require("./user.login")

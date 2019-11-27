@@ -1,12 +1,13 @@
 let store = {
 	removeButtons: document.querySelectorAll(".remove-member"),
-
-	restartButton: document.querySelector(".restart-cycle-button")
+	restartButton: document.querySelector(".restart-cycle-button"),
+	contributionsButton: document.querySelector(".get-contribution-button")
 }
 
 ;(function attachEvents(){
 	addEvent(store.removeButtons, "click", removeMember)
 	addEvent([store.restartButton], "click", restartCycle)
+	addEvent([store.contributionsButton], "click", getContributions)
 })()
 
 function removeMember(event){
@@ -41,5 +42,21 @@ function restartCycle(event){
 		console.log(response)
 		if(response.status == 200)
 			redirect("/admin/groups")
+	}
+}
+
+function getContributions(event){
+	event.preventDefault()
+	let { group_id } = store.contributionsButton.dataset
+	if(!group_id) return console.log("No group id. Contact support")
+
+	return api("group/contributions/charge", { group_id, token: getToken("atoken") })
+				.then(handleResponse)
+
+	function handleResponse(response){
+		if(response.status == 200)
+			redirect(window.location.href)
+		else
+			console.log(response)
 	}
 }

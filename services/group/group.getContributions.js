@@ -18,11 +18,14 @@ async function getContributions(data){
 
 	let groupObj = await groupDb.findOneWith({ group_id: validData.group_id })
 	if(!groupObj)
-		return { status: 200, code: "GROUP_NOT_FOUND" }
+		return { status: 403, code: "GROUP_NOT_FOUND" }
+
+	if(groupObj.status != "active")
+		return { status: 403, code: "GROUP_NOT_ACTIVE" }
 
 	let adminObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!adminObj)
-		return { status: 200, code: "ADMIN_NOT_FOUND" }
+		return { status: 403, code: "ADMIN_NOT_FOUND" }
 	
 
 	// Since we are going to be charging each user in the group
@@ -61,6 +64,8 @@ async function getContributions(data){
 			}
 		})		
 	}
+
+	return { status: 200, code: "CHARGED_GROUP" } 
 
 }
 
