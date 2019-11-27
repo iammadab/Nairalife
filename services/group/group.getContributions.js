@@ -20,6 +20,20 @@ async function getContributions(data){
 	if(!groupObj)
 		return { status: 200, code: "GROUP_NOT_FOUND" }
 
+	let adminObj = await userDb.findOneWith({ _id: data.user.id })
+	if(!adminObj)
+		return { status: 200, code: "ADMIN_NOT_FOUND" }
+
+	console.log(adminObj)
+
+
+	// Since we are going to be charging each user in the group
+	// We need to keep track of each contribution group
+	// A daily group, the group will be charged every day
+	// We need to be able to group the charges for each day, that is why we made a contribution collection
+	// let newContribution = await contributionDb.createContribution({
+	// 	admin:
+	// })
 
 	// This is where I go through each group member
 	// Then pass their details to the payment charge service
