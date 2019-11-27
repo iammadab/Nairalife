@@ -69,6 +69,13 @@ async function addBalance(data){
 		new_balance = 0
 	}
 
+	// Now that we are done, we update the userobj
+	// Note, we don't take money from what the user has in their available balance
+	// We can only add more money to their available balance
+	// Meaning that the new_balance must always be positive
+	userObj = await userDb.appendDoc({ user_id: validData.user_id }, "nairalife_balance", new_nairalife_balance)
+	userObj = await userDb.appendDoc({ user_id: validData.user_id }, "balance", (balance + new_balance))
+
 }
 
 module.exports = addBalance
