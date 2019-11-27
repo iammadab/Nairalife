@@ -12,12 +12,16 @@ let store = {
 })()	
 
 const verifyButton = createButton(".verify-text", "Verify Bank", "Verifying")
+
 function verifyBank(event){
 	event.preventDefault()
+	verifyButton()
 	let bankDetails = extractForm(store.bankFormTag)
 	let missingDetails = hasKeys(bankDetails, ["account_number", "bank_code", "bvn"])
-	if(missingDetails.length > 0)
+	if(missingDetails.length > 0){
+		verifyButton("normal")
 		return showAlert("bank-error", `You didn't fill data for ${missingDetails[0]}`)
+	}
 
 	let { account_number, bank_code, bvn } = bankDetails
 	return api("bank/verify", { account_number, bank_code, bvn, token: getToken() })
@@ -29,6 +33,7 @@ function verifyBank(event){
 			sendBvn(bankDetails.bvn)
 		else if(response.code == "ACCOUNT_VERIFICATION_FAILED")
 			return showAlert("bank-error", response.message)
+		verifyButton("normal")
 	}
 }
 
@@ -44,5 +49,6 @@ function sendBvn(bvn){
 			return showAlert("bank-error", "Bvn number must be 11 digits long")
 		else if(response.code == "BVN_VERIFICATION_FAILED")
 			return showAlert("bank-error", response.message)
+		verifyButton("normal")
 	}	
 }
