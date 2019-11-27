@@ -18,6 +18,7 @@ const userSchema = mongoose.Schema({
 	nairascore: { type: Number, default: 0 },
 	nairapoints: { type: Number, default: 0 },
 	balance: { type: Number, default: 0 },
+	nairalife_balance: { type: Number, default: 0 }, // This is the amount of money nairalife owes the user, if it is negative it means the user owes nairalife that amount
 
 	role: { type: String, default: "user" }, // user or admin
 	group: { type: String }
