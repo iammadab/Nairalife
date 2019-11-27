@@ -9,12 +9,19 @@ function createDate(dateInput){
 	}
 
 	function getDate(){
+		let dateString = dateObj.toDateString()
+		let dateParts = dateString.split(" ")
+		return `${dateParts[2]} of ${dateParts[1]}, ${dateParts[3]}`
+	}
+
+	function getHypenDate(){
 
 	}
 
 	return {
 		getTime,
-		getDate
+		getDate,
+		getHypenDate
 	}
 
 }
