@@ -53,6 +53,7 @@
 			"atoken": { path: "/admin", redirect: "/admin/login" },
 			"token": { path: "/", redirect: "/login" }
 		}
+		// console.log(tokenName)
 		deleteCookie(tokenName)
 		redirect(cookieData[tokenName].redirect)
 	}

@@ -20,6 +20,9 @@ async function getContributions(data){
 	if(!groupObj)
 		return { status: 200, code: "GROUP_NOT_FOUND" }
 
+	if(groupObj.status != "active")
+		return { status: 200, code: "GROUP_NOT_ACTIVE" }
+
 	let adminObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!adminObj)
 		return { status: 200, code: "ADMIN_NOT_FOUND" }
