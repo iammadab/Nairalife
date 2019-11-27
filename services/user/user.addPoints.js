@@ -27,7 +27,16 @@ async function addPoints(data){
 	if(!userObj)
 		return { status: 403, code: "PROBLEM_ADDING_POINTS" }
 
-	// let newPoint = await pointDb.cre
+	let newPoint = await pointDb.createPoint({
+		user_id: userObj.user_id,
+		type: validData.type,
+		comment: validData.comment,
+		points: validData.points,
+		admin_id: adminObj.user_id,
+		admin: adminObj.fullname
+	})
+
+	console.log(newPoint)
 
 	return { status: 200, code: "UPDATED_USER_POINTS" }
 }
