@@ -31,9 +31,11 @@ async function getContributions(data){
 	// We need to keep track of each contribution group
 	// A daily group, the group will be charged every day
 	// We need to be able to group the charges for each day, that is why we made a contribution collection
-	// let newContribution = await contributionDb.createContribution({
-	// 	admin:
-	// })
+	let newContribution = await contributionDb.createContribution({
+		admin: adminObj.fullname,
+		admin_id: adminObj.user_id,
+		group_id: groupObj.group_id
+	})
 
 	// This is where I go through each group member
 	// Then pass their details to the payment charge service
@@ -55,7 +57,10 @@ async function getContributions(data){
 			amount: groupObj.contribution_amount,
 			reference: chargeResult.data.reference,
 			type: "contribution",
-			status: "pending"
+			status: "pending",
+			data: {
+				contribution_id: newContribution._id
+			}
 		})		
 	}
 

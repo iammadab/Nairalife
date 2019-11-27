@@ -2,7 +2,7 @@ const createDb = require("./base.db")
 const contributionModel = require("../models/contribution.model")
 const contributionDb = createDb(contributionModel)
 
-contributionDb.createcontribution = function({ admin, admin_id, group_id }){
+contributionDb.createContribution = function({ admin, admin_id, group_id }){
 	let newcontribution = new contributionModel({
 		admin,
 		admin_id,
