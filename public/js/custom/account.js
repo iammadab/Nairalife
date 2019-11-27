@@ -11,6 +11,7 @@ let store = {
 	addEvent([store.bvnInput], "input,focus", () =>showAlert("bvn-warn"))
 })()	
 
+const verifyButton = createButton(".verify-text", "Verify Bank", "Verifying")
 function verifyBank(event){
 	event.preventDefault()
 	let bankDetails = extractForm(store.bankFormTag)
