@@ -76,6 +76,11 @@ async function addBalance(data){
 	userObj = await userDb.appendDoc({ user_id: validData.user_id }, "nairalife_balance", new_nairalife_balance)
 	userObj = await userDb.appendDoc({ user_id: validData.user_id }, "balance", (balance + new_balance))
 
+	if(!userObj)
+		return { status: 403, "PROBLEM_ADDING_BALANCE" }
+
+	return { sttus: 200, code: "UPDATED_USER_BALANCE" }
+
 }
 
 module.exports = addBalance
