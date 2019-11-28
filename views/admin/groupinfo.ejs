@@ -22,7 +22,7 @@
 </tr>
 <tr>
 <td class="kt-font-bold">Total Members:</td>
-<td class="text-right"><span data-format="decimal"><%= group.total_members %></span></td>
+<td class="text-right"><span data-format="decimal"><%= group._doc.member_count %></span></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Total Contributions:</td>
@@ -38,7 +38,7 @@
 </tr>
 <tr>
 <td class="kt-font-bold">Receiving Next:</td>
-<td class="text-right"><%= group.receiving_next %></td>
+<td class="text-right"><%= group._doc.receiving_next %></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Default Rate:</td>

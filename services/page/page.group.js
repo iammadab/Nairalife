@@ -10,23 +10,30 @@ async function group(req, res, next){
 
 	groupObj.created_on = pageFunctions.createDate(groupObj._id.getTimestamp()).getDate()
 
+	// Clean up the date for when the cycle started
 	if(groupObj.cycle_started)
 		groupObj.cycle_started = pageFunctions.createDate(groupObj.cycle_started).getDate()
 	else
 		groupObj._doc.cycle_started = "---"
 
-
+	// Clean up the date for when the cycle ended
 	if(groupObj.cycle_ended)
 		groupObj.cycle_ended = pageFunctions.createDate(groupObj.cycle_ended).getDate()
 	else
 		groupObj._doc.cycle_ended = "---"
 
+	// Attach the name of the person receiving next
 	if(groupObj.status != "active")
 		groupObj._doc.receiving_next = "---"
 	else
 		groupObj._doc.receiving_next = "You should update this"
 
-	console.log(groupObj._doc)
+	// Get the count of members not active
+	groupObj._doc.member_count = 0
+	for(let i = 0; i < groupObj.members.length; i++){
+		if(!groupObj.members[i].removed) 
+			groupObj._doc.member_count += 1
+	}
 
 	req.body.pageData = {
 		group: groupObj,
