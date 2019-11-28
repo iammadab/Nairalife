@@ -102,6 +102,10 @@ viewRouter.get("/admin/change", cookieNotFound("/admin/login", "atoken"), verify
 	res.render("admin/change")
 })
 
+viewRouter.get("/admin/pay", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
+	res.render("admin/pay")
+})
+
 viewRouter.get("/admin/members", (req, res) => {
 	res.render("admin/members")
 })
@@ -142,10 +146,6 @@ viewRouter.get("/admin/add", (req, res) => {
 
 viewRouter.get("/admin/remove", (req, res) => {
 	res.render("admin/remove")
-})
-
-viewRouter.get("/admin/pay", (req, res) => {
-	res.render("admin/pay")
 })
 
 module.exports = viewRouter
