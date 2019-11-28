@@ -26,7 +26,8 @@ async function dashboard(req, res, next){
 		user: userObj,
 		group: groupObj,
 		members,
-		comments
+		comments,
+		autoSaveTransactions
 	}
 
 	next()
