@@ -243,6 +243,17 @@ margin: 0 .8rem
 }
 }
 
+.image-dash{
+border-bottom: 0.2rem solid #008000;
+padding:0;
+margin:0;
+}
+
+/*.image-dash:hover{
+border-bottom: 0.2rem solid #008000;	
+}*/
+
+
 .aboutn h4 {
 font-size: 1.5rem;
 font-weight: 500;
@@ -252,9 +263,14 @@ margin:10px 0;
 
 .kt-login__wrapper .kt-footer {
 justify-content: center;
-padding: 25px 15px 0;
+padding: 35px 15px 0;
 width: 100%;
 margin: 0 auto;
+}
+
+.kt-login__wrapper .kt-footer .kt-footer__menu-link{
+color:#666;
+font-weight:300;	
 }
 
 .aboutn .indexp {
