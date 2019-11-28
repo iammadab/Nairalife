@@ -4,6 +4,8 @@ const saveValidator = createValidator("user_id.number")
 
 const userDb = require("../../data/db/user.db")
 
+const paymentService = require("../payment")
+
 async function save(data){
 	let validationResult = saveValidator.parse(data)
 	if(validationResult.error)
@@ -19,7 +21,18 @@ async function save(data){
 		return { status: 403, code: "USER_NOT_IN_AUTOSAVE" }
 
 	let contributionAmount = userObj._doc.about.contribution_make
-	console.log(contributionAmount)
+	
+
+	// Charge the user based on the amount they said they want to contribute
+	let chargeResult = await paymentService.charge({
+		user_id: validData.user_id,
+		amount: contributionAmount
+	})
+
+	console.log(chargeResult)
+
+
+
 }
 
 module.exports = save
