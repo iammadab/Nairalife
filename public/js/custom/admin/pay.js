@@ -1,5 +1,5 @@
 let store = {
-	payMemberButton: document.querySelector("pay-member-button"),
+	payMemberButton: document.querySelector(".pay-member-button"),
 	payMemberFormTag: ".pay-member-form",
 	payMemberInputs: document.querySelectorAll(".pay-member-form input")
 }
@@ -12,5 +12,8 @@ let store = {
 
 function payMember(event){
 	event.preventDefault()
-	console.log("Paying the member")
+	let payDetails = extractForm(store.payMemberFormTag)
+	let missingDetails = hasKeys(payDetails, ["user_id", "amount"])
+	if(missingDetails.length > 0)
+		return showAlert("pay-error", `You didn't fill data for ${missingDetails[0]}`)
 }
