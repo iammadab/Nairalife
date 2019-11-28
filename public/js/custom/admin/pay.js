@@ -17,6 +17,7 @@ function payMember(event){
 	if(missingDetails.length > 0)
 		return showAlert("pay-error", `You didn't fill data for ${missingDetails[0]}`)
 
+	payDetails.token = getToken("atoken")
 	return api("user/balance", payDetails)
 			.then(handleResponse)
 
