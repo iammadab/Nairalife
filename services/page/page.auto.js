@@ -7,9 +7,10 @@ async function auto(req, res, next){
 
 	for(let i = 0; i < autoSaveMembers.length; i++){
 		let baseData = {
-			user_id: autoSaveMembers.user_id,
+			user_id: autoSaveMembers[i].user_id,
 			type: "autosave"
 		}
+		console.log(baseData)
 
 		let successfulTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "success" })
 		let pendingTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "pending" })
