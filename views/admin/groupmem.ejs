@@ -14,16 +14,16 @@
 </tr>
 </thead>
 <tbody>
-<% group.members.forEach(member => { %>
+<% group.members.forEach((member, i) => { %>
 <% if(!member.removed){ %>
 <tr>
 <td><%= member.fullname %></td>
 <td><%= member.join_date %></td>
 <td>18,000 naira</td>
 <td><%= member.nairascore %></td>
-<td>1st</td>
+<td>---</td>
 <td><%= member.receiving_date %></td>
-<td class="text-capitalize kt-font-success">Received</td>
+<td class="text-capitalize kt-font-success"><%= member.receive_status %></td>
 <td><a href="#" class="btn btn-secondary btn-sm remove-member" data-group_id="<%= group.group_id %>" data-user_id="<%= member.user_id %>">Remove</a></td>
 </tr>
 <% } %>

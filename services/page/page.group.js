@@ -47,6 +47,20 @@ async function group(req, res, next){
 	// All successfull transactions will be added and passed to the client
 	groupObj.total_contribution = 0
 
+
+
+
+
+
+
+
+	// Update the contributions
+	contributions.forEach(contribution => {
+		let dateObj = pageFunctions.createDate(contribution._id.getTimestamp())
+		contribution._doc.created_at = dateObj.getHypenDate()
+		contribution._doc.time = dateObj.getTime()
+	})
+
 	req.body.pageData = {
 		group: groupObj,
 		contributions
@@ -67,6 +81,9 @@ async function membersInfo(members){
 
 		if(!augmentedMember.receiving_date)
 			augmentedMember.receiving_date = "---"
+
+		if(!augmentedMember.receive_status)
+			augmentedMember.receive_status = "---"
 
 		allMembers.push(augmentedMember)
 	}
