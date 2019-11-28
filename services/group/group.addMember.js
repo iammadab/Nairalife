@@ -57,7 +57,8 @@ async function addMember(data){
 		fullname: userObj.fullname,
 		join_date: new Date(),
 		removed: false,
-		receiving_date
+		receiving_date,
+		receive_status
 	})
 
 	userObj = await userDb.appendDoc({ user_id: data.user_id }, "group", data.group_id)
