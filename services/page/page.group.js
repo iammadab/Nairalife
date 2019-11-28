@@ -23,6 +23,10 @@ async function group(req, res, next){
 
 	if(groupObj.status != "active")
 		groupObj._doc.receiving_next = "---"
+	else
+		groupObj._doc.receiving_next = "You should update this"
+
+	console.log(groupObj._doc)
 
 	req.body.pageData = {
 		group: groupObj,
