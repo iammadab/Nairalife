@@ -12,6 +12,7 @@ let store = {
 
 
 let addPointButton = createButton(".add-points-text", "Change Points", "Adding Points...")
+
 function addPoints(event){
 	event.preventDefault()
 	addPointButton()
