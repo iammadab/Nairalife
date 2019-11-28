@@ -985,8 +985,8 @@ top: 0;
 right: 0;
 left: 0;
 z-index: 1;
-height: calc(1.5em + 1.3rem + 2px);
-padding: 0.65rem 2rem 0.65rem 1rem;
+height: calc(1.18em + 2.3rem + 2px);
+padding: 0.9rem 2rem 0.9rem 1rem;
 font-size: 1.3rem;
 font-weight: 400;
 line-height: 1.5;
@@ -1003,8 +1003,7 @@ right: 0;
 bottom: 0;
 z-index: 3;
 display: block;
-height: calc(1.5em + 1.3rem);
-padding: 0.65rem 1rem;
+padding: 0.9rem 1rem;
 line-height: 1.5;
 color: #495057;
 content: "Browse";
@@ -1032,14 +1031,14 @@ border-radius: 0.25rem;
 appearance: none;
 }
 .custom-select:focus {
-border-color:#008000;
+border-color: #008000;
+outline-color:#008000;
 }
 
  
 .custom-select:focus::-ms-value{
-color: #000;
-background-color: #fff;
 border-color: #008000;
+outline-color:#008000;
 }
 
 .custom-select-lg {
@@ -4789,18 +4788,6 @@ display: none !important; } }*/
 .border-dash{
 border-bottom: 0.07rem solid #e1e1e1;
 padding:0 0 2rem;
-}
-
-
-.image-dash{
-/*border-bottom: 0.07rem solid #e1e1e1;*/
-border-bottom: 0.2rem solid #008000;
-padding:0;
-margin:0;
-}
-
-.image-dash:hover{
-/*border-bottom: 0.2rem solid #008000;*/	
 }
 
 
