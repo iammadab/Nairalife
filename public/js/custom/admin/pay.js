@@ -5,5 +5,12 @@ let store = {
 }
 
 ;(function attachEvents(){
-
+	addEvent([store.payMemberButton], "click", payMember)
+	addEvent(store.payMemberInputs, "input,focus", () => hideAlert("pay-error"))
+	addEvent(store.payMemberInputs, "input,focus", () => hideAlert("pay-success"))
 })()
+
+function payMember(event){
+	event.preventDefault()
+	console.log("Paying the member")
+}
