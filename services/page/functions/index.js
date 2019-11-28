@@ -4,6 +4,7 @@ const fetchGroups = require("./fetchGroups")
 const fetchGroup = require("./fetchGroup")
 const fetchComments = require("./fetchComments")
 const fetchContributions = require("./fetchContributions")
+const fetchContributionStatus = require("./fetchContributionStatus")
 const createDate = require("./createDate")
 
 const pageFunctions = {
@@ -13,6 +14,7 @@ const pageFunctions = {
 	fetchGroup,
 	fetchComments,
 	fetchContributions,
+	fetchContributionStatus,
 	createDate
 }
 
