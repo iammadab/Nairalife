@@ -106,6 +106,10 @@ viewRouter.get("/admin/pay", cookieNotFound("/admin/login", "atoken"), verifyTok
 	res.render("admin/pay")
 })
 
+viewRouter.get("/admin/transactions", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
+	res.render("admin/transactions", { ...req.body.pageData })
+})
+
 viewRouter.get("/admin/members", (req, res) => {
 	res.render("admin/members")
 })
@@ -117,12 +121,6 @@ viewRouter.get("/admin/auto", (req, res) => {
 viewRouter.get("/admin/profile", (req, res) => {
 	res.render("admin/profile")
 })
-	
-
-viewRouter.get("/admin/transactions", (req, res) => {
-	res.render("admin/transactions")
-})
-
 
 viewRouter.get("/admin/withdrawals", (req, res) => {
 	res.render("admin/withdrawals")
