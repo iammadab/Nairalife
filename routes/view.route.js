@@ -94,8 +94,12 @@ viewRouter.get("/admin/groups", cookieNotFound("/admin/login", "atoken"), verify
 	res.render("admin/groups", { ...req.body.pageData })
 })
 
-viewRouter.get("/admin/group/:group_id", pageService.group, (req, res) => {
+viewRouter.get("/admin/group/:group_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.group, (req, res) => {
 	res.render("admin/group", { ...req.body.pageData })
+})
+
+viewRouter.get("/admin/change", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
+	res.render("admin/change")
 })
 
 viewRouter.get("/admin/members", (req, res) => {
@@ -130,10 +134,6 @@ viewRouter.get("/admin/group", (req, res) => {
 
 viewRouter.get("/admin/contributions", (req, res) => {
 	res.render("admin/contributions")
-})
-
-viewRouter.get("/admin/change", (req, res) => {
-	res.render("admin/change")
 })
 
 viewRouter.get("/admin/add", (req, res) => {
