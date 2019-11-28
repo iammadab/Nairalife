@@ -19,9 +19,13 @@ async function dashboard(req, res, next){
 	if(groupObj){
 		comments = await pageFunctions.fetchComments({ group_id: groupObj.group_id }, { sort: { created_at: -1 }})
 	}
+
+	autoSaveTransactions.forEach(transaction => {
+		transaction._doc.created_at = pageFunctions.createDate(transaction._id.getTimestamp()).getHypenDate()
+	})
 	
-	console.log(members)
-	console.log(comments)
+	// console.log(members)
+	// console.log(comments)
 	req.body.pageData = {
 		user: userObj,
 		group: groupObj,

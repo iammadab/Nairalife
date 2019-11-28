@@ -21,12 +21,15 @@ Autosave History
 </thead>
 <tbody>
 
+<% autoSaveTransactions.forEach((transaction, i) => { %>
 <tr>
-<td>1</td>
-<td>1256799ADD</td>
-<td>30-01-2019</td>
-<td class="text-capitalize kt-font-success">Success</td></tr>
+<td><%= i + 1 %></td>
+<td><%= transaction.reference %></td>
+<td><%= transaction._doc.created_at %></td>
+<td class="text-capitalize kt-font-success"><%= transaction.status %></td></tr>
 <tr>
+<% }) %>
+
 <!-- 	
 <td>2</td>
 <td>0876544ECD</td>
