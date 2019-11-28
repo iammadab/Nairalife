@@ -49,6 +49,8 @@ async function save(data){
 		}
 	})	
 
+	console.log(userTransaction)
+
 
 
 }
