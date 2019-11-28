@@ -17,7 +17,9 @@ async function save(data){
 
 	if(userObj.status != "autosave")
 		return { status: 403, code: "USER_NOT_IN_AUTOSAVE" }
-	console.log(userObj)
+
+	let contributionAmount = userObj._doc.about.contribution_make
+	console.log(contributionAmount)
 }
 
 module.exports = save
