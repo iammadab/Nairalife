@@ -62,13 +62,17 @@ async function membersInfo(members){
 
 	for(let i = 0; i < members.length; i++){
 		if(!members.removed) memberCount++
-		let augmentedMember = Object.assign(members[i], await userDb.findOneWith({ user_id: members[i].user_id }))
+		let memberObj = await userDb.findOneWith({ user_id: members[i].user_id })
+		let augmentedMember = Object.assign(members[i], memberObj._doc)
+
+		if(!augmentedMember.receiving_date)
+			augmentedMember.receiving_date = "---"
+
 		allMembers.push(augmentedMember)
 	}
 
-	console.log(allMembers)
-
 	return {
-		memberCount
+		memberCount,
+		allMembers
 	}
 }
