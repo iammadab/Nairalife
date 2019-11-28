@@ -8,7 +8,12 @@ async function getContributionStatus(contribution_id){
 	let allTransactions = await transactionDb.findWith({ "data.contribution_id": ObjectId(contribution_id) })
 	let successfullTransactions = await transactionDb.findWith({ status: "success", "data.contribution_id": ObjectId(contribution_id) })
 	
-	let defaultRate = ((allTransactions.length - successfullTransactions.length) / allTransactions.length) * 100
+	let defaultRate
+	if(allTransactions.length == 0)
+		defaultRate = 0
+	else
+		defaultRate = ((allTransactions.length - successfullTransactions.length) / allTransactions.length) * 100
+	
 	let totalContribution = 0
 
 	for(let i = 0; i < successfullTransactions.length; i++){
