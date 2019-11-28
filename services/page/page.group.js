@@ -5,12 +5,21 @@ async function group(req, res, next){
 		groupObj = await pageFunctions.fetchGroup(group_id),
 		contributions = await pageFunctions.fetchContributions(group_id)
 
-	groupObj.created_on = pageFunctions.createDate(groupObj._id.getTimestamp()).getDate()
-	groupObj._doc.cycle_started = groupObj._doc.cycle_started ? groupObj._doc.cycle_started : "---"
-	groupObj._doc.cycle_ended = groupObj._doc.cycle_ended ? groupObj._doc.cycle_ended : "---"
-
 	if(!groupObj)
 		return res.redirect("/admin/groups")
+
+	groupObj.created_on = pageFunctions.createDate(groupObj._id.getTimestamp()).getDate()
+
+	if(groupObj.cycle_started)
+		groupObj.cycle_started = pageFunctions.createDate(groupObj.cycle_started).getDate()
+	else
+		groupObj._doc.cycle_started = "---"
+
+
+	if(groupObj.cycle_ended)
+		groupObj.cycle_ended = pageFunctions.createDate(groupObj.cycle_ended).getDate()
+	else
+		groupObj._doc.cycle_ended = "---"
 
 	req.body.pageData = {
 		group: groupObj,
