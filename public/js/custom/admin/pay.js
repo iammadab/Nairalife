@@ -3,3 +3,7 @@ let store = {
 	payMemberFormTag: ".pay-member-form",
 	payMemberInputs: document.querySelectorAll(".pay-member-form input")
 }
+
+;(function attachEvents(){
+
+})()
