@@ -1,4 +1,5 @@
 const fetchUser = require("./fetchUser")
+const fetchUsers = require("./fetchUsers")
 const fetchBanks = require("./fetchBanks")
 const fetchGroups = require("./fetchGroups")
 const fetchGroup = require("./fetchGroup")
@@ -10,6 +11,7 @@ const fetchTransactions = require("./fetchTransactions")
 
 const pageFunctions = {
 	fetchUser,
+	fetchUsers,
 	fetchBanks,
 	fetchGroups,
 	fetchGroup,
