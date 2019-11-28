@@ -127,8 +127,8 @@ viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verif
 	res.render("admin/members", { ...req.body.pageData })
 })
 
-viewRouter.get("/admin/auto", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
-	res.render("admin/auto")
+viewRouter.get("/admin/auto", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.auto, (req, res) => {
+	res.render("admin/auto", { ...req.body.pageData })
 })
 
 viewRouter.get("/admin/profile", (req, res) => {
