@@ -55,6 +55,7 @@ async function getContributions(data){
 		let userTransaction = await transactionDb.createTransaction({
 			username: memberData.fullname,
 			user_id: memberData.user_id,
+			group_id: groupObj.group_id,
 			amount: groupObj.contribution_amount,
 			reference: chargeResult.data.reference,
 			type: "contribution",
