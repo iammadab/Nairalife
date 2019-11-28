@@ -44,7 +44,8 @@ async function save(data){
 		type: "autosave",
 		status: "pending",
 		data: {
-			
+			admin: adminObj.fullname,
+			admin_id: adminObj.user_id
 		}
 	})	
 
