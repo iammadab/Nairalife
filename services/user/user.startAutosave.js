@@ -13,8 +13,7 @@ async function startAutosave(data){
 	if(!userObj)
 		return { status: 403, code: "PROBLEM_SETTING_STAGE" }
 
-	
-
+	return { status: 200, code: "STARTED_AUTOSAVE" }
 }
 
 module.exports = startAutosave
