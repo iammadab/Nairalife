@@ -6,11 +6,14 @@ let store = {
 
 ;(function attachEvents(){
 	addEvent([store.addPointsButton], "click", addPoints)
-	addEvent(addPointsInputs, "input,focus", () => hideAlert("add-points-error"))
-	addEvent(addPointsInputs, "input,focus", () => hideAlert("add-points-success"))
+	addEvent(store.addPointsInputs, "input,focus", () => hideAlert("add-points-error"))
+	addEvent(store.addPointsInputs, "input,focus", () => hideAlert("add-points-success"))
 })()
 
 function addPoints(event){
 	event.preventDefault()
-	console.log("Adding the points")
+	let addPointDetails = extractForm(store.addPointsFormTag)
+	let missingDetails = hasKeys(addPointDetails, ["user_id", "type", "comment", "points"])
+	if(missingDetails.length > 0)
+		return showAlert("add-points-error", `You didn't fill data for ${missingDetails[0]}`)
 }
