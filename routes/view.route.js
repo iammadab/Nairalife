@@ -56,6 +56,11 @@ viewRouter.get("/fee", cookieNotFound("/login"), verifyToken(), stageRouter("ent
 	res.render("fees",{ title: "Pay Fee", ...req.body.pageData })
 })
 
+viewRouter.get("/auto", cookieNotFound("/login"), verifyToken(), stageRouter("start_autosave"), (req, res) => {
+	res.render("auto", { title: "Nairalife Autosave"})
+})
+
+
 viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.dashboard, (req, res) => {
 	res.render("dashboard", { title: "Dashboard", link: "", ...req.body.pageData })
 })
@@ -64,11 +69,6 @@ viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("ac
 viewRouter.get("/higher", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
 	res.render("higher", { title: "Get Higher Purchase", link: "higher purchase", user: req.body.pageData.user._doc })
 })
-
-viewRouter.get("/auto", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
-	res.render("auto", { title: "Nairalife Autosave"})
-})
-
 
 viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
 	res.render("withdraw", { title: "Withdraw Money", link: "withdraw" })
