@@ -44,16 +44,16 @@ viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 	res.render("register",{ title: "Register on Nairalife"})
 })
 
+viewRouter.get("/fee", cookieNotFound("/login"), verifyToken(), stageRouter("enter_card_details"), pageService.fees, (req, res) => {
+	res.render("fees",{ title: "Pay Fee", ...req.body.pageData })
+})
+
 viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter("enter_account_details"), pageService.account, (req, res) => {
 	res.render("account", { title: "Bank Account", banks: req.body.pageData.banks })
 })
 
 viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("enter_contribution_preference"), (req, res) => {
 	res.render("about",{ title: "Welcome"})
-})
-
-viewRouter.get("/fee", cookieNotFound("/login"), verifyToken(), stageRouter("enter_card_details"), pageService.fees, (req, res) => {
-	res.render("fees",{ title: "Pay Fee", ...req.body.pageData })
 })
 
 viewRouter.get("/auto", cookieNotFound("/login"), verifyToken(), stageRouter("start_autosave"), (req, res) => {
