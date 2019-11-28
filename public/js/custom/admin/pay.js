@@ -11,6 +11,7 @@ let store = {
 })()
 
 const payButton = createButton(".pay-member-text", "Pay Member", "Paying member...")
+
 function payMember(event){
 	event.preventDefault()
 	payButton()
