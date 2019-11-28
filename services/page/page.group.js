@@ -55,11 +55,14 @@ async function group(req, res, next){
 
 
 	// Update the contributions
-	contributions.forEach(contribution => {
+	for(let i = 0; i < contributions.length; i++){
+		let contribution = contributions[i]
 		let dateObj = pageFunctions.createDate(contribution._id.getTimestamp())
 		contribution._doc.created_at = dateObj.getHypenDate()
 		contribution._doc.time = dateObj.getTime()
-	})
+		let contribution_info = await pageFunctions.fetchContributionStatus(contribution._id)
+		console.log(contribution_info)
+	}
 
 	req.body.pageData = {
 		group: groupObj,
