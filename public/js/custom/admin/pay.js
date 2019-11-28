@@ -13,10 +13,13 @@ let store = {
 const payButton = createButton(".pay-member-text", "Pay Member", "Paying member...")
 function payMember(event){
 	event.preventDefault()
+	payButton()
 	let payDetails = extractForm(store.payMemberFormTag)
 	let missingDetails = hasKeys(payDetails, ["user_id", "amount"])
-	if(missingDetails.length > 0)
+	if(missingDetails.length > 0){
+		payButton("normal")
 		return showAlert("pay-error", `You didn't fill data for ${missingDetails[0]}`)
+	}
 
 	payDetails.token = getToken("atoken")
 	return api("user/balance", payDetails)
@@ -31,5 +34,6 @@ function payMember(event){
 			showAlert("pay-error", "No user found for that user id")
 		else if(response.code == "PROBLEM_ADDING_BALANCE")
 			showAlert("pay-error", "Problem paying member. Contact Support")
+		payButton("normal")
 	}
 }
