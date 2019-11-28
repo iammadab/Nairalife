@@ -18,7 +18,10 @@ const groupSchema = mongoose.Schema({
 
 	started_by: { type: String },
 	previous_group: { type: Number },
-	next_group: { type: Number }
+	next_group: { type: Number },
+
+	cycle_started: { type: Date },
+	cycle_ended: { type: Date }
 })
 
 const groupModel = mongoose.model("Group", groupSchema)
