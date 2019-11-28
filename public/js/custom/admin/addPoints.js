@@ -26,5 +26,11 @@ function addPoints(event){
 			showAlert("add-points-success", "Points added successfully")
 			store.addPointsInputs.forEach(input => input.value = "")
 		}
+		else if(response.code == "UNAUTHORIZED")
+			showAlert("add-points-error", "You are not authorized to do this")
+		else if(response.code == "USER_DOES_NOT_EXIST")
+			showAlert("add-points-error", "No user account found for that user id")
+		else if(response.code == "PROBLEM_ADDING_POINTS")
+			showAlert("add-points-error", "Problem adding points. Try again later or contact support")
 	}
 }
