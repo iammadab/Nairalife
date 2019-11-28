@@ -14,10 +14,13 @@ let store = {
 let addPointButton = createButton(".add-points-text", "Change Points", "Adding Points...")
 function addPoints(event){
 	event.preventDefault()
+	addPointButton()
 	let addPointDetails = extractForm(store.addPointsFormTag)
 	let missingDetails = hasKeys(addPointDetails, ["user_id", "type", "comment", "points"])
-	if(missingDetails.length > 0)
+	if(missingDetails.length > 0){
+		addPointButton("normal")
 		return showAlert("add-points-error", `You didn't fill data for ${missingDetails[0]}`)
+	}
 
 	addPointDetails.token = getToken("atoken")
 	return api("user/points", addPointDetails)
@@ -34,5 +37,6 @@ function addPoints(event){
 			showAlert("add-points-error", "No user account found for that user id")
 		else if(response.code == "PROBLEM_ADDING_POINTS")
 			showAlert("add-points-error", "Problem adding points. Try again later or contact support")
+		addPointButton("normal")
 	}
 }
