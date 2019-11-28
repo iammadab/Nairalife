@@ -33,6 +33,7 @@ async function group(req, res, next){
 	for(let i = 0; i < groupObj.members.length; i++){
 		if(!groupObj.members[i].removed) 
 			groupObj._doc.member_count += 1
+		groupObj.members[i].join_date = pageFunctions.createDate(groupObj.members[i].join_date).getDate()
 	}
 
 	// This is the point, where all the transactions of the group will be taken
