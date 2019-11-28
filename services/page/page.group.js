@@ -21,6 +21,9 @@ async function group(req, res, next){
 	else
 		groupObj._doc.cycle_ended = "---"
 
+	if(groupObj.status != "active")
+		groupObj._doc.receiving_next = "---"
+
 	req.body.pageData = {
 		group: groupObj,
 		contributions
