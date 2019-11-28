@@ -110,8 +110,8 @@ viewRouter.get("/admin/transactions", cookieNotFound("/admin/login", "atoken"), 
 	res.render("admin/transactions", { ...req.body.pageData })
 })
 
-viewRouter.get("/admin/members", (req, res) => {
-	res.render("admin/members")
+viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.members, (req, res) => {
+	res.render("admin/members", { ...req.body.pageData })
 })
 
 viewRouter.get("/admin/auto", (req, res) => {
