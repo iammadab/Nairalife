@@ -16,4 +16,12 @@ function addPoints(event){
 	let missingDetails = hasKeys(addPointDetails, ["user_id", "type", "comment", "points"])
 	if(missingDetails.length > 0)
 		return showAlert("add-points-error", `You didn't fill data for ${missingDetails[0]}`)
+
+	addPointDetails.token = getToken("atoken")
+	return api("user/points", addPointDetails)
+			.then(handleResponse)
+
+	function handleResponse(response){
+		console.log(response)
+	}
 }
