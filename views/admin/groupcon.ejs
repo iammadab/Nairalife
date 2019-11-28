@@ -19,8 +19,8 @@
 <td><%= i + 1 %></td>
 <td><%= contribution._id %></td>
 <td><%= contribution.admin %></td>
-<td>30-12-2019</td>
-<td>6:08 PM</td>
+<td><%= contribution._doc.created_at %></td>
+<td><%= contribution._doc.time %></td>
 <td>10%</td>
 <td>&#8358;26,000</td>	
 <td><a href="#" class="btn btn-secondary btn-sm">View More</a></td>
