@@ -35,6 +35,10 @@ async function group(req, res, next){
 			groupObj._doc.member_count += 1
 	}
 
+	// This is the point, where all the transactions of the group will be taken
+	// All successfull transactions will be added and passed to the client
+	groupObj.total_contribution = 0
+
 	req.body.pageData = {
 		group: groupObj,
 		contributions
