@@ -61,7 +61,7 @@ async function group(req, res, next){
 		contribution._doc.created_at = dateObj.getHypenDate()
 		contribution._doc.time = dateObj.getTime()
 		let contribution_info = await pageFunctions.fetchContributionStatus(contribution._id)
-		console.log(contribution_info)
+		contribution._doc.contribution_info = contribution_info
 	}
 
 	req.body.pageData = {
