@@ -20,7 +20,7 @@
 <td><%= transaction.reference %></td>
 <td><%= transaction.type %></td>
 <td>&#8358;<%= transaction.amount %></td>
-<td>30-01-2019</td>
+<td><%= transaction._doc.created_at %></td>
 <td class="text-capitalize kt-font-success"><%= transaction.status %></td>
 </tr>
 <% }) %>
