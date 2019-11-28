@@ -22,6 +22,9 @@ function addPoints(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
+		if(response.status == 200){
+			showAlert("add-points-success", "Points added successfully")
+			store.addPointsInputs.forEach(input => input.value = "")
+		}
 	}
 }
