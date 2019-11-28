@@ -106,7 +106,7 @@ viewRouter.get("/admin/pay", cookieNotFound("/admin/login", "atoken"), verifyTok
 	res.render("admin/pay")
 })
 
-viewRouter.get("/admin/transactions", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
+viewRouter.get("/admin/transactions", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transactions, (req, res) => {
 	res.render("admin/transactions", { ...req.body.pageData })
 })
 
