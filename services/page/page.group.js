@@ -6,6 +6,8 @@ async function group(req, res, next){
 		contributions = await pageFunctions.fetchContributions(group_id)
 
 	groupObj.created_on = pageFunctions.createDate(groupObj._id.getTimestamp()).getDate()
+	groupObj._doc.cycle_started = groupObj._doc.cycle_started ? groupObj._doc.cycle_started : "---"
+	groupObj._doc.cycle_ended = groupObj._doc.cycle_ended ? groupObj._doc.cycle_ended : "---"
 
 	if(!groupObj)
 		return res.redirect("/admin/groups")
