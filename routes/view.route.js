@@ -32,6 +32,12 @@ viewRouter.get("/terms", (req, res) => {
 })
 
 
+
+
+
+
+
+// User routes
 viewRouter.get("/login", cookieFound("/home"), (req, res) => {
 	res.render("login",{ title: "Nairalife Login"})
 })
@@ -78,6 +84,13 @@ viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter
 	res.render("settings", { title: "Account Settings", link: "settings", ...req.body.pageData })
 })
 
+
+
+
+
+
+
+// Admin routes
 viewRouter.get("/admin/login", cookieFound("/admin/dashboard", "atoken"), (req, res) => {
 	res.render("admin/login")
 })
@@ -130,10 +143,6 @@ viewRouter.get("/admin/points", (req, res) => {
 	res.render("admin/points")
 })
 
-viewRouter.get("/admin/group", (req, res) => {
-	res.render("admin/group")
-})
-
 viewRouter.get("/admin/contributions", (req, res) => {
 	res.render("admin/contributions")
 })
@@ -142,8 +151,10 @@ viewRouter.get("/admin/add", (req, res) => {
 	res.render("admin/add")
 })
 
-viewRouter.get("/admin/remove", (req, res) => {
-	res.render("admin/remove")
-})
 
 module.exports = viewRouter
+
+
+// viewRouter.get("/admin/remove", (req, res) => {
+// 	res.render("admin/remove")
+// })
