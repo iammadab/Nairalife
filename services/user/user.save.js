@@ -13,6 +13,10 @@ async function save(data){
 
 	let validData = validationResult.data
 
+	let adminObj = await userDb.findOneWith({ _id: data.user.id })
+	if(!adminObj)
+		return { status: 403, code: "UNAUTHORIZED" }
+
 	let userObj = await userDb.findOneWith({ user_id: validData.user_id })
 	if(!userObj)
 		return { status: 403, code: "USER_NOT_FOUND" }
@@ -29,7 +33,20 @@ async function save(data){
 		amount: contributionAmount
 	})
 
-	console.log(chargeResult)
+
+	// The transaction object for the user
+	// The webhook will be the one to update the transactions based on the reference
+	let userTransaction = await transactionDb.createTransaction({
+		username: userObj.fullname,
+		user_id: userObj.user_id,
+		amount: contributionAmount,
+		reference: chargeResult.data.reference,
+		type: "autosave",
+		status: "pending",
+		data: {
+			
+		}
+	})	
 
 
 
