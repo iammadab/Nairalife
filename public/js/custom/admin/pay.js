@@ -22,6 +22,13 @@ function payMember(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
+		if(response.status == 200){
+			showAlert("pay-success", "Payed member successfully")
+			store.payMemberInputs.forEach(input => input.value = "")
+		}
+		else if(response.code == "USER_NOT_FOUND")
+			showAlert("pay-error", "No user found for that user id")
+		else if(response.code == "PROBLEM_ADDING_BALANCE")
+			showAlert("pay-error", "Problem paying member. Contact Support")
 	}
 }
