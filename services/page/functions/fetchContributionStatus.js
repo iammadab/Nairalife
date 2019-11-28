@@ -22,5 +22,3 @@ async function getContributionStatus(contribution_id){
 }
 
 module.exports = getContributionStatus
-
-getContributionStatus("5dddc04639a7aa1af06ea06e").then(console.log)
