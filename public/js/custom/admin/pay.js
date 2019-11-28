@@ -16,4 +16,11 @@ function payMember(event){
 	let missingDetails = hasKeys(payDetails, ["user_id", "amount"])
 	if(missingDetails.length > 0)
 		return showAlert("pay-error", `You didn't fill data for ${missingDetails[0]}`)
+
+	return api("user/balance", payDetails)
+			.then(handleResponse)
+
+	function handleResponse(response){
+		console.log(response)
+	}
 }
