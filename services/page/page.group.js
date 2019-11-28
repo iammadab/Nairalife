@@ -29,12 +29,17 @@ async function group(req, res, next){
 		groupObj._doc.receiving_next = "You should update this"
 
 	// Get the count of members not active
+	// Update the date of each memeber
 	groupObj._doc.member_count = 0
 	for(let i = 0; i < groupObj.members.length; i++){
 		if(!groupObj.members[i].removed) 
 			groupObj._doc.member_count += 1
+
+		// Update the join date of each member
 		groupObj.members[i].join_date = pageFunctions.createDate(groupObj.members[i].join_date).getDate()
 	}
+
+	groupObj._doc.memberInfo = membersInfo(groupObj.members)
 
 	// This is the point, where all the transactions of the group will be taken
 	// All successfull transactions will be added and passed to the client
@@ -49,3 +54,14 @@ async function group(req, res, next){
 }
 
 module.exports = group
+
+function membersInfo(members){
+	let memberCount = 0
+	members.forEach(member => {
+		if(!member.removed) memberCount += 1
+	})
+
+	return {
+		memberCount
+	}
+}
