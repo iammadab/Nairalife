@@ -10,6 +10,8 @@ let store = {
 	addEvent(store.addPointsInputs, "input,focus", () => hideAlert("add-points-success"))
 })()
 
+
+let addPointButton = createButton(".add-points-text", "Change Points", "Adding Points...")
 function addPoints(event){
 	event.preventDefault()
 	let addPointDetails = extractForm(store.addPointsFormTag)
