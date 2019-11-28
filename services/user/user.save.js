@@ -3,6 +3,7 @@ const { createValidator } = require("lazy-validator")
 const saveValidator = createValidator("user_id.number")
 
 const userDb = require("../../data/db/user.db")
+const transactionDb = require("../../data/db/transaction.db")
 
 const paymentService = require("../payment")
 
@@ -49,10 +50,8 @@ async function save(data){
 		}
 	})	
 
-	console.log(userTransaction)
-
-
-
+	return { status: 200, code: "AUTOSAVE_SUCCESSFUL" }
+	
 }
 
 module.exports = save
