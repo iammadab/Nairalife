@@ -1,4 +1,5 @@
 const pageFunctions = require("./functions")
+const userDb = require("../../data/db/user.db")
 
 async function group(req, res, next){
 	let group_id = req.params.group_id,
@@ -39,7 +40,8 @@ async function group(req, res, next){
 		groupObj.members[i].join_date = pageFunctions.createDate(groupObj.members[i].join_date).getDate()
 	}
 
-	groupObj._doc.memberInfo = membersInfo(groupObj.members)
+	groupObj._doc.memberInfo = await membersInfo(groupObj.members)
+	console.log(groupObj._doc.memberInfo)
 
 	// This is the point, where all the transactions of the group will be taken
 	// All successfull transactions will be added and passed to the client
@@ -55,11 +57,16 @@ async function group(req, res, next){
 
 module.exports = group
 
-function membersInfo(members){
-	let memberCount = 0
-	members.forEach(member => {
-		if(!member.removed) memberCount += 1
-	})
+async function membersInfo(members){
+	let memberCount = 0, allMembers = []
+
+	for(let i = 0; i < members.length; i++){
+		if(!members.removed) memberCount++
+		let augmentedMember = Object.assign(members[i], await userDb.findOneWith({ user_id: members[i].user_id }))
+		allMembers.push(augmentedMember)
+	}
+
+	console.log(allMembers)
 
 	return {
 		memberCount
