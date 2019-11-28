@@ -13,15 +13,15 @@
 </tr>
 </thead>
 <tbody>
-	
+
 <% transactions.forEach(transaction => { %>
 <tr>
-<td>Akin Wumi</td>
-<td>1256799ADD</td>
-<td>Contributions</td>
-<td>&#8358;1,000</td>
+<td><%= transaction.username %></td>
+<td><%= transaction.reference %></td>
+<td><%= transaction.type %></td>
+<td>&#8358;<%= transaction.amount %></td>
 <td>30-01-2019</td>
-<td class="text-capitalize kt-font-success">Success</td>
+<td class="text-capitalize kt-font-success"><%= transaction.status %></td>
 </tr>
 <% }) %>
 
