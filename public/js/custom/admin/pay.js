@@ -10,6 +10,7 @@ let store = {
 	addEvent(store.payMemberInputs, "input,focus", () => hideAlert("pay-success"))
 })()
 
+const payButton = createButton(".pay-member-text", "Pay Member", "Paying member...")
 function payMember(event){
 	event.preventDefault()
 	let payDetails = extractForm(store.payMemberFormTag)
