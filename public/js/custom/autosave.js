@@ -6,16 +6,18 @@ let store = {
 	addEvent([store.startAutoSaveButton], "click", startAutoSave)
 })()	
 
+const startButton = createButton(".start-autosave-text", "Start Autosave", "Starting Autosave...")
 function startAutoSave(event){
 	event.preventDefault()
-
-	return api("user/autosave/start", { token: getToken() })
-			.then(handleResponse)
+	startButton()
+	// return api("user/autosave/start", { token: getToken() })
+	// 		.then(handleResponse)
 
 	function handleResponse(response){
 		if(response.status == 200)
-			redirect("/home")
+			return redirect("/home")
 		else
 			console.log(response)
+		startButton("normal")
 	}
 }
