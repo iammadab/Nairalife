@@ -1,5 +1,6 @@
 let store = {
-	saveButtons: document.querySelectorAll(".save-button")
+	saveButtons: document.querySelectorAll(".save-button"),
+
 }
 
 ;(function attachEvents(){
@@ -14,6 +15,9 @@ function autoSave(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		console.log(response)
+		if(response.status == 200){
+			event.target.classList.add("otp-error")
+			event.target.nextElementSibling.classList.remove("otp-error")
+		}
 	}
 }
