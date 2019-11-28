@@ -14,6 +14,10 @@ async function save(data){
 	let userObj = await userDb.findOneWith({ user_id: validData.user_id })
 	if(!userObj)
 		return { status: 403, code: "USER_NOT_FOUND" }
+
+	if(userObj.status != "autosave")
+		return { status: 403, code: "USER_NOT_IN_AUTOSAVE" }
+	console.log(userObj)
 }
 
 module.exports = save
