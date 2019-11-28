@@ -8,5 +8,14 @@ let store = {
 
 function startAutoSave(event){
 	event.preventDefault()
-	console.log("Starting autosave")
+
+	return api("user/autosave/start", { token: getToken() })
+			.then(handleResponse)
+
+	function handleResponse(response){
+		if(response.status == 200)
+			redirect("/home")
+		else
+			console.log(response)
+	}
 }
