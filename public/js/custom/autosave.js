@@ -10,8 +10,9 @@ const startButton = createButton(".start-autosave-text", "Start Autosave", "Star
 function startAutoSave(event){
 	event.preventDefault()
 	startButton()
-	// return api("user/autosave/start", { token: getToken() })
-	// 		.then(handleResponse)
+
+	return api("user/autosave/start", { token: getToken() })
+			.then(handleResponse)
 
 	function handleResponse(response){
 		if(response.status == 200)
