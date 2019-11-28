@@ -21,8 +21,8 @@
 <td><%= contribution.admin %></td>
 <td><%= contribution._doc.created_at %></td>
 <td><%= contribution._doc.time %></td>
-<td>10%</td>
-<td>&#8358;26,000</td>	
+<td><%= contribution._doc.contribution_info.defaultRate %>%</td>
+<td>&#8358;<%= contribution._doc.contribution_info.totalContribution %></td>	
 <td><a href="#" class="btn btn-secondary btn-sm">View More</a></td>
 </tr>
 <% }) %>
