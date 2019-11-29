@@ -11,7 +11,8 @@ transactionDb.createTransaction = function({ username, user_id, amount, referenc
 		type,
 		status,
 		data,
-		group_id
+		group_id,
+		created_at: new Date()
 	})
 
 	return newTransaction.save()

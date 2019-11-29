@@ -9,7 +9,8 @@ const transactionSchema = mongoose.Schema({
 	type: { type: String, required: true, enum: ["withdrawal", "autosave", "contribution", "unknowtype"] },
 	status: { type: String, required: true, enum: ["success", "pending", "failed"] },
 	attempts: { type: Number, default: 1 },
-	data: { type: Object, default: {} }
+	data: { type: Object, default: {} },
+	created_at: { type: Date, default: new Date() }
 })
 
 const transactionModel = mongoose.model("Transaction", transactionSchema)
