@@ -5,7 +5,7 @@ const saveValidator = createValidator("user_id.number")
 const userDb = require("../../data/db/user.db")
 const transactionDb = require("../../data/db/transaction.db")
 
-const paymentService = require("../payment")
+const charge = require("../payment/payment.charge")
 
 async function save(data){
 	let validationResult = saveValidator.parse(data)
@@ -43,7 +43,7 @@ async function save(data){
 	
 
 	// Charge the user based on the amount they said they want to contribute
-	let chargeResult = await paymentService.charge({
+	let chargeResult = await charge({
 		user_id: validData.user_id,
 		amount: contributionAmount
 	})

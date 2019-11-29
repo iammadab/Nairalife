@@ -5,6 +5,17 @@ async function auto(req, res, next){
 	let midnight = new Date((new Date()).setHours(0, 0, 0, 0))
 
 	for(let i = 0; i < autoSaveMembers.length; i++){
+		// Check if the user can save today
+		if(autoSaveMembers[i].autosave_start){
+			let autoSaveMidnight = (new Date(autosave_start)).setHours(0, 0, 0, 0)
+			let datePassed = Number(midnight) - Number(autoSaveMidnight)
+			console.log(daysPassed)
+			let days = (new Date(daysPassed)).getDate()
+			console.log("Days", daysPassed)
+		}
+
+
+
 		let baseData = {
 			user_id: autoSaveMembers[i].user_id,
 			type: "autosave"
