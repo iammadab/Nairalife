@@ -1,12 +1,14 @@
 let store = {
 	requestButton: document.querySelector(".request-button"),
-	requestInputs: document.querySelectorAll(".request-form input"),
+	requestInputs: document.querySelectorAll(".request-form textarea"),
 	requestFormTag: ".request-form"
 }
 
+console.log(store.requestInputs)
+
 ;(function attachEvents(){
 	addEvent([store.requestButton], "click", requestCar)
-	addEvent(store.requestInputs, "input,focus", hideAlert("request-error"))
+	addEvent(store.requestInputs, "input,focus", () => hideAlert("request-error"))
 })()
 
 function requestCar(event){
