@@ -22,18 +22,18 @@
 
 <tbody>
 
-
+<% members.forEach(member => { %>
 <tr>
-<td>Aki Wumi</td>
-<td>1826</td>
-<td>08121636121</td>
-<td>69</td>
-<td>912</td>
-<td>&#8358;0.00</td>
+<td><%= member.fullname %></td>
+<td><%= member.user_id %></td>
+<td><%= member.phone %></td>
+<td><%= member.nairascore %></td>
+<td><%= member.nairapoints %></td>
+<td>&#8358;<%= member.balance %></td>
 <td><a href="#" class="btn btn-secondary btn-sm">View</a></td>
 </tr>
-
-<tr>
+<% }) %>
+<!-- <tr>
 <td>Wisdom Madab</td>
 <td>9276</td>
 <td>08076554123</td>
@@ -85,7 +85,7 @@
 <td>&#8358;0.00</td>
 <td><a href="#" class="btn btn-secondary btn-sm">View</a></td>
 </tr>
-
+ -->
 
 
 </tbody>

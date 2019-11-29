@@ -9,6 +9,7 @@ const addBank = require("./user.addBank")
 const addCard = require("./user.addCard")
 const addPoints = require("./user.addPoints")
 const addBalance = require("./user.addBalance")
+const startAutosave = require("./user.startAutosave")
 
 let userService = {
 	createUser,
@@ -21,7 +22,8 @@ let userService = {
 	addBank,
 	addCard,
 	addPoints,
-	addBalance
+	addBalance,
+	startAutosave
 }
 
 module.exports = userService

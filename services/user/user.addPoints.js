@@ -3,6 +3,7 @@ const { createValidator } = require("lazy-validator")
 const addPointsValidator = createValidator("user_id.number, type.string, comment.string, points.number")
 
 const userDb = require("../../data/db/user.db")
+const pointDb = require("../../data/db/point.db")
 
 async function addPoints(data){
 	let validationResult = addPointsValidator.parse(data)
@@ -10,6 +11,10 @@ async function addPoints(data){
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
 	let validData = validationResult.data
+
+	let adminObj = await userDb.findOneWith({ _id: data.user.id })
+	if(!adminObj)
+		return { status: 403, code: "UNAUTHORIZED" }
 
 	let userObj = await userDb.findOneWith({ user_id: validData.user_id })
 	if(!userObj)
@@ -21,6 +26,15 @@ async function addPoints(data){
 
 	if(!userObj)
 		return { status: 403, code: "PROBLEM_ADDING_POINTS" }
+
+	let newPoint = await pointDb.createPoint({
+		user_id: userObj.user_id,
+		type: validData.type,
+		comment: validData.comment,
+		points: validData.points,
+		admin_id: adminObj.user_id,
+		admin: adminObj.fullname
+	})
 
 	return { status: 200, code: "UPDATED_USER_POINTS" }
 }

@@ -40,7 +40,7 @@ function submitPreference(event){
 
 	function handleResponse(response){
 		if(response.status == 200)
-			redirect("/home")
+			redirect("/auto")
 		submitButton("normal")
 	}
 

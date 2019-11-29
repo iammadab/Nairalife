@@ -18,15 +18,15 @@
 </tr>
 <tr>
 <td class="kt-font-bold">Created On:</td>
-<td class="text-right">13 of Dec, 2019</td>
+<td class="text-right"><%= group.created_on %></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Total Members:</td>
-<td class="text-right"><span data-format="decimal"><%= group.total_members %></span></td>
+<td class="text-right"><span data-format="decimal"><%= group._doc.member_count %></span></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Total Contributions:</td>
-<td class="text-right">187,000 Naira</td>
+<td class="text-right"><%= group.total_contribution %> Naira</td>
 </tr>
 <tr>
 <td class="kt-font-bold">Contribution Per Member:</td>
@@ -38,7 +38,7 @@
 </tr>
 <tr>
 <td class="kt-font-bold">Receiving Next:</td>
-<td class="text-right">Adegoke Mary</td>
+<td class="text-right"><%= group._doc.receiving_next %></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Default Rate:</td>
@@ -46,11 +46,11 @@
 </tr>
 <tr>
 <td class="kt-font-bold">Cycle Started:</td>
-<td class="text-right">18 of Nov, 2019</td>
+<td class="text-right"><%= group.cycle_started %></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Cycle Ends:</td>
-<td class="text-right">18 of Dec, 2019</td>
+<td class="text-right"><%= group.cycle_ended %></td>
 </tr>
 </tbody>
 </table>

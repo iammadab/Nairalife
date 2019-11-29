@@ -2,7 +2,7 @@ const createDb = require("./base.db")
 const transactionModel = require("../models/transaction.model")
 const transactionDb = createDb(transactionModel)
 
-transactionDb.createTransaction = function({ username, user_id, amount, reference, type, status, data }){
+transactionDb.createTransaction = function({ username, user_id, amount, reference, type, status, data, group_id }){
 	let newTransaction = new transactionModel({
 		username,
 		user_id,
@@ -10,7 +10,8 @@ transactionDb.createTransaction = function({ username, user_id, amount, referenc
 		reference,
 		type,
 		status,
-		data
+		data,
+		group_id
 	})
 
 	return newTransaction.save()

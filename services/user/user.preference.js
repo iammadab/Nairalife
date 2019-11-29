@@ -16,7 +16,7 @@ async function userPreference(data){
 	// delete data.token
 
 	let userObj = await userDb.appendDoc({ _id: data.user.id }, "about", validData)
-	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "active")
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "start_autosave")
 
 	if(userObj)
 		return { status: 200, code: "USER_PREFERENCE_SET" }

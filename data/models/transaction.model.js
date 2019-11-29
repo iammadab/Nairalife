@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const transactionSchema = mongoose.Schema({
 	username: { type: String, required: true },
 	user_id: { type: Number, required: true },
+	group_id: { type: Number },
 	amount: { type: Number, required: true },
 	reference: { type: String, required: true },
 	type: { type: String, required: true, enum: ["withdrawal", "autosave", "contribution", "unknowtype"] },
