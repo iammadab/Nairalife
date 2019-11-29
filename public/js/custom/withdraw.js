@@ -17,7 +17,7 @@ let endState = () => { withdrawButton("normal"); store.passwordInput.value = "" 
 
 function withdrawFunds(event){
 	let nameMap = {
-		amount: "enter the amount you want to withdraw",
+		amount: "enter the amount of money you want to withdraw",
 		password: "enter your Nairalife account password"
 	}	
 	event.preventDefault()
@@ -26,7 +26,7 @@ function withdrawFunds(event){
 	let missingDetails = hasKeys(withdrawDetails, ["amount", "password"])
 	if(missingDetails.length > 0){
 		endState()
-		return showAlert("withdraw-error", `You didn't fill data for ${nameMap[missingDetails[0]]}`)
+		return showAlert("withdraw-error", `You didn't ${nameMap[missingDetails[0]]}`)
 	}
 
 	let { amount, password } = withdrawDetails
