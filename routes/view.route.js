@@ -89,7 +89,7 @@ viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter(
 })
 
 viewRouter.get("/transactions", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
-	res.render("history", { title: "My Contributions", link: "transactions" })
+	res.render("history", { title: "My Transactions", link: "transactions" })
 })
 
 
