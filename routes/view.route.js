@@ -92,8 +92,8 @@ viewRouter.get("/transactions", cookieNotFound("/login"), verifyToken(), stageRo
 	res.render("history", { title: "My Transactions", link: "transactions", ...req.body.pageData })
 })
 
-viewRouter.get("/notifications", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
-	res.render("notifications", { title: "My Notifications", link: "notifications" })
+viewRouter.get("/notifications", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.notifications, (req, res) => {
+	res.render("notifications", { title: "My Notifications", link: "notifications", ...req.body.pageData })
 })
 
 
