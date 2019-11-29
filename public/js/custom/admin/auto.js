@@ -17,6 +17,7 @@ function autoSave(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
+		console.log(response)
 		if(response.status == 200){
 			event.target.classList.add("otp-error")
 			event.target.nextElementSibling.classList.remove("otp-error")

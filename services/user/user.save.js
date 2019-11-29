@@ -26,6 +26,7 @@ async function save(data){
 		return { status: 403, code: "USER_NOT_IN_AUTOSAVE" }
 
 	let midnight = new Date((new Date()).setHours(0, 0, 0, 0))
+	let baseData = { user_id: userObj.user_id, type: "autosave" }
 	let successfulTransactions = await transactionDb.findWith({ ...baseData, status: "success", created_at: { $gte: midnight }})
 	let pendingTransactions = await transactionDb.findWith({ ...baseData, status: "pending", created_at: { $gte: midnight }})
 

@@ -39,6 +39,7 @@
 <td>
 	<% if(member._doc.phase != "failed") { %>
 		<% if(member._doc.phase == "pending") { %>
+		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm save-button save-button-text-<%=member.user_id%>">Save</button>
 		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm pending-button">Pending</button>
 		<% } %>
 
