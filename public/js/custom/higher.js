@@ -4,8 +4,6 @@ let store = {
 	requestFormTag: ".request-form"
 }
 
-console.log(store.requestInputs)
-
 ;(function attachEvents(){
 	addEvent([store.requestButton], "click", requestCar)
 	addEvent(store.requestInputs, "input,focus", () => hideAlert("request-error"))

@@ -67,6 +67,8 @@ viewRouter.get("/auto", cookieNotFound("/login"), verifyToken(), stageRouter("st
 })
 
 
+
+// User with header
 viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.dashboard, (req, res) => {
 	res.render("dashboard", { title: "Dashboard", link: "", ...req.body.pageData })
 })
