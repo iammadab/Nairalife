@@ -25,6 +25,9 @@ async function save(data){
 	if(userObj.status != "autosave")
 		return { status: 403, code: "USER_NOT_IN_AUTOSAVE" }
 
+	// A user only autosaves once per day, so when autosave is initiated,
+	// Get all the transactions of that user since midnight
+	// If there is any successful or pending, send error that the transaction has already started
 	let midnight = new Date((new Date()).setHours(0, 0, 0, 0))
 	let baseData = { user_id: userObj.user_id, type: "autosave" }
 	let successfulTransactions = await transactionDb.findWith({ ...baseData, status: "success", created_at: { $gte: midnight }})
@@ -32,6 +35,9 @@ async function save(data){
 
 	if(successfulTransactions.length > 0 || pendingTransactions.length > 0)
 		return { status: 403, code: "TRANSACTION_ALREADY_STARTED" }
+
+
+
 
 	let contributionAmount = userObj._doc.about.contribution_make
 	
