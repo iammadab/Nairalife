@@ -24,7 +24,8 @@ const userSchema = mongoose.Schema({
 	role: { type: String, default: "user" }, // user or admin
 	group: { type: String },
 
-	autosave_start: { type: Date }
+	autosave_start: { type: Date },
+	notification_count: { type: Number, default: 0 }
 })
 
 const userModel = mongoose.model("User", userSchema)
