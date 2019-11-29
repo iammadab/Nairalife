@@ -33,12 +33,14 @@ include 'link.php';
 
 
 <tbody>
+<% allPoints.forEach((point, i) => { %>
 <tr>
-<td>1</td>
-<td>30</td>
-<td>30-01-2019</td>
-<td class="text-capitalize kt-font-info">Bonus</td>
+<td><%= i + 1 %></td>
+<td><%= point.points %></td>
+<td><%= point.created_at %></td>
+<td class="text-capitalize kt-font-info"><%= point.type %></td>
 </tr>
+<% }) %>
 
 <!-- <tr>
 <td>2</td>
