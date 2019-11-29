@@ -72,8 +72,8 @@ viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("ac
 })
 
 
-viewRouter.get("/higher", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
-	res.render("higher", { title: "Get Higher Purchase", link: "higher purchase", user: req.body.pageData.user._doc })
+viewRouter.get("/higher", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("higher", { title: "Get Higher Purchase", link: "higher purchase", ...req.body.pageData })
 })
 
 viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
