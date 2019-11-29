@@ -76,23 +76,23 @@ viewRouter.get("/higher", cookieNotFound("/login"), verifyToken(), stageRouter("
 	res.render("higher", { title: "Get Higher Purchase", link: "higher purchase", ...req.body.pageData })
 })
 
-viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
-	res.render("withdraw", { title: "Withdraw Money", link: "withdraw" })
+viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("withdraw", { title: "Withdraw Money", link: "withdraw", ...req.body.pageData })
 })
 
 viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
 	res.render("settings", { title: "Account Settings", link: "settings", ...req.body.pageData })
 })
 
-viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.points, (req, res) => {
+viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.points,  pageService.user, (req, res) => {
 	res.render("nairapoints", { title: "My Contributions", link: "history", ...req.body.pageData })
 })
 
-viewRouter.get("/transactions", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.userTransaction, (req, res) => {
+viewRouter.get("/transactions", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.userTransaction, pageService.user, (req, res) => {
 	res.render("history", { title: "My Transactions", link: "transactions", ...req.body.pageData })
 })
 
-viewRouter.get("/notifications", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.notifications, (req, res) => {
+viewRouter.get("/notifications", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.notifications,  pageService.user, (req, res) => {
 	res.render("notifications", { title: "My Notifications", link: "notifications", ...req.body.pageData })
 })
 
