@@ -14,13 +14,14 @@ async function auto(req, res, next){
 		let pendingTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "pending", created_at: { $gte: midnight }})
 		let failedTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "failed", created_at: { $gte: midnight }})
 
-		console.log(successfulTransactions)
-		console.log("")
-		console.log(pendingTransactions)
-		console.log("")
-		console.log(failedTransactions)
-		console.log("")
-
+		if(successfulTransactions.length > 0)
+			autoSaveMembers[i]._doc.phase = "success"
+		else if(pendingTransactions.length > 0)
+			autoSaveMembers[i]._doc.phase = "pending"
+		else if(failedTransactions.length > 0)
+			autoSaveMembers[i]._doc.phase = "failed"
+		else
+			autoSaveMembers[i]._doc.phase = "noattempt"
 	}
 
 	req.body.pageData = {
