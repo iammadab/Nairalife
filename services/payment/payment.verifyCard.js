@@ -4,11 +4,8 @@ const { createValidator } = require("lazy-validator")
 const verifyCardValidator = createValidator("reference.string")
 
 const userDb = require("../../data/db/user.db")
-console.log(userDb)
 
 const userService = require("../user")
-console.log(userService)
-console.log(userService.addCard)
 
 const requestOptions = {
 	headers: { Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY} `}
