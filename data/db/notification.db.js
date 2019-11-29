@@ -10,6 +10,12 @@ notificationDb.createNotification = async function({ user_id, notification }){
 		notification
 	})
 
+	let userObj = await userDb.findOneWith({ user_id })
+	if(userObbj){
+		let oldNotificationCount = userObj.notification_count || 0
+		await userDb.appendDoc({ user_id }, "notification_count", oldNotificationCount + 1)
+	}
+
 	return newNotification.save()
 }
 
