@@ -3,7 +3,9 @@ const pageFunctions = require("./functions")
 async function userTransaction(req, res, next){
 	let allTransactions = await pageFunctions.fetchTransactions({ user_id: req.body.user.user_id })
 
-	console.log(allTransactions)
+	allTransactions.forEach(transactionDoc => {
+		transactionDoc._doc.created_at = pageFunctions.createDate(transactionDoc.created_at).getHypenDate()
+	})
 
 	req.body.pageData = {
 		allTransactions
