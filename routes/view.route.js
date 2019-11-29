@@ -88,8 +88,8 @@ viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("nairapoints", { title: "My Contributions", link: "history", ...req.body.pageData })
 })
 
-viewRouter.get("/transactions", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
-	res.render("history", { title: "My Transactions", link: "transactions" })
+viewRouter.get("/transactions", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.userTransaction, (req, res) => {
+	res.render("history", { title: "My Transactions", link: "transactions", ...req.body.pageData })
 })
 
 
