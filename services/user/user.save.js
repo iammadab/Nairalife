@@ -12,11 +12,13 @@ async function save(data){
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
-	let validData = validationResult.data
+	let validData = validationResult.data, adminObj
 
-	let adminObj = await userDb.findOneWith({ _id: data.user.id })
-	if(!adminObj)
-		return { status: 403, code: "UNAUTHORIZED" }
+	if(data.user){
+		adminObj = await userDb.findOneWith({ _id: data.user.id })
+		if(!adminObj)
+			return { status: 403, code: "UNAUTHORIZED" }
+	}
 
 	let userObj = await userDb.findOneWith({ user_id: validData.user_id })
 	if(!userObj)
@@ -59,8 +61,8 @@ async function save(data){
 		type: "autosave",
 		status: "pending",
 		data: {
-			admin: adminObj.fullname,
-			admin_id: adminObj.user_id
+			admin: adminObj ? adminObj.fullname : "Automatic",
+			admin_id: adminObj ? adminObj.user_id : 0
 		}
 	})	
 
