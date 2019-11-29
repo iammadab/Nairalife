@@ -10,6 +10,7 @@ const auto = require("./page.auto")
 const points = require("./page.points")
 const userTransaction = require("./page.userTransaction")
 const notifications = require("./page.notifications")
+const user = require("./page.user")
 
 const pageServices = {
 	dashboard,
@@ -23,7 +24,8 @@ const pageServices = {
 	auto,
 	points,
 	userTransaction,
-	notifications
+	notifications,
+	user
 }
 
 module.exports = pageServices
