@@ -25,6 +25,13 @@ async function save(data){
 	if(userObj.status != "autosave")
 		return { status: 403, code: "USER_NOT_IN_AUTOSAVE" }
 
+	let midnight = new Date((new Date()).setHours(0, 0, 0, 0))
+	let successfulTransactions = await transactionDb.findWith({ ...baseData, status: "success", created_at: { $gte: midnight }})
+	let pendingTransactions = await transactionDb.findWith({ ...baseData, status: "pending", created_at: { $gte: midnight }})
+
+	if(successfulTransactions.length > 0 || pendingTransactions.length > 0)
+		return { status: 403, code: "TRANSACTION_ALREADY_STARTED" }
+
 	let contributionAmount = userObj._doc.about.contribution_make
 	
 
