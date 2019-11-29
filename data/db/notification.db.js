@@ -20,3 +20,7 @@ notificationDb.createNotification = async function({ user_id, notification }){
 }
 
 module.exports = notificationDb
+
+notificationDb
+	.createNotification({ user_id: 7441, notification: "This is a test notification" })
+	.then(console.log)
