@@ -12,7 +12,7 @@ async function auto(req, res, next){
 		}
 		console.log(baseData)
 
-		let successfulTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "success" })
+		let successfulTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "success", created_at: { $gt: midnight }})
 		let pendingTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "pending" })
 		let failedTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "failed" })
 
