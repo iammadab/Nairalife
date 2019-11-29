@@ -17,17 +17,18 @@ include 'link.php';
 
 <div class="kt-notification kt-margin-b-10  kt-margin-t-10">
 
-
+<% userNotifications.forEach(notification => { %>
 <div class="kt-notification__item">
 <div class="kt-notification__item-details">
 <div class="kt-notification__item-title">
-Congratulations, you are receiving 30,000 naira tomorrow.
+<%= notification.notification %>
 </div>
 <div class="kt-notification__item-time">
-30 mins ago
+<%= notification.created_at[0] %>, <%= notification.created_at[1] %>
 </div>
 </div>
 </div>
+<% }) %>
 
 <!-- <div class="kt-notification__item">
 <div class="kt-notification__item-details">
