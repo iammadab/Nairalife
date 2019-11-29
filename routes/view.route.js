@@ -84,8 +84,8 @@ viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter
 	res.render("settings", { title: "Account Settings", link: "settings", ...req.body.pageData })
 })
 
-viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
-	res.render("nairapoints", { title: "My Contributions", link: "history" })
+viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.points, (req, res) => {
+	res.render("nairapoints", { title: "My Contributions", link: "history", ...req.body.pageData })
 })
 
 
