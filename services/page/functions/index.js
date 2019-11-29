@@ -8,6 +8,7 @@ const fetchContributions = require("./fetchContributions")
 const fetchContributionStatus = require("./fetchContributionStatus")
 const createDate = require("./createDate")
 const fetchTransactions = require("./fetchTransactions")
+const fetchPoints = require("./fetchPoints")
 
 const pageFunctions = {
 	fetchUser,
@@ -19,7 +20,8 @@ const pageFunctions = {
 	fetchContributions,
 	fetchContributionStatus,
 	createDate,
-	fetchTransactions
+	fetchTransactions,
+	fetchPoints
 }
 
 module.exports = pageFunctions
