@@ -53,7 +53,7 @@ function submitPreference(event){
 function handleUpload(event){
 	const formData = new FormData()
 	formData.append(event.target.name, event.target.files[0])
-	formData.append("me", 2)
+	formData.append("user_id", store.preferenceButton.dataset["user_id"])
 	return fetch("api/user/upload", {
 				method: "POST",
 				body: formData

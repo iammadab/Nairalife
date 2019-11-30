@@ -58,8 +58,8 @@ viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("account", { title: "Bank Account", banks: req.body.pageData.banks })
 })
 
-viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("enter_contribution_preference"), (req, res) => {
-	res.render("about",{ title: "Welcome"})
+viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("enter_contribution_preference"), pageService.user, (req, res) => {
+	res.render("about",{ title: "Welcome", ...req.body.pageData })
 })
 
 viewRouter.get("/auto", cookieNotFound("/login"), verifyToken(), stageRouter("start_autosave"), (req, res) => {
