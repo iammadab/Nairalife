@@ -13,7 +13,7 @@ async function addPoints(data){
 
 	let validData = validationResult.data, adminObj = {}
 
-	if(data.user.id){
+	if(data.user && data.user.id){
 		adminObj = await userDb.findOneWith({ _id: data.user.id })
 		if(!adminObj)
 			return { status: 403, code: "UNAUTHORIZED" }
