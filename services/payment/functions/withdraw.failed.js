@@ -12,8 +12,8 @@ async function withdraw_failed(data){
 	console.log(transactionObj)
 
 	let userObj = await userDb.findOneWith({ user_id: transactionObj.user_id })
-	if(!transactionObj)
-		return console.log("Couldn't find the user obj for ", data.reference)
+	if(!userObj)
+		return console.log("Couldn't find the user obj for ", transaction.user_id)
 	console.log(userObj)
 
 	// At this point, we refund the amount we deducted from the user earlier
