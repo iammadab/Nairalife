@@ -4,6 +4,7 @@ const addPointsValidator = createValidator("user_id.number, type.string, comment
 
 const userDb = require("../../data/db/user.db")
 const pointDb = require("../../data/db/point.db")
+const notificationDb = require("../../data/db/notification.db")
 
 async function addPoints(data){
 	let validationResult = addPointsValidator.parse(data)
@@ -36,6 +37,11 @@ async function addPoints(data){
 		points: validData.points,
 		admin_id: adminObj.user_id,
 		admin: adminObj.fullname
+	})
+
+	let newNotification = await notificationDb.createNotification({
+		user_id: userObj.user_id,
+		notification: validData.comment
 	})
 
 	return { status: 200, code: "UPDATED_USER_POINTS" }
