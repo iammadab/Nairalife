@@ -2,12 +2,15 @@ require("dotenv").config()
 const express = require("express")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const morgan = require("morgan")
 const { connectToDb } = require("./runners/database_runner")
 
 const PORT = process.env.PORT || 3000
 
 const app = express()
 const path = require("path")
+
+morgan("dev")
 
 app.set("view engine", "ejs")
 app.use(cookieParser())
