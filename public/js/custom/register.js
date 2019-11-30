@@ -117,7 +117,7 @@ function registerUser(event){
 
 	function handleRegistration(response){
 		if(response.status == 200)
-			redirect("/fee")
+			return redirect("/fee")
 		else if(response.code == "OTP_VERIFICATION_FAILED")
 			showAlert("otp-error", "Invalid Otp")
 		otpButton("normal")
