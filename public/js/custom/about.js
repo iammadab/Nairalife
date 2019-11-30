@@ -51,5 +51,9 @@ function submitPreference(event){
 }
 
 function handleUpload(event){
-	console.log(event)
+	const formData = new FormData()
+	formData.append(event.target.name, event.target.files[0])
+	return api("user/upload", formData)
+			.then(console.log)
+			.catch(console.log)
 }
