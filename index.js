@@ -3,6 +3,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const morgan = require("morgan")
+const fileUpload = require("express-fileupload")
 const { connectToDb } = require("./runners/database_runner")
 
 const PORT = process.env.PORT || 3000
@@ -10,7 +11,10 @@ const PORT = process.env.PORT || 3000
 const app = express()
 const path = require("path")
 
-app.use(morgan("dev"))
+app.use(morgan("combined"))
+app.use(fileUpload({
+	limits: { fileSize: 1024 * 1024 }
+}))
 
 app.set("view engine", "ejs")
 app.use(cookieParser())
@@ -42,5 +46,3 @@ app.use((req, res) => {
 app.listen(PORT, () => {
 	console.log(`Application listening at port ${PORT}`)
 })
-
-require("./lib/whatsapp")
