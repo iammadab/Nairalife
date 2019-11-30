@@ -1,5 +1,5 @@
 const { createValidator } = require("lazy-validator")
-const { sendMessage } = require("../../lib/whatsapp")
+const sendMessage = require("../../lib/whatsapp")
 
 const otpDb = require("../../data/db/otp.db")
 const userDb = require("../../data/db/user.db")
