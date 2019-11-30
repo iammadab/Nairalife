@@ -1,4 +1,5 @@
 const transactionDb = require("../../../data/db/transaction.db")
+const userDb = require("../../../data/db/user.db")
 
 async function withdraw_failed(data){
 	console.log("Withdraw failure")
@@ -9,6 +10,19 @@ async function withdraw_failed(data){
 	if(!transactionObj)
 		return console.log("Couldn't find the transaction obj for ", data.reference)
 	console.log(transactionObj)
+
+	let userObj = await userDb.findOneWith({ user_id: transactionObj.user_id })
+	if(!transactionObj)
+		return console.log("Couldn't find the user obj for ", data.reference)
+	console.log(userObj)
+
+	// At this point, we refund the amount we deducted from the user earlier
+	let currentBalance = Number(userObj.balance), 
+		newBalance = currentBalance + Number(transactionObj.amount)
+	console.log(currentBalance, newBalance)
+	userObj = await userDb.appendDoc({ user_id: transactionObj.user_id })
+	if(!userObj)
+		return console.log("Encountered problem when updating the user balance from " + currentBalance + " to "  + newBalance)
 
 	// Set the status of the transaction to failed
 	transactionObj = transactionDb.appendDoc({ reference: data.reference }, "status", "failed")
