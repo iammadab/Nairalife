@@ -1,7 +1,7 @@
 const express = require("express")
 const userRouter = express.Router()
 
-const { bodyResponder } = require("./serviceAdapter")
+const { bodyResponder, reqResponder } = require("./serviceAdapter")
 
 const userService = require("../services/user")
 const paymentService = require("../services/payment")
@@ -17,6 +17,6 @@ userRouter.post("/points", authenticationService.verifyToken(), authenticationSe
 userRouter.post("/balance", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(userService.addBalance))
 userRouter.post("/autosave/start", authenticationService.verifyToken(), bodyResponder(userService.startAutosave))
 userRouter.post("/save", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(userService.save))
-userRouter.post("/upload", bodyResponder(userService.upload))
+userRouter.post("/upload", reqResponder(userService.upload))
 
 module.exports = userRouter

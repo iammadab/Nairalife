@@ -13,7 +13,7 @@ const path = require("path")
 
 app.use(morgan("combined"))
 app.use(fileUpload({
-	limits: { fileSize: 1024 * 1024 }
+	limits: { fileSize: 2 * 1024 * 1024 }
 }))
 
 app.set("view engine", "ejs")
