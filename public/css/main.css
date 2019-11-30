@@ -1875,11 +1875,12 @@ box-shadow: 0 0 0 0.2rem rgba(84, 130, 245, 0.5); }*/
 color: #fff;
 background-color: #008000;
 border-color: #008000;
-color: #ffffff; }
+}
 .btn-primary:hover {
-color: #fff;
-background-color: #008000;
-border-color: #008000; }
+/*background-color: #008000;
+border-color: #008000;*/
+color:#fff;
+}
 
 /*.btn-primary-main {
 color: #fff;
@@ -1897,17 +1898,16 @@ border-color: #008000;
 color: #ffffff;
 }
 
-.btn-success:hover {
-background-color: #008000;
-border-color: #008000;
+/*.btn-success:hover {
+border-color:none;
 color: #ffffff;
-}
+}*/
 
 .btn-info {
 color: #fff;
 background-color: #5578eb;
 border-color: #5578eb;
-color: #ffffff; }
+}
 .btn-info:hover {
 color: #fff;
 background-color: #335de7;
@@ -1918,11 +1918,11 @@ border-color: #2754e6; }
 color: #000;
 background-color: #ffd700;
 border-color: #ffd700;
-color: #111111; }
-.btn-warning:hover {
-color: #000;
+}
+/*.btn-warning:hover {
+border:none;
 background-color: #ffb822;
-border-color: #ffb822; }
+border-color: #ffb822; }*/
 /*.btn-warning:focus, .btn-warning.focus {
 -webkit-box-shadow: 0 0 0 0.2rem rgba(222, 162, 35, 0.5);
 box-shadow: 0 0 0 0.2rem rgba(222, 162, 35, 0.5); }*/
@@ -3576,14 +3576,18 @@ width: 0%;
 -webkit-transition: width 0.3s ease;
 transition: width 0.3s ease; }
 .kt-link:hover {
-text-decoration: none !important; }
-.kt-link:hover:after {
+text-decoration: none !important;
+border-bottom: 1px solid #008000;
+color:#008000;
+opacity: 0.8;
+}
+/*.kt-link:hover:after {
 width: 100%; }
 .kt-link:hover {
 color: #008000; }
 .kt-link:hover:after {
-border-bottom: 1px solid #3641de;
-opacity: 0.3; }
+opacity: 0.8;
+}*/
 
 
 .kt-section {
@@ -3943,15 +3947,15 @@ align-items: stretch; }
 display: none !important; }
 .kt-header .kt-container .kt-header__brand-logo-default {
 display: inline-block;
-width:60px;
-height:100px;
+width:45px;
+height:auto;
 }
 
 .kt-header .kt-container .kt-header__brand-logo-defaults {
 display: block;
 width:125px;
 margin:0;
-margin-left:-5px;
+margin-left:10px;
 }
 
 .kt-header .kt-container .kt-header__brand-logo-sticky {
@@ -4269,13 +4273,13 @@ justify-content: flex-start;
 }
 .kt-header-mobile .kt-header-mobile__logo .lgo1{
 display:inline-block;
-width:50px;
-height:80px;
+width:35px;
+height:auto;
 }
 
 .kt-header-mobile .kt-header-mobile__logo .lgo2{
 width:95px;
-margin-left:-5px;
+margin-left:5px;
 }
 
 .kt-header-mobile .kt-header-mobile__toolbar {
@@ -4472,6 +4476,7 @@ color: #666;
 }
 .kt-footer .kt-footer__menu .kt-footer__menu-link:hover {
 color: #008000;
+border-bottom: 1px solid #008000;
 font-weight:400;
 }
 
