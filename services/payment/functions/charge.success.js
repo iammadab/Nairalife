@@ -12,7 +12,7 @@ async function charge_success(data){
 
 	let userObj = await userDb.findOneWith({ user_id: transactionObj.user_id })
 	if(!userObj)
-		return console.log("Couldn't find the user obj for ", transaction.user_id)
+		return console.log("Couldn't find the user obj for ", transactionObj.user_id)
 	console.log(userObj)
 
 	if(transactionObj.type == "autosave")
@@ -39,7 +39,7 @@ async function autosaveSuccess(user, transaction){
 
 }
 
-async function groupSuccess(user, transaction){
+async function contributionSuccess(user, transaction){
 	// When a user contributes to a group they don't have the money on demand
 	// There is just a record that they have contributed this amount
 	let oldBalance = Number(user.nairalife_balance), newBalance = oldBalance + Number(transaction.amount)

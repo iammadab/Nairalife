@@ -13,14 +13,14 @@ async function withdraw_failed(data){
 
 	let userObj = await userDb.findOneWith({ user_id: transactionObj.user_id })
 	if(!userObj)
-		return console.log("Couldn't find the user obj for ", transaction.user_id)
+		return console.log("Couldn't find the user obj for ", transactionObj.user_id)
 	console.log(userObj)
 
 	// At this point, we refund the amount we deducted from the user earlier
 	let currentBalance = Number(userObj.balance), 
 		newBalance = currentBalance + Number(transactionObj.amount)
 	console.log(currentBalance, newBalance)
-	userObj = await userDb.appendDoc({ user_id: transactionObj.user_id })
+	userObj = await userDb.appendDoc({ user_id: transactionObj.user_id }, "balance", newBalance)
 	if(!userObj)
 		return console.log("Encountered problem when updating the user balance from " + currentBalance + " to "  + newBalance)
 
