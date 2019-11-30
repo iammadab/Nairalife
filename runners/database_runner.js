@@ -7,7 +7,7 @@ function connectToDb(){
 }
 
 function connectToOnlineDb(mongoose){
-	mongoose.connect(`mongodb+srv://${process.env.DB_NAME}:${process.env.DB_KEY}@cluster0-oaogc.mongodb.net/test?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
+	mongoose.connect(`mongodb+srv://${process.env.DB_NAME}:${process.env.DB_KEY}@cluster0-oaogc.mongodb.net/nairalife?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
         .then(() => console.log("Connected to online db"))
         .catch(err => console.log("Error connecting to online db"))
 }
