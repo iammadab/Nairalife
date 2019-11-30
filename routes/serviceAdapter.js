@@ -1,7 +1,11 @@
 function createResponder(type){
 	return function responder(fn){
 		return async function(req, res){
-			let response = await fn(req[type])
+			let response
+			if(type == "req")
+				response = await fn(req)
+			else
+				response = await fn(req[type])
 			return sendResponse(res, response)
 		}
 
@@ -22,5 +26,6 @@ function createResponder(type){
 
 module.exports = {
 	bodyResponder: createResponder("body"),
-	paramResponder: createResponder("params")
+	paramResponder: createResponder("params"),
+	reqResponder: createResponder("req")
 }
