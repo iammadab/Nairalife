@@ -28,9 +28,9 @@
 <% allTransactions.forEach((transaction, i) => { %> 
 <tr>
 <!-- <td><%= i + 1 %></td> -->
-<td><%= transaction.reference %></td>
-<td><%= transaction.type %></td>
-<td><%= transaction.amount %></td>
+<td class="text-uppercase"><%= transaction.reference %></td>
+<td class="text-capitalize"><%= transaction.type %></td>
+<td>&#8358;<%= transaction.amount %></td>
 <td><%= transaction.created_at %></td>
 <td class="text-capitalize kt-font-success"><%= transaction.status %></td>
 </tr>
