@@ -1,5 +1,6 @@
-async function card_success(data){
-
+async function charge_success(data){
+	console.log("Charge success")
+	console.log(data)
 }
 
-module.exports = card_success
+module.exports = charge_success
