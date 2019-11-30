@@ -44,8 +44,13 @@ async function withdraw(data){
 	if(recieptResult.status != 200)
 		return recieptResult
 
-	let oldBalance = +userObj.balance, newBalance = oldBalance - data.amount
-	userObj = await userDb.appendDoc({ _id: data.user.id }, "balance", newBalance)
+	// Normally, at this stage I am suppossed to update the user balance based on how much they withdraw
+	// I am not doing this here any more because the withdrawal could fail
+	// I have set up webhooks, which will tell me the status of the withdraw
+	// If I can a success, then and only then do I update the amount
+	let oldBalance = +userObj.balance
+	// let newBalance = oldBalance - data.amount
+	// userObj = await userDb.appendDoc({ _id: data.user.id }, "balance", newBalance)
 
 	// console.log(recieptResult)
 	let transferResult = await initiateTransfer({
@@ -65,7 +70,7 @@ async function withdraw(data){
 		amount: data.amount,
 		reference: transferResult.data.reference,
 		type: "withdrawal",
-		status: "success",
+		status: "pending",
 		data: { transfer_code: transferResult.data.transfer_code }
 	})
 	// console.log(withdrawTransaction)

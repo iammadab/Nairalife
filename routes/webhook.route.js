@@ -2,7 +2,6 @@ const express = require("express")
 const webhookRouter = express.Router()
 
 const paymentFunctions = require("../services/payment/functions")
-console.log(paymentFunctions)
 
 webhookRouter.post("/paystack", function(req, res){
 	console.log("Paystack web hook")
