@@ -6,8 +6,8 @@ const pointSchema = mongoose.Schema({
 	comment: { type: String, required: true },
 	points: { type: Number, required: true },
 
-	admin_id: { type: Number, required: true },
-	admin: { type: String, required: true }
+	admin_id: { type: String  },
+	admin: { type: String }
 })
 
 const pointModel = mongoose.model("Point", pointSchema)
