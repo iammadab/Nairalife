@@ -16,7 +16,7 @@ async function charge_success(data){
 	console.log(userObj)
 
 	if(transactionObj.type == "autosave")
-		autosaveSuccess(userObj, transctionObj)
+		autosaveSuccess(userObj, transactionObj)
 
 	else if(transactionObj.type == "contribution")
 		contributionSuccess(userObj, transactionObj)
