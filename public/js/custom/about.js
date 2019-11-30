@@ -1,12 +1,16 @@
 let store = {
 	preferenceButton: document.querySelector(".preference-submit"),
 	preferenceFormTag: ".preference-form",
-	inputs: Array.from(document.querySelectorAll(".preference-form input, .preference-form textarea, .preference-form select"))
+	inputs: Array.from(document.querySelectorAll(".preference-form input, .preference-form textarea, .preference-form select")),
+	fileInputs: document.querySelectorAll("[type=file]")
 }
+
+console.log(store.fileInputs)
 
 ;(function attachEvents(){
 	addEvent([store.preferenceButton], "click", submitPreference)
 	addEvent(store.inputs, "input,focus", () => hideAlert("preference-error"))
+	addEvent(store.fileInputs, "change", handleUpload)
 })()	
 
 let submitButton = createButton(".preference-text", "Complete Registration", "Submitting...")
@@ -44,4 +48,8 @@ function submitPreference(event){
 		submitButton("normal")
 	}
 
+}
+
+function handleUpload(event){
+	console.log(event)
 }
