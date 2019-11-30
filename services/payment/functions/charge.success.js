@@ -37,6 +37,10 @@ async function autosaveSuccess(user, transaction){
 	if(!userObj)
 		console.log("Problem updating the user autosave balance from " + oldBalance + " to " + newBalance + " for " + user.user_id)
 
+	let transactionObj = await transactionDb.appendDoc({ reference: transaction.reference }, "status", "success")
+	if(!transactionObj)
+		console.log("Problem updating the transaction obj to success")
+
 }
 
 async function contributionSuccess(user, transaction){
@@ -48,4 +52,8 @@ async function contributionSuccess(user, transaction){
 	let userObj = await userDb.appendDoc({ user_id: user.user_id }, "nairalife_balance", newBalance)
 	if(!userObj)
 		console.log("Problem updating the user contribution balance from " + oldBalance + "  to " + newBalance + " for " + user.user_id)
+
+	let transactionObj = await transactionDb.appendDoc({ reference: transaction.reference }, "status", "success")
+	if(!transactionObj)
+		console.log("Problem updating the transaction obj to success")
 }
