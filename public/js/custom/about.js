@@ -53,7 +53,8 @@ function submitPreference(event){
 function handleUpload(event){
 	const formData = new FormData()
 	formData.append(event.target.name, event.target.files[0])
-	return fetch("user/upload", {
+	formData.append("me", 2)
+	return fetch("api/user/upload", {
 				method: "POST",
 				body: formData
 			})

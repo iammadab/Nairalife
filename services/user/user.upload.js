@@ -1,6 +1,6 @@
 async function upload(data){
-	console.log("hit upload")
-	console.log(data.files)
+	console.log(data.body)
+	console.log(Object.keys(data.files))
 }
 
 module.exports = upload
