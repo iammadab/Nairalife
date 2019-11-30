@@ -86,8 +86,8 @@ viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter
 	res.render("settings", { title: "Account Settings", link: "settings", ...req.body.pageData })
 })
 
-viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.points,  pageService.user, (req, res) => {
-	res.render("nairapoints", { title: "My Contributions", link: "history", ...req.body.pageData })
+viewRouter.get("/points", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.points,  pageService.user, (req, res) => {
+	res.render("nairapoints", { title: "Nairalife Points", link: "points", ...req.body.pageData })
 })
 
 viewRouter.get("/transactions", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.userTransaction, pageService.user, (req, res) => {

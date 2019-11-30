@@ -11,5 +11,5 @@ let store = {
 
 function requestCar(event){
 	event.preventDefault()
-	showAlert("request-error", "You can't request for a car because your nairascore is not up to 70")
+	showAlert("request-error", "Sorry, you can't request for a car because your nairalife score is not up to 70!")
 }

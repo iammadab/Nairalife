@@ -6,16 +6,16 @@
 <div class="kt-portlet btopzero">
 
 
-<div class="kt-portlet__body kt-padding-t-10 kt-padding-b-10">
+<div class="kt-portlet__body kt-padding-10">
 
 <div class="kt-section__content table-responsive">
-<table class="table kt-margin-b-10">
+<table class="table kt-padding-0 kt-margin-0 kt-margin-b-10">
 
 
 <thead>
 <tr>
-<th>No</th>
-<th>Reference No</th>
+<!-- <th>No</th> -->
+<th>Reference</th>
 <th>Type</th>
 <th>Amount</th>
 <th>Date</th>
@@ -27,7 +27,7 @@
 <tbody>
 <% allTransactions.forEach((transaction, i) => { %> 
 <tr>
-<td><%= i + 1 %></td>
+<!-- <td><%= i + 1 %></td> -->
 <td><%= transaction.reference %></td>
 <td><%= transaction.type %></td>
 <td><%= transaction.amount %></td>
@@ -35,45 +35,6 @@
 <td class="text-capitalize kt-font-success"><%= transaction.status %></td>
 </tr>
 <% }) %>
-
-<!-- <tr>
-<td>2</td>
-<td>0876544ECD</td>
-<td>29-01-2019</td>
-<td class="text-capitalize kt-font-danger">Cancelled</td>
-<td><a href="#" class="btn btn-secondary btn-sm">View</a></td>
-</tr>
-
-
-<tr>
-<td>3</td>
-<td>0825454DSE</td>
-<td>28-01-2019</td>
-<td class="text-capitalize kt-font-info">Pending</td>
-<td><a href="#" class="btn btn-secondary btn-sm">View</a></td>
-</tr>
-
-
-<tr>
-<td>4</td>
-<td>91762543AJ</td>
-<td>27-01-2019</td>
-<td class="text-capitalize kt-font-success">Success</td>
-<td><a href="#" class="btn btn-secondary btn-sm">View</a></td>
-</tr>
-
-
-<tr>
-<td>5</td>
-<td>17635019OP</td>
-<td>26-01-2019</td>
-<td class="text-capitalize kt-font-success">Success</td>
-<td><a href="#" class="btn btn-secondary btn-sm">View</a></td>
-</tr>
-
-
-
- -->
 
 </tbody>
 </table>
