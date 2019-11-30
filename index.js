@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000
 const app = express()
 const path = require("path")
 
-morgan("dev")
+app.use(morgan("dev"))
 
 app.set("view engine", "ejs")
 app.use(cookieParser())
