@@ -21,8 +21,8 @@ async function createOtp(data){
 	console.log(code)
 
 	sendMessage({ phone: data.phone, message: `Your Nairalife Otp is: ${code}`})
-		.then(console.log)
-		.catch(console.log)
+		.then(() => console.log("Sent otp"))
+		.catch(() => console.log("Failed to send otp"))
 
 	let otpObj = await otpDb.create({ phone: data.phone, code, type: data.type })
 	if(otpObj)
