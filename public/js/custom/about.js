@@ -53,7 +53,14 @@ function submitPreference(event){
 function handleUpload(event){
 	const formData = new FormData()
 	formData.append(event.target.name, event.target.files[0])
-	return api("user/upload", formData)
+	return fetch("user/upload", {
+				method: "POST",
+				headers: {
+					"Content-Type": "multipart/form-data"
+				}
+				body: formData
+			})
+			.then(response => response.json())
 			.then(console.log)
 			.catch(console.log)
 }
