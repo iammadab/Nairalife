@@ -1,4 +1,5 @@
 const { createValidator } = require("lazy-validator")
+const { sendMessage } = require("../../lib/whatsapp")
 
 const otpDb = require("../../data/db/otp.db")
 const userDb = require("../../data/db/user.db")
@@ -18,6 +19,10 @@ async function createOtp(data){
 
 	let code = generateCode()
 	console.log(code)
+
+	sendMessage({ phone: data.phone, message: `Your Nairalife Otp is: ${code}`})
+		.then(console.log)
+		.catch(console.log)
 
 	let otpObj = await otpDb.create({ phone: data.phone, code, type: data.type })
 	if(otpObj)
