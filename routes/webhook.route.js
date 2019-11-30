@@ -13,10 +13,10 @@ webhookRouter.post("/paystack", function(req, res){
 	}
 
 	switch(req.body.event){
-		case "transaction.success":
+		case "transfer.success":
 			paymentFunctions.withdrawSuccess(req.body.data)
 			break
-		case "transaction.failed":
+		case "transfer.failed":
 			paymentFunctions.withdrawFailed(req.body.data)
 			break
 		case "charge.success":

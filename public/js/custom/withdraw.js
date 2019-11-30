@@ -30,7 +30,6 @@ function withdrawFunds(event){
 	}
 
 	let { amount, password } = withdrawDetails
-	console.log(amount, password)
 	return api("user/withdraw", { amount, password, token: getToken() })
 		.then(handleResponse)
 
