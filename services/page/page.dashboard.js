@@ -4,6 +4,7 @@ const userDb = require("../../data/db/user.db")
 async function dashboard(req, res, next){
 	let userObj = await pageFunctions.fetchUser(req.body.user.id)
 	let groupObj = await pageFunctions.fetchGroup(userObj.group)
+	let autoSaveTransactions = await pageFunctions.fetchTransactions({ user_id: userObj.user_id, type: "autosave" })
 	let members = [], comments = []
 
 	if(groupObj){
@@ -18,14 +19,19 @@ async function dashboard(req, res, next){
 	if(groupObj){
 		comments = await pageFunctions.fetchComments({ group_id: groupObj.group_id }, { sort: { created_at: -1 }})
 	}
+
+	autoSaveTransactions.forEach(transaction => {
+		transaction._doc.created_at = pageFunctions.createDate(transaction._id.getTimestamp()).getHypenDate()
+	})
 	
-	console.log(members)
-	console.log(comments)
+	// console.log(members)
+	// console.log(comments)
 	req.body.pageData = {
 		user: userObj,
 		group: groupObj,
 		members,
-		comments
+		comments,
+		autoSaveTransactions
 	}
 
 	next()

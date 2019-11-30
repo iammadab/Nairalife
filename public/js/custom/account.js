@@ -8,7 +8,9 @@ let store = {
 ;(function attachEvent(){
 	addEvent([store.verifyBankButton], "click", verifyBank)
 	addEvent(store.bankFormInputs, "input,focus", () => hideAlert("bank-error"))
+	addEvent(store.bankFormInputs, "input,focus", () => hideAlert("fee-success"))
 	addEvent([store.bvnInput], "input,focus", () =>showAlert("bvn-warn"))
+	addEvent([store.bvnInput], "input,focus", () => hideAlert("fee-success"))
 })()	
 
 const verifyButton = createButton(".verify-text", "Verify Bank", "Verifying")

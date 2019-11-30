@@ -16,6 +16,7 @@
 <th class="kt-font-bolder kt-font-success">Score</th>
 <th class="kt-font-bolder kt-font-success">Points</th>
 <th class="kt-font-bolder kt-font-success">Period</th>
+<th class="kt-font-bolder kt-font-success">Amount</th>
 <th class="kt-font-bolder kt-font-success">Balance</th>
 <th class="kt-font-bolder kt-font-success"></th>
 </tr>
@@ -24,20 +25,33 @@
 
 <tbody>
 
-
+<% autoSaveMembers.forEach((member, i) => { %>
 <tr>
-<td>1</td>	
-<td>Aki Wumi</td>
-<td>1826</td>
-<td>08121636121</td>
-<td>69</td>
-<td>912</td>
-<td>Daily</td>
-<td>&#8358;0.00</td>
-<td><a href="#" class="btn btn-secondary btn-sm">Save</a></td>
+<td><%= i + 1 %></td>	
+<td><%= member.fullname %></td>
+<td><%= member.user_id %></td>
+<td><%= member.phone %></td>
+<td><%= member.nairascore %></td>
+<td><%= member.nairapoints %></td>
+<td><%= member._doc.about.contribution_period %></td>
+<td>&#8358;<%= member._doc.about.contribution_make %></td>
+<td>&#8358;<%= member.balance %></td>
+<td>
+	<% if(member._doc.phase != "failed") { %>
+		<% if(member._doc.phase == "pending") { %>
+		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm pending-button">Pending</button>
+		<% } %>
+
+		<% if(member._doc.phase == "noattempt") { %>
+		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm save-button save-button-text-<%=member.user_id%>">Save</button>
+		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm pending-button otp-error">Pending</button>
+		<% } %>
+	<% } %>
+</td>
 </tr>
+<% }) %>
 
-<tr>
+<!-- <tr>
 <td>2</td>	
 <td>Wisdom Madab</td>
 <td>9276</td>
@@ -99,7 +113,7 @@
 <td>&#8358;0.00</td>
 <td><a href="#" class="btn btn-secondary btn-sm">Save</a></td>
 </tr>
-
+ -->
 
 
 </tbody>

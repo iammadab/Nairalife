@@ -2,10 +2,15 @@ require("dotenv").config()
 const express = require("express")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const morgan = require("morgan")
 const { connectToDb } = require("./runners/database_runner")
+
+const PORT = process.env.PORT || 3000
 
 const app = express()
 const path = require("path")
+
+app.use(morgan("dev"))
 
 app.set("view engine", "ejs")
 app.use(cookieParser())
@@ -34,6 +39,6 @@ app.use((req, res) => {
 	res.render("404", { title: "404 Error Page"})
 })
 
-app.listen(3000, () => {
-	console.log("Application listening at port 3000")
+app.listen(PORT, () => {
+	console.log(`Application listening at port ${PORT}`)
 })

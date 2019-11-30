@@ -32,6 +32,12 @@ viewRouter.get("/terms", (req, res) => {
 })
 
 
+
+
+
+
+
+// User routes
 viewRouter.get("/login", cookieFound("/home"), (req, res) => {
 	res.render("login",{ title: "Nairalife Login"})
 })
@@ -61,23 +67,44 @@ viewRouter.get("/auto", cookieNotFound("/login"), verifyToken(), stageRouter("st
 })
 
 
+
+// User with header
 viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.dashboard, (req, res) => {
 	res.render("dashboard", { title: "Dashboard", link: "", ...req.body.pageData })
 })
 
 
-viewRouter.get("/higher", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
-	res.render("higher", { title: "Get Higher Purchase", link: "higher purchase", user: req.body.pageData.user._doc })
+viewRouter.get("/higher", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("higher", { title: "Get Higher Purchase", link: "higher purchase", ...req.body.pageData })
 })
 
-viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
-	res.render("withdraw", { title: "Withdraw Money", link: "withdraw" })
+viewRouter.get("/withdraw", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("withdraw", { title: "Withdraw Money", link: "withdraw", ...req.body.pageData })
 })
 
 viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
 	res.render("settings", { title: "Account Settings", link: "settings", ...req.body.pageData })
 })
 
+viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.points,  pageService.user, (req, res) => {
+	res.render("nairapoints", { title: "My Contributions", link: "history", ...req.body.pageData })
+})
+
+viewRouter.get("/transactions", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.userTransaction, pageService.user, (req, res) => {
+	res.render("history", { title: "My Transactions", link: "transactions", ...req.body.pageData })
+})
+
+viewRouter.get("/notifications", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.notifications,  pageService.user, (req, res) => {
+	res.render("notifications", { title: "My Notifications", link: "notifications", ...req.body.pageData })
+})
+
+
+
+
+
+
+
+// Admin routes
 viewRouter.get("/admin/login", cookieFound("/admin/dashboard", "atoken"), (req, res) => {
 	res.render("admin/login")
 })
@@ -114,8 +141,8 @@ viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verif
 	res.render("admin/members", { ...req.body.pageData })
 })
 
-viewRouter.get("/admin/auto", (req, res) => {
-	res.render("admin/auto")
+viewRouter.get("/admin/auto", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.auto, (req, res) => {
+	res.render("admin/auto", { ...req.body.pageData })
 })
 
 viewRouter.get("/admin/profile", (req, res) => {
@@ -130,10 +157,6 @@ viewRouter.get("/admin/points", (req, res) => {
 	res.render("admin/points")
 })
 
-viewRouter.get("/admin/group", (req, res) => {
-	res.render("admin/group")
-})
-
 viewRouter.get("/admin/contributions", (req, res) => {
 	res.render("admin/contributions")
 })
@@ -142,8 +165,10 @@ viewRouter.get("/admin/add", (req, res) => {
 	res.render("admin/add")
 })
 
-viewRouter.get("/admin/remove", (req, res) => {
-	res.render("admin/remove")
-})
 
 module.exports = viewRouter
+
+
+// viewRouter.get("/admin/remove", (req, res) => {
+// 	res.render("admin/remove")
+// })

@@ -5,12 +5,12 @@
 <tr style="border-top:0">
 <td class="kt-font-bold" style="border-top:0">Full Name:</td>
 <td class="text-right" style="border-top:0">
-Akin Wumi
+<%= user.fullname %>
 </td>
 </tr>
 <tr>
 <td class="kt-font-bold">Phone Number:</td>
-<td class="text-right">08121636121</td>
+<td class="text-right"><%= user.phone %></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Joined Nairalife On:</td>
@@ -19,18 +19,18 @@ Akin Wumi
 <tr>
 <td class="kt-font-bold">Nairalife Score:</td>
 <td class="text-right">
-69 / 100
+<%= user.nairascore %> / 100
 </td>
 </tr>
 <tr>
 <td class="kt-font-bold">Nairalife Points:</td>
 <td class="text-right">
-812
+<%= user.nairapoints %>
 </td>
 </tr>
 <tr>
 <td class="kt-font-bold">Default Rate:</td>
-<td class="text-right">12%</td>
+<td class="text-right">0%</td>
 </tr>
 </tbody>
 </table>
@@ -44,13 +44,21 @@ Akin Wumi
 For more information, please call or message us on whatsapp on <b><a href="tel:08127596979">08127596979</a></b>
 </p>
 <form class="kt-padding-10">
-<div class="form-group kt-margin-t-0">
+
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20 register-error request-error" role="alert">
+<div class="alert-icon"><i class="la la-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
+
+<div class="form-group kt-margin-t-0 request-form">
 <textarea class="form-control" rows="3" placeholder="Briefly explain to us why you need a higher purchase car" name="hp" required="required">
 </textarea>
 </div>
 <div class="kt-margin-t-10">
-<button type="submit" class="btn btn-tallest btn-wide btn-warning">
-<i class="la la-automobile" style="font-size:1.8rem;"></i>Request For A Car
+<button type="submit" class="btn btn-tallest btn-wide btn-warning request-button">
+<i class="la la-automobile" style="font-size:1.8rem;"></i><span class="request-button-text">Request For A Car</span>
 </button>
 </div>
 </form>

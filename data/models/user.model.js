@@ -22,7 +22,10 @@ const userSchema = mongoose.Schema({
 	nairalife_balance: { type: Number, default: 0 }, // This is the amount of money nairalife owes the user, if it is negative it means the user owes nairalife that amount
 
 	role: { type: String, default: "user" }, // user or admin
-	group: { type: String }
+	group: { type: String },
+
+	autosave_start: { type: Date },
+	notification_count: { type: Number, default: 0 }
 })
 
 const userModel = mongoose.model("User", userSchema)

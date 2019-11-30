@@ -6,6 +6,11 @@ const group = require("./page.group")
 const fees = require("./page.fees")
 const transactions = require("./page.transactions")
 const members = require("./page.members")
+const auto = require("./page.auto")
+const points = require("./page.points")
+const userTransaction = require("./page.userTransaction")
+const notifications = require("./page.notifications")
+const user = require("./page.user")
 
 const pageServices = {
 	dashboard,
@@ -15,7 +20,12 @@ const pageServices = {
 	group,
 	fees,
 	transactions,
-	members
+	members,
+	auto,
+	points,
+	userTransaction,
+	notifications,
+	user
 }
 
 module.exports = pageServices

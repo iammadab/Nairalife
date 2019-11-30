@@ -1,11 +1,3 @@
-<?php 
-include 'meta.php';
-include 'header.php';
-$title='My Nairapoints';
-$link='Nairapoints';
-include 'link.php';
-?>
-
 <% include meta %>
 <% include header %>
 <% include link %>
@@ -33,14 +25,16 @@ include 'link.php';
 
 
 <tbody>
+<% allPoints.forEach((point, i) => { %>
 <tr>
-<td>1</td>
-<td>30</td>
-<td>30-01-2019</td>
-<td class="text-capitalize kt-font-info">Bonus</td>
+<td><%= i + 1 %></td>
+<td><%= point.points %></td>
+<td><%= point._doc.created_at %></td>
+<td class="text-capitalize kt-font-info"><%= point.type %></td>
 </tr>
+<% }) %>
 
-<tr>
+<!-- <tr>
 <td>2</td>
 <td>50</td>
 <td>29-01-2019</td>
@@ -69,7 +63,7 @@ include 'link.php';
 <td>28-01-2019</td>
 <td class="text-capitalize kt-font-success">Guarantor</td>
 </tr>
-
+ -->
 
 </tbody>
 </table>
@@ -82,5 +76,5 @@ include 'link.php';
 <!--end::Portlet-->
 
 
-
-<?php include 'footer.php';?>
+<script type="text/javascript" src="js/custom/script.js"></script>
+<% include footer %>
