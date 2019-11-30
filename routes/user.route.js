@@ -17,6 +17,6 @@ userRouter.post("/points", authenticationService.verifyToken(), authenticationSe
 userRouter.post("/balance", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(userService.addBalance))
 userRouter.post("/autosave/start", authenticationService.verifyToken(), bodyResponder(userService.startAutosave))
 userRouter.post("/save", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(userService.save))
-userRouter.post("/upload", bodyResponder(userService.save))
+userRouter.post("/upload", bodyResponder(userService.upload))
 
 module.exports = userRouter
