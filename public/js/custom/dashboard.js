@@ -26,7 +26,7 @@ function addComment(event){
 	function handleResponse(response){
 		// console.log(response)
 		if(response.status == 200)
-			redirect(window.location.href)
+			return redirect(window.location.href)
 		commentButton("normal")
 	}
 }

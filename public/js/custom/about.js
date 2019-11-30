@@ -5,8 +5,6 @@ let store = {
 	fileInputs: document.querySelectorAll("[type=file]")
 }
 
-console.log(store.fileInputs)
-
 ;(function attachEvents(){
 	addEvent([store.preferenceButton], "click", submitPreference)
 	addEvent(store.inputs, "input,focus", () => hideAlert("preference-error"))
@@ -44,7 +42,7 @@ function submitPreference(event){
 
 	function handleResponse(response){
 		if(response.status == 200)
-			redirect("/auto")
+			return redirect("/auto")
 		submitButton("normal")
 	}
 

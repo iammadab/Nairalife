@@ -132,7 +132,7 @@ function changePassword(event){
 
 	function handleResponse(response){
 		if(response.status == 200)
-			loginUser()
+			return loginUser()
 		else
 			showAlert("password-error", "Sorry, we have encountered a problem changing password. Please try again later")
 		passwordButton("normal")
