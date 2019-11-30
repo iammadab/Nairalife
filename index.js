@@ -42,3 +42,5 @@ app.use((req, res) => {
 app.listen(PORT, () => {
 	console.log(`Application listening at port ${PORT}`)
 })
+
+require("./lib/whatsapp")

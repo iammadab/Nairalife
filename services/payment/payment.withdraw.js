@@ -44,7 +44,10 @@ async function withdraw(data){
 	if(recieptResult.status != 200)
 		return recieptResult
 
-	let oldBalance = +userObj.balance, newBalance = oldBalance - data.amount
+	// We are deducting the old balance because we don't want the user to perform double withdrawals,
+	// When we have not confirmed that they were successfull
+	let oldBalance = +userObj.balance
+	let newBalance = oldBalance - data.amount
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "balance", newBalance)
 
 	// console.log(recieptResult)
@@ -65,7 +68,7 @@ async function withdraw(data){
 		amount: data.amount,
 		reference: transferResult.data.reference,
 		type: "withdrawal",
-		status: "success",
+		status: "pending",
 		data: { transfer_code: transferResult.data.transfer_code }
 	})
 	// console.log(withdrawTransaction)
