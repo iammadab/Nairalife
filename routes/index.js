@@ -19,6 +19,6 @@ appRouter.use("/card", cardRouter)
 appRouter.use("/bvn", bvnRouter)
 appRouter.use("/admin", adminRouter)
 appRouter.use("/group", groupRouter)
-appRouter.user("/webhook", webhookRouter)
+appRouter.use("/webhook", webhookRouter)
 
 module.exports = appRouter
