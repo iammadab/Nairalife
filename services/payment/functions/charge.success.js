@@ -15,6 +15,11 @@ async function charge_success(data){
 		return console.log("Couldn't find the user obj for ", transactionObj.user_id)
 	console.log(userObj)
 
+
+	if(transactionObj.status != "pending")
+		return console.log("This transaction is not pending")
+
+
 	if(transactionObj.type == "autosave")
 		autosaveSuccess(userObj, transactionObj)
 
