@@ -126,7 +126,7 @@ function hasKeys(obj, expectedKey){
 function extractForm(formId){
 	let selectString = `${formId} input, ${formId} textarea, ${formId} select`
 	let inputs = Array.from(document.querySelectorAll(selectString)), formData = {}
-	inputs.forEach(input => {
+	inputs.forEach(function(input){
 		if(input.name && input.value)
 			formData[input.name] = input.value
 	})
