@@ -118,8 +118,8 @@ let hideAlert = hideError
 
 function hasKeys(obj, expectedKey){
 	let objKeys = Object.keys(obj)
-	return expectedKey.filter(key => {
-		return objKeys.includes(key) ? false : true
+	return expectedKey.filter(function(key){
+		return objKeys.indexOf(key) > -1 ? false : true
 	})
 }
 
