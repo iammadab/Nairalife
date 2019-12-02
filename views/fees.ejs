@@ -74,7 +74,7 @@ handler.openIframe();
 <script type="text/javascript">
 function sendReference(response){
 let reference = response.reference
-api("card/verify", { reference, token: getToken() })
+api("card/verify", { reference: reference, token: getToken() })
 .then(handleResponse)
 
 function handleResponse(response){

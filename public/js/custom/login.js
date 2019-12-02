@@ -26,6 +26,9 @@ function startLogin(event){
 		return showAlert("login-error", `Sorry, you didn't enter your ${nameMap[missingDetails[0]]}`)
 	}
 
+	if(!Number(loginDetails.phone))
+		return showAlert("login-error", "Sorry, this is not a valid phone number. Try again.")
+
 	return api("auth/login", { phone: loginDetails.phone, password: loginDetails.password })
 				.then(handleLogin)
 
