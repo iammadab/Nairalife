@@ -13,11 +13,14 @@ const requestOptions = {
 
 
 async function verifyCard(data){
+	console.log("Trying to verify card")
 	let validationResult = verifyCardValidator.parse(data)
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
+	console.log("The reference gotten is ", data.reference)
 	let verificationResult = await verifyTransaction(data.reference)
+	console.log("Verifying transactions", verificationResult)
 	if(verificationResult.status != 200)
 		return verificationResult
 
