@@ -38,7 +38,7 @@ function submitPreference(event){
 
 	function handleResponse(response){
 		if(response.status == 200)
-			return redirect("/auto")
+			return redirect("/plan")
 		submitButton("normal")
 	}
 
