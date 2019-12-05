@@ -2,7 +2,6 @@ let store = {
 	preferenceButton: document.querySelector(".preference-submit"),
 	preferenceFormTag: ".preference-form",
 	inputs: Array.from(document.querySelectorAll(".preference-form input, .preference-form textarea, .preference-form select"))
-	// fileInputs: document.querySelectorAll("[type=file]")
 }
 
 ;(function attachEvents(){
