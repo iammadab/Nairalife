@@ -13,7 +13,7 @@ async function userPreference(data){
 	validData = userPreferenceValidationResult.data
 
 	let userObj = await userDb.appendDoc({ _id: data.user.id }, "about", validData)
-	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "start_autosave")
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "choose_plan")
 
 	if(userObj)
 		return { status: 200, code: "USER_PREFERENCE_SET" }
