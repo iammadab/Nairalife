@@ -27,7 +27,7 @@ function submitPreference(event){
 	submitButton()
 	let preferenceDetails = extractForm(store.preferenceFormTag)
 
-	let missingDetails = hasKeys(preferenceDetails, ["sex", "relationship", "title", "bio", "partner", "work_description", "own_car", "earning", "contribution_make", "contribution_period", "contribution_use"])
+	let missingDetails = hasKeys(preferenceDetails, ["sex", "relationship", "title", "bio", "partner", "work_description", "own_car", "earning"])
 	if(missingDetails.length > 0){
 		submitButton("normal")
 		return showAlert("preference-error", `Sorry, you didn't ${nameMap[missingDetails[0]]}`)
