@@ -11,9 +11,6 @@ async function userPreference(data){
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: userPreferenceValidationResult.errors }
 	
 	validData = userPreferenceValidationResult.data
-	// let user_id = data.user.id
-	// delete data.user
-	// delete data.token
 
 	let userObj = await userDb.appendDoc({ _id: data.user.id }, "about", validData)
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "start_autosave")
