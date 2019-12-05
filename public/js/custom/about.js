@@ -21,13 +21,14 @@ function submitPreference(event){
 		partner: "choose your partner",
 		work_description: "describe your partnership",
 		own_car: "choose your car status",
-		earning: "select how much you earn monthly"
+		earning: "select how much you earn monthly",
+		reason: "enter the reason why nairalife should consider you for the higher purchase plan"
 	}
 	event.preventDefault()
 	submitButton()
 	let preferenceDetails = extractForm(store.preferenceFormTag)
 
-	let missingDetails = hasKeys(preferenceDetails, ["sex", "relationship", "title", "bio", "partner", "work_description", "own_car", "earning"])
+	let missingDetails = hasKeys(preferenceDetails, ["sex", "relationship", "title", "bio", "partner", "work_description", "own_car", "earning", "reason"])
 	if(missingDetails.length > 0){
 		submitButton("normal")
 		return showAlert("preference-error", `Sorry, you didn't ${nameMap[missingDetails[0]]}`)
