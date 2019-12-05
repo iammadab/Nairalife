@@ -8,7 +8,6 @@ let store = {
 ;(function attachEvents(){
 	addEvent([store.preferenceButton], "click", submitPreference)
 	addEvent(store.inputs, "input,focus", () => hideAlert("preference-error"))
-	// addEvent(store.fileInputs, "change", handleUpload)
 })()	
 
 let submitButton = createButton(".preference-text", "Complete Registration", "Submitting...")
@@ -45,15 +44,3 @@ function submitPreference(event){
 	}
 
 }
-
-// function handleUpload(event){
-// 	const formData = new FormData()
-// 	formData.append(event.target.name, event.target.files[0])
-// 	formData.append("user_id", store.preferenceButton.dataset["user_id"])
-// 	return fetch("api/user/upload", {
-// 				method: "POST",
-// 				body: formData
-// 			})
-// 			.then(console.log)
-// 			.catch(console.log)
-// }
