@@ -1,6 +1,6 @@
 const { createValidator } = require("lazy-validator")
 
-const userPreferenceValidator = createValidator("sex.string.lowercase, relationship.string.lowercase, title.string.lowercase, bio.string, partner.string.lowercase, work_description.string, own_car.string.lowercase, earning.string.lowercase, contribution_make.string.lowercase, contribution_period.string.lowercase, contribution_use.string.lowercase")
+const userPreferenceValidator = createValidator("sex.string.lowercase, relationship.string.lowercase, title.string.lowercase, bio.string, partner.string.lowercase, work_description.string, own_car.string.lowercase, earning.string.lowercase")
 // const userPreferenceValidator = createValidator("sex.string")
 
 const userDb = require("../../data/db/user.db")
