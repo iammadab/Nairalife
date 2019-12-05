@@ -21,10 +21,7 @@ function submitPreference(event){
 		partner: "choose your partner",
 		work_description: "describe your partnership",
 		own_car: "choose your car status",
-		earning: "select how much you earn monthly",
-		contribution_period: "select how often you can contribute",
-		contribution_make: "select how much you can contribute",
-		contribution_use: "enter your contribution goals",
+		earning: "select how much you earn monthly"
 	}
 	event.preventDefault()
 	submitButton()
