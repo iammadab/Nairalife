@@ -29,6 +29,7 @@ function submitPreference(event){
 	let missingDetails = hasKeys(preferenceDetails, ["sex", "relationship", "title", "bio", "partner", "work_description", "own_car", "earning", "reason"])
 	if(missingDetails.length > 0){
 		submitButton("normal")
+		scrollTo(0, 100)
 		return showAlert("preference-error", `Sorry, you didn't ${nameMap[missingDetails[0]]}`)
 	}
 
