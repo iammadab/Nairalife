@@ -4,6 +4,13 @@ let store = {
 	choosePlanButton: document.querySelector(".choose-plan-button")
 }
 
+let messageMap = {
+	"2000000,daily": [ "You are doing the 2m daily", 6000 ]
+	"2000000,weekly": [ "You are doing the 2m weekly", 40000 ]
+	"2500000,daily": [ "You are doing the 2.5m daily", 4000 ]
+	"2500000,weekly": [ "You are doing the 2.5m weekly", 30000 ]
+}
+
 ;(function attachEvents(){
 	addEvent(store.planInputs, "change", updateState)
 	addEvent(store.planInputs, "input,focus", () => hideAlert("plan-error"))
@@ -17,13 +24,6 @@ function updateState(event){
 }
 
 function updateStatus(currentStatus){
-	let messageMap = {
-		"2000000,daily": "You are doing the 2m daily",
-		"2000000,weekly": "You are doing the 2m weekly",
-		"2500000,daily": "You are doing the 2.5m daily",
-		"2500000,weekly": "You are doing the 2.5m weekly"
-	}
-
 	let message = messageMap[currentStatus.toLowerCase()]
 	if(!message)
 		message = "Choose a plan above"
