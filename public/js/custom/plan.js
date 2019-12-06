@@ -1,10 +1,13 @@
 let store = {
 	planState: { amount: null, period: null },
-	planInputs: document.querySelectorAll("select")
+	planInputs: document.querySelectorAll("select"),
+	choosePlanButton: document.querySelector(".choose-plan-button")
 }
 
 ;(function attachEvents(){
 	addEvent(store.planInputs, "change", updateState)
+	addEvent(store.planInputs, "input,focus", () => hideAlert("plan-error"))
+	addEvent([store.choosePlanButton], "click", addPlan)
 })()
 
 function updateState(event){
@@ -24,4 +27,12 @@ function updateStatus(currentStatus){
 	let message = messageMap[currentStatus.toLowerCase()]
 	if(!message)
 		message = "Choose a plan above"
+
+	showAlert("plan-alert", message)
+}
+
+function addPlan(event){
+	event.preventDefault()
+	if(!store.planState.amount || !store.planState.period)
+		showAlert("plan-error", "Choose a plan below")
 }
