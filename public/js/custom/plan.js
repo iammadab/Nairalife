@@ -4,7 +4,7 @@ let store = {
 	choosePlanButton: document.querySelector(".choose-plan-button")
 }
 
-let messageMap = {
+let planData = {
 	"2000000,daily": [ "You are doing the 2m daily", 6000 ],
 	"2000000,weekly": [ "You are doing the 2m weekly", 40000 ],
 	"2500000,daily": [ "You are doing the 2.5m daily", 4000 ],
@@ -24,15 +24,14 @@ function updateState(event){
 }
 
 function updateStatus(currentStatus){
-	let messageArray = messageMap[currentStatus.toLowerCase()], message = messageArray ? messageArray[0] : ""
+	let messageArray = planData[currentStatus.toLowerCase()], message = messageArray ? messageArray[0] : ""
 	
 	//Update the value for the amount
 	if(message)
-		store.planState.amount = messageMap[currentStatus.toLowerCase()][1]
+		store.planState.amount = planData[currentStatus.toLowerCase()][1]
 
 	if(!message)
 		message = "Choose a plan above"
-
 
 	showAlert("plan-alert", message)
 }
