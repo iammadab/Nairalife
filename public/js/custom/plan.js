@@ -25,12 +25,14 @@ function updateState(event){
 
 function updateStatus(currentStatus){
 	let messageArray = messageMap[currentStatus.toLowerCase()], message = messageArray ? messageArray[0] : ""
-	if(!message)
-		message = "Choose a plan above"
-
+	
 	//Update the value for the amount
 	if(message)
 		store.planState.amount = messageMap[currentStatus.toLowerCase()][1]
+
+	if(!message)
+		message = "Choose a plan above"
+
 
 	showAlert("plan-alert", message)
 }
