@@ -9,5 +9,5 @@ let store = {
 
 function updateState(event){
 	event.preventDefault()
-
+	store.planState[event.target.name] = event.target.value ? event.target.value : null
 }
