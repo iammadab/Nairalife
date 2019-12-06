@@ -20,4 +20,8 @@ function updateStatus(currentStatus){
 		"2500000,daily": "You are doing the 2.5m daily",
 		"2500000,weekly": "You are doing the 2.5m weekly"
 	}
+
+	let message = messageMap[currentStatus.toLowerCase()]
+	if(!message)
+		message = "Choose a plan above"
 }
