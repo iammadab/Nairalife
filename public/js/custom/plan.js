@@ -29,7 +29,8 @@ function updateStatus(currentStatus){
 		message = "Choose a plan above"
 
 	//Update the value for the amount
-	store.planState.amount = messageMap[currentStatus.toLowerCase()][1]
+	if(message)
+		store.planState.amount = messageMap[currentStatus.toLowerCase()][1]
 
 	showAlert("plan-alert", message)
 }
