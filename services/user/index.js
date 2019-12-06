@@ -12,6 +12,7 @@ const addBalance = require("./user.addBalance")
 const startAutosave = require("./user.startAutosave")
 const save = require("./user.save")
 const upload = require("./user.upload")
+const userPlan = require("./user.plan")
 
 let userService = {
 	createUser,
@@ -27,7 +28,8 @@ let userService = {
 	addBalance,
 	startAutosave,
 	save,
-	upload
+	upload,
+	userPlan
 }
 
 module.exports = userService
