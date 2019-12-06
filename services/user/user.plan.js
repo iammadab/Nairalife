@@ -14,6 +14,12 @@ async function userPlan(data){
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!userObj)
 		return { status: 403, code: "USER_NOT_FOUND" }
+
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "plan", validData)
+	if(!userObj)
+		return { status: 403, code: "PROBLEM_UPDATING_PLAN" }
+
+	return { status: 200, code: "PLAN_UPDATED" }
 }
 
 module.exports = userPlan
