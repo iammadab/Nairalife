@@ -63,7 +63,7 @@ viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("e
 })
 
 
-viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), (req, res) => {
+viewRouter.get("/plan", (req, res) => {
 	res.render("plan", { title: "Choose Plan"})
 })
 
