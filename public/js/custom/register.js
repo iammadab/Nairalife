@@ -34,7 +34,7 @@ let registerButton = createButton(".register-text", "Join Us", "Registering...")
 function startRegistration(event){
 	let nameMap = {
 		fullname: "full name",
-		phone: "phone number",
+		phone: "whatsApp number",
 		password: "password"
 	}
 

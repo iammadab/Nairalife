@@ -62,6 +62,12 @@ viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("e
 	res.render("about",{ title: "Welcome", ...req.body.pageData })
 })
 
+
+viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), (req, res) => {
+	res.render("plan", { title: "Choose Plan"})
+})
+
+
 viewRouter.get("/auto", cookieNotFound("/login"), verifyToken(), stageRouter("start_autosave"), (req, res) => {
 	res.render("auto", { title: "Nairalife Autosave"})
 })
