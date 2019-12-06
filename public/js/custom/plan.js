@@ -1,5 +1,5 @@
 let store = {
-	planState: { totalAmount: null, period: null },
+	planState: { total_amount: null, period: null },
 	planInputs: document.querySelectorAll("select"),
 	choosePlanButton: document.querySelector(".choose-plan-button")
 }
@@ -20,7 +20,7 @@ let messageMap = {
 function updateState(event){
 	event.preventDefault()
 	store.planState[event.target.name] = event.target.value ? event.target.value : null
-	updateStatus(`${store.planState.totalAmount},${store.planState.period}`)
+	updateStatus(`${store.planState.total_amount},${store.planState.period}`)
 }
 
 function updateStatus(currentStatus){
@@ -33,9 +33,9 @@ function updateStatus(currentStatus){
 
 function addPlan(event){
 	event.preventDefault()
-	if(!store.planState.totalAmount || !store.planState.period)
-		showAlert("plan-error", "Choose a plan below")
+	if(!store.planState.total_amount || !store.planState.period)
+		return showAlert("plan-error", "Choose a plan below")
 
-	let data = { ...planState }
+	let data = { ...store.planState }
 	console.log(data)
 }
