@@ -17,7 +17,7 @@
 <h3>Choose Plan</h3>
 <p>Please choose your higher purchase plan for our car</p>
 </div>
-<div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error preference-error" role="alert">
+<div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error plan-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
@@ -27,7 +27,7 @@ Invalid Username or Password
 <form class="kt-form plan-form" action="" novalidate="novalidate">
 
 <div class="form-group">
-<select class="custom-select bank-name" name="contribution_make">
+<select class="custom-select bank-name" name="total_amount">
 <option value="">Choose payment plan</option>
 <option value="2000000">2 million naira for 12 months</option>
 <option value="2500000">2.5 million naira for 20 months</option>
@@ -35,17 +35,18 @@ Invalid Username or Password
 </div>
 
 <div class="form-group">
-<select class="custom-select bank-name" name="contribution_period">
+<select class="custom-select bank-name" name="period">
 <option value="">Do you want to pay daily or weekly?</option>
-<option value="Daily">Daily</option>
-<option value="Weekly">Weekly</option>
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
 </select>
 </div>
 
-<div class="alert kt-margin-t-20 kt-padding-20 kt-margin-b-5" role="alert" style="border:1px solid #e1e1e1;">
+<div class="alert kt-margin-t-20 kt-padding-20 kt-margin-b-5 plan-alert" role="alert" style="border:1px solid #e1e1e1;">
 <div class="alert-text">
-You will have to pay <span>3,500</span> naira every day for <span class="e-period">12 months</span> for a total of 
-<span>2,000,000</span> naira.
+<!-- You will have to pay <span data-format="comma">3500</span> naira every day for <span class="e-period">12 months</span> for a total of 
+<span data-format="comma">2000000</span> naira. -->
+Choose a plan above
 </div>
 </div>
 <span class="text-muted">
@@ -55,7 +56,7 @@ You will have to pay <span>3,500</span> naira every day for <span class="e-perio
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary choose-plan-button">
 <i class="la la-briefcase"></i><span class="preference-text">Choose Plan</span>
 </button>
 </div>
@@ -80,4 +81,4 @@ For more information, call or message us on whatsApp on <a href="tel:08127596979
 <!-- end::Body -->
 </html>
 <script type="text/javascript" src="js/custom/script.js"></script>
-<script type="text/javascript" src="js/custom/about.js"></script>
+<script type="text/javascript" src="js/custom/plan.js"></script>

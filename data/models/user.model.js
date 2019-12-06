@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
 	phone: { type: Number, required: true },
 	email: { type: String, required: true },
 	password: { type: String, required: true },
-	stage: { type: String, default: "enter_account_details", enum: ["enter_account_details", "enter_info", "choose_plan", "start_plan", "active" ]},
+	stage: { type: String, default: "enter_account_details", enum: ["enter_account_details", "enter_info", "choose_plan", "plan_approval", "start_plan", "active" ]},
 	status: { type: String, enum: ["autosave", "group"] },
 
 	 // Format: bank: [{ account: {account_number, account_name, bank_id, bank_code}, 
