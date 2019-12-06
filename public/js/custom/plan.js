@@ -1,5 +1,5 @@
 let store = {
-	planState: { total_amount: null, period: null },
+	planState: { total_amount: null, period: null, amount: null },
 	planInputs: document.querySelectorAll("select"),
 	choosePlanButton: document.querySelector(".choose-plan-button")
 }
@@ -27,6 +27,9 @@ function updateStatus(currentStatus){
 	let messageArray = messageMap[currentStatus.toLowerCase()], message = messageArray ? messageArray[0] : ""
 	if(!message)
 		message = "Choose a plan above"
+
+	//Update the value for the amount
+	store.planState.amount = messageMap[currentStatus.toLowerCase()][1]
 
 	showAlert("plan-alert", message)
 }
