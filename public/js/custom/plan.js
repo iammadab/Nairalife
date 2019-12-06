@@ -41,6 +41,17 @@ function addPlan(event){
 	if(!store.planState.total_amount || !store.planState.period)
 		return showAlert("plan-error", "Choose a plan below")
 
-	let data = { ...store.planState }
-	console.log(data)
+	let data = store.planState
+	data.token = getToken()
+	
+	return api("user/plan", data)
+			.then(handleResponse)
+
+	function handleResponse(response){
+		console.log(response)
+		if(response.status == 200)
+			console.log("Yay")
+		else
+			showAlert("plan-error", "Problem choosing plan, try again later")
+	}
 }
