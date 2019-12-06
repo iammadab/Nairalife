@@ -10,9 +10,10 @@ let store = {
 function updateState(event){
 	event.preventDefault()
 	store.planState[event.target.name] = event.target.value ? event.target.value : null
+	updateStatus(`${store.planState.amount},${store.planState.period}`)
 }
 
-function updateStatus(){
+function updateStatus(currentStatus){
 	let messageMap = {
 		"2000000,daily": "You are doing the 2m daily",
 		"2000000,weekly": "You are doing the 2m weekly",
