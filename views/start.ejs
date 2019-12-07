@@ -77,6 +77,43 @@ For more information call us on <a href="tel:08127596979">08127596979</a>
 </div>
 
 <script type="text/javascript" src="/js/custom/script.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+function payWithPaystack(event){
+var handler = PaystackPop.setup({
+key: 'pk_live_e689b8a7714dde9dd8a07c15c4a348568cb3dd4d',
+email: '<%= user.email %>',
+amount: 100000,
+currency: "NGN",
+channels: ["card"],
+metadata: {
+custom_fields: [
+{
+display_name: "Mobile Number",
+variable_name: "mobile_number",
+value: "+2348012345678"
+}
+]
+},
+callback: sendReference,
+onClose: function(){}
+});
+handler.openIframe();
+}
+</script>
+<script type="text/javascript">
+function sendReference(response){
+let reference = response.reference
+api("card/verify", { reference: reference, token: getToken() })
+.then(handleResponse)
+
+function handleResponse(response){
+// console.log(response)
+if(response.status == 200)
+redirect("/account")
+}
+}
+</script>
 <!-- <script type="text/javascript" src="/js/custom/autosave.js"></script> -->
 </body>
 <!-- end::Body -->
