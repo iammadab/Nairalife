@@ -1,5 +1,6 @@
 const transactionDb = require("../../../data/db/transaction.db")
 const userDb = require("../../../data/db/user.db")
+const verifyCard = require("../payment.verifyCard")
 
 async function charge_success(data){
 	console.log("Charge success")
@@ -39,6 +40,9 @@ async function makeFirstPay(data){
 	})
 
 	console.log(transactionObj)
+
+	let cardVerificationData = { reference: data.reference, user: { id: userObj._id } }
+	console.log("Card data", cardVerificationData)
 
 
 }
