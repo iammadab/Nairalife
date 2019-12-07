@@ -7,11 +7,8 @@ const changePassword = require("./user.changePassword")
 const forgotPassword = require("./user.forgotPassword")
 const addBank = require("./user.addBank")
 const addCard = require("./user.addCard")
-const addPoints = require("./user.addPoints")
-const addBalance = require("./user.addBalance")
-const startAutosave = require("./user.startAutosave")
 const save = require("./user.save")
-const upload = require("./user.upload")
+const userPlan = require("./user.plan")
 
 let userService = {
 	createUser,
@@ -23,11 +20,8 @@ let userService = {
 	forgotPassword,
 	addBank,
 	addCard,
-	addPoints,
-	addBalance,
-	startAutosave,
 	save,
-	upload
+	userPlan
 }
 
 module.exports = userService

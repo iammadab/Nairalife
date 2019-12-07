@@ -4,6 +4,7 @@
 	toggleNav
 	attachLogout
 	setDefaultOption
+	preprocess
 	scrollTop
 	showView
 	showError
@@ -20,6 +21,7 @@
 	getToken
 	deleteCookie
 	createButton
+	addComma
 */
 
 ;(function toggleNav(){
@@ -63,6 +65,14 @@
 	let elementsWithDefaults = Array.from(document.querySelectorAll("[data-defaultValue]"))
 	elementsWithDefaults.forEach(element => {
 		element.value = element.dataset["defaultvalue"]
+	})
+})()
+
+;(function preprocess(){
+	let toProcess = Array.from(document.querySelectorAll("[data-format]"))
+	toProcess.forEach(element => {
+		if(element.dataset.format == "comma")
+			element.innerText = addComma(element.innerText)
 	})
 })()
 
@@ -208,4 +218,8 @@ function createButton(element, normal, active){
 		let elementObj = document.querySelector(element)
 		elementObj.innerText = state == "normal" ? normal : active
 	}
+}
+
+function addComma(number){
+	return String(number).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
 }

@@ -15,7 +15,7 @@
 <% include formhead %>
 <div class="kt-login__title">
 <h3>Welcome To Nairalife</h3>
-<p>Please tell us more about you <br> so that we can provide the best service to you</p>
+<p>Please tell us more about you</p>
 </div>
 <div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error preference-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
@@ -61,17 +61,9 @@ Invalid Username or Password
 </div>
 
 <div class="form-group">
-<textarea class="form-control" name="bio" style="height:95px" placeholder="Can you describe yourself?">
+<textarea class="form-control" name="bio" style="height:95px" placeholder="Can you give us a short description of yourself?">
 </textarea>
 </div>
-
-<div class="form-group">
-<div class="custom-file kt-margin-b-20">
-<input type="file" class="custom-file-input" name="profile" id="customFile">
-<label class="custom-file-label" for="customFile" style="color:#333;">Upload profile picture (optional)</label>
-</div>
-</div>
-
 
 <!--begin::Divider-->
 <div class="kt-login__divider kt-margin-t-30">
@@ -88,7 +80,7 @@ Invalid Username or Password
 
 <div class="form-group">
 <select class="custom-select bank-name" name="partner">
-<option value="">Who did you partner with? Uber or Bolt?</option>
+<option value="">Who are you driving for? Uber or Bolt?</option>
 <option value="uber">Uber</option>
 <option value="bolt">Bolt (formerly taxify)</option>
 <option value="uber & bolt">Uber & Bolt</option>
@@ -99,7 +91,8 @@ Invalid Username or Password
 
 
 <div class="form-group">
-<textarea class="form-control" name="work_description" style="height:95px" placeholder="How is your partnership with uber/bolt going?">
+<textarea class="form-control" name="work_description" style="height:95px" 
+placeholder="How is your driving business with Uber or Bolt going?">
 </textarea>
 </div>
 
@@ -119,85 +112,22 @@ Invalid Username or Password
 <div class="form-group">
 <select class="custom-select bank-name" name="earning">
 <option value="">How much do you make monthly?</option>
-<option value="30,000 - 50,000">&#8358;30,000 - &#8358;50,000</option>
-<option value="50,000 - 100,000">&#8358;50,000 - &#8358;100,000</option>
-<option value="100,000 - 200,000">&#8358;100,000 - &#8358;200,000</option>
-<option value="200,000 - 500,000">Above &#8358;200,000</option>
-</select>
-</div>
-
-
-
-<div class="form-group">
-<div class="custom-file">
-<input type="file" class="custom-file-input" name="proof" id="customFile">
-<label class="custom-file-label" for="customFile" style="color:#333;">Upload proof (optional)</label>
-</div>
-<div style="margin:10px 15px 0 15px;">
-<span class="text-muted">
-<b>Please note:</b> that a valid proof can be your account statement, proof of occupation including ID and this can increase
-your reputation and your Nairalife score by as much as 20.
-</span>
-</div>
-</div>
-
-
-
-
-<!--begin::Divider-->
-<div class="kt-login__divider kt-margin-t-30">
-<div class="kt-divider">
-<span></span>
-<span>Your Nairalife Goals</span>
-<span></span>
-</div>
-</div>
-<!--end::Divider-->
-
-
-
-<!-- <div class="form-group">
-<select class="custom-select bank-name" name="contribution_receive">
-<option value="">How much contributions do you want to receive?</option>
-<option value="30,000 Monthly">&#8358;30,000 Monthly</option>
-<option value="60,000 Monthly">&#8358;60,000 Monthly</option>
-<option value="150,000 Yearly">&#8358;150,000 Yearly</option>
-</select>
-</div> -->
-
-
-<div class="form-group">
-<select class="custom-select bank-name" name="contribution_make">
-<option value="">How much contributions can you make?</option>
-<option value="1000">&#8358;1,000</option>
-<option value="2000">&#8358;2,000</option>
-<option value="5000">&#8358;5,000</option>
-<option value="10000">&#8358;10,000</option>
+<option value="&#8358;30,000 - &#8358;50,000">&#8358;30,000 - &#8358;50,000</option>
+<option value="&#8358;50,000 - &#8358;100,000">&#8358;50,000 - &#8358;100,000</option>
+<option value="&#8358;100,000 - &#8358;200,000">&#8358;100,000 - &#8358;200,000</option>
+<option value="&#8358;200,000 Above">Above &#8358;200,000</option>
 </select>
 </div>
 
 <div class="form-group">
-<select class="custom-select bank-name" name="contribution_period">
-<option value="">How often can you make it?</option>
-<option value="Daily">Daily</option>
-<option value="Weekly">Weekly</option>
-<option value="Monthly">Monthly</option>
-</select>
-</div>
-
-
-
-<div class="form-group">
-<textarea class="form-control" name="contribution_use" style="height:95px" 
-placeholder="What do you want to use the contributions for when you receive it?">
+<textarea class="form-control" name="reason" style="height:95px" placeholder="Why should we consider you for our higher purchase plan instead of others?">
 </textarea>
 </div>
 
 
-
 <div class="kt-login__btn">
 <button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary preference-submit" data-user_id="<%= user.user_id %>">
-<i class="la la-check-circle" style="font-size:1.8rem;"></i><span class="preference-text">Complete Registration</span>
+<i class="la la-check-square"></i><span class="preference-text">Complete Registration</span>
 </button>
 </div>
 </form>
@@ -206,9 +136,8 @@ placeholder="What do you want to use the contributions for when you receive it?"
 <p class="border-dash"></p>
 <div class="text-center">
 <span class="text-muted">
-Nairalife uses the highest levels of security to protect your information. 
-For more information on how we handle your information and what we use it for, please go to our
-<a href="/privacy" class="kt-link">Privacy Policy</a> 
+Nairalife uses the highest levels of security to protect your details. 
+<br>For more information, please go to our <a href="/privacy" class="kt-link">Privacy Policy</a> 
 </span>
 </div>
 

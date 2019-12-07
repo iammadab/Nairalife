@@ -1,0 +1,30 @@
+<div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-padding-t-10 kt-padding-b-10">
+<div class="kt-section__content table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th>Member</th>
+<th>Reference</th>
+<th>Amount</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<% transactions.forEach(transaction => { %>
+<tr>
+<td><%= transaction.username %></td>
+<td><%= transaction.reference %></td>
+<td>&#8358;<%= transaction.amount %></td>
+<td><%= transaction._doc.created_at %></td>
+<td class="text-capitalize kt-font-success"><%= transaction.status %></td>
+</tr>
+<% }) %>
+</tbody>	
+</table>
+</div>
+</div>
+<!--end of kt-portlet-body-->
+</div>
+<!--end of kt-portlet-->

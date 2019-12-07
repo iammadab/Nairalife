@@ -1,0 +1,110 @@
+<% include meta %>
+<link href="css/login.css" rel="stylesheet" type="text/css" />
+<!-- begin::Body -->
+<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+
+<!-- begin:: Page -->
+<div class="kt-grid kt-grid--ver kt-grid--root">
+<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
+<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+
+
+<!--begin::Content-->
+<div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
+
+<!--begin::Head-->
+<div class="kt-login__bottom">
+
+</div>
+
+<!--end::Head-->
+
+<!--begin::Body-->
+<div class="kt-login__body" id="login-section">
+
+<!--begin::Signin-->
+<div class="kt-login__form">
+<% include formhead %>
+<div class="kt-login__title">
+<h3>Higher Purchase Plan</h3>
+<h4>Start paying for your car little by little</h4>
+</div>
+
+
+<div class="aboutn">
+<p class="kt-font-success">Stage 1:</p>
+<ol>
+<li>Pay &#8358;1,000 for 90 days for a total of &#8358;90,000</li>
+<li>Get car on higher purchase with comprehensive insurance and registered plate number</li>
+</ol>
+<p class="kt-font-success">Stage 2:</p>
+<ol>
+<li>Pay &#8358;4,200 for 270 days for a total of &#8358;1,910,000</li>
+<li>Nairalife automatically transfer ownership of the car to you after completing this stage</li>
+</ol>
+</div>
+
+
+<div class="kt-login__btn kt-margin-t-20">
+<button  class="btn btn-primary btn-pill kt-login__btn-primary" onclick="payWithPaystack()">
+<i class="la la-home"></i>Start Payment Now
+</button>
+</div>
+
+
+<!--begin::Divider-->
+<div class="kt-login__divider kt-margin-t-30">
+<div class="kt-divider">
+<span></span>
+<span>OR</span>
+<span></span>
+</div>
+</div>
+<!--end::Divider-->
+
+<!--begin::Options-->
+<div class="kt-login__bottom">
+For more information call us on <a href="tel:08127596979">08127596979</a>
+</div>
+<!--end::Options-->
+
+</div>
+<!--end::kt-login__form-->
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript" src="/js/custom/script.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+function payWithPaystack(event){
+	var handler = PaystackPop.setup({
+		key: 'pk_test_c390fc7c87abac72d463b6de024098319a6e92f3',
+		email: '<%= user.email %>',
+		amount: 100000,
+		currency: "NGN",
+		channels: ["card"],
+		metadata: {
+			user_id: "<%= user.user_id %>",
+			id: "<%= user._id %>",
+			type: "PAYMENT_START"
+		},
+		callback: triggerReload,
+		onClose: function(){}
+	});
+	handler.openIframe();
+}
+</script>
+
+<script type="text/javascript">
+function triggerReload(){
+	setTimeout(() => {
+		window.location.href = window.location.href
+	}, 5000)
+}
+</script>
+
+</body>
+</html>

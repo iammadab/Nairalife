@@ -34,7 +34,7 @@ let registerButton = createButton(".register-text", "Join Us", "Registering...")
 function startRegistration(event){
 	let nameMap = {
 		fullname: "full name",
-		phone: "phone number",
+		phone: "whatsApp number",
 		password: "password"
 	}
 
@@ -117,7 +117,7 @@ function registerUser(event){
 
 	function handleRegistration(response){
 		if(response.status == 200)
-			return redirect("/fee")
+			return redirect("/account")
 		else if(response.code == "OTP_VERIFICATION_FAILED")
 			showAlert("otp-error", "Invalid Otp")
 		otpButton("normal")
