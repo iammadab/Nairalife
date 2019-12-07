@@ -122,8 +122,8 @@ viewRouter.get("/admin/auto", cookieNotFound("/admin/login", "atoken"), verifyTo
 	res.render("admin/auto", {title: "Nairalife Autopay", link: "auto", ...req.body.pageData })
 })
 
-viewRouter.get("/admin/profile/:user_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
-	res.render("admin/profile", { title: "Account Profile", link: "profile" })
+viewRouter.get("/admin/profile/:user_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.profile, (req, res) => {
+	res.render("admin/profile", { title: "Account Profile", link: "profile", ...req.body.pageData })
 })
 
 
