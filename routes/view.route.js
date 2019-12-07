@@ -67,7 +67,7 @@ viewRouter.get("/awaiting", cookieNotFound("/login"), verifyToken(), stageRouter
 	res.render("awaiting", { title: "Awaiting" })
 })
 
-viewRouter.get("/start", cookieNotFound("/login"), verifyToken(), (req, res) => {
+viewRouter.get("/start", cookieNotFound("/login"), verifyToken(), stageRouter("start_plan"), (req, res) => {
 	res.render("start", { title: "Start HP Plan"})
 })
 
