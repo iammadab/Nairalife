@@ -103,64 +103,29 @@ viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter(
 
 // Admin routes
 viewRouter.get("/admin/login", cookieFound("/admin/dashboard", "atoken"), (req, res) => {
-	res.render("admin/login")
+	res.render("admin/login",{ title: "Admin Login"})
 })
 
 viewRouter.get("/admin/dashboard", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
-	res.render("admin/dashboard")
+	res.render("admin/dashboard",{ title: "Administrator", link: ""})
 })
 
-viewRouter.get("/admin/create", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
-	res.render("admin/create")
-})
-
-viewRouter.get("/admin/groups", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.groups, (req, res) => {
-	res.render("admin/groups", { ...req.body.pageData })
-})
-
-viewRouter.get("/admin/group/:group_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.group, (req, res) => {
-	res.render("admin/group", { ...req.body.pageData })
-})
-
-viewRouter.get("/admin/change", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
-	res.render("admin/change")
-})
-
-viewRouter.get("/admin/pay", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
-	res.render("admin/pay")
-})
-
-viewRouter.get("/admin/transactions", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transactions, (req, res) => {
-	res.render("admin/transactions", { ...req.body.pageData })
+viewRouter.get("/admin/payments", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transactions, (req, res) => {
+	res.render("admin/payments", {title: "Nairalife Payments", link: "payments", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.members, (req, res) => {
-	res.render("admin/members", { ...req.body.pageData })
+	res.render("admin/members", {title: "Nairalife Members", link: "members", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/auto", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.auto, (req, res) => {
-	res.render("admin/auto", { ...req.body.pageData })
+	res.render("admin/auto", {title: "Nairalife Autopay", link: "auto", ...req.body.pageData })
 })
 
-viewRouter.get("/admin/profile", (req, res) => {
-	res.render("admin/profile")
+viewRouter.get("/admin/profile", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.auto, (req, res) => {
+	res.render("admin/profile", {title: "Account Profile", link: "profile"})
 })
 
-viewRouter.get("/admin/withdrawals", (req, res) => {
-	res.render("admin/withdrawals")
-})
-
-viewRouter.get("/admin/points", (req, res) => {
-	res.render("admin/points")
-})
-
-viewRouter.get("/admin/contributions", (req, res) => {
-	res.render("admin/contributions")
-})
-
-viewRouter.get("/admin/add", (req, res) => {
-	res.render("admin/add")
-})
 
 
 module.exports = viewRouter

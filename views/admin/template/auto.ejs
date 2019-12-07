@@ -1,41 +1,23 @@
 <div class="kt-portlet btopzero">
-
-
 <div class="kt-portlet__body kt-padding-t-10 kt-padding-b-10">
-
 <div class="kt-section__content table-responsive">
 <table class="table kt-margin-b-10">
-
-
 <thead>
 <tr>
-<th class="kt-font-bolder kt-font-success">No</th>	
-<th class="kt-font-bolder kt-font-success">Full Name</th>
-<th class="kt-font-bolder kt-font-success">Userid</th>
-<th class="kt-font-bolder kt-font-success">Phone No</th>
-<th class="kt-font-bolder kt-font-success">Score</th>
-<th class="kt-font-bolder kt-font-success">Points</th>
-<th class="kt-font-bolder kt-font-success">Period</th>
-<th class="kt-font-bolder kt-font-success">Amount</th>
-<th class="kt-font-bolder kt-font-success">Balance</th>
-<th class="kt-font-bolder kt-font-success"></th>
+<th>Member</th>
+<th>HP Plan</th>
+<th>Total Payment</th>
+<th>Remaining Payment</th>
+<th></th>
 </tr>
 </thead>
-
-
 <tbody>
-
 <% autoSaveMembers.forEach((member, i) => { %>
 <tr>
-<td><%= i + 1 %></td>	
 <td><%= member.fullname %></td>
-<td><%= member.user_id %></td>
-<td><%= member.phone %></td>
-<td><%= member.nairascore %></td>
-<td><%= member.nairapoints %></td>
-<td><%= member._doc.about.contribution_period %></td>
-<td>&#8358;<%= member._doc.about.contribution_make %></td>
-<td>&#8358;<%= member.balance %></td>
+<td></td>
+<td></td>
+<td></td>
 <td>
 	<% if(member._doc.phase != "failed") { %>
 		<% if(member._doc.phase == "pending") { %>
@@ -43,85 +25,16 @@
 		<% } %>
 
 		<% if(member._doc.phase == "noattempt") { %>
-		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm save-button save-button-text-<%=member.user_id%>">Save</button>
+		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm save-button save-button-text-<%=member.user_id%>">Charge</button>
 		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm pending-button otp-error">Pending</button>
 		<% } %>
 	<% } %>
 </td>
 </tr>
 <% }) %>
-
-<!-- <tr>
-<td>2</td>	
-<td>Wisdom Madab</td>
-<td>9276</td>
-<td>08076554123</td>
-<td>72</td>
-<td>1,064</td>
-<td>Daily</td>
-<td>&#8358;18,000</td>
-<td><a href="#" class="btn btn-secondary btn-sm">Save</a></td>
-</tr>
-
-<tr>
-<td>3</td>	
-<td>Oladapo Ibiyemi</td>
-<td>6241</td>
-<td>08043876121</td>
-<td>34</td>
-<td>487</td>
-<td>Monthly</td>
-<td>&#8358;6,000</td>
-<td></td>
-</tr>
-
-
-<tr>
-<td>4</td>	
-<td>Foladayo Ireti</td>
-<td>9191</td>
-<td>09065117862</td>
-<td>0</td>
-<td>0</td>
-<td>Monthly</td>
-<td>&#8358;0.00</td>
-<td></td>
-</tr>
-
-
-
-<tr>
-<td>5</td>	
-<td>Adeleke Moyosore</td>
-<td>4319</td>
-<td>07030597861</td>
-<td>0</td>
-<td>0</td>
-<td>Weekly</td>
-<td>&#8358;0.00</td>
-<td></td>
-</tr>
-
-<tr>
-<td>6</td>	
-<td>Ifayemi Aremu</td>
-<td>8774</td>
-<td>08031467321</td>
-<td>20</td>
-<td>150</td>
-<td>Weekly</td>
-<td>&#8358;0.00</td>
-<td><a href="#" class="btn btn-secondary btn-sm">Save</a></td>
-</tr>
- -->
-
-
 </tbody>
 </table>
 </div>
-
-
-
 </div>
 <!--end of kt-portlet-body-->
 </div>
