@@ -91,7 +91,7 @@ function payWithPaystack(event){
 			id: "<%= user._id %>",
 			type: "PAYMENT_START"
 		},
-		callback: sendReference,
+		callback: triggerReload,
 		onClose: function(){}
 	});
 	handler.openIframe();
