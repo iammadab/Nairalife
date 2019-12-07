@@ -21,8 +21,17 @@ async function makeFirstPay(data){
 	if(transactionObj && transactionObj.status == "success")
 		return console.log("Transaction has already been recorded")
 
-	if(transactionObj && transactionObj.status != "success" && data.status == "success")
+	if(transactionObj && transactionObj.status != "success" && data.status == "success"){
 		transactionObj = await transactionDb.appendDoc({ reference: data.reference }, "status", "success")
+		return console.log("Updated the transaction to success")
+	}
+
+	if(transactionObj)
+		return console.log("I don't know what to do with the transaction", data.reference)
+
+	
+
+
 }
 
 // async function charge_success(data){
