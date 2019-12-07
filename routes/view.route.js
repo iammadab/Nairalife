@@ -63,8 +63,8 @@ viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), stageRouter("ch
 	res.render("plan", { title: "Choose Plan"})
 })
 
-viewRouter.get("/awaiting", cookieNotFound("/login"), verifyToken(), (req, res) => {
-	res.render("awaiting", { title: "Awaiting"})
+viewRouter.get("/awaiting", cookieNotFound("/login"), verifyToken(), stageRouter("plan_approval"), (req, res) => {
+	res.render("awaiting", { title: "Awaiting" })
 })
 
 viewRouter.get("/start", cookieNotFound("/login"), verifyToken(), (req, res) => {
