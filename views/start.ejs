@@ -87,13 +87,8 @@ amount: 100000,
 currency: "NGN",
 channels: ["card"],
 metadata: {
-custom_fields: [
-{
-display_name: "Mobile Number",
-variable_name: "mobile_number",
-value: "+2348012345678"
-}
-]
+user_id: "<%= user.user_id %>",
+type: "PAYMENT_START"
 },
 callback: sendReference,
 onClose: function(){}
