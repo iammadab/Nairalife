@@ -2,10 +2,28 @@ const transactionDb = require("../../../data/db/transaction.db")
 const userDb = require("../../../data/db/user.db")
 
 async function charge_success(data){
+	console.log("Charge success")
+	console.log(data)
 
+	console.log(data.metadata)
+	if(data.metadata.type == "PAYMENT_START")
+		makeFirstPay(data)
 }
 
 module.exports = charge_success
+
+async function makeFirstPay(data){
+	let userObj = await userDb.findOneWith({ user_id: data.metadata.user_id })
+	if(!userObj)
+		return console.log("User not found")
+
+	let transactionObj = await transactionDb.findOneWith({ reference: data.reference })
+	if(transactionObj && transactionObj.status == "success")
+		return console.log("Transaction has already been recorded")
+
+	if(transactionObj && transactionObj.status != "success" && data.status == "success")
+		transactionObj = await transactionDb.appendDoc({ reference: data.reference }, "status", "success")
+}
 
 // async function charge_success(data){
 // 	console.log("Charge success")
