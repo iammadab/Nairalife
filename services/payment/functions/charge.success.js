@@ -44,7 +44,11 @@ async function makeFirstPay(data){
 	let cardVerificationData = { reference: data.reference, user: { id: userObj._id } }
 	console.log("Card data", cardVerificationData)
 
+	let cardVerificationResult = await verifyCard(cardVerificationData)
+	if(cardVerificationResult.status != 200)
+		return console.log("Failed to verify card")
 
+	console.log("Verified the card successfully")
 }
 
 // async function charge_success(data){
