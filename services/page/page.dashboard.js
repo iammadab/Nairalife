@@ -1,5 +1,4 @@
 const pageFunctions = require("./functions")
-const userDb = require("../../data/db/user.db")
 
 async function dashboard(req, res, next){
 	let userObj = await pageFunctions.fetchUser(req.body.user.id)
