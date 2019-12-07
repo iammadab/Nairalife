@@ -98,16 +98,10 @@ function payWithPaystack(event){
 }
 </script>
 <script type="text/javascript">
-function sendReference(response){
-let reference = response.reference
-api("card/verify", { reference: reference, token: getToken() })
-.then(handleResponse)
-
-function handleResponse(response){
-// console.log(response)
-if(response.status == 200)
-redirect("/account")
-}
+function triggerReload(){
+	setTimeout(() => {
+		window.location.href = window.location.href
+	}, 5000)
 }
 </script>
 <!-- <script type="text/javascript" src="/js/custom/autosave.js"></script> -->
