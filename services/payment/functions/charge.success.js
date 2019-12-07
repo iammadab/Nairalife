@@ -29,7 +29,16 @@ async function makeFirstPay(data){
 	if(transactionObj)
 		return console.log("I don't know what to do with the transaction", data.reference)
 
-	
+	transactionObj = await transactionDb.createTransaction({
+		username: userObj.fullname,
+		user_id: userObj.user_id,
+		amount: Number(data.amount) / 100,
+		reference: data.reference,
+		type: "higher_purchase",
+		status: "success"
+	})
+
+	console.log(transactionObj)
 
 
 }
