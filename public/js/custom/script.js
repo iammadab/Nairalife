@@ -70,7 +70,6 @@
 
 ;(function preprocess(){
 	let toProcess = Array.from(document.querySelectorAll("[data-format]"))
-	console.log(toProcess)
 	toProcess.forEach(element => {
 		if(element.dataset.format == "comma")
 			element.innerText = addComma(element.innerText)
