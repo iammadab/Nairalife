@@ -49,8 +49,7 @@ function addPlan(event){
 
 	function handleResponse(response){
 		if(response.status == 200)
-			// At this point, I should redirect to the page that shows the approval
-			console.log("Yay")
+			redirect("/awaiting")
 		else
 			showAlert("plan-error", "Problem choosing plan, try again later")
 	}
