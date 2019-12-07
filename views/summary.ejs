@@ -50,19 +50,20 @@
 </tr>
 <tr>
 <td class="kt-font-bold">HP Plan:</td>
-<td class="text-right"></td>
+<% let duration = user.plan.total_amount == 2000000 ? "for 12 months" : "for 20 months"%>
+<td class="text-right">&#8358;<span data-format="comma"><%= user.plan.total_amount %></span> <span><%= duration %></span></td>
 </tr>
 <tr>
 <td class="kt-font-bold">Joined Nairalife On:</td>
-<td class="text-right"></td>
+<td class="text-right"><%= user.created_at %></td>
 </tr>
 <tr>
 <td class="kt-font-bold">HP Total Payment:</td>
-<td class="text-right" data-format="number">&#8358;0</td>
+<td class="text-right">&#8358;<span data-format="comma"><%= totalPayment %></span></td>
 </tr>
 <tr>
 <td class="kt-font-bold">HP Remaining Payment:</td>
-<td class="text-right" data-format="number">&#8358;0</td>
+<td class="text-right">&#8358;0</td>
 </tr>
 <tr>
 <td class="kt-font-bold">HP Agreement Status:</td>
