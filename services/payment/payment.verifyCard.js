@@ -32,7 +32,7 @@ async function verifyCard(data){
 	if(addCardResult.status != 200)
 		return addCardResult
 
-	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "enter_account_details")
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "active")
 	if(userObj)
 		return { status: 200, code: "CARD_VERIFIED_AND_ADDED" }
 

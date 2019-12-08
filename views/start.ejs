@@ -39,14 +39,14 @@
 </ol>
 <p class="kt-font-success">Stage 2:</p>
 <ol>
-<li>Pay &#8358;4,200 for 270 days for a total of &#8358;1,910,000</li>
-<li>Nairalife automatically transfer ownership of the car to you after completing this stage</li>
+<li>Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> <%= user.plan.period %> for a total of &#8358;1,910,000</li>
+<li>Nairalife automatically transfers ownership of the car to you after completing this stage</li>
 </ol>
 </div>
 
 
 <div class="kt-login__btn kt-margin-t-20">
-<button  class="btn btn-primary btn-pill kt-login__btn-primary">
+<button  class="btn btn-primary btn-pill kt-login__btn-primary" onclick="payWithPaystack()">
 <i class="la la-home"></i>Start Payment Now
 </button>
 </div>
@@ -77,7 +77,34 @@ For more information call us on <a href="tel:08127596979">08127596979</a>
 </div>
 
 <script type="text/javascript" src="/js/custom/script.js"></script>
-<!-- <script type="text/javascript" src="/js/custom/autosave.js"></script> -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+function payWithPaystack(event){
+	var handler = PaystackPop.setup({
+		key: 'pk_live_e689b8a7714dde9dd8a07c15c4a348568cb3dd4d',
+		email: '<%= user.email %>',
+		amount: 100000,
+		currency: "NGN",
+		channels: ["card"],
+		metadata: {
+			user_id: "<%= user.user_id %>",
+			id: "<%= user._id %>",
+			type: "PAYMENT_START"
+		},
+		callback: triggerReload,
+		onClose: function(){}
+	});
+	handler.openIframe();
+}
+</script>
+
+<script type="text/javascript">
+function triggerReload(){
+	setTimeout(function(){
+		window.location.href = window.location.href
+	}, 4000)
+}
+</script>
+
 </body>
-<!-- end::Body -->
 </html>

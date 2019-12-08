@@ -1,7 +1,8 @@
 const pageFunctions = require("./functions")
+const userDb = require("../../data/db/user.db")
 
-async function dashboard(req, res, next){
-	let userObj = await pageFunctions.fetchUser(req.body.user.id)
+async function profile(req, res, next){
+	let userObj = (await userDb.findOneWith({ user_id: req.params.user_id }))._doc
 	let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: userObj.user_id, type: "higher_purchase" })
 	let totalPayment = 0, remainingPayment = 0
 
@@ -14,7 +15,7 @@ async function dashboard(req, res, next){
 	})
 
 	remainingPayment = Number(userObj.plan.total_amount) - totalPayment
-	
+
 	req.body.pageData = {
 		user: userObj,
 		higherPurchaseTransactions,
@@ -25,4 +26,4 @@ async function dashboard(req, res, next){
 	next()
 }
 
-module.exports = dashboard
+module.exports = profile

@@ -63,12 +63,12 @@ viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), stageRouter("ch
 	res.render("plan", { title: "Choose Plan"})
 })
 
-viewRouter.get("/awaiting", cookieNotFound("/login"), verifyToken(), (req, res) => {
-	res.render("awaiting", { title: "Awaiting"})
+viewRouter.get("/awaiting", cookieNotFound("/login"), verifyToken(), stageRouter("plan_approval"), (req, res) => {
+	res.render("awaiting", { title: "Awaiting" })
 })
 
-viewRouter.get("/start", cookieNotFound("/login"), verifyToken(), (req, res) => {
-	res.render("start", { title: "Start HP Plan"})
+viewRouter.get("/start", cookieNotFound("/login"), verifyToken(), stageRouter("start_plan"), pageService.user, (req, res) => {
+	res.render("start", { title: "Start HP Plan", ...req.body.pageData })
 })
 
 
@@ -122,8 +122,8 @@ viewRouter.get("/admin/auto", cookieNotFound("/admin/login", "atoken"), verifyTo
 	res.render("admin/auto", {title: "Nairalife Autopay", link: "auto", ...req.body.pageData })
 })
 
-viewRouter.get("/admin/profile", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.auto, (req, res) => {
-	res.render("admin/profile", {title: "Account Profile", link: "profile"})
+viewRouter.get("/admin/profile/:user_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.profile, (req, res) => {
+	res.render("admin/profile", { title: "Account Profile", link: "profile", ...req.body.pageData })
 })
 
 

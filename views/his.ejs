@@ -10,6 +10,14 @@
 </tr>
 </thead>
 <tbody>
+<% higherPurchaseTransactions.forEach(transaction => { %>
+<tr>
+<td><%= transaction.reference %></td>
+<td>&#8358;<span data-format="comma"><%= transaction.amount %></span></td>
+<td><%= transaction._doc.created_at %></td>
+<td><%= transaction.status %></td>
+</tr>
+<% }) %>
 </tbody>
 </table>
 </div>
