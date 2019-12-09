@@ -68,7 +68,7 @@ async function save(data){
 		user_id: userObj.user_id,
 		amount: paymentAmount,
 		reference: chargeResult.data.reference,
-		type: "autosave",
+		type: "higher_purchase",
 		status: "pending",
 		data: {
 			admin: adminObj ? adminObj.fullname : "Automatic",
