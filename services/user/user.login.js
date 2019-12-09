@@ -21,7 +21,6 @@ async function loginUser(data){
 		return { status: 403, code: "INVALID_PASSWORD" }
 
 	let userToken = jwt.sign({ id: userObj._id, user_id: userObj.user_id, email: userObj.email, phone: loginData.phone }, process.env.SECRET_KEY, { expiresIn: "24h" })
-	console.log("User token", userToken)
 	
 	return { status: 200, code: "USER_LOGGED_IN", token: userToken, cookie: ["token"] }
 }
