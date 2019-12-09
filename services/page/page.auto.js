@@ -46,6 +46,7 @@ async function auto(req, res, next){
 			// Since the new date will be at midnight, the date shifts by one
 			// We fix this by subtracting one after getting the date
 			let days = (new Date(datePassed)).getDate() - 1
+			console.log("Days", days)
 
 			// This maps the payment period to the days
 			let periodMap = {
@@ -65,7 +66,25 @@ async function auto(req, res, next){
 				continue
 			}
 		}
-		// member._doc.phase = "noattempt"
+
+
+		let baseData = {
+			user_id: member.user_id,
+			type: "higher_purchase"
+		}
+
+		let successfulTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "success", created_at: { $gte: midnight }})
+		let pendingTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "pending", created_at: { $gte: midnight }})
+		let failedTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "failed", created_at: { $gte: midnight }})
+
+		if(successfulTransactions.length > 0)
+			autoSaveMembers[i]._doc.phase = "success"
+		else if(pendingTransactions.length > 0)
+			autoSaveMembers[i]._doc.phase = "pending"
+		else if(failedTransactions.length > 0)
+			autoSaveMembers[i]._doc.phase = "failed"
+		else
+			autoSaveMembers[i]._doc.phase = "noattempt"
 	}
 
 	req.body.pageData = {
@@ -116,24 +135,24 @@ async function auto(req, res, next){
 
 
 
-// 		let baseData = {
-// 			user_id: autoSaveMembers[i].user_id,
-// 			type: "autosave"
-// 		}
+	// 	let baseData = {
+	// 		user_id: autoSaveMembers[i].user_id,
+	// 		type: "autosave"
+	// 	}
 
-// 		let successfulTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "success", created_at: { $gte: midnight }})
-// 		let pendingTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "pending", created_at: { $gte: midnight }})
-// 		let failedTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "failed", created_at: { $gte: midnight }})
+	// 	let successfulTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "success", created_at: { $gte: midnight }})
+	// 	let pendingTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "pending", created_at: { $gte: midnight }})
+	// 	let failedTransactions = await pageFunctions.fetchTransactions({ ...baseData, status: "failed", created_at: { $gte: midnight }})
 
-// 		if(successfulTransactions.length > 0)
-// 			autoSaveMembers[i]._doc.phase = "success"
-// 		else if(pendingTransactions.length > 0)
-// 			autoSaveMembers[i]._doc.phase = "pending"
-// 		else if(failedTransactions.length > 0)
-// 			autoSaveMembers[i]._doc.phase = "failed"
-// 		else
-// 			autoSaveMembers[i]._doc.phase = "noattempt"
-// 	}
+	// 	if(successfulTransactions.length > 0)
+	// 		autoSaveMembers[i]._doc.phase = "success"
+	// 	else if(pendingTransactions.length > 0)
+	// 		autoSaveMembers[i]._doc.phase = "pending"
+	// 	else if(failedTransactions.length > 0)
+	// 		autoSaveMembers[i]._doc.phase = "failed"
+	// 	else
+	// 		autoSaveMembers[i]._doc.phase = "noattempt"
+	// }
 
 // 	req.body.pageData = {
 // 		autoSaveMembers
