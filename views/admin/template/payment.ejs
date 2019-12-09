@@ -4,15 +4,15 @@
 <table class="table">
 <thead>
 <tr>
+<th>No</th>
 <th>Member</th>
-<th>Reference</th>
 <th>Amount</th>
 <th>Date</th>
 <th>Status</th>
 </tr>
 </thead>
 <tbody>
-<% transactions.forEach(transaction => { %>
+<% transactions.forEach((transaction, i) => { %>
 <tr>
 <td><%= transaction.username %></td>
 <td><%= transaction.reference %></td>
