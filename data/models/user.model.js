@@ -15,8 +15,8 @@ const userSchema = mongoose.Schema({
 	user_id: { type: Number, required: true, unique: true },
 	role: { type: String, default: "user", enum: ["user", "admin"] },
 
-	plan: { type: Object, default: {}},
-	payment_one: { type: Object, default: {}}
+	plan: { type: Object, default: {} },
+	payment_one: { type: Object, default: {} }
 
 	// Not listed
 	// plan : { total_amount, period, amount }

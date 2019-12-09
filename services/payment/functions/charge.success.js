@@ -45,6 +45,12 @@ async function makeFirstPay(data){
 		status: "success"
 	})
 
+	// Since the payment is successfull
+	// We set the start date for the first payment
+	let newPaymentOne = Object.assign({}, userObj.payment_one, { start_date: new Date() })
+	console.log("New payment one", newPaymentOne)
+	userObj = await userDb.appendDoc({ user_id: data.metadata.user_id }, "payment_one", newPaymentOne)
+
 	let cardVerificationData = { reference: data.reference, user: { id: userObj._id } }
 
 	let cardVerificationResult = await verifyCard(cardVerificationData)
