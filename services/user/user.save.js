@@ -27,13 +27,16 @@ async function save(data){
 	if(!userObj.status)
 		return { status: 403, code: "USER_NOT_IN_HP" }
 
-	// A user only autosaves once per day, so when autosave is initiated,
+	// A user only pays once per day, so when payment is initiated,
 	// Get all the transactions of that user since midnight
 	// If there is any successful or pending, send error that the transaction has already started
 	let midnight = new Date((new Date()).setHours(0, 0, 0, 0))
-	let baseData = { user_id: userObj.user_id, type: "autosave" }
+	let baseData = { user_id: userObj.user_id, type: "higher_purchase" }
 	let successfulTransactions = await transactionDb.findWith({ ...baseData, status: "success", created_at: { $gte: midnight }})
 	let pendingTransactions = await transactionDb.findWith({ ...baseData, status: "pending", created_at: { $gte: midnight }})
+
+	console.log(successfulTransactions)
+	console.log(pendingTransactions)
 
 	if(successfulTransactions.length > 0 || pendingTransactions.length > 0)
 		return { status: 403, code: "TRANSACTION_ALREADY_STARTED" }
