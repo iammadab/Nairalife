@@ -57,7 +57,7 @@ async function save(data){
 	// Charge the user based on the amount they said they want to contribute
 	let chargeResult = await charge({
 		user_id: validData.user_id,
-		amount: contributionAmount
+		amount: paymentAmount
 	})
 
 
@@ -66,7 +66,7 @@ async function save(data){
 	let userTransaction = await transactionDb.createTransaction({
 		username: userObj.fullname,
 		user_id: userObj.user_id,
-		amount: contributionAmount,
+		amount: paymentAmount,
 		reference: chargeResult.data.reference,
 		type: "autosave",
 		status: "pending",
@@ -76,7 +76,7 @@ async function save(data){
 		}
 	})	
 
-	return { status: 200, code: "AUTOSAVE_SUCCESSFUL" }
+	return { status: 200, code: "PAYMENT_SUCCESSFUL" }
 	
 }
 
