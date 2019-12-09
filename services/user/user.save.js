@@ -42,9 +42,16 @@ async function save(data){
 		return { status: 403, code: "TRANSACTION_ALREADY_STARTED" }
 
 
+	let paymentAmount
+	if(userObj.status == "payment_one")
+		paymentAmount = userObj.payment_one.amount
+	else if(userObj.status == "payment_two")
+		paymentAmount = userObj.plan.amount
 
+	console.log("Payment amount", paymentAmount)
 
-	let contributionAmount = userObj._doc.about.contribution_make
+	if(!paymentAmount)
+		return { status: 403, code: "USER_NOT_IN_HP"}
 	
 
 	// Charge the user based on the amount they said they want to contribute
