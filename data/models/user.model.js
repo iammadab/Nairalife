@@ -13,7 +13,10 @@ const userSchema = mongoose.Schema({
 	//                authorization: authorization_code, bank, bin, brand, card_type, channel, country_code, ex_month, exp_year, last4, reuseable, signature }]
 	card: { type: Array, default: [] },
 	user_id: { type: Number, required: true, unique: true },
-	role: { type: String, default: "user", enum: ["user", "admin"] }
+	role: { type: String, default: "user", enum: ["user", "admin"] },
+
+	plan: { type: Object, default: {}},
+	payment_one: { type: Object, default: {}}
 
 	// Not listed
 	// plan : { total_amount, period, amount }
