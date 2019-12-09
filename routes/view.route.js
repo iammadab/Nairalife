@@ -129,8 +129,3 @@ viewRouter.get("/admin/profile/:user_id", cookieNotFound("/admin/login", "atoken
 
 
 module.exports = viewRouter
-
-
-// viewRouter.get("/admin/remove", (req, res) => {
-// 	res.render("admin/remove")
-// })
