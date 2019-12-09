@@ -12,7 +12,7 @@
 <tbody>
 <% higherPurchaseTransactions.forEach((transaction, i) => { %>
 <tr>
-<td><%= i %></td>
+<td><%= i + 1 %></td>
 <td>&#8358;<span data-format="comma"><%= transaction.amount %></span></td>
 <td><%= transaction._doc.created_at %></td>
 <td><%= transaction.status %></td>
