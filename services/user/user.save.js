@@ -24,8 +24,8 @@ async function save(data){
 	if(!userObj)
 		return { status: 403, code: "USER_NOT_FOUND" }
 
-	if(userObj.status != "autosave")
-		return { status: 403, code: "USER_NOT_IN_AUTOSAVE" }
+	if(!userObj.status)
+		return { status: 403, code: "USER_NOT_IN_HP" }
 
 	// A user only autosaves once per day, so when autosave is initiated,
 	// Get all the transactions of that user since midnight
