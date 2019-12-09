@@ -83,7 +83,7 @@ function payWithPaystack(event){
 	var handler = PaystackPop.setup({
 		key: 'pk_live_e689b8a7714dde9dd8a07c15c4a348568cb3dd4d',
 		email: '<%= user.email %>',
-		amount: 100000,
+		amount: "<%= user.payment_one.amount %>00",
 		currency: "NGN",
 		channels: ["card"],
 		metadata: {
