@@ -1,8 +1,17 @@
 const pageFunctions = require("./functions")
 
 async function auto(req, res, next){
+	// This is the service that displays the active users in our higher purchase plan
+	// In this service, we want to get the raw data for each user that we render
+	// We also want to determine if the user has saved so we can display or not display the save button
+
+	// First we fetch all the active users
+	// Eventually, we will have active users that are not saving, so this clause will have to get more specific
+	// It's good enough for now
 	let higherPurchaseMembers = await pageFunctions.fetchUsers({ stage: "active" })
 
+	// Now I go through each member, calculate the amount they have paid and how much is remaining for rendering
+	// This is also the section, that I determing if we should show the save button
 	for(let i = 0; i < higherPurchaseMembers.length; i++){
 		let member = higherPurchaseMembers[i]
 		let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: member.user_id, type: "higher_purchase" })
@@ -14,6 +23,7 @@ async function auto(req, res, next){
 
 		member._doc.totalPayment = totalPayment
 		member._doc.remainingPayment = member.plan.total_amount - totalPayment
+		member._doc.phase = "failed"
 	}
 
 	req.body.pageData = {
