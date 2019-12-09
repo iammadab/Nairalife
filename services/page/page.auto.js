@@ -10,7 +10,7 @@ async function auto(req, res, next){
 			// Each user has a date that they started autosave
 			// And they have a period that they have chosen to save
 			// We need to check if today falls in that period
-			// First we set an even playing field by setting today to midnigt and setting the day they started to midnight 
+			// First we set an even playing field by setting today to midnight and setting the day they started to midnight 
 			let autoSaveMidnight = (new Date(autoSaveMembers[i].autosave_start)).setHours(0, 0, 0, 0)
 			
 			// Next we get the amount of milliseconds that have passed since they started saving till today
@@ -31,7 +31,7 @@ async function auto(req, res, next){
 			// Here we get the contribution period value
 			// Then check if the days passed fall under that period
 			// If it does we continue to check transactions
-			// If it doesn't we set the phase to succes and continue as nothing should be done
+			// If it doesn't we set the phase to success and continue as nothing should be done
 			let periodCount = periodMap[autoSaveMembers[i]._doc.about.contribution_period]
 			if(periodCount && days % periodCount != 0){
 				autoSaveMembers[i]._doc.phase = "success"
