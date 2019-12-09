@@ -12,12 +12,12 @@
 </tr>
 </thead>
 <tbody>
-<% autoSaveMembers.forEach((member, i) => { %>
+<% higherPurchaseMembers.forEach((member, i) => { %>
 <tr>
 <td><%= member.fullname %></td>
-<td></td>
-<td></td>
-<td></td>
+<td data-format="comma">&#8358;<%= member.plan.total_amount %></td>
+<td data-format="comma">&#8358;<%= member._doc.totalPayment %></td>
+<td data-format="comma">&#8358;<%= member._doc.remainingPayment %></td>
 <td>
 	<% if(member._doc.phase != "failed") { %>
 		<% if(member._doc.phase == "pending") { %>
