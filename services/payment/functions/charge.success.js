@@ -18,15 +18,21 @@ async function makeFirstPay(data){
 	if(!userObj)
 		return console.log("User not found")
 
+	// The job of the next couple of lines, is to first prevent the webhook from
+	// Creating multiple transactions, because the webhooks come repeatedly
 	let transactionObj = await transactionDb.findOneWith({ reference: data.reference })
 	if(transactionObj && transactionObj.status == "success")
 		return console.log("Transaction has already been recorded")
 
+	// Next if, the transaction has not been successfull, but somehow the webhook finds it successful
+	// We update that info to reflect transaction success
 	if(transactionObj && transactionObj.status != "success" && data.status == "success"){
 		transactionObj = await transactionDb.appendDoc({ reference: data.reference }, "status", "success")
 		return console.log("Updated the transaction to success")
 	}
 
+	// Ideally, we should never get here
+	// This is where I complain
 	if(transactionObj)
 		return console.log("I don't know what to do with the transaction", data.reference)
 
