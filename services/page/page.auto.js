@@ -15,9 +15,6 @@ async function auto(req, res, next){
 	for(let i = 0; i < higherPurchaseMembers.length; i++){
 		let member = higherPurchaseMembers[i]
 
-		if(member.status != "payment_one" || member.status != "payment_two")
-			continue
-
 		let midnight = new Date((new Date()).setHours(0, 0, 0, 0))
 		let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: member.user_id, type: "higher_purchase" })
 		let totalPayment = 0
