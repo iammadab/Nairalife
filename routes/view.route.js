@@ -106,8 +106,8 @@ viewRouter.get("/admin/login", cookieFound("/admin/dashboard", "atoken"), (req, 
 	res.render("admin/login",{ title: "Admin Login"})
 })
 
-viewRouter.get("/admin/dashboard", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), (req, res) => {
-	res.render("admin/dashboard",{ title: "Administrator", link: ""})
+viewRouter.get("/admin/dashboard", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.stat, (req, res) => {
+	res.render("admin/dashboard",{ title: "Administrator", link: "", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/payments", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transactions, (req, res) => {
