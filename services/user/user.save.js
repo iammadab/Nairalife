@@ -69,7 +69,7 @@ async function save(data){
 		amount: paymentAmount,
 		reference: chargeResult.data.reference,
 		type: "higher_purchase",
-		status: "pending",
+		status: chargeResult.data.status == "failed" ? "failed" : "pending",
 		data: {
 			admin: adminObj ? adminObj.fullname : "Automatic",
 			admin_id: adminObj ? adminObj.user_id : 0
