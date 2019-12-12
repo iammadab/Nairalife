@@ -67,4 +67,10 @@ async function updatePay(data){
 	let transactionObj = await transactionDb.findOneWith({ reference: data.reference })
 	if(!transactionObj)
 		return console.log("No transaction object found for ", data.reference)
+
+	transactionObj = await transactionDb.appendDoc({ reference: data.reference }, "status", "success")
+	if(!transactionObj)
+		return console.log("Problem updating the transaction obj", data.reference)
+
+	return console.log("Updated the transaction obj successfully", data.reference)
 }
