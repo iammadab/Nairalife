@@ -2,7 +2,7 @@ const pageFunctions = require("./functions")
 
 async function dashboard(req, res, next){
 	let userObj = await pageFunctions.fetchUser(req.body.user.id)
-	let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: userObj.user_id, type: "higher_purchase" })
+	let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: userObj.user_id, type: "higher_purchase", status: "success" })
 	let totalPayment = 0, remainingPayment = 0
 
 	if(userObj)
