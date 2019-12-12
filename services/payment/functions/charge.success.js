@@ -9,6 +9,8 @@ async function charge_success(data){
 	console.log(data.metadata)
 	if(data.metadata.type == "PAYMENT_START")
 		makeFirstPay(data)
+	else
+		updatePay(data)
 }
 
 module.exports = charge_success
@@ -58,4 +60,9 @@ async function makeFirstPay(data){
 		return console.log("Failed to verify card")
 
 	console.log("Verified the card successfully")
+}
+
+
+async function updatePay(data){
+	
 }
