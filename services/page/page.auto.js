@@ -16,7 +16,7 @@ async function auto(req, res, next){
 		let member = higherPurchaseMembers[i]
 
 		let midnight = new Date((new Date()).setHours(0, 0, 0, 0))
-		let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: member.user_id, type: "higher_purchase", status: "succes"  })
+		let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: member.user_id, type: "higher_purchase", status: "success"  })
 		let totalPayment = 0
 
 		higherPurchaseTransactions.forEach(transaction => {
