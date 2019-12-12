@@ -64,5 +64,7 @@ async function makeFirstPay(data){
 
 
 async function updatePay(data){
-	
+	let transactionObj = await transactionDb.findOneWith({ reference: data.reference })
+	if(!transactionObj)
+		return console.log("No transaction object found for ", data.reference)
 }
