@@ -4,7 +4,7 @@ async function stat(req, res, next){
 	let allMembers = await pageFunctions.fetchUsers()
 	let activeMembers = await pageFunctions.fetchUsers({ stage: "active", status: "payment_one" })
 	let cars = await pageFunctions.fetchUsers({ status: "payment_two" })
-	let allHpTransactions = await pageFunctions.fetchTransactions({ type: "higher_purchase" })
+	let allHpTransactions = await pageFunctions.fetchTransactions({ type: "higher_purchase", status: "success" })
 
 	let totalPaid = 0
 	for(let i = 0; i < allHpTransactions.length; i++){

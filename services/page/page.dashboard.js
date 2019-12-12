@@ -2,8 +2,7 @@ const pageFunctions = require("./functions")
 
 async function dashboard(req, res, next){
 	let userObj = await pageFunctions.fetchUser(req.body.user.id)
-	let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: userObj.user_id, type: "higher_purchase", status: "success" })
-	console.log(higherPurchaseTransactions)
+	let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: userObj.user_id, type: "higher_purchase" })
 	let totalPayment = 0, remainingPayment = 0
 
 	if(userObj)
@@ -11,7 +10,8 @@ async function dashboard(req, res, next){
 
 	higherPurchaseTransactions.forEach(transaction => {
 		transaction._doc.created_at = pageFunctions.createDate(transaction._id.getTimestamp()).getHypenDate()
-		totalPayment += Number(transaction.amount)
+		if(transaction.status == "success")
+			totalPayment += Number(transaction.amount)
 	})
 
 	remainingPayment = Number(userObj.plan.total_amount) - totalPayment
