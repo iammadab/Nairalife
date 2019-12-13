@@ -18,7 +18,8 @@
 <td><%= transaction.username %></td>
 <td>&#8358;<%= transaction.amount %></td>
 <td><%= transaction._doc.created_at %></td>
-<td class="text-capitalize kt-font-success"><%= transaction.status %></td>
+<% let statusMap = { "success": "success", "pending": "warning", "failed": "danger" } %>
+<td class="text-capitalize kt-font-<%= statusMap[transaction.status] %>"><%= transaction.status %></td>
 </tr>
 <% }) %>
 </tbody>	
