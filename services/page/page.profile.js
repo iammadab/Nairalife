@@ -11,7 +11,8 @@ async function profile(req, res, next){
 
 	higherPurchaseTransactions.forEach(transaction => {
 		transaction._doc.created_at = pageFunctions.createDate(transaction._id.getTimestamp()).getHypenDate()
-		totalPayment += Number(transaction.amount)
+		if(transaction.status == "success")
+			totalPayment += Number(transaction.amount)
 	})
 
 	remainingPayment = Number(userObj.plan.total_amount) - totalPayment
