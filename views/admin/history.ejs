@@ -15,7 +15,8 @@
 <td><%= transaction.reference %></td>
 <td>&#8358;<span data-format="comma"><%= transaction.amount %></span></td>
 <td><%= transaction._doc.created_at %></td>
-<td><%= transaction.status %></td>
+<% let statusMap = { "success": "success", "pending": "warning", "failed": "danger" } %>
+<td class="text-capitalize kt-font-<%= statusMap[transaction.status] %>"><%= transaction.status %></td>
 </tr>
 <% }) %>
 </tbody>
