@@ -25,6 +25,9 @@ async function auto(req, res, next){
 
 		member._doc.totalPayment = totalPayment
 		member._doc.remainingPayment = member.plan.total_amount - totalPayment
+		member._doc.lastDate = pageFunctions.createDate(
+			higherPurchaseTransactions[higherPurchaseTransactions.length - 1].created_at
+		).getTime()
 
 		// Now that rendering data has been collected, we need to determine if the user can save today
 		// It's based on two factors, the payment plan chosen and the transactions that have already happened
