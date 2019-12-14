@@ -26,7 +26,7 @@ async function auto(req, res, next){
 		member._doc.totalPayment = totalPayment
 		member._doc.remainingPayment = member.plan.total_amount - totalPayment
 		member._doc.lastDate = pageFunctions.createDate(
-			higherPurchaseTransactions[higherPurchaseTransactions.length - 1].created_at
+			higherPurchaseTransactions[0].created_at
 		).getTime()
 
 		// Now that rendering data has been collected, we need to determine if the user can save today
@@ -44,13 +44,11 @@ async function auto(req, res, next){
 			
 			// Next we get the amount of milliseconds that have passed since they started paying till today
 			let datePassed = Number(midnight) - Number(paymentStartMidnight)
-			console.log("Date passed", datePassed)
 
 			// We convert that to a date and then extract the date
 			// Since the new date will be at midnight, the date shifts by one
 			// We fix this by subtracting one after getting the date
 			let days = (new Date(datePassed)).getDate() - 1
-			console.log("Days", days)
 
 			// This maps the payment period to the days
 			let periodMap = {
@@ -64,7 +62,6 @@ async function auto(req, res, next){
 			// If it does we continue to check transactions
 			// If it doesn't we set the phase to success and continue as nothing should be done
 			let periodCount = periodMap[planObj.period.toLowerCase()]
-			console.log("Period count", periodCount)
 			if(periodCount && days % periodCount != 0){
 				member._doc.phase = "success"
 				continue
