@@ -20,7 +20,7 @@ async function addHouse(data){
 	if(userObj)
 		return	{ status: 200, code: "ADDED_HOUSE" }
 
-	return { status: 500, code: "PROBLEM_ADDING_CARD" }
+	return { status: 500, code: "PROBLEM_ADDING_HOUSE" }
 }
 
 module.exports = addHouse
