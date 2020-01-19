@@ -2,6 +2,8 @@ const { createValidator } = require("lazy-validator")
 
 const guarantorValidator = createValidator("fullname.string, phone.number, house_address.string, type_of_employer.string, place_of_work.string, description_of_work.string, relationship.string")
 
+const userDb = require("../../data/db/user.db")
+
 async function addGuarantor(data){
 	const validationResult = guarantorValidator.parse(data)
 	if(validationResult.error)
@@ -19,7 +21,6 @@ async function addGuarantor(data){
 		return { status: 200, code: "ADDED_GUARANTOR" }
 
 	return { status: 500, code: "PROBLEM_ADDING_GUARANTOR" }
-
 }
 
 module.exports = addGuarantor
