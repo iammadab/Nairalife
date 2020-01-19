@@ -72,16 +72,16 @@ viewRouter.get("/start", cookieNotFound("/login"), verifyToken(), stageRouter("s
 })
 
 
-viewRouter.get("/residence", cookieNotFound("/login"), verifyToken(),  pageService.user, (req, res) => {
+viewRouter.get("/residence", cookieNotFound("/login"), verifyToken(), stageRouter("add_house"), pageService.user, (req, res) => {
 	res.render("residence", { title: "Place of Residence", ...req.body.pageData })
 })
 
-viewRouter.get("/guarantor", cookieNotFound("/login"), verifyToken(),  pageService.user, (req, res) => {
+viewRouter.get("/guarantor", cookieNotFound("/login"), verifyToken(), stageRouter("add_guarantor"), pageService.user, (req, res) => {
 	res.render("guarantor", { title: "Guarantor Information", ...req.body.pageData })
 })
 
 
-viewRouter.get("/docs", cookieNotFound("/login"), verifyToken(),  pageService.user, (req, res) => {
+viewRouter.get("/docs", cookieNotFound("/login"), verifyToken(), stageRouter("add_proof"), pageService.user, (req, res) => {
 	res.render("docs", { title: "Send Documents", ...req.body.pageData })
 })
 
