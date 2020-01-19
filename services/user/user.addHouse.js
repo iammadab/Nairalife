@@ -16,11 +16,14 @@ async function addHouse(data){
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
  
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "house", { address, landmark })
+	if(!userObj)
+		return	{ status: 200, code: "PROBLEM_ADDING_HOUSE" }
 
-	if(userObj)
-		return	{ status: 200, code: "ADDED_HOUSE" }
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "add_guarantor")
+	if(!userObj)
+		return { status: 200, code: "PROBLEM_UPDATING_STAGE" }
 
-	return { status: 500, code: "PROBLEM_ADDING_HOUSE" }
+	return { status: 200, code: "ADDED_HOUSE" }
 }
 
 module.exports = addHouse
