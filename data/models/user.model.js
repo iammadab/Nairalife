@@ -16,7 +16,10 @@ const userSchema = mongoose.Schema({
 	role: { type: String, default: "user", enum: ["user", "admin"] },
 
 	plan: { type: Object, default: {} },
-	payment_one: { type: Object, default: {} }
+	payment_one: { type: Object, default: {} },
+
+	home_info: { type: Object, default: {} },
+	guarantor: { type: Object, default: {} }
 
 	// Not listed
 	// plan : { total_amount, period, amount }
@@ -25,3 +28,21 @@ const userSchema = mongoose.Schema({
 const userModel = mongoose.model("User", userSchema)
 
 module.exports = userModel
+
+
+/*
+	house_info: {
+		address: String,
+		landmark: String
+	}
+
+	guarantor: {
+		fullname: String,
+		phone: Number,
+		house_address: String,
+		type_of_employer: String,
+		place_of_work: String,
+		description_of_work: String,
+		relationship: String
+	}
+*/

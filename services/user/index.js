@@ -9,6 +9,8 @@ const addBank = require("./user.addBank")
 const addCard = require("./user.addCard")
 const save = require("./user.save")
 const userPlan = require("./user.plan")
+const addHouse = require("./user.addHouse")
+const addGuarantor = require("./user.addGuarantor")
 
 let userService = {
 	createUser,
@@ -21,7 +23,9 @@ let userService = {
 	addBank,
 	addCard,
 	save,
-	userPlan
+	userPlan,
+	addHouse,
+	addGuarantor
 }
 
 module.exports = userService
