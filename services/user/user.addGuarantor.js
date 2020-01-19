@@ -17,13 +17,13 @@ async function addGuarantor(data){
 
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "guarantor", validData)
 	if(!userObj)
-		return { status: 200, code: "PROBLEM_ADDING_GUARANTOR" }
+		return { status: 500, code: "PROBLEM_ADDING_GUARANTOR" }
 
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "add_proof")
 	if(!userObj)
-		return { status: 200, code: "PROBLEM_UPDATING_STAGE" }
+		return { status: 500, code: "PROBLEM_UPDATING_STAGE" }
 
-	return { status: 500, code: "ADDED_GUARANTOR" }
+	return { status: 200, code: "ADDED_GUARANTOR" }
 }
 
 module.exports = addGuarantor
