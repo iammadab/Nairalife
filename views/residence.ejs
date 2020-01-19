@@ -17,16 +17,16 @@
 <h3>Place of Residence</h3>
 <p>Please tell us more about where you live in Lagos State</p>
 </div>
-<div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error preference-error" role="alert">
+<div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error residence-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
 </div>
 </div>
 <!--begin::Form-->
-<form class="kt-form login-form" action="" novalidate="novalidate">
+<form class="kt-form residence-form" action="" novalidate="novalidate">
 <div class="form-group">
-<textarea class="form-control" placeholder="Please enter your house address" name="add" style="height:95px" required="true">
+<textarea class="form-control" placeholder="Please enter your house address" name="address" style="height:95px" required="true">
 </textarea>
 </div>
 <div class="form-group">
@@ -39,8 +39,8 @@ By clicking on "Save Residence" you agree that the information you've entered is
 </div>
 <!--end::Action-->
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary login-button">
-<i class="la la-map-marker"></i><span class="login-text">Save Residence</span>
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary residence-submit">
+<i class="la la-map-marker"></i><span class="residence-text">Save Residence</span>
 </button>
 </div>
 </form>
@@ -64,3 +64,4 @@ Nairalife uses the highest levels of security to protect your details.
 <!-- end::Body -->
 </html>
 <script type="text/javascript" src="js/custom/script.js"></script>
+<script type="text/javascript" src="js/custom/residence.js"></script>
