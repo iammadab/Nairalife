@@ -25,7 +25,10 @@ function mapStageToPage(stage){
 		enter_info: "/about",
 		choose_plan: "/plan",
 		plan_approval: "/awaiting",
-		start_plan: "/start"
+		start_plan: "/start",
+		add_house: "/residence",
+		add_guarantor: "/guarantor",
+		add_proof: "/docs"
 	}
 	return map[stage]
 }
