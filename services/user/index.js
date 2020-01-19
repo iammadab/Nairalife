@@ -10,6 +10,7 @@ const addCard = require("./user.addCard")
 const save = require("./user.save")
 const userPlan = require("./user.plan")
 const addHouse = require("./user.addHouse")
+const addGuarantor = require("./user.addGuarantor")
 
 let userService = {
 	createUser,
@@ -23,7 +24,8 @@ let userService = {
 	addCard,
 	save,
 	userPlan,
-	addHouse
+	addHouse,
+	addGuarantor
 }
 
 module.exports = userService
