@@ -16,13 +16,13 @@ function submitGuarantor(event){
 	submitButton()
 
 	let nameMap = {
-		fullname: "fullname",
-		phone: "phone",
-		house_address: "house address",
-		type_of_employer: "type of employer", 
-		place_of_work: "place of work",
-		description_of_work: "description of work",
-		relationship: "relationship"
+		fullname: "enter your guarantor's fullname",
+		phone: "enter your guarantor's phone number",
+		house_address: "enter your guarantor's Lagos State house address",
+		type_of_employer: "enter your guarantor's type of employer", 
+		place_of_work: "enter your guarantor's place of work",
+		description_of_work: "enter the description of your guarantor's work",
+		relationship: "enter the nature of your relationship with your guarantor"
 	}
 
 	let guarantorDetails = extractForm(store.guarantorFormTag)
