@@ -12,6 +12,7 @@ const userTransaction = require("./page.userTransaction")
 const notifications = require("./page.notifications")
 const user = require("./page.user")
 const profile = require("./page.profile")
+const stat = require("./page.stat")
 
 const pageServices = {
 	dashboard,
@@ -27,7 +28,8 @@ const pageServices = {
 	userTransaction,
 	notifications,
 	user,
-	profile
+	profile,
+	stat
 }
 
 module.exports = pageServices

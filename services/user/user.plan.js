@@ -23,6 +23,16 @@ async function userPlan(data){
 	if(!userObj)
 		return { status: 403, code: "PROBLEM_UPDATING_STAGE" }
 
+	let paymentOneDetails = { amount: 1000, period: "daily" }
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "payment_one", paymentOneDetails)
+	if(!userObj)
+		return { status: 403, code: "PROBLEM_UPDATING_PAYMENT_ONE" }
+
+
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "status", "payment_one")
+	if(!userObj)
+		return { status: 403, code: "PROBLEM_UPDATING_STATUS" }
+
 	return { status: 200, code: "PLAN_UPDATED" }
 }
 

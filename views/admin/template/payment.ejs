@@ -4,21 +4,22 @@
 <table class="table">
 <thead>
 <tr>
+<th>No</th>
 <th>Member</th>
-<th>Reference</th>
 <th>Amount</th>
 <th>Date</th>
 <th>Status</th>
 </tr>
 </thead>
 <tbody>
-<% transactions.forEach(transaction => { %>
+<% transactions.forEach((transaction, i) => { %>
 <tr>
+<td><%= i + 1 %></td>
 <td><%= transaction.username %></td>
-<td><%= transaction.reference %></td>
 <td>&#8358;<%= transaction.amount %></td>
 <td><%= transaction._doc.created_at %></td>
-<td class="text-capitalize kt-font-success"><%= transaction.status %></td>
+<% let statusMap = { "success": "success", "pending": "warning", "failed": "danger" } %>
+<td class="text-capitalize kt-font-<%= statusMap[transaction.status] %>"><%= transaction.status %></td>
 </tr>
 <% }) %>
 </tbody>	

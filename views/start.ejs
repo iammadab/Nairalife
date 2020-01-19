@@ -34,12 +34,12 @@
 <div class="aboutn">
 <p class="kt-font-success">Stage 1:</p>
 <ol>
-<li>Pay &#8358;1,000 for 90 days for a total of &#8358;90,000</li>
+<li>Pay &#8358;<span data-format="comma"><%= user.payment_one.amount %></span> for 90 days for a total of &#8358;<span data-format="comma"><%= user.payment_one.amount * 90 %></span></li>
 <li>Get car on hire purchase with comprehensive insurance and registered plate number</li>
 </ol>
 <p class="kt-font-success">Stage 2:</p>
 <ol>
-<li>Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> <%= user.plan.period %> for a total of &#8358;1,910,000</li>
+<li>Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> <%= user.plan.period %> for a total of &#8358;<span data-format="comma"><%= user.plan.total_amount - (user.payment_one.amount * 90) %></span></li>
 <li>Nairalife automatically transfers ownership of the car to you after completing this stage</li>
 </ol>
 </div>
@@ -83,7 +83,7 @@ function payWithPaystack(event){
 	var handler = PaystackPop.setup({
 		key: 'pk_live_e689b8a7714dde9dd8a07c15c4a348568cb3dd4d',
 		email: '<%= user.email %>',
-		amount: 100000,
+		amount: "<%= user.payment_one.amount %>00",
 		currency: "NGN",
 		channels: ["card"],
 		metadata: {

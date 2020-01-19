@@ -3,16 +3,16 @@
 <table class="table kt-padding-0 kt-margin-0">
 <thead>
 <tr>
-<th>Reference</th>
+<th>No</th>
 <th>Amount</th>
 <th>Date</th>
 <th>Status</th>
 </tr>
 </thead>
 <tbody>
-<% higherPurchaseTransactions.forEach(transaction => { %>
+<% higherPurchaseTransactions.forEach((transaction, i) => { %>
 <tr>
-<td><%= transaction.reference %></td>
+<td><%= i + 1 %></td>
 <td>&#8358;<span data-format="comma"><%= transaction.amount %></span></td>
 <td><%= transaction._doc.created_at %></td>
 <td><%= transaction.status %></td>

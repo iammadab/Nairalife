@@ -24,30 +24,40 @@ async function save(data){
 	if(!userObj)
 		return { status: 403, code: "USER_NOT_FOUND" }
 
-	if(userObj.status != "autosave")
-		return { status: 403, code: "USER_NOT_IN_AUTOSAVE" }
+	if(!userObj.status)
+		return { status: 403, code: "USER_NOT_IN_HP" }
 
-	// A user only autosaves once per day, so when autosave is initiated,
+	// A user only pays once per day, so when payment is initiated,
 	// Get all the transactions of that user since midnight
 	// If there is any successful or pending, send error that the transaction has already started
 	let midnight = new Date((new Date()).setHours(0, 0, 0, 0))
-	let baseData = { user_id: userObj.user_id, type: "autosave" }
+	let baseData = { user_id: userObj.user_id, type: "higher_purchase" }
 	let successfulTransactions = await transactionDb.findWith({ ...baseData, status: "success", created_at: { $gte: midnight }})
 	let pendingTransactions = await transactionDb.findWith({ ...baseData, status: "pending", created_at: { $gte: midnight }})
+
+	console.log(successfulTransactions)
+	console.log(pendingTransactions)
 
 	if(successfulTransactions.length > 0 || pendingTransactions.length > 0)
 		return { status: 403, code: "TRANSACTION_ALREADY_STARTED" }
 
 
+	let paymentAmount
+	if(userObj.status == "payment_one")
+		paymentAmount = userObj.payment_one.amount
+	else if(userObj.status == "payment_two")
+		paymentAmount = userObj.plan.amount
 
+	console.log("Payment amount", paymentAmount)
 
-	let contributionAmount = userObj._doc.about.contribution_make
+	if(!paymentAmount)
+		return { status: 403, code: "USER_NOT_IN_HP"}
 	
 
 	// Charge the user based on the amount they said they want to contribute
 	let chargeResult = await charge({
 		user_id: validData.user_id,
-		amount: contributionAmount
+		amount: paymentAmount
 	})
 
 
@@ -56,17 +66,17 @@ async function save(data){
 	let userTransaction = await transactionDb.createTransaction({
 		username: userObj.fullname,
 		user_id: userObj.user_id,
-		amount: contributionAmount,
+		amount: paymentAmount,
 		reference: chargeResult.data.reference,
-		type: "autosave",
-		status: "pending",
+		type: "higher_purchase",
+		status: chargeResult.data.status == "failed" ? "failed" : "pending",
 		data: {
 			admin: adminObj ? adminObj.fullname : "Automatic",
 			admin_id: adminObj ? adminObj.user_id : 0
 		}
 	})	
 
-	return { status: 200, code: "AUTOSAVE_SUCCESSFUL" }
+	return { status: 200, code: "PAYMENT_SUCCESSFUL" }
 	
 }
 
