@@ -28,3 +28,21 @@ const userSchema = mongoose.Schema({
 const userModel = mongoose.model("User", userSchema)
 
 module.exports = userModel
+
+
+/*
+	house_info: {
+		address: String,
+		landmark: String
+	}
+
+	guarantor: {
+		fullname: String,
+		phone: Number,
+		house_address: String,
+		type_of_employer: String,
+		place_of_work: String,
+		description_of_work: String,
+		relationship: String
+	}
+*/
