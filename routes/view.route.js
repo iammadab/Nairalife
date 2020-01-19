@@ -72,6 +72,11 @@ viewRouter.get("/start", cookieNotFound("/login"), verifyToken(), stageRouter("s
 })
 
 
+viewRouter.get("/residence", cookieNotFound("/login"), verifyToken(), stageRouter(""), pageService.user, (req, res) => {
+	res.render("house", { title: "Place of Residence", ...req.body.pageData })
+})
+
+
 // User with header
 viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.dashboard, (req, res) => {
 	res.render("dashboard", { title: "Dashboard", link: "", ...req.body.pageData })
