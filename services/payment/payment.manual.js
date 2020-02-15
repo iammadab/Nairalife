@@ -24,7 +24,7 @@ async function manualPayment(data){
 
 	let transactionObj = await createTransaction(amount, reference, userObj)
 	if(transactionObj)
-		return { status: 200, code: "TRANSACTION_CREATED" }
+		return { status: 200, code: "TRANSACTION_CREATED", redirect_url: `transaction/${transactionObj._id}` }
 
 	return { status: 500, code: "PROBLEM_CREATING_TRANSACTION" }
 }

@@ -23,7 +23,7 @@ function makeManualPayment(event){
 
 	function handleResponse(response){
 		if(response.status == 200)
-			console.log("Done mehn")
+			redirect(response.redirect_url)
 		else if(response.code == "NEGATIVE_AMOUNT")
 			showAlert("pay-error", "Your amount cannot be negative")
 	}
