@@ -14,8 +14,8 @@
 <div class="kt-login__form">
 <% include formhead %>
 <div class="kt-login__title">
-<h3>Choose Plan</h3>
-<p>Please choose your higher purchase plan for our car</p>
+<h3>Select Vehicle</h3>
+<p>Please choose your preferred Toyota model</p>
 </div>
 <div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error plan-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
@@ -26,8 +26,19 @@ Invalid Username or Password
 <!--begin::Form-->
 <form class="kt-form plan-form" action="" novalidate="novalidate">
 
+
 <div class="form-group">
-<select class="custom-select bank-name" name="total_amount">
+<select class="custom-select" name="vmake">
+<option value="">Select Vehicle</option>
+<option value="Toyota Corolla">Toyota Corolla (2003-2006)</option>
+<option value="Toyota Camry">Toyota Camry (2003-2005)</option>
+<option value="Toyota Matrix">Toyota Matrix (2004-2006)</option>
+</select>
+</div>
+
+
+<div class="form-group">
+<select class="custom-select" name="total_amount">
 <option value="">Choose payment plan</option>
 <option value="2000000">2 million naira for 12 months</option>
 <option value="2500000">2.5 million naira for 20 months</option>
@@ -35,7 +46,7 @@ Invalid Username or Password
 </div>
 
 <div class="form-group">
-<select class="custom-select bank-name" name="period">
+<select class="custom-select" name="period">
 <option value="">Do you want to pay daily or weekly?</option>
 <option value="daily">Daily</option>
 <option value="weekly">Weekly</option>
@@ -50,14 +61,14 @@ Choose a plan above
 </div>
 </div>
 <span class="text-muted">
-<b><span class="kt-font-danger">*</span>Please note:</b> that you will have to pay at least 90,000 naira for 90 days before you can get our car on higher purchase and you can cancel your payment plan anytime.
+<b><span class="kt-font-danger">*</span>Please note:</b> that you will have to pay at least 90,000 naira <!-- for 90 days --> before you can get our car on higher purchase and you if you choose to cancel your payment, there's a 20% penalty fee.
 </span>
 
 
 
 <div class="kt-login__btn">
 <button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary choose-plan-button">
-<i class="la la-briefcase"></i><span class="preference-text">Choose Plan</span>
+<i class="la la-car"></i><span class="preference-text">Select Vehicle</span>
 </button>
 </div>
 </form>

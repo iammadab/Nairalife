@@ -1,75 +1,42 @@
-<div class="tab-pane active" id="kt_tabs_7_1" role="tabpanel">
+<div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-padding-10">
 <div class="kt-section__content table-responsive">
 <table class="table kt-margin-b-0">
+<thead>
+<tr>
+<th class="kt-font-bolder kt-font-success" colspan="2">Hire Purchase Summary</th>
+</tr>
+</thead>
 <tbody>
-<tr style="border-top:0">
-<td class="kt-font-bold" style="border-top:0">Full Name:</td>
-<td class="text-right text-capitalize" style="border-top:0">
-<%= user.about.title %> <%= user.fullname %>
-</td>
-</tr>
 <tr>
-<td class="kt-font-bold">Phone Number:</td>
-<td class="text-right">0<%= user.phone %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">Email Address:</td>
-<td class="text-right"><%= user.email %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">Bio:</td>
-<td class="text-right"><%= user.about.bio %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">Sex:</td>
-<td class="text-right text-capitalize"><%= user.about.sex %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">Relationship Status:</td>
-<td class="text-right text-capitalize"><%= user.about.relationship %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">Driving For:</td>
-<td class="text-right"><%= user.about.partner %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">Driving Conditions:</td>
-<td class="text-right"><%= user.about.work_description %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">Car Status:</td>
-<td class="text-right"><%= user.about.own_car %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">Monthly Earning:</td>
-<td class="text-right"><%= user.about.earning %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">HP Reason:</td>
-<td class="text-right"><%= user.about.reason %></td>
-</tr>
-<tr>
-<td class="kt-font-bold">HP Plan:</td>
+<td class="kt-font-bold">Plan:</td>
 <% let duration = user.plan.total_amount == 2000000 ? "for 12 months" : "for 20 months"%>
 <td class="text-right">&#8358;<span data-format="comma"><%= user.plan.total_amount %></span> <span><%= duration %></span></td>
 </tr>
 <tr>
-<td class="kt-font-bold">Joined Nairalife On:</td>
-<td class="text-right"><%= user.created_at %></td>
+<td class="kt-font-bold">Vehicle:</td>
+<td class="text-right"></td>
 </tr>
+<!-- <tr>
+<td class="kt-font-bold">Started:</td>
+<td class="text-right"></td>
+</tr> -->
 <tr>
-<td class="kt-font-bold">HP Total Payment:</td>
+<td class="kt-font-bold">Total Payment:</td>
 <td class="text-right">&#8358;<span data-format="comma"><%= totalPayment %></span></td>
 </tr>
 <tr>
-<td class="kt-font-bold">HP Remaining Payment:</td>
-<td class="text-right">&#8358;<span data-format="comma"><%= remainingPayment %></span></td>
+<td class="kt-font-bold">Current Payment:</td>
+<td class="text-right">&#8358;<span data-format="comma"><%= totalPayment %></span></td>
 </tr>
 <tr>
-<td class="kt-font-bold">HP Agreement Status:</td>
-<td class="text-right">Pending</td>
+<td class="kt-font-bold">Remaining Payment:</td>
+<td class="text-right">&#8358;<span data-format="comma"><%= remainingPayment %></span></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
+<!--end of kt-portlet-body-->
+</div>
+<!--end of kt-portlet-->
