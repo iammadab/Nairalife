@@ -9,7 +9,8 @@ const cardRouter = require("./card.route")
 const bvnRouter = require("./bvn.route")
 const adminRouter = require("./admin.route")
 const groupRouter = require("./group.route")
-const webhookRouter = require("./webhook.route.js")
+const webhookRouter = require("./webhook.route")
+const paymentRouter = require("./payment.route")
 
 appRouter.use("/auth", authRouter)
 appRouter.use("/otp", otpRouter)
@@ -20,5 +21,6 @@ appRouter.use("/bvn", bvnRouter)
 appRouter.use("/admin", adminRouter)
 appRouter.use("/group", groupRouter)
 appRouter.use("/webhook", webhookRouter)
+appRouter.use("/payment", paymentRouter)
 
 module.exports = appRouter
