@@ -100,6 +100,10 @@ viewRouter.get("/pay", cookieNotFound("/login"), verifyToken(), stageRouter("act
 	res.render("pay", { title: "Make Payment", link: "pay", ...req.body.pageData })
 })
 
+viewRouter.get("/transaction", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("transaction", { title: "#1266362", link: "transaction", ...req.body.pageData })
+})
+
 
 viewRouter.get("/settings", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.settings, (req, res) => {
 	res.render("settings", { title: "Account Settings", link: "settings", ...req.body.pageData })
