@@ -18,5 +18,13 @@ function makeManualPayment(event){
 	if(missingDetails.length > 0)
 		return showAlert("pay-error", "Sorry, you didn't enter an amount")
 
-	console.log(missingDetails)
+	return api("payment/manual", { amount: paymentDetails.amount, token: getToken() })
+					.then(handleResponse)
+
+	function handleResponse(response){
+		if(response.status == 200)
+			console.log("Done mehn")
+		else if(response.code == "NEGATIVE_AMOUNT")
+			showAlert("pay-error", "Your amount cannot be negative")
+	}
 }
