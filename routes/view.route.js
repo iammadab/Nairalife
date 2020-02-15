@@ -100,7 +100,7 @@ viewRouter.get("/pay", cookieNotFound("/login"), verifyToken(), stageRouter("act
 	res.render("pay", { title: "Make Payment", link: "pay", ...req.body.pageData })
 })
 
-viewRouter.get("/transaction/:transaction_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+viewRouter.get("/transaction/:transaction_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.transaction, (req, res) => {
 	res.render("transaction", { title: "#1266362", link: "transaction", ...req.body.pageData })
 })
 
