@@ -1847,12 +1847,11 @@ color: #000;
 .btn-secondary {
 background-color: transparent;
 border: 1px solid #e1e1e1;
-color: #000; }
+color: #000;
+}
 
 .btn-secondary:hover{
-color:#fff;
-border-color:#008000;
-background-color:#008000;	
+border: 2px solid #000;
 }
 
 /*.btn-brand {
@@ -1898,10 +1897,10 @@ border-color: #008000;
 color: #ffffff;
 }
 
-/*.btn-success:hover {
+.btn-success:hover {
 border-color:none;
 color: #ffffff;
-}*/
+}
 
 .btn-info {
 color: #fff;
@@ -3880,7 +3879,7 @@ border:2px solid #fff;
 }
 
 .kt-subheader__wrapper .btn-warning:hover{
-border:2px solid #ffb822;	
+border:2px solid #ffd700;	
 }
 
 
