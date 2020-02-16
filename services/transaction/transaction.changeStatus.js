@@ -15,6 +15,11 @@ async function changeStatus(data){
 	if(transactionUnique.status != 200)
 		return transactionUnique
 
+	let transactionObj = await transactionDb.appendDoc({ _id: id }, "status", status)
+	if(transactionObj)
+		return { status: 200, code: "TRANSACTION_UPDATED" }
+
+	return { status: 500, code: "PROBLEM_UPDATING_TRANSACTION" }
 }
 
 module.exports = changeStatus
