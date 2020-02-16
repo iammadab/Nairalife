@@ -12,6 +12,6 @@ transactionRouter.post(
 	authenticationService.validateAdmin, 
 	bodyResponder(transactionService.approve)
 )
-transactionRouter.post("/decline", bodyResponder(transactionService.decline))
+transactionRouter.post("/decline", authenticationService.verifyToken(), bodyResponder(transactionService.decline))
 
 module.exports = transactionRouter
