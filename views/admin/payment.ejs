@@ -70,11 +70,11 @@
 <% if(transaction.status == "pending") { %>
 <p class="kt-margin-b-30 text-center">
 
-<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-success kt-margin-t-10 admin-transaction-confirm">
+<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-success kt-margin-t-10 transaction-confirm">
 <i class="la la-edit"></i>Confirm Payment
 </a>
 
-<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 admin-transaction-cancel">
+<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 transaction-cancel">
 <i class="la la-slack"></i>Cancel Payment
 </a>
 </p>

@@ -1,6 +1,6 @@
 let store = {
-	cancelButton: document.querySelctor("transaction-cancel"),
-	confirmButton: document.querySelctor("transaction-confirm")
+	cancelButton: document.querySelector(".transaction-cancel"),
+	confirmButton: document.querySelector(".transaction-confirm")
 }
 
 ;(function attachEvent(){
