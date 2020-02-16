@@ -17,6 +17,9 @@ async function changeStatus(data){
 
 
 	let transactionObj = transactionUnique.transaction
+	if(transactionObj.status != "pending")
+		return { status: 403, code: "TRANSACTION_NOT_PENDING" }
+	
 	// This function behaves differently based on the data passed to it
 	// When an admin calls this function, we don't check to make sure they own the transaction
 	// If its not an admin, we make sure that the user owns the transaction they are trying to decline
