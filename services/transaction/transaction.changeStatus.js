@@ -15,7 +15,29 @@ async function changeStatus(data){
 	if(transactionUnique.status != 200)
 		return transactionUnique
 
-	let transactionObj = await transactionDb.appendDoc({ _id: id }, "status", status)
+
+	let transactionObj = transactionUnique.transaction
+	// This function behaves differently based on the data passed to it
+	// When an admin calls this function, we don't check to make sure they own the transaction
+	// If its not an admin, we make sure that the user owns the transaction they are trying to decline
+	
+	// if the "owner" field is set to true, it signifies that the initator is not an admin
+	if(data.owner){
+		if(!data.owner_id)
+			return { status: 403, code: "NO_OWNER_ID" }
+
+		if(transactionObj.user_id != data.owner_id)
+			return { status: 403, code: "INVALID_OWNER" }
+	}
+
+
+	// Only manual transactions can have their status changed
+	if(transactionObj.data.type != "manual")
+		return { status: 403, code: "NOT_MANUAL_TRANSACTION" }
+
+
+	// If we get here, then all is good :)
+	transactionObj = await transactionDb.appendDoc({ _id: id }, "status", status)
 	if(transactionObj)
 		return { status: 200, code: "TRANSACTION_UPDATED" }
 
