@@ -6,7 +6,7 @@
 <div class="kt-portlet btopzero">
 
 
-<div class="kt-portlet__body kt-padding-10">
+<div class="kt-portlet__body kt--padding-10">
 
 <div class="kt-section__content table-responsive">
 <table class="table kt-padding-0 kt-margin-0 kt-margin-b-10">
@@ -23,7 +23,6 @@
 </tr>
 </thead>
 
-<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
 <tbody>
 <% allTransactions.forEach((transaction, i) => { %> 
 <tr>
@@ -31,6 +30,7 @@
 <td><%= transaction.reference %></td>
 <td>&#8358;<%= transaction.amount %></td>
 <td><%= transaction.created_at %></td>
+<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
 <% let color = stateMap[transaction.status] %>
 <td class="text-capitalize kt-font-<%= color %>"><%= transaction.status %></td>
 <td>
