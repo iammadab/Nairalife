@@ -40,7 +40,9 @@
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">STATUS</span>
-<span class="kt-invoice__text kt-font-info text-capitalize"><%= transaction.status %></span>
+<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
+<% let color = stateMap[transaction.status] %>
+<span class="kt-invoice__text kt-font-<%= color %> text-capitalize"><%= transaction.status %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">AMOUNT</span>
@@ -52,29 +54,31 @@
 <div class="kt-invoice__items">
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">FULL NAME</span>
-<span class="kt-invoice__text">Akin Wumi</span>
+<span class="kt-invoice__text"><%= transactionOwner.fullname %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">PHONE NO</span>
-<span class="kt-invoice__text">08121636121</span>
+<span class="kt-invoice__text">0<%= transactionOwner.phone %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">EMAIL</span>
-<span class="kt-invoice__text">akinwumi@tutanota.com</span>
+<span class="kt-invoice__text"><%= transactionOwner.email %></span>
 </div>
 </div>
 
 
+<% if(transaction.status == "pending") { %>
 <p class="kt-margin-b-30 text-center">
 
-<a href="#" class="btn btn-taller btn-wide btn-success kt-margin-t-10 admin-transaction-confirm">
+<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-success kt-margin-t-10 admin-transaction-confirm">
 <i class="la la-edit"></i>Confirm Payment
 </a>
 
-<a href="#" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 admin-transaction-cancel">
+<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 admin-transaction-cancel">
 <i class="la la-slack"></i>Cancel Payment
 </a>
 </p>
+<% } %>
 
 </div>
 </div>
