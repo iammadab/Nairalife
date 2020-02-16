@@ -9,6 +9,7 @@
 <th>Amount</th>
 <th>Date</th>
 <th>Status</th>
+<th></th>
 </tr>
 </thead>
 <tbody>
@@ -20,6 +21,11 @@
 <td><%= transaction._doc.created_at %></td>
 <% let statusMap = { "success": "success", "pending": "warning", "failed": "danger" } %>
 <td class="text-capitalize kt-font-<%= statusMap[transaction.status] %>"><%= transaction.status %></td>
+<td>
+	<% if(transaction.data.type == "manual") { %>
+	<a href="/admin/payment/<%= transaction._id %>" class="btn btn-secondary btn-sm pending-button">View</a>
+	<% } %>
+</td>
 </tr>
 <% }) %>
 </tbody>	

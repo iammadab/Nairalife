@@ -8,6 +8,11 @@ const paymentService = require("../services/payment")
 const authenticationService = require("../services/authentication")
 
 adminRouter.post("/login", bodyResponder(adminService.loginAdmin))
-adminRouter.post("/charge", bodyResponder(paymentService.charge))
+adminRouter.post(
+	"/charge", 
+	authenticationService.verifyToken("atoken"),
+	authenticationService.validateAdmin,
+	bodyResponder(paymentService.charge)
+)
 
 module.exports = adminRouter

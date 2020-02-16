@@ -16,6 +16,7 @@
 	addEvent
 	api
 	redirect
+	reload
 	getCounter
 	setValue
 	getToken
@@ -167,6 +168,10 @@ function api(resourcePath, data){
 
 function redirect(url){
 	window.location.href = url
+}
+
+function reload(){
+	redirect(window.location.href)
 }
 
 function getCounter(seconds, cb, endcb){
