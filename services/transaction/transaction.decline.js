@@ -3,6 +3,7 @@ const { createValidator } = require("lazy-validator")
 const transactionDeclineValidator = createValidator("transaction_id")
 
 const userDb = require("../../data/db/user.db")
+const changeStatus = require("./transaction.changeStatus")
 
 async function declineTransaction(data){
 	let validationResult = transactionDeclineValidator.parse(data)

@@ -2,7 +2,6 @@ const { createValidator } = require("lazy-validator")
 
 const transactionApproveValidator = createValidator("transaction_id")
 
-const transactionDb = require("../../data/db/transaction.db")
 const changeStatus = require("./transaction.changeStatus")
 
 async function approveTransaction(data){
@@ -16,7 +15,7 @@ async function approveTransaction(data){
 		id: transaction_id,
 		status: "success"
 	})
-	
+
 	if(changeStatusResult.status != 200)
 		return changeStatusResult
 
