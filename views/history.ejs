@@ -23,7 +23,7 @@
 </tr>
 </thead>
 
-
+<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
 <tbody>
 <% allTransactions.forEach((transaction, i) => { %> 
 <tr>
@@ -31,7 +31,8 @@
 <td><%= transaction.reference %></td>
 <td>&#8358;<%= transaction.amount %></td>
 <td><%= transaction.created_at %></td>
-<td class="text-capitalize kt-font-success"><%= transaction.status %></td>
+<% let color = stateMap[transaction.status] %>
+<td class="text-capitalize kt-font-<%= color %>"><%= transaction.status %></td>
 <td>
 	<% if(transaction.data.type == "manual") { %>
 	<a href="/transaction/<%= transaction._id %>" class="btn btn-secondary btn-sm pending-button">View</a>
