@@ -16,6 +16,6 @@ function cancelTransaction(event){
 
 	function handleResponse(response){
 		if(response.status == 200)
-			redirect(window.location.href)
+			reload()
 	}
 }
