@@ -40,7 +40,9 @@
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">STATUS</span>
-<span class="kt-invoice__text kt-font-info text-capitalize"><%= transaction.status %></span>
+<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
+<% let color = stateMap[transaction.status] %>
+<span class="kt-invoice__text kt-font-<%= color %> text-capitalize"><%= transaction.status %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">AMOUNT</span>
@@ -64,10 +66,11 @@
 </div>
 </div>
 
-
+<% if(transaction.status == "pending") { %>
 <p class="kt-margin-b-30 text-center">
 <a href="#" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 admin-transaction-cancel"><i class="la la-slack"></i>Cancel Payment</a>
 </p>
+<% } %>
 
 </div>
 </div>
