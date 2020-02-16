@@ -32,19 +32,19 @@
 <div class="kt-invoice__items">
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">REFERENCE NO</span>
-<span class="kt-invoice__text">#17263552</span>
+<span class="kt-invoice__text"><%= transaction.reference %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">DATE</span>
-<span class="kt-invoice__text">15-02-2020</span>
+<span class="kt-invoice__text"><%= transaction.created_at %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">STATUS</span>
-<span class="kt-invoice__text kt-font-info text-capitalize">pending</span>
+<span class="kt-invoice__text kt-font-info text-capitalize"><%= transaction.status %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">AMOUNT</span>
-<span class="kt-invoice__text">&#8358;40,000</span>
+<span class="kt-invoice__text">&#8358;<%= transaction.amount %></span>
 </div>
 </div>
 

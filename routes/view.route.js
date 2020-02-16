@@ -132,8 +132,8 @@ viewRouter.get("/admin/payments", cookieNotFound("/admin/login", "atoken"), veri
 	res.render("admin/payments", {title: "Nairalife Payments", link: "payments", ...req.body.pageData })
 })
 
-viewRouter.get("/admin/payment", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transactions, (req, res) => {
-	res.render("admin/payment", {title: "#191826552", link: "payment", ...req.body.pageData })
+viewRouter.get("/admin/payment/:transaction_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transaction, (req, res) => {
+	res.render("admin/payment", {title: "Transaction", link: "payment", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.members, (req, res) => {
