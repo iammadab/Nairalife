@@ -68,7 +68,7 @@
 
 <% if(transaction.status == "pending") { %>
 <p class="kt-margin-b-30 text-center">
-<a href="#" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 admin-transaction-cancel"><i class="la la-slack"></i>Cancel Payment</a>
+<a href="#" data-transaction_id="<%= transaction._id %> class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 transaction-cancel"><i class="la la-slack"></i>Cancel Payment</a>
 </p>
 <% } %>
 
