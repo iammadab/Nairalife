@@ -19,7 +19,7 @@
 <td><%= transaction.username %></td>
 <td>&#8358;<%= transaction.amount %></td>
 <td><%= transaction._doc.created_at %></td>
-<% let statusMap = { "success": "success", "pending": "warning", "failed": "danger" } %>
+<% let statusMap = { "success": "success", "pending": "info", "failed": "danger" } %>
 <td class="text-capitalize kt-font-<%= statusMap[transaction.status] %>"><%= transaction.status %></td>
 <td>
 	<% if(transaction.data.type == "manual") { %>

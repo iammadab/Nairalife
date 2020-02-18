@@ -8,8 +8,12 @@ let store = {
 	addEvent([store.confirmButton], "click", confirmTransaction)
 })()
 
+let cancelButton = createButton(".cancel-text", "Cancel Payment", "Cancelling...")
+let confirmButton = createButton(".confirm-text", "Confirm Payment", "Confirming...")
+
 function cancelTransaction(event){
 	event.preventDefault()
+	cancelButton()
 	let transaction_id = store.cancelButton.dataset.transaction_id
 
 	return api("transaction/decline", { transaction_id: transaction_id, token: getToken("atoken") })
@@ -18,6 +22,7 @@ function cancelTransaction(event){
 
 function confirmTransaction(event){
 	event.preventDefault()
+	confirmButton()
 	let transaction_id = store.confirmButton.dataset.transaction_id
 
 	return api("transaction/approve", { transaction_id: transaction_id, atoken: getToken("atoken")})
@@ -26,5 +31,11 @@ function confirmTransaction(event){
 
 function handleResponse(response){
 	if(response.status == 200)
-		reload()
+		return reload()
+	disableButtons()
+}
+
+function disableButtons(){
+	cancelButton("normal")
+	confirmButton("normal")
 }

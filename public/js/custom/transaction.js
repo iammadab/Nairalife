@@ -6,8 +6,11 @@ let store = {
 	addEvent([store.cancelButton], "click", cancelTransaction)
 })()
 
+let cancelButton = createButton(".cancel-text", "Cancel Payment", "Cancelling...")
+
 function cancelTransaction(event){
 	event.preventDefault()
+	cancelButton()
 
 	let transaction_id = store.cancelButton.dataset.transaction_id
 
@@ -16,6 +19,7 @@ function cancelTransaction(event){
 
 	function handleResponse(response){
 		if(response.status == 200)
-			reload()
+			return reload()
+		cancelButton("normal")
 	}
 }
