@@ -28,7 +28,7 @@ Invalid Username or Password
 
 
 <div class="form-group">
-<select class="custom-select" name="vmake">
+<select class="custom-select car-select" name="vmake">
 <option value="">Select Vehicle</option>
 <% for(let i = 0; i < cars.length; i++){ %> 
 	<option value="<%= cars[i].id %>"><%= cars[i].name %></option>
@@ -67,8 +67,8 @@ Choose a plan above
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary choose-plan-button">
-<i class="la la-car"></i><span class="preference-text">Select Vehicle</span>
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary select-car-button">
+<i class="la la-car"></i><span class="select-car-text">Select Car</span>
 </button>
 </div>
 </form>
