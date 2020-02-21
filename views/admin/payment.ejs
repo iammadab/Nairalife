@@ -22,7 +22,7 @@
 </a>
 </div>
 <span class="kt-invoice__desc">
-<h1>#17263552</h1>
+<h1>#<%= transaction.reference %></h1>
 <span>Block 6, Plot H, Journalist Estate Phase 2</span>
 <span>Lagos-Ibadan Express Way, Arepo, Ogun State</span>
 <span><b>nairalife@tutanota.com</b></span>
@@ -32,19 +32,21 @@
 <div class="kt-invoice__items">
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">REFERENCE NO</span>
-<span class="kt-invoice__text">#17263552</span>
+<span class="kt-invoice__text"><%= transaction.reference %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">DATE</span>
-<span class="kt-invoice__text">15-02-2020</span>
+<span class="kt-invoice__text"><%= transaction.created_at %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">STATUS</span>
-<span class="kt-invoice__text kt-font-info text-capitalize">pending</span>
+<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
+<% let color = stateMap[transaction.status] %>
+<span class="kt-invoice__text kt-font-<%= color %> text-capitalize"><%= transaction.status %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">AMOUNT</span>
-<span class="kt-invoice__text">&#8358;40,000</span>
+<span class="kt-invoice__text" data-format="comma">&#8358;<%= transaction.amount %></span>
 </div>
 </div>
 
@@ -52,29 +54,31 @@
 <div class="kt-invoice__items">
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">FULL NAME</span>
-<span class="kt-invoice__text">Akin Wumi</span>
+<span class="kt-invoice__text"><%= transactionOwner.fullname %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">PHONE NO</span>
-<span class="kt-invoice__text">08121636121</span>
+<span class="kt-invoice__text">0<%= transactionOwner.phone %></span>
 </div>
 <div class="kt-invoice__item">
 <span class="kt-invoice__subtitle">EMAIL</span>
-<span class="kt-invoice__text">akinwumi@tutanota.com</span>
+<span class="kt-invoice__text"><%= transactionOwner.email %></span>
 </div>
 </div>
 
 
+<% if(transaction.status == "pending") { %>
 <p class="kt-margin-b-30 text-center">
 
-<a href="#" class="btn btn-taller btn-wide btn-success kt-margin-t-10 admin-transaction-confirm">
-<i class="la la-edit"></i>Confirm Payment
+<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-success kt-margin-t-10 transaction-confirm">
+<i class="la la-edit"></i><span class="confirm-text">Confirm Payment</span>
 </a>
 
-<a href="#" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 admin-transaction-cancel">
-<i class="la la-slack"></i>Cancel Payment
+<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 transaction-cancel">
+<i class="la la-slack"></i><span class="cancel-text">Cancel Payment</span>
 </a>
 </p>
+<% } %>
 
 </div>
 </div>
@@ -88,7 +92,8 @@
 </div>
 <!--end of kt-portlet-->
 
-
+<script src="/js/custom/script.js"></script>
+<script src="/js/custom/admin/payment.js"></script>
 
 
 

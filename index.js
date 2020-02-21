@@ -46,3 +46,17 @@ app.use((req, res) => {
 app.listen(PORT, () => {
 	console.log(`Application listening at port ${PORT}`)
 })
+
+// Manual transactions
+// const transactionDb = require("./data/db/transaction.db")
+// transactionDb.createTransaction({
+// 	username: "Tobi Makanju",
+// 	user_id: 937833,
+// 	amount: -24000,
+// 	reference: "VTxBV82[]j?0hNa6",
+// 	type: "higher_purchase",
+// 	status: "success",
+// 	data: {
+// 		type: "refund"
+// 	}
+// }).then(console.log)

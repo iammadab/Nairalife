@@ -64,9 +64,8 @@ viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("profile",{ title: "Add Profile", ...req.body.pageData })
 })
 
-
-viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), stageRouter("choose_plan"), (req, res) => {
-	res.render("plan", { title: "Choose Plan"})
+viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), stageRouter("choose_plan"), pageService.cars, (req, res) => {
+	res.render("plan", { title: "Choose Plan", ...req.body.pageData })
 })
 
 viewRouter.get("/awaiting", cookieNotFound("/login"), verifyToken(), stageRouter("plan_approval"), (req, res) => {
@@ -106,8 +105,8 @@ viewRouter.get("/pay", cookieNotFound("/login"), verifyToken(), stageRouter("act
 	res.render("pay", { title: "Make Payment", link: "pay", ...req.body.pageData })
 })
 
-viewRouter.get("/transaction", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
-	res.render("transaction", { title: "#1266362", link: "transaction", ...req.body.pageData })
+viewRouter.get("/transaction/:transaction_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.transaction, (req, res) => {
+	res.render("transaction", { title: "Transaction", link: "", ...req.body.pageData })
 })
 
 
@@ -138,8 +137,8 @@ viewRouter.get("/admin/payments", cookieNotFound("/admin/login", "atoken"), veri
 	res.render("admin/payments", {title: "Nairalife Payments", link: "payments", ...req.body.pageData })
 })
 
-viewRouter.get("/admin/payment", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transactions, (req, res) => {
-	res.render("admin/payment", {title: "#191826552", link: "payment", ...req.body.pageData })
+viewRouter.get("/admin/payment/:transaction_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transaction, (req, res) => {
+	res.render("admin/payment", {title: "Transaction", link: "payment", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.members, (req, res) => {

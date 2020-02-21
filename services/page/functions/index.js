@@ -10,6 +10,7 @@ const createDate = require("./createDate")
 const fetchTransactions = require("./fetchTransactions")
 const fetchPoints = require("./fetchPoints")
 const fetchNotifications = require("./fetchNotifications")
+const fetchCars = require("./fetchCars")
 
 const pageFunctions = {
 	fetchUser,
@@ -23,7 +24,8 @@ const pageFunctions = {
 	createDate,
 	fetchTransactions,
 	fetchPoints,
-	fetchNotifications
+	fetchNotifications,
+	fetchCars
 }
 
 module.exports = pageFunctions
