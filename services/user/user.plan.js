@@ -23,7 +23,7 @@ async function userPlan(data){
 	if(!userObj)
 		return { status: 403, code: "PROBLEM_UPDATING_PLAN" }
 
-	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "plan_approval")
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "start_plan")
 	if(!userObj)
 		return { status: 403, code: "PROBLEM_UPDATING_STAGE" }
 
