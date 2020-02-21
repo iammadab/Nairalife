@@ -37,5 +37,5 @@ function displayData(event){
 	if(!store.carSelect.value)
 		store.displayText.innerHTML = "Choose a plan above"
 	else
-		store.displayText.innerHTML = "&#8358;2,600,000 for 2 years"
+		store.displayText.innerHTML = "You will pay a hire purchase price of &#8358;2,600,000 for 2 years and service charge of &#8358;200,000 yearly"
 }

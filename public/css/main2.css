@@ -4910,7 +4910,9 @@ color:#008000;
 margin:0.5rem 0 0;
 font-size: 1.3rem;
 line-height: 1.8em;
-color:#333;	
+color:#333;
+font-weight: 300;
+text-align:left;
 }
 #user-menu-id.show-menu{
 	position: absolute!important;

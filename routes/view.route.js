@@ -37,6 +37,9 @@ viewRouter.get("/terms", (req, res) => {
 	res.render("terms",{ title: "Terms Of Service"})
 })
 
+viewRouter.get("/agreement", (req, res) => {
+	res.render("agreement",{ title: "Nairalife HP Agreement"})
+})
 
 
 
@@ -65,7 +68,7 @@ viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter(
 })
 
 viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), stageRouter("choose_plan"), pageService.cars, (req, res) => {
-	res.render("plan", { title: "Choose Plan", ...req.body.pageData })
+	res.render("car", { title: "Select A Car", ...req.body.pageData })
 })
 
 viewRouter.get("/awaiting", cookieNotFound("/login"), verifyToken(), stageRouter("plan_approval"), (req, res) => {
@@ -73,7 +76,7 @@ viewRouter.get("/awaiting", cookieNotFound("/login"), verifyToken(), stageRouter
 })
 
 viewRouter.get("/start", cookieNotFound("/login"), verifyToken(), stageRouter("start_plan"), pageService.user, (req, res) => {
-	res.render("start", { title: "Start HP Plan", ...req.body.pageData })
+	res.render("start", { title: "Start HP", ...req.body.pageData })
 })
 
 

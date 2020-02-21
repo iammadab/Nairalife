@@ -26,28 +26,160 @@
 <div class="kt-login__form">
 <% include formhead %>
 <div class="kt-login__title">
-<h3>Hire Purchase Plan</h3>
-<h4>Start paying for your car little by little</h4>
+<h3>Start Hire Purchase</h3>
+<h4>pay for your car little by little</h4>
 </div>
+
 
 
 <div class="aboutn">
-<p class="kt-font-success">Stage 1:</p>
-<ol>
-<li>Pay &#8358;<span data-format="comma"><%= user.payment_one.amount %></span> for 90 days for a total of &#8358;<span data-format="comma"><%= user.payment_one.amount * 90 %></span></li>
-<li>Get car on hire purchase with comprehensive insurance and registered plate number</li>
-</ol>
-<p class="kt-font-success">Stage 2:</p>
-<ol>
-<li>Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> <%= user.plan.period %> for a total of &#8358;<span data-format="comma"><%= user.plan.total_amount - (user.payment_one.amount * 90) %></span></li>
-<li>Nairalife automatically transfers ownership of the car to you after completing this stage</li>
-</ol>
+
+<p>To complete your hire purchase plan with Nairalife, you have to complete these four stages:</p>
+
+
+<!--begin::Divider-->
+<div class="kt-login__divider">
+<div class="kt-divider">
+<span></span>
+<span>1st Stage</span>
+<span></span>
+</div>
+</div>
+<!--end::Divider-->
+
+<p>
+Pay a minimum of &#8358;<span data-format="comma"><%= user.payment_one.amount %></span> for up to 90 days.
+If you don't want to wait for 90 days, you can add more money to your account manually
+</p>
+
+
+<!--begin::Divider-->
+<div class="kt-login__divider">
+<div class="kt-divider">
+<span></span>
+<span>2nd Stage</span>
+<span></span>
+</div>
+</div>
+<!--end::Divider-->
+<p>
+Provide a credible guarantor and get a Toyota Corolla (2003-2006) car on hire purchase with comprehensive insurance and registered with Lagos state license plate
+from Nairalife
+</p>
+
+<!-- <p><b>Please note that we can terminate your agreement with us before getting the car at anytime and return your payment to you for many reasons. For more information, <a href="#">click here</a></b></p> -->
+
+
+<!--begin::Divider-->
+<div class="kt-login__divider">
+<div class="kt-divider">
+<span></span>
+<span>3rd Stage</span>
+<span></span>
+</div>
+</div>
+<!--end::Divider-->
+
+
+<p>
+Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> <!-- <%= user.plan.period %> --> for 104 weeks a total of 
+&#8358;<span data-format="comma"><%= user.plan.total_amount - (user.payment_one.amount * 90) %>
+</span>. This include the &#8358;200,000 yearly service charges
+</p>
+
+
+
+<!--begin::Divider-->
+<div class="kt-login__divider">
+<div class="kt-divider">
+<span></span>
+<span>4th Stage</span>
+<span></span>
+</div>
+</div>
+<!--end::Divider-->
+
+<p>We transfer ownership of the car to you after completing payment through a change of ownership agreement</p>
+
 </div>
 
 
+
+<!--begin::Divider-->
+<div class="kt-login__divider">
+<div class="kt-divider">
+<span></span>
+<span>Payment Summary</span>
+<span></span>
+</div>
+</div>
+<!--end::Divider-->
+
+<div class="aboutn">
+<p>The breakdown of your total payment in 2 years:</p>
+</div>
+
+<div class="kt-section__content table-responsive kt-margin-t-10">
+<table class="table kt-margin-b-0">
+<thead>
+<tr>
+<th class="kt-font-bolder kt-font-success">Description</th>
+<th class="kt-font-bolder kt-font-success">Amount</th>
+<th class="kt-font-bolder kt-font-success">Period</th>	
+</tr>
+</thead>
+<tbody>	
+<tr>
+<td>Hire Purchase Price</td>	
+<td>&#8358;2,600,000</td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>Membership Fee</td>	
+<td><span>&#8358;</span>130,000</td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>Insurance</td>	
+<td>&#8358;120,000</td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>License Plate</td>	
+<td>&#8358;50,000</td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>Car Tracking</td>	
+<td>&#8358;40,000</td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>Legal Fees</td>	
+<td>&#8358;60,000</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>&#8358;3,000,000</td>	
+<td>2 Years</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="border-dash" style="padding:5px 0 0; margin:0 0 20px;"></p>
+
+
+<!--begin::Action-->
+<div class="kt-login__actions kt-margin-t-30">
+By clicking on "Start Payment" you have read <br>
+and agree with our <a href="/agreement" class="kt-link kt-login__signup-link">Hire Purchase Agreement</a>
+</div>
+<!--end::Action-->
+
 <div class="kt-login__btn kt-margin-t-20">
 <button  class="btn btn-primary btn-pill kt-login__btn-primary" onclick="payWithPaystack()">
-<i class="la la-home"></i>Start Payment Now
+<i class="la la-slack"></i>Start Payment
 </button>
 </div>
 
@@ -56,7 +188,7 @@
 <div class="kt-login__divider kt-margin-t-30">
 <div class="kt-divider">
 <span></span>
-<span>OR</span>
+<!-- <span>OR</span> -->
 <span></span>
 </div>
 </div>
@@ -64,7 +196,7 @@
 
 <!--begin::Options-->
 <div class="kt-login__bottom">
-For more information call us on <a href="tel:08127596979">08127596979</a>
+For more information call or message us on whatsapp us on <a href="tel:08127596979">08127596979</a>
 </div>
 <!--end::Options-->
 
