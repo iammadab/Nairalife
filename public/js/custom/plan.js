@@ -1,11 +1,13 @@
 let store = {
 	selectCarButton: document.querySelector(".select-car-button"),
-	carSelect: document.querySelector(".car-select")
+	carSelect: document.querySelector(".car-select"),
+	displayText: document.querySelector(".plan-alert .alert-text")
 }
 
 ;(function attachEvent(){
 	addEvent([store.selectCarButton], "click", submitCar)
 	addEvent([store.carSelect], "focus,input", () => hideAlert("plan-error"))
+	addEvent([store.carSelect], "input", displayData)
 })()
 
 const selectButton = createButton(".select-car-text", "Select Car", "Selecting...")
@@ -28,4 +30,12 @@ function submitCar(event){
 			return reload()
 		selectButton("normal")
 	}
+}
+
+function displayData(event){
+	console.log(store.carSelect.value)
+	if(!store.carSelect.value)
+		store.displayText.innerHTML = "Choose a plan above"
+	else
+		store.displayText.innerHTML = "&#8358;2,600,000 for 2 years"
 }
