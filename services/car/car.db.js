@@ -13,7 +13,7 @@ let carData = [
 		period: 24
 	},
 	{
-		id: 3
+		id: 3,
 		name: "Toyota Matrix (2004 - 2006)",
 		total_amount: 2600000,
 		period: 24
