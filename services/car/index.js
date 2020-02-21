@@ -1,7 +1,9 @@
 const fetchAll = require("./car.fetchAll")
+const fetchCar = require("./car.fetch")
 
 const carServices = {
-	fetchAll
+	fetchAll,
+	fetchCar
 }
 
 module.exports = carServices
