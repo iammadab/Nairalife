@@ -58,8 +58,8 @@ viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("e
 	res.render("about",{ title: "Welcome", ...req.body.pageData })
 })
 
-
-viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), stageRouter("choose_plan"), (req, res) => {
+// The stage router should filter for "choose_plan"
+viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), stageRouter("active"), (req, res) => {
 	res.render("plan", { title: "Choose Plan"})
 })
 
