@@ -28,16 +28,16 @@ Invalid Username or Password
 
 
 <div class="form-group">
-<select class="custom-select" name="vmake">
+<select class="custom-select car-select" name="vmake">
 <option value="">Select Vehicle</option>
-<option value="Toyota Corolla">Toyota Corolla (2003-2006)</option>
-<option value="Toyota Camry">Toyota Camry (2003-2005)</option>
-<option value="Toyota Matrix">Toyota Matrix (2004-2006)</option>
+<% for(let i = 0; i < cars.length; i++){ %> 
+	<option value="<%= cars[i].id %>"><%= cars[i].name %></option>
+<% } %>
 </select>
 </div>
 
 
-<div class="form-group">
+<!-- <div class="form-group">
 <select class="custom-select" name="total_amount">
 <option value="">Choose payment plan</option>
 <option value="2000000">2 million naira for 12 months</option>
@@ -51,7 +51,7 @@ Invalid Username or Password
 <option value="daily">Daily</option>
 <option value="weekly">Weekly</option>
 </select>
-</div>
+</div> -->
 
 <div class="alert kt-margin-t-20 kt-padding-20 kt-margin-b-5 plan-alert" role="alert" style="border:1px solid #e1e1e1;">
 <div class="alert-text">
@@ -67,8 +67,8 @@ Choose a plan above
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary choose-plan-button">
-<i class="la la-car"></i><span class="preference-text">Select Vehicle</span>
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary select-car-button">
+<i class="la la-car"></i><span class="select-car-text">Select Car</span>
 </button>
 </div>
 </form>

@@ -1,5 +1,6 @@
 const { createValidator } = require("lazy-validator")
 
+// Period - daily, weekly, monthly
 const userPlanValidator = createValidator("total_amount.number, period.string, amount.number")
 
 const userDb = require("../../data/db/user.db")
@@ -14,6 +15,9 @@ async function userPlan(data){
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!userObj)
 		return { status: 403, code: "USER_NOT_FOUND" }
+
+	if(userObj.stage != "choose_plan")
+		return { status: 403, code: "INVALID_STAGE" }
 
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "plan", validData)
 	if(!userObj)

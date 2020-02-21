@@ -58,9 +58,8 @@ viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("e
 	res.render("about",{ title: "Welcome", ...req.body.pageData })
 })
 
-
-viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), stageRouter("choose_plan"), (req, res) => {
-	res.render("plan", { title: "Choose Plan"})
+viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), stageRouter("choose_plan"), pageService.cars, (req, res) => {
+	res.render("plan", { title: "Choose Plan", ...req.body.pageData })
 })
 
 viewRouter.get("/awaiting", cookieNotFound("/login"), verifyToken(), stageRouter("plan_approval"), (req, res) => {

@@ -11,6 +11,7 @@ const save = require("./user.save")
 const userPlan = require("./user.plan")
 const addHouse = require("./user.addHouse")
 const addGuarantor = require("./user.addGuarantor")
+const selectCar = require("./user.selectCar")
 
 let userService = {
 	createUser,
@@ -25,7 +26,8 @@ let userService = {
 	save,
 	userPlan,
 	addHouse,
-	addGuarantor
+	addGuarantor,
+	selectCar
 }
 
 module.exports = userService
