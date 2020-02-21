@@ -17,5 +17,6 @@ userRouter.post("/withdraw", authenticationService.verifyToken(), bodyResponder(
 userRouter.post("/save", authenticationService.verifyToken(), authenticationService.validateAdmin, bodyResponder(userService.save))
 userRouter.post("/house", authenticationService.verifyToken(), bodyResponder(userService.addHouse))
 userRouter.post("/guarantor", authenticationService.verifyToken(), bodyResponder(userService.addGuarantor))
+userROuter.post("/car", authenticationService.verifyToken(), bodyResponder(userService.selectCar))
 
 module.exports = userRouter
