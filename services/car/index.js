@@ -1,5 +1,5 @@
 const fetchAll = require("./car.fetchAll")
-const fetchCar = require("./car.fetch")
+const fetchCar = require("./car.fetchCar")
 
 const carServices = {
 	fetchAll,
