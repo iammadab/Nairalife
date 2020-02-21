@@ -1,5 +1,5 @@
 // Temporary db to contain all cars
-let carsDb = [
+let carData = [
 	{
 		name: "Toyota Corrola (2003 - 2006)",
 		total_amount: 2600000,
@@ -17,4 +17,4 @@ let carsDb = [
 	}
 ]
 
-module.exports = carsDb
+module.exports = carData
