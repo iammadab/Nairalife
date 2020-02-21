@@ -11,15 +11,21 @@ const {
 const pageService = require("../services/page")
 
 viewRouter.get("/", cookieFound("/home"), (req, res) => {
-	res.render("index",{ title: "Thrive With Nairalife"})
+	res.render("index",{ title: "Nairalife HP"})
 })
 
-viewRouter.get("/aboutus", (req, res) => {
-	res.render("aboutus",{ title: "About Nairalife"})
+
+viewRouter.get("/partner", (req, res) => {
+	res.render("partner",{ title: "Partner With Nairalife"})
+})
+
+
+viewRouter.get("/about", (req, res) => {
+	res.render("about",{ title: "About Nairalife"})
 })
 
 viewRouter.get("/contact", (req, res) => {
-	res.render("contact",{ title: "Contact Us"})
+	res.render("contact",{ title: "Contact Nairalife"})
 })
 
 
@@ -54,8 +60,8 @@ viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("account", { title: "Bank Account", banks: req.body.pageData.banks })
 })
 
-viewRouter.get("/about", cookieNotFound("/login"), verifyToken(), stageRouter("enter_info"), pageService.user, (req, res) => {
-	res.render("about",{ title: "Welcome", ...req.body.pageData })
+viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter("enter_info"), pageService.user, (req, res) => {
+	res.render("profile",{ title: "Add Profile", ...req.body.pageData })
 })
 
 
@@ -141,7 +147,7 @@ viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verif
 })
 
 viewRouter.get("/admin/deduct", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.auto, (req, res) => {
-	res.render("admin/deduct", {title: "Nairalife Deductions", link: "Manual", ...req.body.pageData })
+	res.render("admin/auto", {title: "Nairalife Deductions", link: "Manual", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/profile/:user_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.profile, (req, res) => {

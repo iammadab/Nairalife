@@ -1851,7 +1851,10 @@ color: #000;
 }
 
 .btn-secondary:hover{
-border: 2px solid #000;
+/*border: 2px solid #000;*/
+background-color:#008000;
+color:#fff;
+border-color:#008000;
 }
 
 /*.btn-brand {
