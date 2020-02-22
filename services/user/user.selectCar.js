@@ -25,6 +25,7 @@ async function selectCar(data){
 
 	let planResult = await userPlan({
 		total_amount,
+		car_amount: total_amount - SERVICE_CHARGE,
 		period,
 		amount,
 		user: data.user
