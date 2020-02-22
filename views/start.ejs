@@ -34,75 +34,21 @@
 
 <div class="aboutn">
 
-<p>To complete your hire purchase plan with Nairalife, you have to complete these four stages:</p>
+<p><b class="kt-font-success">To complete the hire purchase of your car:</b></p>
 
+<p>1. Pay &#8358;<span data-format="comma"><%= user.payment_one.amount %></span> daily for up to 90 days</p>
 
-<!--begin::Divider-->
-<div class="kt-login__divider">
-<div class="kt-divider">
-<span></span>
-<span>1st Stage</span>
-<span></span>
-</div>
-</div>
-<!--end::Divider-->
+<p>2. Provide a guarantor and get your car</p>
 
 <p>
-Pay a minimum of &#8358;<span data-format="comma"><%= user.payment_one.amount %></span> for up to 90 days.
-If you don't want to wait for 90 days, you can add more money to your account manually
+3. Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> weekly for up to 2 years
+</span>	
 </p>
-
-
-<!--begin::Divider-->
-<div class="kt-login__divider">
-<div class="kt-divider">
-<span></span>
-<span>2nd Stage</span>
-<span></span>
-</div>
-</div>
-<!--end::Divider-->
-<p>
-Provide a credible guarantor and get a Toyota Corolla (2003-2006) car on hire purchase with comprehensive insurance and registered with Lagos state license plate
-from Nairalife
-</p>
-
-<!-- <p><b>Please note that we can terminate your agreement with us before getting the car at anytime and return your payment to you for many reasons. For more information, <a href="#">click here</a></b></p> -->
-
-
-<!--begin::Divider-->
-<div class="kt-login__divider">
-<div class="kt-divider">
-<span></span>
-<span>3rd Stage</span>
-<span></span>
-</div>
-</div>
-<!--end::Divider-->
-
 
 <p>
-Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> <!-- <%= user.plan.period %> --> for 104 weeks a total of 
-&#8358;<span data-format="comma"><%= user.plan.total_amount - (user.payment_one.amount * 90) %>
-</span>. This include the &#8358;200,000 yearly service charges
+4. We transfer ownership of the car to you
 </p>
-
-
-
-<!--begin::Divider-->
-<div class="kt-login__divider">
-<div class="kt-divider">
-<span></span>
-<span>4th Stage</span>
-<span></span>
 </div>
-</div>
-<!--end::Divider-->
-
-<p>We transfer ownership of the car to you after completing payment through a change of ownership agreement</p>
-
-</div>
-
 
 
 <!--begin::Divider-->
@@ -116,7 +62,7 @@ Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> <!-- <%= use
 <!--end::Divider-->
 
 <div class="aboutn">
-<p>The breakdown of your total payment in 2 years:</p>
+<p>You can find the summary of your total payment to Nairalife in 2 years below:</p>
 </div>
 
 <div class="kt-section__content table-responsive kt-margin-t-10">
@@ -172,33 +118,19 @@ Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> <!-- <%= use
 
 <!--begin::Action-->
 <div class="kt-login__actions kt-margin-t-30">
-By clicking on "Start Payment" you have read <br>
-and agree with our <a href="/agreement" class="kt-link kt-login__signup-link">Hire Purchase Agreement</a>
+By clicking on "Start Hire Purchase" you have read <br>
+and agree to our <a href="/agreement" class="kt-link kt-login__signup-link">Hire Purchase Agreement</a>
 </div>
 <!--end::Action-->
 
 <div class="kt-login__btn kt-margin-t-20">
 <button  class="btn btn-primary btn-pill kt-login__btn-primary" onclick="payWithPaystack()">
-<i class="la la-slack"></i>Start Payment
+<i class="la la-slack"></i>Start Hire Purchase
 </button>
 </div>
 
 
-<!--begin::Divider-->
-<div class="kt-login__divider kt-margin-t-30">
-<div class="kt-divider">
-<span></span>
-<!-- <span>OR</span> -->
-<span></span>
-</div>
-</div>
-<!--end::Divider-->
-
-<!--begin::Options-->
-<div class="kt-login__bottom">
-For more information call or message us on whatsapp us on <a href="tel:08127596979">08127596979</a>
-</div>
-<!--end::Options-->
+<% include footer2 %>
 
 </div>
 <!--end::kt-login__form-->
