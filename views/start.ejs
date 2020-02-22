@@ -26,47 +26,102 @@
 <div class="kt-login__form">
 <% include formhead %>
 <div class="kt-login__title">
-<h3>Hire Purchase Plan</h3>
-<h4>Start paying for your car little by little</h4>
+<h3>Start Hire Purchase</h3>
+<h4>pay for your car little by little</h4>
 </div>
+
 
 
 <div class="aboutn">
-<p class="kt-font-success">Stage 1:</p>
-<ol>
-<li>Pay &#8358;<span data-format="comma"><%= user.payment_one.amount %></span> for 90 days for a total of &#8358;<span data-format="comma"><%= user.payment_one.amount * 90 %></span></li>
-<li>Get car on hire purchase with comprehensive insurance and registered plate number</li>
-</ol>
-<p class="kt-font-success">Stage 2:</p>
-<ol>
-<li>Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> <%= user.plan.period %> for a total of &#8358;<span data-format="comma"><%= user.plan.total_amount - (user.payment_one.amount * 90) %></span></li>
-<li>Nairalife automatically transfers ownership of the car to you after completing this stage</li>
-</ol>
-</div>
-
-
-<div class="kt-login__btn kt-margin-t-20">
-<button  class="btn btn-primary btn-pill kt-login__btn-primary" onclick="payWithPaystack()">
-<i class="la la-home"></i>Start Payment Now
-</button>
+<p><b class="kt-font-success">To complete the hire purchase of your car:</b></p>
+<% let days = Math.ceil(user.payment_one.total / user.payment_one.amount) %>
+<p>1. Pay &#8358;<span data-format="comma"><%= user.payment_one.amount %></span> daily for up to <%= days %> days</p>
+<p>2. Provide a guarantor and get your car</p>
+<p>3. Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> weekly for up to 2 years</p>
+<p>4. We transfer ownership of the car to you</p>
 </div>
 
 
 <!--begin::Divider-->
-<div class="kt-login__divider kt-margin-t-30">
+<div class="kt-login__divider">
 <div class="kt-divider">
 <span></span>
-<span>OR</span>
+<span>Payment Summary</span>
 <span></span>
 </div>
 </div>
 <!--end::Divider-->
 
-<!--begin::Options-->
-<div class="kt-login__bottom">
-For more information call us on <a href="tel:08127596979">08127596979</a>
+<div class="aboutn">
+<p>You can find the summary of your total payment below:</p>
 </div>
-<!--end::Options-->
+
+<div class="kt-section__content table-responsive kt-margin-t-10">
+<table class="table kt-margin-b-0">
+<thead>
+<tr>
+<th class="kt-font-bolder kt-font-success">Description</th>
+<th class="kt-font-bolder kt-font-success">Amount</th>
+<th class="kt-font-bolder kt-font-success">Period</th>	
+</tr>
+</thead>
+<tbody>	
+<tr>
+<td>Hire Purchase Price</td>	
+<td data-format="comma">&#8358;<%= user.plan.car_amount %></td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>Membership Fee</td>	
+<td><span>&#8358;</span>130,000</td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>Insurance</td>	
+<td>&#8358;120,000</td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>License Plate</td>	
+<td>&#8358;50,000</td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>Car Tracking</td>	
+<td>&#8358;40,000</td>
+<td>2 Years</td>
+</tr>
+<tr>
+<td>Legal Fees</td>	
+<td>&#8358;60,000</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>&#8358;3,000,000</td>	
+<td>2 Years</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="border-dash" style="padding:5px 0 0; margin:0 0 20px;"></p>
+
+
+<!--begin::Action-->
+<div class="kt-login__actions kt-margin-t-30">
+By clicking on "Start Hire Purchase" you have read <br>
+and agree to our <a href="/agreement" class="kt-link kt-login__signup-link">Hire Purchase Agreement</a>
+</div>
+<!--end::Action-->
+
+<div class="kt-login__btn kt-margin-t-20">
+<button  class="btn btn-primary btn-pill kt-login__btn-primary" onclick="payWithPaystack()">
+<i class="la la-slack"></i>Start Hire Purchase
+</button>
+</div>
+
+
+<% include footer2 %>
 
 </div>
 <!--end::kt-login__form-->

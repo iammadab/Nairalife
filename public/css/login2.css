@@ -11,7 +11,11 @@ margin: 0
 }
 
 .kt-login.kt-login--v1 .kt-login__logo img {
-max-width: 150px
+max-width: 250px
+}
+
+.kt-login.kt-login--v1 .kt-login__logo span{
+margin-left:10px;
 }
 
 .kt-login.kt-login--v1 .kt-login__wrapper {
