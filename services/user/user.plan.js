@@ -1,7 +1,7 @@
 const { createValidator } = require("lazy-validator")
 
 // Period - daily, weekly, monthly
-const userPlanValidator = createValidator("total_amount.number, period.string, amount.number, car_amount.number")
+const userPlanValidator = createValidator("total_amount.number, period.string, amount.number, car_amount.number, car_name.string.lowercase")
 
 const userDb = require("../../data/db/user.db")
 

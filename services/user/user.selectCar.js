@@ -18,7 +18,7 @@ async function selectCar(data){
 	if(carResult.status != 200)
 		return carResult
 
-	let { total_amount, period, amount, weeks } = carResult.car
+	let { total_amount, period, amount, weeks, name } = carResult.car
 
 	total_amount += SERVICE_CHARGE
 	amount = Math.ceil(total_amount / weeks)
@@ -26,6 +26,7 @@ async function selectCar(data){
 	let planResult = await userPlan({
 		total_amount,
 		car_amount: total_amount - SERVICE_CHARGE,
+		car_name: name,
 		period,
 		amount,
 		user: data.user
