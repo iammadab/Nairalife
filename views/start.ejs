@@ -98,7 +98,8 @@
 </tr>
 <tr>
 <td>Total</td>
-<td>&#8358;3,000,000</td>	
+<% let total = user.plan.car_amount == 2500000 ? 2900000 : 3000000 %>
+<td data-format="comma">&#8358;<%= total %></td>	
 <td>2 Years</td>
 </tr>
 </tbody>
