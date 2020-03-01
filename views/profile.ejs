@@ -14,7 +14,7 @@
 <div class="kt-login__form">
 <% include formhead %>
 <div class="kt-login__title">
-<h3>Welcome To Nairalife</h3>
+<h3>Add Nairalife Profile</h3>
 <p>Please tell us more about you</p>
 </div>
 <div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error preference-error" role="alert">
@@ -27,7 +27,7 @@ Invalid Username or Password
 <form class="kt-form preference-form" action="" novalidate="novalidate">
 <div class="form-group">
 <select class="custom-select bank-name" name="sex">
-<option value="">What is your sex</option>
+<option value="">What is your sex?</option>
 <option value="male">Male</option>
 <option value="female">Female</option>
 </select>
@@ -36,7 +36,7 @@ Invalid Username or Password
 
 <div class="form-group">
 <select class="custom-select bank-name" name="relationship">
-<option value="">Whay is your relationship status</option>
+<option value="">What is your relationship status?</option>
 <option value="Single">Single</option>
 <option value="Engaged">Engaged</option>
 <option value="Married">Married</option>
@@ -44,7 +44,7 @@ Invalid Username or Password
 </div>
 
 
-<div class="form-group">
+<!-- <div class="form-group">
 <select class="custom-select bank-name" name="title">
 <option value="">What is your official title?</option>
 <option value="none">None</option>
@@ -58,6 +58,10 @@ Invalid Username or Password
 <option value="Chairman">Chairman</option>
 <option value="Chairwoman">Chairwoman</option>
 </select>
+</div> -->
+
+<div class="form-group">
+<input class="form-control" type="text" placeholder="How old are you?" name="age">
 </div>
 
 <div class="form-group">
@@ -69,7 +73,7 @@ Invalid Username or Password
 <div class="kt-login__divider kt-margin-t-30">
 <div class="kt-divider">
 <span></span>
-<span>Your Partnership (Uber/Bolt)</span>
+<span>YOUR RIDE-HAILING PARTNERSHIP</span>
 <span></span>
 </div>
 </div>
@@ -88,11 +92,20 @@ Invalid Username or Password
 </div>
 
 
+<div class="form-group">
+<select class="custom-select car_status" name="own_car">
+<option value="">How long have you been driving for them?</option>
+<option value="Less than 6 months">Less than 6 months</option>
+<option value="Between 6-12 months">Between 6-12 months</option>
+<option value="Between 12-24 months">Between 12-24 months</option>
+<option value="More than 24 months">More than 24 months</option>
+</select>
+</div>
 
 
 <div class="form-group">
 <textarea class="form-control" name="work_description" style="height:95px" 
-placeholder="How is your driving business with Uber or Bolt going?">
+placeholder="How is your driving business with them going?">
 </textarea>
 </div>
 
@@ -111,7 +124,7 @@ placeholder="How is your driving business with Uber or Bolt going?">
 
 <div class="form-group">
 <select class="custom-select bank-name" name="earning">
-<option value="">How much do you make monthly?</option>
+<option value="">How much do you make on an average monthly?</option>
 <option value="&#8358;30,000 - &#8358;50,000">&#8358;30,000 - &#8358;50,000</option>
 <option value="&#8358;50,000 - &#8358;100,000">&#8358;50,000 - &#8358;100,000</option>
 <option value="&#8358;100,000 - &#8358;200,000">&#8358;100,000 - &#8358;200,000</option>
@@ -127,19 +140,14 @@ placeholder="How is your driving business with Uber or Bolt going?">
 
 <div class="kt-login__btn">
 <button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary preference-submit" data-user_id="<%= user.user_id %>">
-<i class="la la-check-square"></i><span class="preference-text">Complete Registration</span>
+<i class="la la-user-plus"></i><span class="preference-text">Complete Registration</span>
 </button>
 </div>
 </form>
 <!--end::Form-->
 
-<p class="border-dash"></p>
-<div class="text-center">
-<span class="text-muted">
-Nairalife uses the highest levels of security to protect your details. 
-<br>For more information, please go to our <a href="/privacy" class="kt-link">Privacy Policy</a> 
-</span>
-</div>
+
+<% include footer2 %>
 
 </div>
 <!--end::kt-login__form-->
