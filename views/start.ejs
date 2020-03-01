@@ -34,7 +34,8 @@
 
 <div class="aboutn">
 <p><b class="kt-font-success">To complete the hire purchase of your car:</b></p>
-<p>1. Pay &#8358;<span data-format="comma"><%= user.payment_one.amount %></span> daily for up to 90 days</p>
+<% let days = Math.ceil(user.payment_one.total / user.payment_one.amount) %>
+<p>1. Pay &#8358;<span data-format="comma"><%= user.payment_one.amount %></span> daily for up to <%= days %> days</p>
 <p>2. Provide a guarantor and get your car</p>
 <p>3. Pay &#8358;<span data-format="comma"><%= user.plan.amount %></span> weekly for up to 2 years</p>
 <p>4. We transfer ownership of the car to you</p>
@@ -67,7 +68,7 @@
 <tbody>	
 <tr>
 <td>Hire Purchase Price</td>	
-<td>&#8358;2,600,000</td>
+<td data-format="comma">&#8358;<%= user.plan.car_amount %></td>
 <td>2 Years</td>
 </tr>
 <tr>

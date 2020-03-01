@@ -33,9 +33,10 @@ function submitCar(event){
 }
 
 function displayData(event){
-	console.log(store.carSelect.value)
+	let options = store.carSelect.options, selectedOption = options[options.selectedIndex]
+	let amount = addComma(selectedOption.dataset.amount)
 	if(!store.carSelect.value)
 		store.displayText.innerHTML = "Choose a plan above"
 	else
-		store.displayText.innerHTML = "You will pay a hire purchase price of &#8358;2,600,000 for 2 years and service charge of &#8358;200,000 yearly"
+		store.displayText.innerHTML = `You will pay a hire purchase price of &#8358;${amount} for 2 years`
 }

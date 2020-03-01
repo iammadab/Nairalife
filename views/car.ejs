@@ -31,7 +31,7 @@ Invalid Username or Password
 <select class="custom-select car-select" name="vmake">
 <option value="">Select a car model and year</option>
 <% for(let i = 0; i < cars.length; i++){ %> 
-	<option value="<%= cars[i].id %>"><%= cars[i].name %></option>
+	<option value="<%= cars[i].id %>" data-amount="<%= cars[i].total_amount %>"><%= cars[i].name %></option>
 <% } %>
 </select>
 </div>
