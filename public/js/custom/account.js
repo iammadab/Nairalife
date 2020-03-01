@@ -37,7 +37,7 @@ function verifyBank(event){
 		if(response.status == 200)
 			return redirect("/about")
 		else if(response.code == "ACCOUNT_VERIFICATION_FAILED")
-			return showAlert("bank-error", response.message)
+			showAlert("bank-error", response.message)
 		verifyButton("normal")
 	}
 }
