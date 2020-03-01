@@ -22,7 +22,7 @@ module.exports = stageRouter
 function mapStageToPage(stage){
 	let map = {
 		enter_account_details: "/account",
-		enter_info: "/about",
+		enter_info: "/profile",
 		choose_plan: "/plan",
 		plan_approval: "/awaiting",
 		start_plan: "/start",

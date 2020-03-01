@@ -33,11 +33,10 @@ function verifyBank(event){
 			.then(handleResponse)
 
 	function handleResponse(response){
-		// console.log(response)
 		if(response.status == 200)
-			return redirect("/about")
+			return redirect("/profile")
 		else if(response.code == "ACCOUNT_VERIFICATION_FAILED")
-			return showAlert("bank-error", response.message)
+			showAlert("bank-error", response.message)
 		verifyButton("normal")
 	}
 }

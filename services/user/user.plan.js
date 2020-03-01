@@ -1,7 +1,7 @@
 const { createValidator } = require("lazy-validator")
 
 // Period - daily, weekly, monthly
-const userPlanValidator = createValidator("total_amount.number, period.string, amount.number, car_amount.number")
+const userPlanValidator = createValidator("total_amount.number, period.string, car_amount.number, car_name.string.lowercase, total_weeks.number")
 
 const userDb = require("../../data/db/user.db")
 
@@ -19,6 +19,17 @@ async function userPlan(data){
 	if(userObj.stage != "choose_plan")
 		return { status: 403, code: "INVALID_STAGE" }
 
+	// First, update the first stage payment value
+	let paymentOneDetails = { amount: 1000, period: "daily", total: 90000 }
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "payment_one", paymentOneDetails)
+	if(!userObj)
+		return { status: 403, code: "PROBLEM_UPDATING_PAYMENT_ONE" }
+
+	userObj = await userDb.appendDoc({ _id: data.user.id }, "status", "payment_one")
+	if(!userObj)
+		return { status: 403, code: "PROBLEM_UPDATING_STATUS" }
+
+	validData.amount = Math.ceil((validData.total_amount - userObj.payment_one.total) / validData.total_weeks)
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "plan", validData)
 	if(!userObj)
 		return { status: 403, code: "PROBLEM_UPDATING_PLAN" }
@@ -26,16 +37,6 @@ async function userPlan(data){
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "plan_approval")
 	if(!userObj)
 		return { status: 403, code: "PROBLEM_UPDATING_STAGE" }
-
-	let paymentOneDetails = { amount: 1000, period: "daily", total: 90000 }
-	userObj = await userDb.appendDoc({ _id: data.user.id }, "payment_one", paymentOneDetails)
-	if(!userObj)
-		return { status: 403, code: "PROBLEM_UPDATING_PAYMENT_ONE" }
-
-
-	userObj = await userDb.appendDoc({ _id: data.user.id }, "status", "payment_one")
-	if(!userObj)
-		return { status: 403, code: "PROBLEM_UPDATING_STATUS" }
 
 	return { status: 200, code: "PLAN_UPDATED" }
 }
