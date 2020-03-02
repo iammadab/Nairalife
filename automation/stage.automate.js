@@ -42,6 +42,7 @@ function funnel(stages, stageUpdate){
 		console.log(".............")
 		console.log(err)
 	}
+	
 }
 
 // funnel(["plan_approval", "choose_plan"],  "enter_info")

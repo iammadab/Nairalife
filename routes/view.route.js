@@ -11,7 +11,7 @@ const {
 const pageService = require("../services/page")
 
 viewRouter.get("/", cookieFound("/home"), (req, res) => {
-	res.render("index",{ title: "Nairalife HP"})
+	res.render("index",{ title: "Nairalife Hire Purchase"})
 })
 
 
@@ -67,7 +67,7 @@ viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("profile",{ title: "Add Profile", ...req.body.pageData })
 })
 
-viewRouter.get("/plan", cookieNotFound("/login"), verifyToken(), stageRouter("choose_plan"), pageService.cars, (req, res) => {
+viewRouter.get("/car", cookieNotFound("/login"), verifyToken(), stageRouter("choose_plan"), pageService.cars, (req, res) => {
 	res.render("car", { title: "Select A Car", ...req.body.pageData })
 })
 
@@ -122,6 +122,9 @@ viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("history", { title: "Payment History", link: "history", ...req.body.pageData })
 })
 
+viewRouter.get("/card", cookieNotFound("/login"), verifyToken(), stageRouter("change_card"), pageService.user, (req, res) => {
+	res.render("card", { ...req.body.pageData })
+})
 
 
 
