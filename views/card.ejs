@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Change Card</title>
+</head>
+<body>
+	<p><button class="btn btn-primary" onclick="payWithPaystack()">Change card</button></p>
+
+	<script src="https://js.paystack.co/v1/inline.js"></script>
+	<script>
+		function payWithPaystack(event){
+			var handler = PaystackPop.setup({
+				key: 'pk_live_e689b8a7714dde9dd8a07c15c4a348568cb3dd4d',
+				email: '<%= user.email %>',
+				amount: "10000",
+				currency: "NGN",
+				channels: ["card"],
+				metadata: {
+					user_id: "<%= user.user_id %>",
+					id: "<%= user._id %>",
+					type: "CHANGE_CARD"
+				},
+				callback: triggerReload,
+				onClose: function(){}
+			});
+			handler.openIframe();
+		}
+	</script>
+
+	<script type="text/javascript">
+		function triggerReload(){
+			setTimeout(function(){
+				window.location.href = window.location.href
+			}, 4000)
+		}
+	</script>
+
+
+</body>
+</html>
