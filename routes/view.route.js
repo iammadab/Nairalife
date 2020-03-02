@@ -11,7 +11,7 @@ const {
 const pageService = require("../services/page")
 
 viewRouter.get("/", cookieFound("/home"), (req, res) => {
-	res.render("index",{ title: "Nairalife HP"})
+	res.render("index",{ title: "Nairalife Hire Purchase"})
 })
 
 
