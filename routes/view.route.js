@@ -122,6 +122,9 @@ viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("history", { title: "Payment History", link: "history", ...req.body.pageData })
 })
 
+viewRouter.get("/card", cookieNotFound("/login"), verifyToken(), stageRouter("change_card"), pageService.user, (req, res) => {
+	res.render("card", { ...req.body.pageData })
+})
 
 
 
