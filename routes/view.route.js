@@ -67,7 +67,7 @@ viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("profile",{ title: "Add Profile", ...req.body.pageData })
 })
 
-viewRouter.get("/car", cookieNotFound("/login"), verifyToken(), stageRouter("start_plan"), pageService.cars, (req, res) => {
+viewRouter.get("/car", cookieNotFound("/login"), verifyToken(), stageRouter("choose_plan"), pageService.cars, (req, res) => {
 	res.render("car", { title: "Select A Car", ...req.body.pageData })
 })
 
