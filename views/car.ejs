@@ -14,8 +14,8 @@
 <div class="kt-login__form">
 <% include formhead %>
 <div class="kt-login__title">
-<h3>Select A Car</h3>
-<p>Please choose your preferred Toyota model</p>
+<h3>Select Car</h3>
+<p>Choose your preferred Toyota model</p>
 </div>
 <div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error plan-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
@@ -29,7 +29,7 @@ Invalid Username or Password
 
 <div class="form-group">
 <select class="custom-select car-select" name="vmake">
-<option value="">Select a car model and year</option>
+<option value="">Select a car model</option>
 <% for(let i = 0; i < cars.length; i++){ %> 
 	<option value="<%= cars[i].id %>" data-amount="<%= cars[i].total_amount %>"><%= cars[i].name %></option>
 <% } %>
@@ -61,7 +61,7 @@ Choose a type of car above
 
 <p class="kt-margin-t-20">
 <span class="text-muted">
-<b><span class="kt-font-danger">*</span>Please note:</b> that you will have to pay at least 90,000 naira <!-- for 90 days --> before you can get our car on higher purchase and you if you choose to cancel your payment, there's a 20% penalty fee.
+<b><span class="kt-font-danger">*</span>Please note:</b> that you will have to pay at least 90,000 naira <!-- for 90 days --> before you can get our car on higher purchase and you can cancel your payment at anytime but should you choose to cancel, there's a 20% penalty fee.
 </span>
 </p>
 
