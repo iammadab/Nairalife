@@ -103,6 +103,9 @@ async function changeCard(data){
 		amount: Number(data.amount) / 100,
 		reference: data.reference,
 		type: "higher_purchase",
+		data: {
+			from: "change_card"
+		},
 		status: "success"
 	})
 
