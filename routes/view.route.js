@@ -101,7 +101,7 @@ viewRouter.get("/home", cookieNotFound("/login"), verifyToken(), stageRouter("ac
 
 
 viewRouter.get("/cancel", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
-	res.render("cancel", { title: "Cancel HP Agreement", link: "cancel", ...req.body.pageData })
+	res.render("cancel", { title: "Cancel Agreement", link: "cancel", ...req.body.pageData })
 })
 
 viewRouter.get("/pay", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
@@ -123,7 +123,7 @@ viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter(
 })
 
 viewRouter.get("/card", cookieNotFound("/login"), verifyToken(), stageRouter("change_card"), pageService.user, (req, res) => {
-	res.render("card", { ...req.body.pageData })
+	res.render("card", { title: "Change Card", link: "card",...req.body.pageData })
 })
 
 

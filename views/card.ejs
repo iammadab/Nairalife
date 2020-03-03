@@ -1,39 +1,86 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Change Card</title>
-</head>
-<body>
-	<p><button class="btn btn-primary" onclick="payWithPaystack()">Change card</button></p>
+<% include meta %>
+<link href="css/login.css" rel="stylesheet" type="text/css" />
+<!-- begin::Body -->
+<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
-	<script src="https://js.paystack.co/v1/inline.js"></script>
-	<script>
-		function payWithPaystack(event){
-			var handler = PaystackPop.setup({
-				key: 'pk_live_e689b8a7714dde9dd8a07c15c4a348568cb3dd4d',
-				email: '<%= user.email %>',
-				amount: "10000",
-				currency: "NGN",
-				channels: ["card"],
-				metadata: {
-					user_id: "<%= user.user_id %>",
-					id: "<%= user._id %>",
-					type: "CHANGE_CARD"
-				},
-				callback: triggerReload,
-				onClose: function(){}
-			});
-			handler.openIframe();
-		}
-	</script>
+<!-- begin:: Page -->
+<div class="kt-grid kt-grid--ver kt-grid--root">
+<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
+<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
 
-	<script type="text/javascript">
-		function triggerReload(){
-			setTimeout(function(){
-				window.location.href = window.location.href
-			}, 4000)
-		}
-	</script>
+
+<!--begin::Content-->
+<div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
+
+<!--begin::Head-->
+<div class="kt-login__bottom">
+
+</div>
+
+<!--end::Head-->
+
+<!--begin::Body-->
+<div class="kt-login__body" id="login-section">
+
+<!--begin::Signin-->
+<div class="kt-login__form">
+<% include formhead %>
+<div class="kt-login__title">
+<h3>Change Card</h3>
+<h4>Add another bank card below</h4>
+</div>
+
+
+<div class="aboutn">
+<p>&#8358;100 will be deducted from your account as a test and added to your current payment balance</p>
+</div>
+
+<div class="kt-login__btn kt-margin-t-20">
+<button class="btn btn-primary btn-pill kt-login__btn-primary" onclick="payWithPaystack()">
+<i class="la la-cc-visa"></i> Change card
+</button>
+</div>
+
+
+<% include footer2 %>
+
+</div>
+<!--end::kt-login__form-->
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+function payWithPaystack(event){
+var handler = PaystackPop.setup({
+key: 'pk_live_e689b8a7714dde9dd8a07c15c4a348568cb3dd4d',
+email: '<%= user.email %>',
+amount: "10000",
+currency: "NGN",
+channels: ["card"],
+metadata: {
+user_id: "<%= user.user_id %>",
+id: "<%= user._id %>",
+type: "CHANGE_CARD"
+},
+callback: triggerReload,
+onClose: function(){}
+});
+handler.openIframe();
+}
+</script>
+
+<script type="text/javascript">
+function triggerReload(){
+setTimeout(function(){
+window.location.href = window.location.href
+}, 4000)
+}
+</script>
 
 
 </body>

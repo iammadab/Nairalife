@@ -1,60 +1,80 @@
 <% include meta %>
-<% include header %>
-<% include link %>
+<link href="css/login.css" rel="stylesheet" type="text/css" />
+<!-- begin::Body -->
+<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
 
-<div class="kt-portlet btopzero">
-<div class="kt-portlet__head">
-<div class="kt-portlet__head-label">
-<h3 class="kt-portlet__head-title">
-Cancel Hire Purchase Agreement
-</h3>
-</div>
+<!-- begin:: Page -->
+<div class="kt-grid kt-grid--ver kt-grid--root">
+<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
+<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+
+
+<!--begin::Content-->
+<div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
+
+<!--begin::Head-->
+<div class="kt-login__bottom">
+
 </div>
 
-<div class="aboutn kt-padding-20">
+<!--end::Head-->
+
+<!--begin::Body-->
+<div class="kt-login__body" id="login-section">
+
+<!--begin::Signin-->
+<div class="kt-login__form">
+<% include formhead %>
+<div class="kt-login__title">
+<h3>Cancel Agreement</h3>
+</div>
+
+
+
+<div class="aboutn">
 <p>
-To terminate your hire purchase agreement with Nairalife, please call us or message us on whatsApp 
-<b><a href="tel:08127596979">08127574549</a></b>
+To terminate your hire purchase agreement with Nairalife, please call us on
+<b><a href="tel:08127574549">08127574549</a></b>
 </p>
+
+
+<div class="kt-login__btn kt-margin-t-10">
+<a href="tel:08127574549" class="btn btn-warning btn-taller btn-widest btn-pill kt-margin-b-10">
+<i class="la la-phone"></i> Call Us Now</a>
 </div>
 
 
-<!-- <div class="kt-portlet__body kt-padding-20 kt-padding-t-10">
-<div class="alert alert-secondary alert-bold fade show kt-margin-t-10 kt-margin-b-20 otp-error withdraw-error" role="alert">
-<div class="alert-icon"><i class="la la-warning"></i></div>
-<div class="alert-text">
-Please, enter the amount you want to withdraw below.
-</div>
-</div> -->
-
-
-<!-- <div class="alert alert-success alert-bold fade show kt-margin-t-10 kt-margin-b-20 otp-error withdraw-success" role="alert">
-<div class="alert-icon"><i class="la la-check"></i></div>
-<div class="alert-text">
-Please, enter the amount you want to withdraw below.
+<!--begin::Divider-->
+<div class="kt-login__divider">
+<div class="kt-divider">
+<span></span>
+<span>OR</span>
+<span></span>
 </div>
 </div>
+<!--end::Divider-->
 
-
-<div class="form-group withdraw-form">
-<label>Enter Amount</label>
-<input type="number" name="amount" class="form-control form-control-lg" autocomplete="off">
-
-<label class="kt-margin-t-20">Enter Password (for security reasons)</label>
-<input type="password" name="password" class="form-control form-control-lg password-box" autocomplete="off">
+<div class="kt-login__bottom">
+<div class="kt-login__signup-label kt-margin-b-10">
+Message us directly and we reply immediately!
+</div>
+<a href="https://wa.me/2348127574549" class="btn btn-success btn-taller btn-pill btn-widest">
+<i class="la la-whatsapp kt-margin-r-5"></i> Chat With Us On WhatsApp
+</a>
 </div>
 
-<div class="kt-text-align-center-mobile kt-margin-b-10">
-<button type="button" class="btn btn-tallest btn-wide btn-primary withdraw-button"><i class="la la-slack"></i>
-<span class="withdraw-text">Withdraw Money</span>
-</button>
-</div> -->
-
-
 </div>
-<!--end::Portlet-head-->
+
+<% include footer2 %>
 </div>
-<!--end::Portlet-->
-<script type="text/javascript" src="js/custom/script.js"></script>
-<!-- <script type="text/javascript" src="js/custom/withdraw.js"></script> -->
-<% include footer3 %>
+<!--end::kt-login__form-->
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript" src="/js/custom/script.js"></script>
+</body>
+<!-- end::Body -->
+</html>
