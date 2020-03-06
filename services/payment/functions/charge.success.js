@@ -151,7 +151,7 @@ async function updatePay(data){
 
 	// Send the charge message here
 	if(userObj)
-		sendMessage({ phone: userObj.phone, message: "Charge successfull" })
+		sendMessage({ phone: userObj.phone, message: `Your charge of N${transactionObj.amount} on nairalife was successfull` })
 			.then(() => { console.log("Sent message") })
 			.catch(err => { console.log("Failed to send message ", err)})
 
