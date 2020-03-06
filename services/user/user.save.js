@@ -1,4 +1,5 @@
 const { createValidator } = require("lazy-validator")
+const sendMessage = require("../../lib/whatsapp")
 
 const saveValidator = createValidator("user_id.number")
 
@@ -59,6 +60,13 @@ async function save(data){
 		user_id: validData.user_id,
 		amount: paymentAmount
 	})
+
+	// If the charge failed, we send the user a message telling them that we failed to charge their account
+	sendMessage({ phone: userObj.phone, message: `We were unable to make charges. We will try again soon.` })
+		.then(() => console.log("Sent otp"))
+		.catch(err => console.log("Failed to send otp", err))
+
+
 
 
 	// The transaction object for the user

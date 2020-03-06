@@ -11,6 +11,9 @@ const PORT = process.env.PORT || 3000
 const app = express()
 const path = require("path")
 
+connectToDb()
+
+app.use(isDbConnected)
 app.use(morgan("combined"))
 app.use(fileUpload({
 	limits: { fileSize: 2 * 1024 * 1024 }
@@ -20,8 +23,6 @@ app.set("view engine", "ejs")
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(express.static(path.resolve(__dirname, "public")))
-
-connectToDb()
 
 const routes = require("./routes")
 app.use("/api", routes)
@@ -50,13 +51,24 @@ app.listen(PORT, () => {
 // Manual transactions
 // const transactionDb = require("./data/db/transaction.db")
 // transactionDb.createTransaction({
-// 	username: "Tobi Makanju",
-// 	user_id: 937833,
-// 	amount: -24000,
+// 	username: "Micheal Morah",
+// 	user_id: 4844,
+// 	amount: 29000,
 // 	reference: "VTxBV82[]j?0hNa6",
 // 	type: "higher_purchase",
 // 	status: "success",
 // 	data: {
-// 		type: "refund"
+// 		type: "manual",
+// 		method: "transfer"
 // 	}
 // }).then(console.log)
+
+function isDbConnected(req, res, next){
+	const mongoose = require("mongoose")
+	if(mongoose.connection.readyState != 1){
+		connectToDb()
+			.then(next)
+	}
+	else
+		next()
+}
