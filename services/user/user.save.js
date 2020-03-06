@@ -62,9 +62,10 @@ async function save(data){
 	})
 
 	// If the charge failed, we send the user a message telling them that we failed to charge their account
-	sendMessage({ phone: userObj.phone, message: `Your charge of N${paymentAmount} on nairalife was unsuccessfull. We will try again soon.` })
-		.then(() => console.log("Sent otp"))
-		.catch(err => console.log("Failed to send otp", err))
+	if(chargeResult.data.status == "failed")
+		sendMessage({ phone: userObj.phone, message: `Your charge of N${paymentAmount} on nairalife was unsuccessfull. We will try again soon.` })
+			.then(() => console.log("Sent otp"))
+			.catch(err => console.log("Failed to send otp", err))
 
 
 
