@@ -1,6 +1,7 @@
 const transactionDb = require("../../../data/db/transaction.db")
 const userDb = require("../../../data/db/user.db")
 const verifyCard = require("../payment.verifyCard")
+const sendMessage = require("../../../lib/whatsapp")
 
 async function charge_success(data){
 	console.log("Charge success")
@@ -139,6 +140,9 @@ async function updatePay(data){
 	if(!transactionObj)
 		return console.log("No transaction object found for ", data.reference)
 
+	if(transactionObj.status != "pending")
+		return console.log("Transaction is not pending")
+
 	let userObj = await userDb.findOneWith({ user_id: transactionObj.user_id })
 
 	transactionObj = await transactionDb.appendDoc({ reference: data.reference }, "status", "success")
@@ -146,6 +150,10 @@ async function updatePay(data){
 		return console.log("Problem updating the transaction obj", data.reference)
 
 	// Send the charge message here
+	if(userObj)
+		sendMessage({ phone: userObj.phone, message: "" })
+			.then(() => { console.log("Sent message") })
+			.catch(err => { console.log("Failed to send message ", err)})
 
 	return console.log("Updated the transaction obj successfully", data.reference)
 }
