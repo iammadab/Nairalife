@@ -51,10 +51,10 @@ app.listen(PORT, () => {
 // Manual transactions
 // const transactionDb = require("./data/db/transaction.db")
 // transactionDb.createTransaction({
-// 	username: "Micheal Morah",
-// 	user_id: 4844,
-// 	amount: 29000,
-// 	reference: "VTxBV82[]j?0hNa6",
+// 	username: "Joseph Ogbiji Bosee",
+// 	user_id: 1620,
+// 	amount: 90000,
+// 	reference: "3dPvmhcwoetea0dp",
 // 	type: "higher_purchase",
 // 	status: "success",
 // 	data: {
