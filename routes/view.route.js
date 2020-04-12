@@ -63,12 +63,22 @@ viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("account", { title: "Bank Account", banks: req.body.pageData.banks })
 })
 
-viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter("enter_info"), pageService.user, (req, res) => {
-	res.render("profile",{ title: "Add Profile", ...req.body.pageData })
+viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("profile",{ title: "Profile", ...req.body.pageData })
 })
 
-viewRouter.get("/car", cookieNotFound("/login"), verifyToken(), stageRouter("choose_plan"), pageService.cars, (req, res) => {
-	res.render("car", { title: "Select A Car", ...req.body.pageData })
+viewRouter.get("/business", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("business",{ title: "Business", ...req.body.pageData })
+})
+
+
+viewRouter.get("/docs", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("docs", { title: "Documents", ...req.body.pageData })
+})
+
+
+viewRouter.get("/car", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.cars, (req, res) => {
+	res.render("car", { title: "Car Hire Purchase", link: "car", ...req.body.pageData })
 })
 
 viewRouter.get("/awaiting", cookieNotFound("/login"), verifyToken(), stageRouter("plan_approval"), (req, res) => {
@@ -80,18 +90,14 @@ viewRouter.get("/start", cookieNotFound("/login"), verifyToken(), stageRouter("s
 })
 
 
-viewRouter.get("/residence", cookieNotFound("/login"), verifyToken(), stageRouter("add_house"), pageService.user, (req, res) => {
-	res.render("residence", { title: "Place of Residence", ...req.body.pageData })
+viewRouter.get("/residence", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("residence", { title: "Place of Residence", link: "residence", ...req.body.pageData })
 })
 
 viewRouter.get("/guarantor", cookieNotFound("/login"), verifyToken(), stageRouter("add_guarantor"), pageService.user, (req, res) => {
 	res.render("guarantor", { title: "Guarantor Information", ...req.body.pageData })
 })
 
-
-viewRouter.get("/docs", cookieNotFound("/login"), verifyToken(), stageRouter("add_proof"), pageService.user, (req, res) => {
-	res.render("docs", { title: "Send Documents", ...req.body.pageData })
-})
 
 
 // User with header
@@ -105,11 +111,11 @@ viewRouter.get("/cancel", cookieNotFound("/login"), verifyToken(), stageRouter("
 })
 
 viewRouter.get("/pay", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
-	res.render("pay", { title: "Make Payment", link: "pay", ...req.body.pageData })
+	res.render("pay", { title: "Send Money", link: "Pay", ...req.body.pageData })
 })
 
 viewRouter.get("/transaction/:transaction_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.transaction, (req, res) => {
-	res.render("transaction", { title: "Transaction", link: "", ...req.body.pageData })
+	res.render("transaction", { title: "Transaction #", link: "#", ...req.body.pageData })
 })
 
 
@@ -122,10 +128,24 @@ viewRouter.get("/history", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("history", { title: "Payment History", link: "history", ...req.body.pageData })
 })
 
-viewRouter.get("/card", cookieNotFound("/login"), verifyToken(), stageRouter("change_card"), pageService.user, (req, res) => {
-	res.render("card", { title: "Change Card", link: "card",...req.body.pageData })
+viewRouter.get("/card", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("card", { title: "Add Your ATM Card", link: "Card",...req.body.pageData })
 })
 
+
+viewRouter.get("/loan", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+	res.render("loan", { title: "Instalment Loans", link: "loan",...req.body.pageData })
+})
+
+
+viewRouter.get("/requests", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.userTransaction, pageService.user, (req, res) => {
+	res.render("requests", { title: "Loan Requests", link: "loans", ...req.body.pageData })
+})
+
+
+viewRouter.get("/request/:transaction_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.transaction, (req, res) => {
+	res.render("request", { title: "Request #", link: "#", ...req.body.pageData })
+})
 
 
 

@@ -1,23 +1,20 @@
 <% include meta %>
-<link href="css/login.css" rel="stylesheet" type="text/css" />
-<!-- begin::Body -->
-<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
-<!-- begin:: Page -->
-<div class="kt-grid kt-grid--ver kt-grid--root">
-<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
-<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
-<!--begin::Content-->
-<div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
-<!--begin::Body-->
-<div class="kt-login__body" id="login-section">
-<!--begin::Signin-->
-<div class="kt-login__form">
-<% include formhead %>
-<div class="kt-login__title">
-<h3>Make Payment</h3>
-<p>Pay manually on Nairalife below</p>
-</div>
-<div class="alert alert-danger alert-bold fade show kt-margin-b-20 login-error pay-error" role="alert">
+<% include header %>
+<% include link %>
+
+
+<!--begin::Portlet-->
+<div class="kt-portlet btopzero kt-padding-10">
+
+<div class="kt-portlet__head">
+<div class="kt-portlet__head-label"><span class="kt-portlet__head-title">Can't pay with card? Transfer cash</span></div>
+</div>	
+
+
+<div class="kt-portlet__body">
+
+
+<div class="alert alert-danger alert-bold fade show kt-margin-b-10 login-error pay-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Phone Number or Password
@@ -25,28 +22,23 @@ Invalid Phone Number or Password
 </div>
 
 
-<form class="kt-form" action="" novalidate="novalidate">
+<form class="kt-form kt-margin-t-10" action="" novalidate="novalidate">
 <div class="form-group manual-form">
 <input type="number" class="form-control form-control-lg manual-pay-input" name="amount" placeholder="Enter Amount">
 </div>
 <div class="kt-login__btn">
-<button class="btn btn-primary btn-tall btn-pill kt-login__btn-primary manual-pay-button">
-<i class="la la-plus"></i><span class="add-text">Add Money</span>
+<button class="btn btn-primary btn-tall btn-pill btn-wider kt-login__btn-primary manual-pay-button">
+<i class="la la-plus"></i><span class="add-text">Send Money</span>
 </button>
 </div>
 </form>
 
-<% include footer2 %>
 
 </div>
-<!--end::kt-login__form-->
+<!--end::portlet__body-->
 </div>
-</div>
-</div>
-</div>
-</div>
-</body>
-<!-- end::Body -->
-</html>
+<!--end::Portlet-->
+<% include footer %>
+
 <script type="text/javascript" src="js/custom/script.js"></script>
 <script type="text/javascript" src="js/custom/manual.js"></script>

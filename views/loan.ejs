@@ -1,0 +1,78 @@
+<% include meta %>
+<% include header %>
+<% include link %>
+
+
+<!--begin::Portlet-->
+<div class="kt-portlet btopzero kt-padding-10">
+<div class="kt-portlet__head">
+<div class="kt-portlet__head-label"><span class="kt-portlet__head-title">Make a loan request from Nairalife</span></div>
+</div>	
+
+
+<div class="kt-portlet__body">
+
+<div class="alert alert-danger alert-bold fade show kt-margin-t-10 otp-error residence-error" role="alert">
+<div class="alert-icon"><i class="la la-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>	
+
+<!--begin::Form-->
+<form class="kt-form kt-margin-t-10" action="" novalidate="novalidate">
+<div class="form-group">
+<input class="form-control form-control-lg" type="number" placeholder="How much do you need?" name="amount" 
+required="true">
+</div>
+
+
+
+<div class="form-group">
+<textarea class="form-control" placeholder="Please explain what you need it for" name="why" style="height:95px" required="true">
+</textarea>
+</div>
+
+<div class="form-group">
+<select class="custom-select custom-select-lg" name="length">
+<option value="">How long do you want to pay it back for?</option>
+<option value="Lagos">1 Month</option>
+<option value="Abuja">2 Months</option>
+<option value="Port Harcourt">3 Months</option>
+</select>
+</div>
+
+
+<div class="alert kt-margin-t-20 kt-padding-20 plan-alert" role="alert" style="border:1px solid #e1e1e1;">
+<div class="alert-text text-muted">
+If your request is approved, you will pay back on instalment <span class="kt-font-bolder">&#8358;2,250 naira</span> weekly for 3 months for a total of <span class="kt-font-bolder">&#8358;27,000 naira</span> and at an interest rate of 35%.
+</div>
+</div>
+
+
+<!--begin::Action-->
+<div class="kt-login__actions kt-margin-b-10">
+<p>
+<b><span class="kt-font-danger">*</span>Please note:</b> by clicking on "Make Request" you agree with the Nairalife loan terms above
+</p>
+</div>
+<!--end::Action-->
+
+
+
+<div class="kt-login__btn">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill btn-wider kt-login__btn-primary">
+<i class="la la-edit"></i><span class="residence-text">Make Request</span>
+</button>
+</div>
+</form>
+<!--end::Form-->
+
+</div>
+<!--end::portlet__body-->
+</div>
+<!--end::Portlet-->
+<% include footer %>
+
+<script type="text/javascript" src="js/custom/script.js"></script>
+<script type="text/javascript" src="js/custom/residence.js"></script>

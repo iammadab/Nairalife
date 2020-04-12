@@ -8,22 +8,17 @@
 </tr>
 </thead>
 <tbody>
-<!-- <tr>
-<td class="kt-font-bold">Plan:</td>
-<% let duration = user.plan.total_amount == 2000000 ? "for 12 months" : "for 20 months"%>
-<td class="text-right">&#8358;<span data-format="comma"><%= user.plan.total_amount %></span> <span><%= duration %></span></td>
-</tr> -->
 <tr>
-<td class="kt-font-bold">Car:</td>
+<td class="kt-font-bold">Car Model:</td>
 <td class="text-right"></td>
 </tr>
-<!-- <tr>
-<td class="kt-font-bold">Started:</td>
-<td class="text-right"></td>
-</tr> -->
 <tr>
-<td class="kt-font-bold">Total Payment:</td>
+<td class="kt-font-bold">Total Price:</td>
 <td class="text-right">&#8358;<span data-format="comma"><%= user.plan.total_amount %></span></td>
+</tr>
+<tr>
+<td class="kt-font-bold">Weekly Instalment:</td>
+<td class="text-right">&#8358;27,390</td>
 </tr>
 <tr>
 <td class="kt-font-bold">Current Payment:</td>
@@ -33,6 +28,11 @@
 <td class="kt-font-bold">Remaining Payment:</td>
 <td class="text-right">&#8358;<span data-format="comma"><%= remainingPayment %></span></td>
 </tr>
+<tr>
+<td class="kt-font-bold">Remaining Weeks:</td>
+<td class="text-right">104</td>
+</tr>
+<tr><td class="kt-font-bold" colspan="2">You currently do not have any hire purchase plan on Nairalife</td></tr>
 </tbody>
 </table>
 </div>
