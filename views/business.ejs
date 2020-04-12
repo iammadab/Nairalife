@@ -1,0 +1,122 @@
+<% include meta %>
+<link href="css/login.css" rel="stylesheet" type="text/css" />
+<!-- begin::Body -->
+<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
+<!-- begin:: Page -->
+<div class="kt-grid kt-grid--ver kt-grid--root">
+<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
+<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+<!--begin::Content-->
+<div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
+<!--begin::Body-->
+<div class="kt-login__body" id="login-section">
+<!--begin::Signin-->
+<div class="kt-login__form">
+<% include formhead %>
+<div class="kt-login__title">
+<h3>Business Information</h3>
+<p>Please tell us about your ride-hailing business</p>
+</div>
+<div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error preference-error" role="alert">
+<div class="alert-icon"><i class="la la-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>
+<!--begin::Form-->
+<form class="kt-form preference-form" action="" novalidate="novalidate">
+
+
+
+<div class="form-group">
+<select class="custom-select bank-name" name="partner">
+<option value="">Which company are you driving for?</option>
+<option value="uber">Uber</option>
+<option value="bolt">Bolt (formerly taxify)</option>
+<option value="uber & bolt">Uber & Bolt</option>
+</select>
+</div>
+
+
+<div class="form-group">
+<select class="custom-select car_status" name="work_duration">
+<option value="">How long have you been driving for them?</option>
+<option value="Less than 6 months">Less than 6 months</option>
+<option value="Between 6-12 months">Between 6-12 months</option>
+<option value="Between 12-24 months">Between 12-24 months</option>
+<option value="More than 24 months">More than 24 months</option>
+</select>
+</div>
+
+
+<div class="form-group">
+<input class="form-control" type="number" placeholder="What is your current rating?" name="rating">
+</div>
+
+<div class="form-group">
+<input class="form-control" type="number" placeholder="What is your total trips (KM)?" name="trips">
+</div>
+
+<div class="form-group">
+<select class="custom-select bank-name" name="city">
+<option value="">Which city do you drive in?</option>
+<option value="Lagos">Lagos</option>
+<option value="Abuja">Abuja</option>
+<option value="Port Harcourt">Port Harcourt</option>
+<option value="Ibadan">Ibadan</option>
+</select>
+</div>
+
+
+<div class="form-group">
+<textarea class="form-control" name="work_description" style="height:95px" 
+placeholder="How is your business going?">
+</textarea>
+</div>
+
+
+<div class="form-group">
+<select class="custom-select car_status" name="own_car">
+<option value="">Do you own the car you currently use?</option>
+<option value="Owner">Yes, I am the owner</option>
+<option value="Rental">No, I am on rental</option>
+<option value="Higher purchase">Yes, I am on higher purchase</option>
+</select>
+</div>
+
+
+
+<div class="form-group">
+<input class="form-control" type="number" placeholder="How much do you make on an average weekly?" name="earning">
+</div>
+
+
+<div class="form-group">
+<textarea class="form-control" name="reason" style="height:95px" placeholder="Why should we consider you for our higher purchase plan instead of others?">
+</textarea>
+</div>
+
+
+<div class="kt-login__btn">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary preference-submit" data-user_id="<%= user.user_id %>">
+<i class="la la-car"></i><span class="preference-text">Add Business</span>
+</button>
+</div>
+</form>
+<!--end::Form-->
+
+
+<% include footer2 %>
+
+</div>
+<!--end::kt-login__form-->
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+<!-- end::Body -->
+</html>
+<script type="text/javascript" src="js/custom/script.js"></script>
+<script type="text/javascript" src="js/custom/about.js"></script>

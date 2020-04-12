@@ -603,7 +603,7 @@ background-color: #fff; }
 
 
 .form-control-lg {
-height: calc(1.18em + 2.3rem + 2px);
+height: calc(1.5em + 2.3rem + 2px);
 padding: 1.15rem 1.65rem;
 font-size: 1.3rem;
 font-weight: 400;
@@ -1042,7 +1042,7 @@ outline-color:#008000;
 }
 
 .custom-select-lg {
-height: calc(1.18em + 2.3rem + 2px);
+height: calc(1.5em + 2.3rem + 2px);
 padding-top: 1.15rem;
 padding-bottom: 1.15rem;
 padding-left: 1.65rem;
@@ -2238,6 +2238,7 @@ background-color: #f7f8fa; }
 .table:not(.table-bordered) thead th, .table:not(.table-bordered) thead td {
 border-top: 0; }
 
+
 .nav-tabs {
 margin: 0 0 25px 0; }
 
@@ -2430,6 +2431,10 @@ body {
 font-size: 12px; } 
 .kt-padding-tm-5{
 padding-top:5px; 	
+}
+
+.trmhide {
+display:none;	
 }
 }
 
@@ -2878,7 +2883,7 @@ align-items: stretch;
 -ms-flex-pack: justify;
 justify-content: space-between;
 position: relative;
-padding: 15px 10px;
+padding: 15px 0;
 border-bottom: 1px solid #e1e1e1;
 margin:0 10px;
 border-top-left-radius: 4px;
@@ -4990,7 +4995,7 @@ display: -ms-flexbox;
 display: flex;
 -webkit-box-pack: justify;
 -ms-flex-pack: justify;
-justify-content: center;
+justify-content: left;
 padding-top:2rem;
 }
 
@@ -5009,7 +5014,7 @@ padding: 2rem 0 2rem 0;
 font-weight: 400;
 color: #333;
 font-size: 1.3rem;
-text-align:center;
+text-align:left;
 }
 .kt-invoice-2 .kt-invoice__wrapper .kt-invoice__head .kt-invoice__container .kt-invoice__desc > span {
 display: block;
@@ -5026,7 +5031,11 @@ color: #333;
 display: -webkit-box;
 display: -ms-flexbox;
 display: flex;
-text-align:center;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-ms-flex-direction: column;
+flex-direction: column;
+text-align:left;
 padding: 4rem 0 3rem 0;
 border-top: 1px solid #e1e1e1;
 }

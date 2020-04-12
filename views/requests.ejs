@@ -35,7 +35,7 @@
 <td class="text-capitalize kt-font-<%= color %>"><%= transaction.status %></td>
 <td>
 	<% if(transaction.data.type == "manual") { %>
-	<a href="/transaction/<%= transaction._id %>" class="btn btn-secondary btn-sm pending-button">View</a>
+	<a href="/request/<%= transaction._id %>" class="btn btn-secondary btn-sm pending-button">View</a>
 	<% } %>
 </td>
 </tr>

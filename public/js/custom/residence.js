@@ -17,8 +17,8 @@ function submitResidence(event){
 	submitButton()
 
 	let nameMap = {
-		address: "enter your Lagos State house address",
-		landmark: "a popular landmark nearest to your place of residence in Lagos State or its environs"
+		address: "enter your house address",
+		landmark: "a popular landmark nearest to your place of residence"
 	}
 
 

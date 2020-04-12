@@ -26,22 +26,34 @@
 
 <div class="kt-invoice__items">
 <div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">REFERENCE NO</span>
-<span class="kt-invoice__text"><%= transaction.reference %></span>
+<span class="kt-invoice__subtitle">Amount</span>
+<span class="kt-invoice__text" data-format="comma">&#8358;<%= transaction.amount %></span>
 </div>
 <div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">DATE</span>
-<span class="kt-invoice__text"><%= transaction.created_at %></span>
+<span class="kt-invoice__subtitle">Weekly Instalment</span>
+<span class="kt-invoice__text">&#8358;2,250</span>
 </div>
 <div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">STATUS</span>
+<span class="kt-invoice__subtitle">Period</span>
+<span class="kt-invoice__text">3 Months</span>
+</div>
+<div class="kt-invoice__item">
+<span class="kt-invoice__subtitle">Interest Rate</span>
+<span class="kt-invoice__text">35%</span>
+</div>
+<div class="kt-invoice__item">
+<span class="kt-invoice__subtitle">Total Payment</span>
+<span class="kt-invoice__text">&#8358;6,000</span>
+</div>
+<div class="kt-invoice__item">
+<span class="kt-invoice__subtitle">Remaining Payment</span>
+<span class="kt-invoice__text">&#8358;21,000</span>
+</div>
+<div class="kt-invoice__item">
+<span class="kt-invoice__subtitle">Status</span>
 <% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
 <% let color = stateMap[transaction.status] %>
 <span class="kt-invoice__text kt-font-<%= color %> text-capitalize"><%= transaction.status %></span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">AMOUNT</span>
-<span class="kt-invoice__text" data-format="comma">&#8358;<%= transaction.amount %></span>
 </div>
 </div>
 
@@ -63,7 +75,8 @@
 
 <% if(transaction.status == "pending") { %>
 <p class="kt-margin-b-30 text-center">
-<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 transaction-cancel"><i class="la la-slack"></i><span class="cancel-text">Cancel Payment</span></a>
+<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 transaction-cancel">
+<i class="la la-slack"></i><span class="cancel-text">Cancel Payment</span></a>
 </p>
 <% } %>
 
