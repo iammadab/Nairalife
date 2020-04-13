@@ -6,7 +6,7 @@ function createFormFunction({ form, error, button, api, handlers }){
 			error,
 			button,
 			api,
-			handlers
+			handlers,
 			inputs: Array.from(document.querySelectorAll(`${form} input, ${form} textarea, ${form} select`)),
 			button: document.querySelector(button.main),
 			activeButton: getActiveButton(button.text, button.active)
@@ -67,5 +67,7 @@ function execAction(action, store){
 		return redirect(info)
 	else if(command == "error")
 		showAlert(store.error, info)
+	else if(command == "view")
+		showView(info)
 	store.activeButton("normal")
 }
