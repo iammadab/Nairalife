@@ -12,6 +12,7 @@ const groupRouter = require("./group.route")
 const webhookRouter = require("./webhook.route")
 const paymentRouter = require("./payment.route")
 const transactionRouter = require("./transaction.route")
+const loanRouter = require("./loan.route")
 
 appRouter.use("/auth", authRouter)
 appRouter.use("/otp", otpRouter)
@@ -24,5 +25,6 @@ appRouter.use("/group", groupRouter)
 appRouter.use("/webhook", webhookRouter)
 appRouter.use("/payment", paymentRouter)
 appRouter.use("/transaction", transactionRouter)
+appRouter.use("/loan", loanRouter)
 
 module.exports = appRouter
