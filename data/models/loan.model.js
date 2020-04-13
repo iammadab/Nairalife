@@ -9,8 +9,8 @@ const loanSchema = mongoose.Schema({
 	weeks: { type: Number, required: true },
 	status: { type: String, default: "pending", enum: ["pending", "approved", "cancelled", "completed"] },
 	created_at: { type: Date, default: new Date() },
-	approved_at: { type: Date, default: new Date() },
-	started_at: { type: Date, default: new Date() }
+	approved_at: { type: Date },
+	started_at: { type: Date }
 })
 
 const loanModel = mongoose.model("Loan", loanSchema)
