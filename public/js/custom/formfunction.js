@@ -1,4 +1,4 @@
-function createFormFunction({ form, error, button, request, handlers }){
+function createFormFunction({ form, error, button, request, handlers, nameMap }){
 	return function(){
 
 		let store = {
@@ -7,6 +7,7 @@ function createFormFunction({ form, error, button, request, handlers }){
 			button,
 			request,
 			handlers,
+			nameMap,
 			inputs: Array.from(document.querySelectorAll(`${form.main} input, ${form.main} textarea, ${form.main} select`)),
 			button: document.querySelector(button.main),
 			activeButton: getActiveButton(button.text, button.active)
@@ -22,15 +23,15 @@ function createFormFunction({ form, error, button, request, handlers }){
 
 			store.activeButton()
 
-			let formDetails = extractForm(store.form.main)
+			let formDetails = extractForm(store.form.main), processString = processDynamic(formDetails)
 			let missingDetails = hasKeys(formDetails, store.form.values)
 			if(missingDetails.length > 0){
 				store.activeButton("normal")
-				return showAlert(store.error, `Sorry, you didn't enter your ${missingDetails[0]}`)
+				let errorPlaceHolder = nameMap && nameMap[missingDetails[0]] ? nameMap[missingDetails[0]] : missingDetails[0]
+				return showAlert(store.error, `Sorry, you didn't ${processString(errorPlaceHolder)}`)
 			}
 
 			let apiDetails = grabDetails(store.request.data, formDetails)
-			console.log(apiDetails)
 			return api(store.request.route, apiDetails)
 							.then(createHandler(handlers, store))
 		}
@@ -74,4 +75,11 @@ function execAction(action, store){
 	else if(command == "view")
 		showView(info)
 	store.activeButton("normal")
+}
+
+function processDynamic(store){
+	return function(text){
+		let insertMatcher = /:\[(\w+)\]/g
+		return text.replace(insertMatcher, (match, prop) => store[prop] || "")
+	}		
 }

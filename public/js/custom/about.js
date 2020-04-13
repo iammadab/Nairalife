@@ -66,6 +66,14 @@ let preferenceFunction = createFormFunction({
 	},
 	handlers: {
 		200: "redirect:business"
+	},
+	nameMap: {
+		// Assume each error is prefaced with "Sorry you didn't"
+		sex: "choose your sex",
+		age: "enter your age",
+		relationship: "choose your relationship status",
+		education: "choose your education status",
+		bio: "enter a description about yourself"
 	}
 })
 

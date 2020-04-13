@@ -8,6 +8,7 @@
 </tr>
 </thead>
 <tbody>
+<% if(user.plan.total_amount){ %>
 <tr>
 <td class="kt-font-bold">Car Model:</td>
 <td class="text-right"></td>
@@ -32,7 +33,10 @@
 <td class="kt-font-bold">Remaining Weeks:</td>
 <td class="text-right">104</td>
 </tr>
+<% } %>
+<% if(!user.plan.total_amount){ %>
 <tr><td class="kt-font-bold" colspan="2">You currently do not have any hire purchase plan on Nairalife</td></tr>
+<% } %>
 </tbody>
 </table>
 </div>
