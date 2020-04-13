@@ -15,7 +15,7 @@ let loanFunction = createFormFunction({
 		data: ["token", ...fields]
 	},
 	handlers: {
-		PENDING_LOAN: "You already have a pending loan"
+		PENDING_LOAN: "error:You already have a pending loan"
 	},
 	nameMap: {
 		// Assume each error is prefaced with "Sorry, you didn't"
