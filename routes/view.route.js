@@ -63,11 +63,11 @@ viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("account", { title: "Bank Account", banks: req.body.pageData.banks })
 })
 
-viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter("enter_info"), pageService.user, (req, res) => {
 	res.render("profile",{ title: "Profile", ...req.body.pageData })
 })
 
-viewRouter.get("/business", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+viewRouter.get("/business", cookieNotFound("/login"), verifyToken(), stageRouter("enter_business"), pageService.user, (req, res) => {
 	res.render("business",{ title: "Business", ...req.body.pageData })
 })
 

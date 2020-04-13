@@ -1,13 +1,13 @@
-function createFormFunction({ form, error, button, api, handlers }){
+function createFormFunction({ form, error, button, request, handlers }){
 	return function(){
 
 		let store = {
 			form,
 			error,
 			button,
-			api,
+			request,
 			handlers,
-			inputs: Array.from(document.querySelectorAll(`${form} input, ${form} textarea, ${form} select`)),
+			inputs: Array.from(document.querySelectorAll(`${form.main} input, ${form.main} textarea, ${form.main} select`)),
 			button: document.querySelector(button.main),
 			activeButton: getActiveButton(button.text, button.active)
 		}
@@ -15,7 +15,7 @@ function createFormFunction({ form, error, button, api, handlers }){
 		;(function attachEvents(){
 			addEvent([store.button], "click", mainFunc)
 			addEvent(store.inputs, "input,focus", () => hideAlert(store.error))
-		})
+		})()
 
 		function mainFunc(event){
 			event.preventDefault()
@@ -29,8 +29,9 @@ function createFormFunction({ form, error, button, api, handlers }){
 				return showAlert(store.error, `Sorry, you didn't enter your ${missingDetails[0]}`)
 			}
 
-			let apiDetails = grabDetails(store.api.data, formDetails)
-			return api(store.api.route, apiDetails)
+			let apiDetails = grabDetails(store.request.data, formDetails)
+			console.log(apiDetails)
+			return api(store.request.route, apiDetails)
 							.then(createHandler(handlers, store))
 		}
 	}
@@ -38,15 +39,18 @@ function createFormFunction({ form, error, button, api, handlers }){
 
 function getActiveButton(buttonTextClass, changeValue){
 	let buttonTextObj = document.querySelector(buttonTextClass)
-	return createButton(buttonTextClass, buttonTextObj.value, changeValue)
+	return createButton(buttonTextClass, buttonTextObj.innerText, changeValue)
 }
 
 function grabDetails(props, dataObj){
-	return props.map(prop => {
+	let details = {}
+	props.forEach(prop => {
 		if(prop == "token")
-			return getToken()
-		return dataObj[prop]
+			details["token"] = getToken()
+		else
+			details[prop] = dataObj[prop]
 	})
+	return details
 }
 
 function createHandler(handlers, store){

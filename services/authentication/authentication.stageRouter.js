@@ -23,6 +23,7 @@ function mapStageToPage(stage){
 	let map = {
 		enter_account_details: "/account",
 		enter_info: "/profile",
+		enter_business: "/business",
 		choose_plan: "/car",
 		plan_approval: "/awaiting",
 		start_plan: "/start",
