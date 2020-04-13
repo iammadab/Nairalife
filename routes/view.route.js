@@ -72,7 +72,7 @@ viewRouter.get("/business", cookieNotFound("/login"), verifyToken(), stageRouter
 })
 
 
-viewRouter.get("/docs", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+viewRouter.get("/docs", cookieNotFound("/login"), verifyToken(), stageRouter("add_proof"), pageService.user, (req, res) => {
 	res.render("docs", { title: "Documents", ...req.body.pageData })
 })
 
