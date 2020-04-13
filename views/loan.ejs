@@ -12,7 +12,7 @@
 
 <div class="kt-portlet__body">
 
-<div class="alert alert-danger alert-bold fade show kt-margin-t-10 otp-error residence-error" role="alert">
+<div class="alert alert-danger alert-bold fade show kt-margin-t-10 otp-error loan-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
@@ -20,25 +20,25 @@ Invalid Username or Password
 </div>	
 
 <!--begin::Form-->
-<form class="kt-form kt-margin-t-10" action="" novalidate="novalidate">
+<form class="kt-form kt-margin-t-10 loan-form" action="" novalidate="novalidate">
 <div class="form-group">
-<input class="form-control form-control-lg" type="number" placeholder="How much do you need?" name="amount" 
+<input class="form-control form-control-lg" type="number" placeholder="How much do you need?" name="initial_amount" 
 required="true">
 </div>
 
 
 
 <div class="form-group">
-<textarea class="form-control" placeholder="Please explain what you need it for" name="why" style="height:95px" required="true">
+<textarea class="form-control" placeholder="Please explain what you need it for" name="reason" style="height:95px" required="true">
 </textarea>
 </div>
 
 <div class="form-group">
-<select class="custom-select custom-select-lg" name="months">
+<select class="custom-select custom-select-lg" name="weeks">
 <option value="">How long do you want to pay it back for?</option>
-<option value="1">1 Month</option>
-<option value="2">2 Months</option>
-<option value="3">3 Months</option>
+<option value="4">4 Weeks</option>
+<option value="8">8 Weeks</option>
+<option value="12">12 Weeks</option>
 </select>
 </div>
 
@@ -62,7 +62,7 @@ If your request is approved, you will pay back on instalment <span class="kt-fon
 
 <div class="kt-login__btn">
 <button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill btn-wider kt-login__btn-primary">
-<i class="la la-edit"></i><span class="residence-text">Make Request</span>
+<i class="la la-edit"></i><span class="loan-text">Make Request</span>
 </button>
 </div>
 </form>
@@ -75,4 +75,5 @@ If your request is approved, you will pay back on instalment <span class="kt-fon
 <% include footer %>
 
 <script type="text/javascript" src="js/custom/script.js"></script>
-<script type="text/javascript" src="js/custom/residence.js"></script>
+<script type="text/javascript" src="js/custom/formfunction.js"></script>
+<script type="text/javascript" src="js/custom/loan.js"></script>
