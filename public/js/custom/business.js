@@ -19,7 +19,6 @@ let businessFunction = createFormFunction({
 	},
 	nameMap: {
 		partner: "choose your partner",
-		//TODO: Make work duration dynamic
 		work_duration: "choose how long you have been driving for :[partner]",
 		rating: "enter your rating",
 		trips: "enter your total trips for :[partner]",
