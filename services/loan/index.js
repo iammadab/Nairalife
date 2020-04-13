@@ -4,4 +4,4 @@ const loanServices = {
 	createLoan
 }
 
-module.exports loanServices
+module.exports = loanServices
