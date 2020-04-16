@@ -107,6 +107,7 @@ function showView(viewName){
 }
 
 function showError(errorName, errorMessage){
+	errorName = errorName.split("").filter(a => a != ".").join("")
 	let errorBox = document.querySelector(`.${errorName}`),
 		errorText = document.querySelector(`.${errorName} .alert-text`)
 
@@ -120,6 +121,7 @@ function showError(errorName, errorMessage){
 let showAlert = showError
 
 function hideError(errorName){
+	errorName = errorName.split("").filter(a => a != ".").join("")
 	let errorBox = document.querySelector(`.${errorName}`)
 	if(errorBox)
 		errorBox.style.display = "none"

@@ -11,6 +11,7 @@ Details on your Nairalife car instalment plan
 <div class="table-responsive">
 <table class="table kt-margin-b-0">
 <tbody>
+<% if(user.plan.total_amount){ %>
 <tr>
 <td>Car Model:</td>
 <td class="text-right"></td>
@@ -35,7 +36,9 @@ Details on your Nairalife car instalment plan
 <td>Remaining Weeks:</td>
 <td class="text-right">104</td>
 </tr>
-<tr><td colspan="2">You currently do not have any hire purchase plan on Nairalife</td></tr>
+<% if(!user.plan.total_amount){ %>
+<tr><td class="kt-font-bold" colspan="2">You currently do not have any hire purchase plan on Nairalife</td></tr>
+<% } %>
 </tbody>
 </table>
 </div>

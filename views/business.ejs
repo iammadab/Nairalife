@@ -17,14 +17,14 @@
 <h3>Business Information</h3>
 <p>Please tell us about your ride-hailing business</p>
 </div>
-<div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error preference-error" role="alert">
+<div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error business-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
 </div>
 </div>
 <!--begin::Form-->
-<form class="kt-form preference-form" action="" novalidate="novalidate">
+<form class="kt-form business-form" action="" novalidate="novalidate">
 
 
 
@@ -87,7 +87,7 @@ placeholder="How is your business going?">
 
 
 <div class="form-group">
-<input class="form-control" type="number" placeholder="How much do you make on an average weekly?" name="earning">
+<input class="form-control" type="number" placeholder="How much do you make on an average weekly?" name="weekly_earning">
 </div>
 
 
@@ -98,8 +98,8 @@ placeholder="How is your business going?">
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary preference-submit" data-user_id="<%= user.user_id %>">
-<i class="la la-car"></i><span class="preference-text">Add Business</span>
+<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary business-submit" data-user_id="<%= user.user_id %>">
+<i class="la la-car"></i><span class="business-text">Add Business</span>
 </button>
 </div>
 </form>
@@ -119,4 +119,5 @@ placeholder="How is your business going?">
 <!-- end::Body -->
 </html>
 <script type="text/javascript" src="js/custom/script.js"></script>
-<script type="text/javascript" src="js/custom/about.js"></script>
+<script type="text/javascript" src="js/custom/formfunction.js"></script>
+<script type="text/javascript" src="js/custom/business.js"></script>

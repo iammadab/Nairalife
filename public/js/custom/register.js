@@ -34,7 +34,7 @@ let registerButton = createButton(".register-text", "Join Us", "Registering...")
 function startRegistration(event){
 	let nameMap = {
 		fullname: "full name",
-		phone: "whatsApp number",
+		phone: "phone number",
 		password: "password"
 	}
 
@@ -150,3 +150,25 @@ function resendOtp(){
 		store.otpResendContainer.style.display = "block"
 	}
 }
+
+// let registerFunction = createFormFunction({
+// 	data: {
+// 		form: {
+// 			main: ".register-form",
+// 			values: ["fullname", "phone", "email", "password"]
+// 		},
+// 		button: {
+// 			main: ".register-button",
+// 			text: ".register-text",
+// 			active: "Registering..."
+// 		},
+// 		error: ".register-error",
+// 		api: {
+// 			route: "auth",
+// 			data: ["fullname", "phone", "email", "password"]
+// 		},
+// 		handlers: {
+// 			200: "view:otp-section"
+// 		}
+// 	}
+// })

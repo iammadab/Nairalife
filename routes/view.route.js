@@ -63,16 +63,16 @@ viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter(
 	res.render("account", { title: "Bank Account", banks: req.body.pageData.banks })
 })
 
-viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter("enter_info"), pageService.user, (req, res) => {
 	res.render("profile",{ title: "Profile", ...req.body.pageData })
 })
 
-viewRouter.get("/business", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+viewRouter.get("/business", cookieNotFound("/login"), verifyToken(), stageRouter("enter_business"), pageService.user, (req, res) => {
 	res.render("business",{ title: "Business", ...req.body.pageData })
 })
 
 
-viewRouter.get("/docs", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+viewRouter.get("/docs", cookieNotFound("/login"), verifyToken(), stageRouter("add_proof"), pageService.user, (req, res) => {
 	res.render("docs", { title: "Documents", ...req.body.pageData })
 })
 
@@ -172,7 +172,7 @@ viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verif
 })
 
 viewRouter.get("/admin/deduct", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.auto, (req, res) => {
-	res.render("admin/auto", {title: "Nairalife Deductions", link: "Manual", ...req.body.pageData })
+	res.render("admin/deduct", {title: "Nairalife Deductions", link: "Manual", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/profile/:user_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.profile, (req, res) => {
