@@ -3,89 +3,98 @@
 <% include link %>
 
 <div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-margin-10">
 
-<div class="kt-portlet__body kt-portlet__body--fit">
-<div class="kt-invoice-2">
-<div class="kt-invoice__wrapper">
-<div class="kt-invoice__head">
 
-<div class="kt-invoice__container">
+<div class="naira__header">
+<h3 class="naira__title">
+Instalment Loan Summary
+</h3>
+<span class="naira__desc">
+Details of loan and current status
+</span>
+</div>
 
-<div class="kt-invoice__logo">
-<a href="#">
-<img src="/images/naira.png">
+<div class="table-responsive">
+<table class="table">
+<tbody>
+<tr>
+<td>Loan Amount:</td>
+<td class="text-right">&#8358;30,000</td>
+</tr>
+<tr>
+<td>Weekly Payment:</td>
+<td class="text-right">&#8358;2,250</td>
+</tr>
+<tr>
+<td>Loan Period:</td>
+<td class="text-right">3 Months</td>
+</tr>
+<tr>
+<td>Interest Rate:</td>
+<td class="text-right">35%</td>
+</tr>
+<tr>
+<td>Loan Status:</td>
+<td class="text-right"><span class="kt-font-info">Pending</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="naira__header">
+<h3 class="naira__title">
+Account Details
+</h3>
+<span class="naira__desc">
+Your bank account information
+</span>
+</div>
+<div class="table-responsive">
+<table class="table">
+<tbody>	
+<tr>
+<td>Account Name:</td>
+<td class="text-right">Akin Wumi</td>
+</tr>
+<tr>
+<td>Bank Name:</td>
+<td class="text-right">Zenith Bank</td>
+</tr>
+<tr>
+<td>Account No:</td>
+<td class="text-right">2009586808</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+<div class="naira__header">
+<h3 class="naira__title">
+Loan Term
+</h3>
+<span class="naira__desc">
+Your agreement with Nairalife
+</span>
+</div>
+
+<div class="aboutn">
+<p>
+I need this loan for <b>"I am a very responsible guy and this is the begining of our relationship. This is what I hope for and I will be glad"</b> and I promise to repay on instalment &#8358;2,250 weekly for 3 months for a total of &#8358;27,000 and at an interest rate of 35% starting after 2 weeks of receiving loan.
+</p>
+</div>
+
+
+<div class="kt-login__btn kt-margin-t-20">
+<button class="btn btn-secondary btn-taller btn-pill btn-wider">
+<i class="la la-slack"></i>Cancel Request
+</button>
+<a href="#" class="btn btn-warning btn-taller btn-pill btn-wider">
+<i class="la la-phone"></i>Contact Us
 </a>
 </div>
-<span class="kt-invoice__desc">
-<h1 class="text-capitalize">#<%= transaction.reference %></h1>
-<span>Block 6, Plot H, Journalist Estate Phase 2</span>
-<span>Lagos-Ibadan Express Way, Arepo, Ogun State</span>
-<span><b>nairalife@tutanota.com</b></span>
-<span>+2348127596979</span>
-</span>
-
-<div class="kt-invoice__items">
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">Amount</span>
-<span class="kt-invoice__text" data-format="comma">&#8358;<%= transaction.amount %></span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">Weekly Instalment</span>
-<span class="kt-invoice__text">&#8358;2,250</span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">Period</span>
-<span class="kt-invoice__text">3 Months</span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">Interest Rate</span>
-<span class="kt-invoice__text">35%</span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">Total Payment</span>
-<span class="kt-invoice__text">&#8358;6,000</span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">Remaining Payment</span>
-<span class="kt-invoice__text">&#8358;21,000</span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">Status</span>
-<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
-<% let color = stateMap[transaction.status] %>
-<span class="kt-invoice__text kt-font-<%= color %> text-capitalize"><%= transaction.status %></span>
-</div>
-</div>
-
-
-<div class="kt-invoice__items">
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">BANK NAME</span>
-<span class="kt-invoice__text">Access Bank</span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">ACCOUNT NAME</span>
-<span class="kt-invoice__text">Token Technologies Limited</span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">ACCOUNT NO</span>
-<span class="kt-invoice__text">0762936409</span>
-</div>
-</div>
-
-<% if(transaction.status == "pending") { %>
-<p class="kt-margin-b-30 text-center">
-<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-taller btn-wide btn-secondary kt-margin-t-10 transaction-cancel">
-<i class="la la-slack"></i><span class="cancel-text">Cancel Payment</span></a>
-</p>
-<% } %>
-
-</div>
-</div>
-</div>
-<!--kt-invoice-wrapper-->
-</div>
-
 
 </div>
 <!--end of kt-portlet-body-->
@@ -105,5 +114,4 @@
 
 
 <script type="text/javascript" src="/js/custom/script.js"></script>
-<script type="text/javascript" src="/js/custom/transaction.js"></script>
-<% include footer3 %>
+<% include footer %>

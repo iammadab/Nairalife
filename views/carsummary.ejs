@@ -1,38 +1,41 @@
 <div class="kt-portlet btopzero">
-<div class="kt-portlet__body kt-padding-10">
-<div class="kt-section__content table-responsive">
+<div class="kt-portlet__body kt-margin-10">
+<div class="naira__header">
+<h3 class="naira__title">
+Hire Purchase Summary
+</h3>
+<span class="naira__desc">
+Details on your Nairalife car instalment plan
+</span>
+</div>
+<div class="table-responsive">
 <table class="table kt-margin-b-0">
-<thead>
-<tr>
-<th class="kt-font-bolder kt-font-success" colspan="2">Hire Purchase Summary</th>
-</tr>
-</thead>
 <tbody>
 <tr>
-<td class="kt-font-bold">Car Model:</td>
+<td>Car Model:</td>
 <td class="text-right"></td>
 </tr>
 <tr>
-<td class="kt-font-bold">Total Price:</td>
+<td>Total Price:</td>
 <td class="text-right">&#8358;<span data-format="comma"><%= user.plan.total_amount %></span></td>
 </tr>
 <tr>
-<td class="kt-font-bold">Weekly Instalment:</td>
+<td>Weekly Instalment:</td>
 <td class="text-right">&#8358;27,390</td>
 </tr>
 <tr>
-<td class="kt-font-bold">Current Payment:</td>
+<td>Current Payment:</td>
 <td class="text-right">&#8358;<span data-format="comma"><%= totalPayment %></span></td>
 </tr>
 <tr>
-<td class="kt-font-bold">Remaining Payment:</td>
+<td>Remaining Payment:</td>
 <td class="text-right">&#8358;<span data-format="comma"><%= remainingPayment %></span></td>
 </tr>
 <tr>
-<td class="kt-font-bold">Remaining Weeks:</td>
+<td>Remaining Weeks:</td>
 <td class="text-right">104</td>
 </tr>
-<tr><td class="kt-font-bold" colspan="2">You currently do not have any hire purchase plan on Nairalife</td></tr>
+<tr><td colspan="2">You currently do not have any hire purchase plan on Nairalife</td></tr>
 </tbody>
 </table>
 </div>

@@ -511,7 +511,7 @@ background-color: transparent;
 }
 .table th,
 .table td {
-padding: 1rem 0.75rem;
+padding: 1rem 0rem;
 vertical-align: middle;
 border-top: 1px solid #e1e1e1;
 font-size:1.2rem;
@@ -2436,6 +2436,9 @@ padding-top:5px;
 .trmhide {
 display:none;	
 }
+.kt-text-align-left-mobile{	
+text-align:left;
+}
 }
 
 
@@ -2908,6 +2911,7 @@ padding: 0;
 font-size: 1.2rem;
 font-weight:600;
 color: #008000;
+text-transform:capitalize;
 }
 .kt-portlet .kt-portlet__body .kt-portlet__content {
 padding: 0;
@@ -4865,10 +4869,17 @@ height: 1600px;
 overflow: hidden;
 }
 
+.kt-text-align-left-mobile{	
+text-align:center;
+}
+
 @media (max-width: 768px) {
 .aboutn.truncate{
 height: 2260px;
 overflow: hidden;
+}
+.kt-text-align-left-mobile{	
+text-align:left;
 }
 }
 
@@ -4990,12 +5001,12 @@ padding: 0; }
 padding: 0 2rem 0 2rem; }
 
 .kt-invoice-2 .kt-invoice__wrapper .kt-invoice__head .kt-invoice__container .kt-invoice__logo {
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-pack: justify;
--ms-flex-pack: justify;
-justify-content: left;
+display:-webkit-box;
+display:-ms-flexbox;
+display:flex;
+-webkit-box-pack:justify;
+-ms-flex-pack:justify;
+justify-content:center;
 padding-top:2rem;
 }
 
@@ -5014,7 +5025,7 @@ padding: 2rem 0 2rem 0;
 font-weight: 400;
 color: #333;
 font-size: 1.3rem;
-text-align:left;
+text-align:center;
 }
 .kt-invoice-2 .kt-invoice__wrapper .kt-invoice__head .kt-invoice__container .kt-invoice__desc > span {
 display: block;
@@ -5028,16 +5039,12 @@ color: #333;
 }
 
 .kt-invoice-2 .kt-invoice__wrapper .kt-invoice__head .kt-invoice__container .kt-invoice__items {
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-orient: vertical;
--webkit-box-direction: normal;
--ms-flex-direction: column;
-flex-direction: column;
-text-align:left;
-padding: 4rem 0 3rem 0;
-border-top: 1px solid #e1e1e1;
+display:-webkit-box;
+display:-ms-flexbox;
+display:flex;
+text-align:center;
+padding:4rem 0 3rem 0;
+border-top:1px solid #e1e1e1;
 }
 
 .kt-invoice-2 .kt-invoice__wrapper .kt-invoice__head .kt-invoice__container .kt-invoice__items .kt-invoice__item {
@@ -5133,4 +5140,23 @@ padding-right: 0; }
 padding-right: 1.5rem; }
 .kt-invoice-2 .kt-invoice__wrapper .kt-invoice__body table tbody tr td:last-child {
 padding-right: 0; }
+}
+
+
+
+.naira__header {
+padding: 0;
+margin-bottom:1rem;
+}
+.naira__header .naira__title {
+font-size: 1.2rem;
+font-weight: 500;
+margin-bottom: 0;
+color: #008000;
+font-weight:600;
+}
+.naira__header .naira__desc {
+display: inline-block;
+margin-top: 0.2rem;
+color: #a7abc3;
 }
