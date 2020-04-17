@@ -13,7 +13,7 @@ let store = {
 	addEvent([store.bvnInput], "input,focus", () => hideAlert("fee-success"))
 })()	
 
-const verifyButton = createButton(".verify-text", "Verify Bank", "Verifying...")
+const verifyButton = createButton(".verify-text", "Add Account", "Verifying...")
 
 function verifyBank(event){
 	let nameMap = {

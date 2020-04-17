@@ -5,12 +5,17 @@
 
 <!--begin::Portlet-->
 <div class="kt-portlet btopzero kt-padding-10">
-<div class="kt-portlet__head">
-<div class="kt-portlet__head-label"><span class="kt-portlet__head-title">Please tell us about where you live</span></div>
-</div>	
-
 
 <div class="kt-portlet__body">
+<div class="naira__header naira__header__no">
+<h3 class="naira__title">
+Where do you live?
+</h3>
+<span class="naira__desc">
+You are almost there, please tell us more about where you reside
+</span>
+</div>
+
 
 <div class="alert alert-danger alert-bold fade show kt-margin-t-10 otp-error residence-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
@@ -22,32 +27,24 @@ Invalid Username or Password
 <!--begin::Form-->
 <form class="kt-form residence-form kt-margin-t-10" action="" novalidate="novalidate">
 <div class="form-group">
-<textarea class="form-control" placeholder="Please enter your house address" name="address" style="height:95px" required="true">
+<textarea class="form-control" placeholder="Enter your house address" name="address" style="height:95px" required="true">
 </textarea>
 </div>
 <div class="form-group">
 <input class="form-control form-control-lg" type="text" placeholder="Popular landmark nearest to your place of residence" name="landmark" 
 required="true">
 </div>
-
 <div class="form-group">
-<select class="custom-select custom-select-lg" name="city">
-<option value="">Select city</option>
-<option value="Lagos">Lagos</option>
-<option value="Abuja">Abuja</option>
-<option value="Port Harcourt">Port Harcourt</option>
-<option value="Ibadan">Ibadan</option>
-</select>
+<input class="form-control form-control-lg" type="text" placeholder="Enter city" name="city" required="true">
 </div>
-
-
 <div class="form-group">
 <select class="custom-select custom-select-lg" name="state">
-<option value="">Select state</option>
+<option value="">Select State</option>
 <option value="Lagos">Lagos State</option>
 <option value="FCT">FCT</option>
 <option value="Rivers">Rivers State</option>
 <option value="Oyo">Oyo State</option>
+<option value="Ogun">Ogun State</option>
 </select>
 </div>
 

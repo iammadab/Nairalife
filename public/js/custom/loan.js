@@ -47,6 +47,7 @@ function newInput(event){
 	let { initial_amount_element, weeks_before_payment, weeks_element } = store
 	if(!(initial_amount_element.value && weeks_before_payment.value && weeks_element.value)){
 		store.plan_box.innerHTML = ""
+		store.plan_box.classList.add('nairahide')
 		return
 	}
 		
@@ -75,5 +76,6 @@ function newInput(event){
 		`
 
 		store.plan_box.innerHTML = responseHTML
+		store.plan_box.classList.remove('nairahide')
 	}
 }

@@ -59,9 +59,6 @@ viewRouter.get("/register", cookieFound("/home"), (req, res) => {
 	res.render("register",{ title: "Register"})
 })
 
-viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter("enter_account_details"), pageService.account, (req, res) => {
-	res.render("account", { title: "Bank Account", banks: req.body.pageData.banks })
-})
 
 viewRouter.get("/profile", cookieNotFound("/login"), verifyToken(), stageRouter("enter_info"), pageService.user, (req, res) => {
 	res.render("profile",{ title: "Profile", ...req.body.pageData })
@@ -90,6 +87,10 @@ viewRouter.get("/start", cookieNotFound("/login"), verifyToken(), stageRouter("s
 })
 
 
+viewRouter.get("/account", cookieNotFound("/login"), verifyToken(), stageRouter("enter_account_details"), pageService.account, (req, res) => {
+	res.render("account", { title: "Bank Account", link: "account", banks: req.body.pageData.banks })
+})
+
 viewRouter.get("/residence", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
 	res.render("residence", { title: "Place of Residence", link: "residence", ...req.body.pageData })
 })
@@ -97,7 +98,6 @@ viewRouter.get("/residence", cookieNotFound("/login"), verifyToken(), stageRoute
 viewRouter.get("/guarantor", cookieNotFound("/login"), verifyToken(), stageRouter("add_guarantor"), pageService.user, (req, res) => {
 	res.render("guarantor", { title: "Guarantor Information", ...req.body.pageData })
 })
-
 
 
 // User with header

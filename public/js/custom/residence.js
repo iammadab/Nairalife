@@ -18,9 +18,9 @@ function submitResidence(event){
 
 	let nameMap = {
 		address: "enter your house address",
-		landmark: "a popular landmark nearest to your place of residence",
-		city: "your city",
-		state: "your state"
+		landmark: "enter a popular landmark nearest to your place of residence",
+		city: "enter the city you reside in",
+		state: "select the state you reside in"
 	}
 
 

@@ -1668,6 +1668,9 @@ color: #666 !important;
 font-weight:300;
 }
 
+.text-mute{
+color:#a7abc3 !important;	
+}
 
 .alert {
 display: -webkit-box;
@@ -5148,6 +5151,13 @@ padding-right: 0; }
 padding: 0;
 margin-bottom:1rem;
 }
+
+.naira__header__no{
+border-bottom:1px solid #e1e1e1;
+padding-bottom:1rem;
+margin-bottom:2rem;
+}
+
 .naira__header .naira__title {
 font-size: 1.2rem;
 font-weight: 500;
@@ -5159,4 +5169,8 @@ font-weight:600;
 display: inline-block;
 margin-top: 0.2rem;
 color: #a7abc3;
+}
+
+.nairahide {
+display:none;	
 }

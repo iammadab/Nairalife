@@ -12,7 +12,7 @@
 <ul class="nav nav-tabs  nav-tabs-line nav-tabs-bolder nav-tabs-line-primary kt-margin-b-20" role="tablist">
 <li class="nav-item">
 <a class="nav-link active" data-toggle="tab" href="#kt_tabs_7_1" role="tab">
-<i class="la la-user"></i> Account Info
+<i class="la la-user"></i> Account Profile
 </a>
 </li>
 <li class="nav-item">
@@ -22,7 +22,7 @@
 </li>
 <li class="nav-item">
 <a class="nav-link" data-toggle="tab" href="#kt_tabs_7_4" role="tab">
-<i class="la la-unlock"></i>Change Password
+<i class="la la-unlock"></i>Password
 </a>
 </li>
 </ul>
@@ -76,7 +76,7 @@ readonly="readonly">
 </div>
 
 
-<div class="form-group">
+<!-- <div class="form-group">
 <label>Official Title</label>	
 <select  name="title" data-defaultvalue="<%= user.about.title %>" class="custom-select bank-name" style="height:55px;">
 <option value="mr.">Mr.</option>
@@ -89,7 +89,7 @@ readonly="readonly">
 <option value="chairman">Chairman</option>
 <option value="chairwoman">Chairwoman</option>
 </select>
-</div>
+</div> -->
 
 
 <div class="form-group">
@@ -98,6 +98,7 @@ readonly="readonly">
 <option value="single">Single</option>
 <option value="engaged">Engaged</option>
 <option value="married">Married</option>
+<option value="divorced">Divorced</option>
 </select>
 </div>
 
@@ -109,7 +110,7 @@ readonly="readonly">
 
 
 <div class="kt-form__actions kt-text-align-center-mobile kt-margin-t-30">
-<button class="btn btn-primary btn-taller btn-wide kt-font-bold save-information-button">
+<button class="btn btn-primary btn-taller btn-pill btn-wide kt-font-bold save-information-button">
 <i class="la la-edit"></i><span class="save-text">Save Profile</span>
 </button>
 </div>
@@ -161,8 +162,8 @@ Invalid Username or Password
 </div> -->
 
 <div class="kt-form__actions kt-text-align-center-mobile kt-margin-t-30">
-<button class="btn btn-primary btn-taller btn-wide kt-font-bold update-bank-button">
-<i class="la la-cloud-upload"></i><span class="bank-text">Update Bank</span>
+<button class="btn btn-primary btn-taller btn-pill btn-wide kt-font-bold update-bank-button">
+<i class="la la-money"></i><span class="bank-text">Update Bank</span>
 </button>
 </div>
 <!--end: Form Actions -->
@@ -208,7 +209,7 @@ Invalid Username or Password
 
 
 <div class="kt-form__actions kt-text-align-center-mobile kt-margin-t-30">
-<button class="btn btn-primary btn-taller btn-wide kt-font-bold change-password-button">
+<button class="btn btn-primary btn-taller btn-pill btn-wide kt-font-bold change-password-button">
 <i class="la la-unlock"></i><span class="password-text">Change Password</span>
 </button>
 </div>

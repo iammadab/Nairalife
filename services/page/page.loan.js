@@ -7,7 +7,7 @@ async function loan(req, res, next){
 	if(userObj.loan_stage == "bvn"){
 		account(req, res, displayAccountPage)
 		function displayAccountPage(){
-			res.render("account", { title: "Bank Account", banks: req.body.pageData.banks })
+			res.render("account", { title: "Bank Account", link: "account", banks: req.body.pageData.banks })
 		}
 	}
 
