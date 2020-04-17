@@ -1,6 +1,6 @@
 const { createValidator } = require("lazy-validator")
 
-const loanValidator = createValidator("initial_amount.number, weeks.number, reason.string")
+const loanValidator = createValidator("initial_amount.number, weeks.number, reason.string, weeks_before_payment.number")
 
 const userDb = require("../../data/db/user.db")
 const loanDb = require("../../data/db/loan.db")
@@ -10,7 +10,7 @@ async function createLoan(data){
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
-	let { initial_amount, weeks, reason } = validationResult.data
+	let { initial_amount, weeks, reason, weeks_before_payment } = validationResult.data
 
 	let userObj = await userDb.findOneWith({ _id: data.user.id })
 	if(!userObj)
@@ -23,7 +23,7 @@ async function createLoan(data){
 	if(activeLoan)
 		return { status: 403, code: "PENDING_LOAN" }
 
-	let interest = generateInterest(weeks)
+	let interest = generateInterest(weeks + weeks_before_payment)
 	if(!interest)
 		return { status: 403, code: "INVALID_WEEKS" }
 
@@ -35,6 +35,7 @@ async function createLoan(data){
 		initial_amount,
 		final_amount,
 		weeks,
+		weeks_before_payment,
 		reason
 	})
 	if(loanObj)
@@ -45,9 +46,10 @@ async function createLoan(data){
 
 module.exports = createLoan
 
-
+const { FOUR_AND_LESS, EIGHT_AND_LESS, TWELEVE_AND_LESS, SIXTEEN_AND_LESS } = require("./loan.data")
 function generateInterest(weeks){
-	if(weeks <= 4) return 10
-	if(weeks <= 8) return 25
-	if(weeks <= 12) return 35
+	if(weeks <= 4) return FOUR_AND_LESS
+	if(weeks <= 8) return EIGHT_AND_LESS
+	if(weeks <= 12) return TWELEVE_AND_LESS
+	if(weeks <= 16) return SIXTEEN_AND_LESS
 }

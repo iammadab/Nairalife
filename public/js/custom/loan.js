@@ -1,4 +1,4 @@
-let fields = ["initial_amount", "reason", "weeks"]
+let fields = ["initial_amount", "reason", "weeks", "weeks_before_payment"]
 let loanFunction = createFormFunction({
 	form: {
 		main: ".loan-form",
@@ -21,7 +21,8 @@ let loanFunction = createFormFunction({
 		// Assume each error is prefaced with "Sorry, you didn't"
 		initial_amount: "enter how much you need",
 		reason: "enter what you need the money for",
-		weeks: "choose how long you want to pay"
+		weeks: "choose how long you want to pay",
+		weeks_before_payment: "choose when you want to start payment"
 	}
 })
 
