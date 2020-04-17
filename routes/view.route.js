@@ -136,7 +136,7 @@ viewRouter.get("/card", cookieNotFound("/login"), verifyToken(), stageRouter("ac
 viewRouter.get("/loan", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, pageService.loan)
 
 
-viewRouter.get("/requests", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.userTransaction, pageService.user, (req, res) => {
+viewRouter.get("/requests", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.loans, pageService.user, (req, res) => {
 	res.render("requests", { title: "Loan Requests", link: "loans", ...req.body.pageData })
 })
 

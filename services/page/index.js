@@ -16,6 +16,7 @@ const stat = require("./page.stat")
 const transaction = require("./page.transaction")
 const cars = require("./page.cars")
 const loan = require("./page.loan")
+const loans = require("./page.loans")
 
 const pageServices = {
 	dashboard,
@@ -35,7 +36,8 @@ const pageServices = {
 	stat,
 	transaction,
 	cars,
-	loan
+	loan,
+	loans
 }
 
 module.exports = pageServices
