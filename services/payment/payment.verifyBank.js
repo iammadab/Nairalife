@@ -29,7 +29,6 @@ async function verifyBank(data){
 	if(addBankResult.status != 200)
 		return addBankResult
 
-	userObj = await userDb.appendDoc({ _id: data.user.id }, "stage", "enter_info")
 	if(!userObj)
 		return { status: 500, code: "PROBLEM_CHANGING_STAGE" }
 	
