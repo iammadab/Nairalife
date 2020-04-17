@@ -133,7 +133,7 @@ viewRouter.get("/card", cookieNotFound("/login"), verifyToken(), stageRouter("ac
 })
 
 
-viewRouter.get("/loan", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
+viewRouter.get("/loan", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, pageService.loan, (req, res) => {
 	res.render("loan", { title: "Instalment Loans", link: "loan",...req.body.pageData })
 })
 
