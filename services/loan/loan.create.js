@@ -2,6 +2,7 @@ const { createValidator } = require("lazy-validator")
 
 const loanValidator = createValidator("initial_amount.number, weeks.number, reason.string, weeks_before_payment.number")
 
+const generateInterest = require("./loan.data")
 const userDb = require("../../data/db/user.db")
 const loanDb = require("../../data/db/loan.db")
 
@@ -45,11 +46,3 @@ async function createLoan(data){
 }
 
 module.exports = createLoan
-
-const { FOUR_AND_LESS, EIGHT_AND_LESS, TWELEVE_AND_LESS, SIXTEEN_AND_LESS } = require("./loan.data")
-function generateInterest(weeks){
-	if(weeks <= 4) return FOUR_AND_LESS
-	if(weeks <= 8) return EIGHT_AND_LESS
-	if(weeks <= 12) return TWELEVE_AND_LESS
-	if(weeks <= 16) return SIXTEEN_AND_LESS
-}
