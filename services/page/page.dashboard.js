@@ -20,8 +20,7 @@ async function dashboard(req, res, next){
 		user: userObj,
 		higherPurchaseTransactions,
 		totalPayment,
-		remainingPayment,
-		loan
+		remainingPayment
 	}
 
 	next()
