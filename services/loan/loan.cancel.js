@@ -26,6 +26,9 @@ async function cancelLoan(data){
 	if(loanObj.user_id != userObj.user_id)
 		return { status: 403, code: "LOAN_NOT_FOUND" }
 
+	if(loanObj.status != "pending")
+		return { status: 403, code: "LOAN_NOT_PENDING" }
+
 	loanObj = await loanDb.appendDoc({ _id: loanObj._id }, "status", "cancelled")
 	if(loanObj)
 		return { status: 200, code: "LOAN_CANCELLED" }
