@@ -7,6 +7,7 @@ const userSchema = mongoose.Schema({
 	email: { type: String, required: true },
 	password: { type: String, required: true },
 	stage: { type: String, default: "enter_info", enum: ["enter_info", "enter_business", "choose_plan", "plan_approval", "start_plan", "active", "add_house", "add_guarantor", "add_proof", "change_card"]},
+	loan_stage: { type: String, default: "bvn", enum: ["bvn", "residence", "request", "requested"] },
 	status: { type: String, enum: ["payment_one", "payment_two"] },
 	about: { type: Object, default: {}	},
 	business: { type: Object, default: {} },
