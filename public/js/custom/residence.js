@@ -18,13 +18,15 @@ function submitResidence(event){
 
 	let nameMap = {
 		address: "enter your house address",
-		landmark: "a popular landmark nearest to your place of residence"
+		landmark: "a popular landmark nearest to your place of residence",
+		city: "your city",
+		state: "your state"
 	}
 
 
 	let residenceDetails = extractForm(store.residenceFormTag)
 	
-	let missingDetails = hasKeys(residenceDetails, ["address", "landmark"])
+	let missingDetails = hasKeys(residenceDetails, ["address", "landmark", "city", "state"])
 	if(missingDetails.length > 0){
 		submitButton("normal")
 		return showAlert("residence-error", `Sorry, you didn't ${nameMap[missingDetails[0]]}`)
@@ -37,7 +39,7 @@ function submitResidence(event){
 
 	function handleResponse(response){
 		if(response.status == 200)
-			return redirect("/guarantor")
+			return redirect("/loan")
 		submitButton("normal")
 	}
 }
