@@ -20,23 +20,25 @@ Details of loan and current status
 <tbody>
 <tr>
 <td>Loan Amount:</td>
-<td class="text-right">&#8358;30,000</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.initial_amount %></td>
 </tr>
 <tr>
 <td>Weekly Payment:</td>
-<td class="text-right">&#8358;2,250</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan._doc.weekly_payment %></td>
 </tr>
 <tr>
 <td>Loan Period:</td>
-<td class="text-right">3 Months</td>
+<td class="text-right"><%= loan.weeks %> Weeks</td>
 </tr>
 <tr>
 <td>Interest Rate:</td>
-<td class="text-right">35%</td>
+<td class="text-right"><%= loan.interest %>%</td>
 </tr>
 <tr>
 <td>Loan Status:</td>
-<td class="text-right"><span class="kt-font-info">Pending</span></td>
+<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
+<% let color = stateMap[loan.status] %>
+<td class="text-capitalize text-right kt-font-<%= color %>"><%= loan.status %></td>
 </tr>
 </tbody>
 </table>
@@ -56,15 +58,15 @@ Your bank account information
 <tbody>	
 <tr>
 <td>Account Name:</td>
-<td class="text-right">Akin Wumi</td>
+<td class="text-right"><%= account.account_name %></td>
 </tr>
 <tr>
 <td>Bank Name:</td>
-<td class="text-right">Zenith Bank</td>
+<td class="text-right"><%= bankName %></td>
 </tr>
 <tr>
 <td>Account No:</td>
-<td class="text-right">2009586808</td>
+<td class="text-right"><%= account.account_number %></td>
 </tr>
 </tbody>
 </table>
@@ -82,7 +84,7 @@ Your agreement with Nairalife
 
 <div class="aboutn">
 <p>
-I need this loan for <b>"I am a very responsible guy and this is the begining of our relationship. This is what I hope for and I will be glad"</b> and I promise to repay on instalment &#8358;2,250 weekly for 3 months for a total of &#8358;27,000 and at an interest rate of 35% starting after 2 weeks of receiving loan.
+I need this loan for <b><%= loan.reason %></b> and I promise to repay on instalment &#8358;<span data-format="comma"><%= loan._doc.weekly_payment %></span> weekly for <%= loan.weeks %> weeks for a total of &#8358;<span data-format="comma"><%= loan.final_amount %></span> and at an interest rate of <%= loan.interest %>% starting after <%= loan._doc.beforeText %>  of receiving the loan.
 </p>
 </div>
 

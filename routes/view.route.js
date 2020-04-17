@@ -136,12 +136,12 @@ viewRouter.get("/card", cookieNotFound("/login"), verifyToken(), stageRouter("ac
 viewRouter.get("/loan", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, pageService.loan)
 
 
-viewRouter.get("/requests", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.userTransaction, pageService.user, (req, res) => {
+viewRouter.get("/requests", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.loans, pageService.user, (req, res) => {
 	res.render("requests", { title: "Loan Requests", link: "loans", ...req.body.pageData })
 })
 
 
-viewRouter.get("/request/:transaction_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.transaction, (req, res) => {
+viewRouter.get("/request/:loan_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.eachLoan, (req, res) => {
 	res.render("request", { title: "Request #", link: "#", ...req.body.pageData })
 })
 

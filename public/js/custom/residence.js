@@ -1,7 +1,7 @@
 let store = {
 	residenceButton: document.querySelector(".residence-submit"),
 	residenceFormTag: ".residence-form",
-	inputs: Array.from(document.querySelectorAll(".residence-form input, .residence-form textarea"))
+	inputs: Array.from(document.querySelectorAll(".residence-form input, .residence-form textarea, .residence-form select"))
 }
 
 ;(function attachEvents(){
