@@ -1,12 +1,12 @@
 const { createValidator } = require("lazy-validator")
 
-const loanDeclineValidator = createValidator("loan_id.string")
+const loanCancelValidator = createValidator("loan_id.string")
 
 const loanDb = require("../../data/db/loan.db")
 const userDb = require("../../data/db/user.db")
 
-async function declineLoan(data){
-	let validationResult = loanDeclineValidator.parse(data)
+async function cancelLoan(data){
+	let validationResult = loanCancelValidator.parse(data)
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
@@ -26,7 +26,11 @@ async function declineLoan(data){
 	if(loanObj.user_id != userObj.user_id)
 		return { status: 403, code: "LOAN_NOT_FOUND" }
 
-	loanObj = await loanDb.appendDoc({ _id: loanObj._id }, "status", "declined")
+	loanObj = await loanDb.appendDoc({ _id: loanObj._id }, "status", "cancelled")
+	if(loanObj)
+		return { status: 200, code: "LOAN_CANCELLED" }
+
+	return { status: 500, code: "INTERNAL_SERVER_ERROR" }
 }
 
-module.exports = declineLoan
+module.exports = cancelLoan

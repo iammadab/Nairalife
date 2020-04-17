@@ -30,7 +30,7 @@
 <td>#<%= loan.reference %></td>
 <td data-format="comma">&#8358;<%= loan.initial_amount %></td>
 <td><%= loan._doc.created_at %></td>
-<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
+<% let stateMap = { pending: "info", success: "success", declined: "danger", cancelled: "danger" } %>
 <% let color = stateMap[loan.status] %>
 <td class="text-capitalize kt-font-<%= color %>"><%= loan.status %></td>
 <td>
