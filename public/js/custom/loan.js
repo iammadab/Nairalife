@@ -17,7 +17,7 @@ let loanFunction = createFormFunction({
 	},
 	handlers: {
 		PENDING_LOAN: "error:You already have a pending loan",
-		200: "success-clear:Your loan request was successful"
+		200: "redirect::[redirect]"
 	},
 	nameMap: {
 		// Assume each error is prefaced with "Sorry, you didn't"
