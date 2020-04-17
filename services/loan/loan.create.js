@@ -40,8 +40,6 @@ async function createLoan(data){
 		reason
 	})
 
-	userObj = await userDb.appendDoc({ _id: userObj._id }, "loan_stage", "requested")
-
 	if(loanObj)
 		return { status: 200, code: "LOAN_CREATED", redirect: `request/${loanObj._id}` }
 

@@ -15,6 +15,15 @@ Details of loan and current status
 </span>
 </div>
 
+<% if(loan.status == "pending"){ %>
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20" role="alert">
+<div class="alert-icon"><i class="la la-warning"></i></div>
+<div class="alert-text">
+Invalid Phone Number or Password
+</div>
+</div>
+<% } %>
+
 <div class="table-responsive">
 <table class="table">
 <tbody>
