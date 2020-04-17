@@ -1,4 +1,5 @@
 const pageFunctions = require("./functions")
+const loanDb = require("../../data/db/loan.db")
 
 async function dashboard(req, res, next){
 	let userObj = await pageFunctions.fetchUser(req.body.user.id)
@@ -15,9 +16,12 @@ async function dashboard(req, res, next){
 	})
 
 	remainingPayment = Number(userObj.plan.total_amount) - totalPayment
+
+	let loanObj = await loanDb.findOneWith({ status: "approved", user_id: userObj.user_id })
 	
 	req.body.pageData = {
 		user: userObj,
+		loan: loanObj,
 		higherPurchaseTransactions,
 		totalPayment,
 		remainingPayment
