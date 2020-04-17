@@ -90,9 +90,11 @@ I need this loan for <b><%= loan.reason %></b> and I promise to repay on instalm
 
 
 <div class="kt-login__btn kt-margin-t-20">
-<button class="btn btn-secondary btn-taller btn-pill btn-wider">
+<% if(loan.status == "pending"){ %>
+<button class="btn btn-secondary btn-taller btn-pill btn-wider cancel-button" data-loan_id="<%= loan._id %>">
 <i class="la la-close"></i>Cancel Request
 </button>
+<% } %>
 <a href="tel:08127574549" class="btn btn-warning btn-taller btn-pill btn-wider">
 <i class="la la-phone"></i>Contact Us
 </a>
@@ -116,4 +118,5 @@ I need this loan for <b><%= loan.reason %></b> and I promise to repay on instalm
 
 
 <script type="text/javascript" src="/js/custom/script.js"></script>
+<script type="text/javascript" src="/js/custom/request.js"></script>
 <% include footer %>
