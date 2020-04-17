@@ -3,78 +3,98 @@
 <% include link %>
 
 <div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-margin-10">
 
-<div class="kt-portlet__body kt-portlet__body--fit">
-<div class="kt-invoice-2">
-<div class="kt-invoice__wrapper">
-<div class="kt-invoice__head">
 
-<div class="kt-invoice__container">
-
-<div class="kt-invoice__logo">
-<a href="#">
-<img src="/images/naira.png">
-</a>
-</div>
-<span class="kt-invoice__desc">
-<h1 class="text-capitalize">#<%= transaction.reference %></h1>
-<span>Block 6, Plot H, Journalist Estate Phase 2</span>
-<span>Lagos-Ibadan Express Way, Arepo, Ogun State</span>
-<span><b>nairalife@tutanota.com</b></span>
-<span>+2348127574549</span>
+<div class="naira__header">
+<h3 class="naira__title">
+Transaction Summary
+</h3>
+<span class="naira__desc">
+Details of transaction and current status
 </span>
+</div>
 
-<div class="kt-invoice__items">
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">REFERENCE NO</span>
-<span class="kt-invoice__text"><%= transaction.reference %></span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">DATE</span>
-<span class="kt-invoice__text"><%= transaction.created_at %></span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">STATUS</span>
-<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
+<div class="table-responsive">
+<table class="table">
+<tbody>
+<tr>
+<td>Reference No:</td>
+<td class="text-right"><%= transaction.reference %></td>
+</tr>
+<tr>
+<td>Amount:</td>
+<td class="text-right">&#8358;<%= transaction.amount %></td>
+</tr>
+<tr>
+<td>Date Created:</td>
+<td class="text-right"><%= transaction.created_at %></td>
+</tr>
+<tr>
+<td>Payment Status:</td>
+<td class="text-right"><% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
 <% let color = stateMap[transaction.status] %>
-<span class="kt-invoice__text kt-font-<%= color %> text-capitalize"><%= transaction.status %></span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">AMOUNT</span>
-<span class="kt-invoice__text" data-format="comma">&#8358;<%= transaction.amount %></span>
-</div>
+<span class="kt-font-<%= color %> text-capitalize"><%= transaction.status %></span></td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
-<div class="kt-invoice__items">
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">BANK NAME</span>
-<span class="kt-invoice__text">Access Bank</span>
+<div class="naira__header">
+<h3 class="naira__title">
+Nairalife Account Details
+</h3>
+<span class="naira__desc">
+Our bank account information
+</span>
 </div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">ACCOUNT NAME</span>
-<span class="kt-invoice__text">Token Technologies Limited</span>
-</div>
-<div class="kt-invoice__item">
-<span class="kt-invoice__subtitle">ACCOUNT NO</span>
-<span class="kt-invoice__text">0762936409</span>
-</div>
+<div class="table-responsive">
+<table class="table">
+<tbody>	
+<tr>
+<td>Account Name:</td>
+<td class="text-right">Token Technologies Limited</td>
+</tr>
+<tr>
+<td>Bank Name:</td>
+<td class="text-right">Access Bank</td>
+</tr>
+<tr>
+<td>Account No:</td>
+<td class="text-right">0762936409</td>
+</tr>
+</tbody>
+</table>
 </div>
 
+
+<div class="naira__header">
+<h3 class="naira__title">
+Payment Instruction
+</h3>
+<span class="naira__desc">
+How to make payment to Nairalife
+</span>
+</div>
+
+<div class="aboutn">
+<p>
+Send exactly <b> &#8358;<%= transaction.amount %></b> to the Nairalife account details above. If Payment is not confirmed after 24 hours, please contact us below 
+</p>
+</div>
+
+
+<div class="kt-login__btn kt-margin-t-20">
 <% if(transaction.status == "pending") { %>
-<p class="kt-margin-b-30 kt-text-align-left-mobile">
 <a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-secondary btn-taller btn-pill btn-wider transaction-cancel">
 <i class="la la-slack"></i><span class="cancel-text">Cancel Payment</span>
 </a>
-</p>
 <% } %>
-
+<a href="#" class="btn btn-warning btn-taller btn-pill btn-wider">
+<i class="la la-phone"></i>Contact Us
+</a>
 </div>
-</div>
-</div>
-<!--kt-invoice-wrapper-->
-</div>
-
 
 </div>
 <!--end of kt-portlet-body-->
@@ -83,16 +103,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 <script type="text/javascript" src="/js/custom/script.js"></script>
 <script type="text/javascript" src="/js/custom/transaction.js"></script>
-<% include footer3 %>
+<% include footer %>
