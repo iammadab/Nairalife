@@ -1,9 +1,10 @@
-function createFormFunction({ form, error, button, request, handlers, nameMap }){
+function createFormFunction({ form, error, success, button, request, handlers, nameMap }){
 	return function(){
 
 		let store = {
 			form,
 			error,
+			success,
 			button,
 			request,
 			handlers,
@@ -74,6 +75,8 @@ function execAction(action, store){
 		showAlert(store.error, info)
 	else if(command == "view")
 		showView(info)
+	else if(command == "success-clear")
+		clearAndShowSuccess(store.success, store.inputs, info)
 	store.activeButton("normal")
 }
 
@@ -82,4 +85,11 @@ function processDynamic(store){
 		let insertMatcher = /:\[(\w+)\]/g
 		return text.replace(insertMatcher, (match, prop) => store[prop] || "")
 	}		
+}
+
+function clearAndShowSuccess(successClass, inputs, successText){
+	inputs.forEach(input => {
+		input.value = ""
+	})
+	showAlert(successClass, successText)
 }

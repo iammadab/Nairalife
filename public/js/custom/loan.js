@@ -10,12 +10,14 @@ let loanFunction = createFormFunction({
 		active: "Requesting..."
 	},
 	error: ".loan-error",
+	success: ".loan-success",
 	request: {
 		route: "loan/",
 		data: ["token", ...fields]
 	},
 	handlers: {
-		PENDING_LOAN: "error:You already have a pending loan"
+		PENDING_LOAN: "error:You already have a pending loan",
+		200: "success-clear:Your loan request was successful"
 	},
 	nameMap: {
 		// Assume each error is prefaced with "Sorry, you didn't"
