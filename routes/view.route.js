@@ -141,7 +141,7 @@ viewRouter.get("/requests", cookieNotFound("/login"), verifyToken(), stageRouter
 })
 
 
-viewRouter.get("/request/:transaction_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.transaction, (req, res) => {
+viewRouter.get("/request/:loan_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.eachLoan, (req, res) => {
 	res.render("request", { title: "Request #", link: "#", ...req.body.pageData })
 })
 
