@@ -1,9 +1,13 @@
 const createLoan = require("./loan.create")
 const calculateLoan = require("./loan.calculate")
+const approveLoan = require("./loan.approve")
+const declineLoan = require("./loan.decline")
 
 const loanServices = {
 	createLoan,
-	calculateLoan
+	calculateLoan,
+	approveLoan,
+	declineLoan
 }
 
 module.exports = loanServices
