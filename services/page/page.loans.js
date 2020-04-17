@@ -6,7 +6,7 @@ async function loans(req, res, next){
 	let loans = await loanDb.findWith({ user_id: userObj.user_id })
 
 	loans.forEach(loan => {
-		loan._doc.create_at = pageFunctions.createDate(loan.created_at).getHypenDate()
+		loan._doc.created_at = pageFunctions.createDate(loan.created_at).getHypenDate()
 	})
 
 	req.body.pageData = {
