@@ -9,7 +9,7 @@ async function eachLoan(req, res, next){
 		userObj = await userDb.findOneWith({ user_id: loanObj.user_id })
 	else
 		userObj = await pageFunctions.fetchUser(req.body.user.id)
-	
+
 	let bankName = ""
 
 	if(userObj.user_id != loanObj.user_id)
@@ -26,6 +26,7 @@ async function eachLoan(req, res, next){
 
 	req.body.pageData = {
 		loan: loanObj,
+		user: userObj,
 		account: userObj.bank[0].account,
 		bankName
 	}
