@@ -165,7 +165,7 @@ viewRouter.get("/admin/payment/:transaction_id", cookieNotFound("/admin/login", 
 	res.render("admin/payment", {title: "Transaction", link: "payment", ...req.body.pageData })
 })
 
-viewRouter.get("/admin/loans", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transactions, (req, res) => {
+viewRouter.get("/admin/loans", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.allLoans, (req, res) => {
 	res.render("admin/loans", {title: "Nairalife Instalment Loans", link: "loans", ...req.body.pageData })
 })
 
