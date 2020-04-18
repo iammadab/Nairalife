@@ -24,7 +24,7 @@ Details of transaction and current status
 </tr>
 <tr>
 <td>Amount:</td>
-<td class="text-right">&#8358;<%= transaction.amount %></td>
+<td class="text-right" data-format="comma">&#8358;<%= transaction.amount %></td>
 </tr>
 <tr>
 <td>Date Created:</td>
@@ -80,14 +80,14 @@ How to make payment to Nairalife
 
 <div class="aboutn">
 <p>
-Send exactly <b> &#8358;<%= transaction.amount %></b> to the Nairalife account details above. If Payment is not confirmed after 24 hours, please contact us below 
+Send exactly <b data-format="comma"> &#8358;<%= transaction.amount %></b> to the Nairalife account details above. If your payment is not confirmed after 24 hours, please contact us below 
 </p>
 </div>
 
 
 <div class="kt-login__btn kt-margin-t-20">
 <% if(transaction.status == "pending") { %>
-<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-secondary btn-taller btn-pill btn-wider transaction-cancel">
+<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-secondary btn-taller btn-pill btn-wider kt-margin-r-5 transaction-cancel">
 <i class="la la-close"></i><span class="cancel-text">Cancel Payment</span>
 </a>
 <% } %>

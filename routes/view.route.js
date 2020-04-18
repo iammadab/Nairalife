@@ -11,7 +11,7 @@ const {
 const pageService = require("../services/page")
 
 viewRouter.get("/", cookieFound("/home"), (req, res) => {
-	res.render("index",{ title: "Nairalife Hire Purchase"})
+	res.render("index",{ title: "Nairalife"})
 })
 
 
@@ -142,7 +142,7 @@ viewRouter.get("/requests", cookieNotFound("/login"), verifyToken(), stageRouter
 
 
 viewRouter.get("/request/:loan_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.eachLoan, (req, res) => {
-	res.render("request", { title: "Request #", link: "#", ...req.body.pageData })
+	res.render("request", { title: "Loan Request #", link: "#", ...req.body.pageData })
 })
 
 
@@ -163,6 +163,14 @@ viewRouter.get("/admin/payments", cookieNotFound("/admin/login", "atoken"), veri
 
 viewRouter.get("/admin/payment/:transaction_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transaction, (req, res) => {
 	res.render("admin/payment", {title: "Transaction", link: "payment", ...req.body.pageData })
+})
+
+viewRouter.get("/admin/loans", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transactions, (req, res) => {
+	res.render("admin/loans", {title: "Nairalife Instalment Loans", link: "loans", ...req.body.pageData })
+})
+
+viewRouter.get("/admin/loan/:transaction_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transaction, (req, res) => {
+	res.render("admin/loan", {title: "Instalment Loan #", link: "#", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.members, (req, res) => {

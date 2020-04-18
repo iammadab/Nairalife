@@ -11,7 +11,7 @@
 Instalment Loan Summary
 </h3>
 <span class="naira__desc">
-Details of loan request and current status
+Details of loan and current status
 </span>
 </div>
 
@@ -19,12 +19,16 @@ Details of loan request and current status
 <table class="table">
 <tbody>
 <tr>
+<td>Member:</td>
+<td class="text-right">Akin Wumi</td>
+</tr>
+<tr>
 <td>Loan Amount:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan.initial_amount %></td>
+<td class="text-right" data-format="comma">&#8358;20,000</td>
 </tr>
 <tr>
 <td>Interest Rate:</td>
-<td class="text-right"><%= loan.interest %>%</td>
+<td class="text-right">35%</td>
 </tr>
 <tr>
 <td>Interest:</td>
@@ -36,17 +40,15 @@ Details of loan request and current status
 </tr>
 <tr>
 <td>Weekly Payment:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan._doc.weekly_payment %></td>
+<td class="text-right" data-format="comma">&#8358;3,350</td>
 </tr>
 <tr>
 <td>Loan Period:</td>
-<td class="text-right"><%= loan.weeks %> Weeks</td>
+<td class="text-right">8 Weeks</td>
 </tr>
 <tr>
 <td>Loan Status:</td>
-<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
-<% let color = stateMap[loan.status] %>
-<td class="text-capitalize text-right kt-font-<%= color %>"><%= loan.status %></td>
+<td class="text-capitalize text-right kt-font-info">Pending</td>
 </tr>
 </tbody>
 </table>
@@ -58,7 +60,7 @@ Details of loan request and current status
 Account Details
 </h3>
 <span class="naira__desc">
-Your bank account information
+Member's bank account information
 </span>
 </div>
 <div class="table-responsive">
@@ -66,15 +68,15 @@ Your bank account information
 <tbody>	
 <tr>
 <td>Account Name:</td>
-<td class="text-right"><%= account.account_name %></td>
+<td class="text-right">Akin Wumi</td>
 </tr>
 <tr>
 <td>Bank Name:</td>
-<td class="text-right"><%= bankName %></td>
+<td class="text-right">Zenith Bank</td>
 </tr>
 <tr>
 <td>Account No:</td>
-<td class="text-right"><%= account.account_number %></td>
+<td class="text-right">2009586808</td>
 </tr>
 </tbody>
 </table>
@@ -85,12 +87,12 @@ Your bank account information
 Instalment Loan Need
 </h3>
 <span class="naira__desc">
-Why did you request for the loan?
+Why did member request for the loan?
 </span>
 </div>
 <div class="aboutn kt-margin-b-10">
 <p>
-<%= loan.reason %>
+I want to use the money to settle some of my bills because there is a lock down and I am unable to work
 </p>
 </div>
 
@@ -100,24 +102,23 @@ Why did you request for the loan?
 Instalment Loan Term
 </h3>
 <span class="naira__desc">
-Your agreement with Nairalife
+Nairalife agreement with member
 </span>
 </div>
 
 <div class="aboutn">
 <p>
-I promise to repay on instalment &#8358;<span data-format="comma"><%= loan._doc.weekly_payment %></span> weekly for <%= loan.weeks %> weeks for a total of &#8358;<span data-format="comma"><%= loan.final_amount %></span> and at an interest rate of <%= loan.interest %>% starting <%= loan._doc.beforeText %>  after receiving this loan.
+Akin Wumi promised to repay on instalment &#8358;<span data-format="comma">3,350</span> weekly for 8 weeks for a total of &#8358;<span data-format="comma">27,000</span> and at an interest rate of 35% starting 4 Weeks after receiving this loan
 </p>
 </div>
 
-
 <div class="kt-login__btn kt-margin-t-20">
 <button class="btn btn-secondary btn-taller btn-pill btn-wider kt-margin-r-5">
-<i class="la la-close"></i>Cancel Request
+<i class="la la-thumbs-down"></i>Deny Loan
 </button>
-<a href="tel:08127574549" class="btn btn-warning btn-taller btn-pill btn-wider">
-<i class="la la-phone"></i>Contact Us
-</a>
+<button class="btn btn-warning btn-taller btn-pill btn-wider">
+<i class="la la-thumbs-up"></i>Approve Loan
+</button>
 </div>
 
 </div>
@@ -128,14 +129,5 @@ I promise to repay on instalment &#8358;<span data-format="comma"><%= loan._doc.
 
 
 
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" src="/js/custom/script.js"></script>
+<script src="/js/custom/script.js"></script>
 <% include footer %>

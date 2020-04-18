@@ -1,0 +1,39 @@
+<div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-margin-10">
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr>
+<th class="kt-font-bolder kt-font-success">No</th>
+<th class="kt-font-bolder kt-font-success">Member</th>
+<th class="kt-font-bolder kt-font-success trmhide">Reference</th>
+<th class="kt-font-bolder kt-font-success">Amount</th>
+<th class="kt-font-bolder kt-font-success">Date</th>
+<th class="kt-font-bolder kt-font-success">Status</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<% transactions.forEach((transaction, i) => { %>
+<tr>
+<td><%= i + 1 %></td>
+<td><%= transaction.username %></td>
+<td class="trmhide"><%= transaction.reference %></td>
+<td>&#8358;<%= transaction.amount %></td>
+<td><%= transaction._doc.created_at %></td>
+<% let statusMap = { "success": "success", "pending": "info", "failed": "danger" } %>
+<td class="text-capitalize kt-font-<%= statusMap[transaction.status] %>"><%= transaction.status %></td>
+<td>
+	<% if(transaction.data.type == "manual") { %>
+	<a href="/admin/payment/<%= transaction._id %>" class="btn btn-secondary btn-sm pending-button">View</a>
+	<% } %>
+</td>
+</tr>
+<% }) %>
+</tbody>	
+</table>
+</div>
+</div>
+<!--end of kt-portlet-body-->
+</div>
+<!--end of kt-portlet-->
