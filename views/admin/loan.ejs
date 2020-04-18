@@ -48,7 +48,7 @@ Details of loan and current status
 </tr>
 <tr>
 <td>Loan Status:</td>
-<% let stateMap = { pending: "info", success: "success", declined: "danger", cancelled: "danger" } %>
+<% let stateMap = { pending: "info", approved: "success", declined: "danger", cancelled: "danger" } %>
 <% let color = stateMap[loan.status] %>
 <td class="text-capitalize text-right kt-font-<%= color %>"><%= loan.status %></td>
 </tr>

@@ -1,17 +1,17 @@
 const { createValidator } = require("lazy-validator")
 
-const loanCancelValidator = createValidator("loan_id.string, status.string.lowercase")
+const loanCancelValidator = createValidator("loan_id.string")
 
 const loanDb = require("../../data/db/loan.db")
 const userDb = require("../../data/db/user.db")
 
 function updateLoanStatus(status){
-	return async function cancelLoan({ ...data, status }){
+	return async function cancelLoan(data){
 		let validationResult = loanCancelValidator.parse(data)
 		if(validationResult.error)
 			return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
-		let { loan_id, status } = validationResult.data
+		let { loan_id } = validationResult.data
 
 		let possibleStatus = ["pending", "approved", "cancelled", "declined", "completed"]
 		if(!possibleStatus.includes(status))
@@ -31,8 +31,8 @@ function updateLoanStatus(status){
 		if(loanObj.user_id != userObj.user_id)
 			return { status: 403, code: "LOAN_NOT_FOUND" }
 
-		if(loanObj.status != "pending")
-			return { status: 403, code: "LOAN_NOT_PENDING" }
+		// if(loanObj.status != "pending")
+		// 	return { status: 403, code: "LOAN_NOT_PENDING" }
 
 		loanObj = await loanDb.appendDoc({ _id: loanObj._id }, "status", status)
 		if(loanObj)
@@ -42,4 +42,4 @@ function updateLoanStatus(status){
 	}
 }
 
-module.exports = cancelLoan
+module.exports = updateLoanStatus
