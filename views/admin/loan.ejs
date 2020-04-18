@@ -114,14 +114,16 @@ Nairalife agreement with member
 </p>
 </div>
 
+<% if(loan.status == "pending"){ %>
 <div class="kt-login__btn kt-margin-t-20">
-<button class="btn btn-secondary btn-taller btn-pill btn-wider kt-margin-r-5">
-<i class="la la-thumbs-down"></i>Deny Loan
+<button class="btn btn-secondary btn-taller btn-pill btn-wider kt-margin-r-5 deny-loan" data-loan_id="<%= loan._id %>">
+<i class="la la-thumbs-down"></i><span class="deny-text">Deny Loan</span>
 </button>
-<button class="btn btn-warning btn-taller btn-pill btn-wider">
-<i class="la la-thumbs-up"></i>Approve Loan
+<button class="btn btn-warning btn-taller btn-pill btn-wider approve-loan" data-loan_id="<%= loan._id %>">
+<i class="la la-thumbs-up"></i><span class="approve-text">Approve Loan</span>
 </button>
 </div>
+<% } %>
 
 </div>
 <!--end of kt-portlet-body-->
@@ -132,4 +134,5 @@ Nairalife agreement with member
 
 
 <script src="/js/custom/script.js"></script>
+<script src="/js/custom/admin/loan.js"></script>
 <% include footer %>
