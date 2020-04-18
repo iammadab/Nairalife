@@ -37,11 +37,11 @@ Invalid Phone Number or Password
 </tr>
 <tr>
 <td>Interest:</td>
-<td class="text-right" data-format="comma">&#8358;0</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount - loan.initial_amount %></td>
 </tr>
 <tr>
 <td>Total Amount:</td>
-<td class="text-right" data-format="comma">&#8358;0</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount %></td>
 </tr>
 <tr>
 <td>Weekly Payment:</td>
