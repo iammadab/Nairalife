@@ -1,12 +1,16 @@
 const pageFunctions = require("./functions")
 const loanDb = require("../../data/db/loan.db")
+const userDb = require("../../data/db/user.db")
 
 async function allLoans(req, res, next){
 	let allLoans = await loanDb.findWith({})
 
-	allLoans.forEach(loan => {
-		loan._doc.created_at = pageFunctions.createDate(loan._id.getTimeStamp()).getHypenDate()
-	})
+	for(let i = 0; i < allLoans.length; i++){
+		let loan = allLoans[i]
+		let userObj = await userDb.findOneWith({ user_id: loan.user_id })
+		loan._doc.created_at = pageFunctions.createDate(loan.created_at).getHypenDate()
+		loan._doc.name = userObj.fullname
+	}
 
 	req.body.pageData = {
 		loans: allLoans
