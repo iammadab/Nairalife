@@ -31,8 +31,8 @@ function updateLoanStatus(status){
 		if(loanObj.user_id != userObj.user_id)
 			return { status: 403, code: "LOAN_NOT_FOUND" }
 
-		// if(loanObj.status != "pending")
-		// 	return { status: 403, code: "LOAN_NOT_PENDING" }
+		if(loanObj.status != "pending")
+			return { status: 403, code: "LOAN_NOT_PENDING" }
 
 		loanObj = await loanDb.appendDoc({ _id: loanObj._id }, "status", status)
 		if(loanObj)
