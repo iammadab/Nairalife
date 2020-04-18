@@ -169,8 +169,8 @@ viewRouter.get("/admin/loans", cookieNotFound("/admin/login", "atoken"), verifyT
 	res.render("admin/loans", {title: "Nairalife Instalment Loans", link: "loans", ...req.body.pageData })
 })
 
-viewRouter.get("/admin/loan/:transaction_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transaction, (req, res) => {
-	res.render("admin/loan", {title: "Instalment Loan #", link: "#", ...req.body.pageData })
+viewRouter.get("/admin/loan/:loan_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.eachLoan, (req, res) => {
+	res.render("admin/loan", {title: `Instalment Loan #${req.body.pageData.loan.reference}`, link: `#${req.body.pageData.loan.reference}`, ...req.body.pageData })
 })
 
 viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.members, (req, res) => {
