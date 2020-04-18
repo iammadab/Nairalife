@@ -11,6 +11,7 @@ Details of your Nairalife instalment loan
 <div class="table-responsive">
 <table class="table">
 <tbody>
+<% if(loan){ %>
 <tr>
 <td>Loan Amount:</td>
 <td class="text-right">&#8358;30,000</td>
@@ -35,7 +36,10 @@ Details of your Nairalife instalment loan
 <td>Remaining Payment:</td>
 <td class="text-right">&#8358;24,000</td>
 </tr>
+<% } %>
+<% if(!loan){ %>
 <tr><td colspan="2">You currently do not have any active instalment loan on Nairalife</td></tr>
+<% } %>
 </tbody>
 </table>
 </div>

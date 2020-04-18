@@ -15,6 +15,15 @@ Details of loan request and current status
 </span>
 </div>
 
+<% if(loan.status == "pending"){ %>
+<div class="alert alert-danger alert-bold fade show kt-margin-b-20" role="alert">
+<div class="alert-icon"><i class="la la-warning"></i></div>
+<div class="alert-text">
+Invalid Phone Number or Password
+</div>
+</div>
+<% } %>
+
 <div class="table-responsive">
 <table class="table">
 <tbody>
@@ -44,7 +53,7 @@ Details of loan request and current status
 </tr>
 <tr>
 <td>Loan Status:</td>
-<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
+<% let stateMap = { pending: "info", success: "success", declined: "danger", cancelled: "danger" } %>
 <% let color = stateMap[loan.status] %>
 <td class="text-capitalize text-right kt-font-<%= color %>"><%= loan.status %></td>
 </tr>
@@ -112,9 +121,11 @@ I promise to repay on instalment &#8358;<span data-format="comma"><%= loan._doc.
 
 
 <div class="kt-login__btn kt-margin-t-20">
-<button class="btn btn-secondary btn-taller btn-pill btn-wider kt-margin-r-5">
+<% if(loan.status == "pending"){ %>
+<button class="btn btn-secondary btn-taller btn-pill btn-wider kt-margin-r-5 cancel-button" data-loan_id="<%= loan._id %>">
 <i class="la la-close"></i>Cancel Request
 </button>
+<% } %>
 <a href="tel:08127574549" class="btn btn-warning btn-taller btn-pill btn-wider">
 <i class="la la-phone"></i>Contact Us
 </a>
@@ -138,4 +149,5 @@ I promise to repay on instalment &#8358;<span data-format="comma"><%= loan._doc.
 
 
 <script type="text/javascript" src="/js/custom/script.js"></script>
+<script type="text/javascript" src="/js/custom/request.js"></script>
 <% include footer %>

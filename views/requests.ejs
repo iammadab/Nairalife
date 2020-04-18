@@ -15,6 +15,7 @@
 <thead>
 <tr>
 <th class="kt-font-bolder kt-font-success">No</th>
+<th class="kt-font-bolder kt-font-success">Reference</th>
 <th class="kt-font-bolder kt-font-success">Amount</th>
 <th class="kt-font-bolder kt-font-success">Date</th>
 <th class="kt-font-bolder kt-font-success">Status</th>
@@ -26,9 +27,10 @@
 <% loans.forEach((loan, i) => { %> 
 <tr>
 <td><%= i + 1 %></td>
+<td>#<%= loan.reference %></td>
 <td data-format="comma">&#8358;<%= loan.initial_amount %></td>
 <td><%= loan._doc.created_at %></td>
-<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
+<% let stateMap = { pending: "info", success: "success", declined: "danger", cancelled: "danger" } %>
 <% let color = stateMap[loan.status] %>
 <td class="text-capitalize kt-font-<%= color %>"><%= loan.status %></td>
 <td>

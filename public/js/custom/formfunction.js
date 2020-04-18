@@ -57,11 +57,11 @@ function grabDetails(props, dataObj){
 
 function createHandler(handlers, store){
 	return function(response){
-		console.log("Handling")
+		let processor = processDynamic(response)
 		if(response.status == 200 && handlers["200"])
-			execAction(handlers["200"], store)
+			execAction(processor(handlers["200"]), store)
 		else if(response.code && handlers[response.code])
-			execAction(handlers[response.code], store)
+			execAction(processor(handlers[response.code]), store)
 		else
 			console.log("Found no handlers")
 	}
