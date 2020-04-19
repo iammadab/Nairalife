@@ -18,10 +18,10 @@ Details of transaction and current status
 <div class="table-responsive">
 <table class="table">
 <tbody>
-<tr>
+<!-- <tr>
 <td>Reference No:</td>
 <td class="text-right"><%= transaction.reference %></td>
-</tr>
+</tr> -->
 <tr>
 <td>Amount:</td>
 <td class="text-right" data-format="comma">&#8358;<%= transaction.amount %></td>
@@ -54,7 +54,7 @@ Sender's contact information
 <tbody>	
 <tr>
 <td>Full Name:</td>
-<td class="text-right"><%= transactionOwner.fullname %></td>
+<td class="text-capitalize text-right"><%= transactionOwner.fullname %></td>
 </tr>
 <tr>
 <td>Phone Number:</td>

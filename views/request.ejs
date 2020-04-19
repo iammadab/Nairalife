@@ -5,7 +5,6 @@
 <div class="kt-portlet btopzero">
 <div class="kt-portlet__body kt-margin-10">
 
-
 <div class="naira__header">
 <h3 class="naira__title">
 Instalment Loan Summary
@@ -14,15 +13,6 @@ Instalment Loan Summary
 Details of loan request and current status
 </span>
 </div>
-
-<% if(loan.status == "pending"){ %>
-<div class="alert alert-danger alert-bold fade show kt-margin-b-20" role="alert">
-<div class="alert-icon"><i class="la la-warning"></i></div>
-<div class="alert-text">
-Invalid Phone Number or Password
-</div>
-</div>
-<% } %>
 
 <div class="table-responsive">
 <table class="table">
@@ -59,6 +49,14 @@ Invalid Phone Number or Password
 </tr>
 </tbody>
 </table>
+<% if(loan.status == "pending"){ %>
+<div class="alert alert-bold fade show kt-margin-b-20" role="alert" style="border:1px solid #e1e1e1; color:#666">
+<div class="alert-icon"><i class="la la-info-circle"></i></div>
+<div class="alert-text">
+We are currently processing your loan request and we apologise for the delay
+</div>
+</div>
+<% } %>
 </div>
 
 
@@ -75,7 +73,7 @@ Your bank account information
 <tbody>	
 <tr>
 <td>Account Name:</td>
-<td class="text-right"><%= account.account_name %></td>
+<td class="text-capitalize text-right"><%= account.account_name.toLowerCase() %></td>
 </tr>
 <tr>
 <td>Bank Name:</td>
@@ -119,17 +117,16 @@ I promise to repay on instalment &#8358;<span data-format="comma"><%= loan._doc.
 </p>
 </div>
 
-
-<div class="kt-login__btn kt-margin-t-20">
 <% if(loan.status == "pending"){ %>
+<div class="kt-login__btn kt-margin-t-20">
 <button class="btn btn-secondary btn-taller btn-pill btn-wider kt-margin-r-5 cancel-button" data-loan_id="<%= loan._id %>">
 <i class="la la-close"></i>Cancel Request
 </button>
-<% } %>
 <a href="tel:08127574549" class="btn btn-warning btn-taller btn-pill btn-wider">
 <i class="la la-phone"></i>Contact Us
 </a>
 </div>
+<% } %>
 
 </div>
 <!--end of kt-portlet-body-->

@@ -17,11 +17,11 @@
 <% loans.forEach((loan, i) => { %>
 <tr>
 <td><%= i + 1 %></td>
-<td><%= loan._doc.name %></td>
+<td class="text-capitalize"><%= loan._doc.name %></td>
 <td class="trmhide"><%= loan.reference %></td>
 <td data-format="comma">&#8358;<%= loan.initial_amount %></td>
 <td><%= loan._doc.created_at %></td>
-<% let statusMap = { "success": "success", "pending": "info", "failed": "danger" } %>
+<% let statusMap = { "approved": "success", "pending": "info", "cancelled": "danger" } %>
 <td class="text-capitalize kt-font-<%= statusMap[loan.status] %>"><%= loan.status %></td>
 <td><a href="/admin/loan/<%= loan._id %>" class="btn btn-secondary btn-sm pending-button">View</a></td>
 </tr>

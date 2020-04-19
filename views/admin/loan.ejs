@@ -20,7 +20,7 @@ Details of loan and current status
 <tbody>
 <tr>
 <td>Member:</td>
-<td class="text-right"><%= user.fullname %></td>
+<td class="text-capitalize text-right"><%= user.fullname %></td>
 </tr>
 <tr>
 <td>Loan Amount:</td>
@@ -70,7 +70,7 @@ Member's bank account information
 <tbody>	
 <tr>
 <td>Account Name:</td>
-<td class="text-right"><%= account.account_name %></td>
+<td class="text-capitalize text-right"><%= account.account_name.toLowerCase() %></td>
 </tr>
 <tr>
 <td>Bank Name:</td>
@@ -110,7 +110,7 @@ Nairalife agreement with member
 
 <div class="aboutn">
 <p>
-<%= user.fullname %> promised to repay on instalment &#8358;<span data-format="comma"><%= loan._doc.weekly_payment %></span> weekly for <%= loan.weeks %> weeks for a total of &#8358;<span data-format="comma"><%= loan.final_amount %></span> and at an interest rate of <%= loan.interest %>% starting <%= loan._doc.beforeText %> after receiving this loan.
+<span class="text-capitalize"><%= user.fullname %></span> promised to repay on instalment &#8358;<span data-format="comma"><%= loan._doc.weekly_payment %></span> weekly for <%= loan.weeks %> weeks for a total of &#8358;<span data-format="comma"><%= loan.final_amount %></span> and at an interest rate of <%= loan.interest %>% starting <%= loan._doc.beforeText %> after receiving this loan.
 </p>
 </div>
 

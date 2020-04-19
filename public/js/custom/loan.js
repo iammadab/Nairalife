@@ -16,7 +16,7 @@ let loanFunction = createFormFunction({
 		data: ["token", ...fields]
 	},
 	handlers: {
-		PENDING_LOAN: "error:You already have a pending loan",
+		PENDING_LOAN: "error:Sorry, you can not make a new loan request because you currently have a pending request or an active loan. If you have a pending request, cancel to make a new request",
 		200: "redirect::[redirect]"
 	},
 	nameMap: {
@@ -67,10 +67,10 @@ function newInput(event){
 	function renderResponse(data){
 		let responseHTML = `
 			<div class="alert-text text-muted">
-				If your request is approved, you will pay back on instalment 
-				<span class="kt-font-bolder">&#8358;${data.weeklyPayments}</span> 
+				If your loan request is approved by Nairalife, you will pay back on instalment 
+				<span class="kt-font-bolder">&#8358;${addComma(data.weeklyPayments)}</span> 
 				weekly for ${data.weeks} weeks for a total of 
-				<span class="kt-font-bolder">&#8358;${data.finalAmount}</span> 
+				<span class="kt-font-bolder">&#8358;${addComma(data.finalAmount)}</span> 
 				and at an interest rate of ${data.interest}%.
 			</div>	
 		`

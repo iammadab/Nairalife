@@ -544,7 +544,7 @@ height: calc(1.5em + 1.3rem + 2px);
 padding: 0.65rem 1rem;
 font-size: 1.3rem;
 font-weight: 400;
-color: #000;
+color: #333;
 background-color: #fff;
 background-clip: padding-box;
 border: 1px solid #e1e1e1;
@@ -558,7 +558,7 @@ background-color: transparent;
 border: 0; }
 
 .form-control:focus {
-color: #000;
+color: #333;
 background-color: #fff;
 border-color: #008000;
 outline: 0;
@@ -609,6 +609,7 @@ font-size: 1.3rem;
 font-weight: 400;
 line-height: 1.5rem;
 border-radius: 0.3rem;
+color:#333;
 }
 
 select.form-control[size], select.form-control[multiple] {
@@ -2871,7 +2872,7 @@ border: 1px solid #e1e1e1;
 background-color: #ffffff;
 margin-bottom: 20px;
 border-radius: 4px;
-min-height:240px;
+min-height:auto;
 height:auto;
 }
 /*.kt-page-content-white .kt-portlet {

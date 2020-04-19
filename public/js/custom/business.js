@@ -1,4 +1,4 @@
-let fields = ["partner", "work_duration", "rating", "trips", "city", "work_description", "own_car", "weekly_earning", "reason"]
+let fields = ["partner", "work_duration", "rating", "trips", "city", "work_description", "own_car", "weekly_earning"]
 let businessFunction = createFormFunction({
 	form: {
 		main: ".business-form",
@@ -25,8 +25,7 @@ let businessFunction = createFormFunction({
 		city: "choose the city you drive in",
 		work_description: "describe your partnership",
 		own_car: "choose your car status",
-		weekly_earning: "enter your average weekly earnings",
-		reason: "enter the reason why nairalife should consider you for the higher purchase plan"
+		weekly_earning: "enter your average weekly earnings"
 	}
 })
 
