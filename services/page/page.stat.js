@@ -32,6 +32,7 @@ async function stat(req, res, next){
 	let activeLoans = await loanDb.findWith({ status: "approved" })
 
 	let totalActiveLoanAmount = activeLoans.reduce((acc, curr) => acc + curr.initial_amount, 0)
+	let totalActiveInterest = activeLoans.reduce((acc, curr) => acc + (curr.final_amount - curr.initial_amount), 0)
 	let totalWeeklyLoanPayment = 0
 	for(let i = 0; i < activeLoans.length; i++){
 		let loan = activeLoans[i], weekly = loan.final_amount / loan.weeks
@@ -54,6 +55,7 @@ async function stat(req, res, next){
 		pendingLoansAmount: totalPendingLoanAmount,
 		activeLoansCount: activeLoans.length,
 		activeLoansAmount: totalActiveLoanAmount,
+		activeInterest: totalActiveInterest,
 		weeklyLoan: totalWeeklyLoanPayment
 	}
 
