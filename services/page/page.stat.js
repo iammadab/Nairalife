@@ -4,7 +4,7 @@ const loanDb = require("../../data/db/loan.db")
 async function stat(req, res, next){
 	let allMembers = await pageFunctions.fetchUsers()
 	let verifiedMembers = await userDb.findWith({ stage: "active" })
-	let activeMembers = await pageFunctions.fetchUsers({ stage: "active", status: "payment_one" })
+	let activeMembers = await pageFunctions.fetchUsers({ stage: "active", status: { $in: ["payment_one", "payment_two"] }})
 	let cars = await pageFunctions.fetchUsers({ status: "payment_two" })
 	let allHpTransactions = await pageFunctions.fetchTransactions({ type: "higher_purchase", status: "success" })
 
@@ -16,6 +16,15 @@ async function stat(req, res, next){
 	let toPay = 0
 	for(let i = 0; i < activeMembers.length; i++){
 		toPay += activeMembers[i]._doc.plan.total_amount || 0
+	}
+
+	let weeklyHigherPurchase = 0
+	for(let i = 0; i < activeMembers.length; i++){
+		let member = activeMembers[i]
+		if(member.status == "payment_one")
+			weeklyHigherPurchase += (member.payment_one.amount * 7)
+		else if(member.status == "payment_two")
+			weeklyHigherPurchase += member.plan.amount
 	}
 
 	let allLoans = await loanDb.findWith({})
@@ -38,6 +47,7 @@ async function stat(req, res, next){
 		carsCount: cars.length,
 		totalPaid,
 		toPay,
+		weeklyHigherPurchase,
 
 		allLoansCount: allLoans.length,
 		pendingLoansCount: pendingLoans.length,
