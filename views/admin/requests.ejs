@@ -21,7 +21,7 @@ Last 10 recent requests on Nairalife
 <td><%= loan.reference %></td>
 <td>&#8358;<span data-format="comma"><%= loan.initial_amount %></span></td>
 <td><%= loan._doc.created_at %></td>
-<% let statusMap = { "success": "success", "pending": "info", "failed": "danger" } %>
+<% let statusMap = { "approved": "success", "pending": "info", "failed": "danger", "cancelled": "danger" } %>
 <td class="text-capitalize kt-font-<%= statusMap[loan.status] %>"><%= loan.status %></td>
 </tr>
 <% }) %>

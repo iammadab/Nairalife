@@ -22,7 +22,7 @@ async function profile(req, res, next){
 	if(loanObj)
 		loanObj._doc.weekly_payment = loanObj.final_amount / loanObj.weeks
 
-	let allLoans = await loanDb.findWith({ user_id: userObj.user_id }, null, null, 10)
+	let allLoans = await loanDb.findWith({ user_id: userObj.user_id }, null, { created_at: -1 }, 10)
 	allLoans.forEach(loan => {
 		loan._doc.created_at = pageFunctions.createDate(loan.created_at).getHypenDate()
 	})
