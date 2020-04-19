@@ -4,7 +4,7 @@ const loanDb = require("../../data/db/loan.db")
 
 async function profile(req, res, next){
 	let userObj = (await userDb.findOneWith({ user_id: req.params.user_id }))._doc
-	let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: userObj.user_id, type: "higher_purchase" })
+	let higherPurchaseTransactions = await pageFunctions.fetchTransactions({ user_id: userObj.user_id, type: "higher_purchase" }, 10)
 	let totalPayment = 0, remainingPayment = 0
 
 	if(userObj)
