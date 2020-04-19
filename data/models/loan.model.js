@@ -17,7 +17,7 @@ const loanSchema = mongoose.Schema({
 
 const { word } = require("../../lib/random")
 loanSchema.statics.getReference = async function referenceLoop(){
-	let possibleReference = word(6)
+	let possibleReference = word(16)
 	let docExist = await this.find({ reference: possibleReference })
 	if(docExist.length == 0)
 		return possibleReference

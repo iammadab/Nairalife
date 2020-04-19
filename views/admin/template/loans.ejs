@@ -14,20 +14,16 @@
 </tr>
 </thead>
 <tbody>
-<% transactions.forEach((transaction, i) => { %>
+<% loans.forEach((loan, i) => { %>
 <tr>
 <td><%= i + 1 %></td>
-<td><%= transaction.username %></td>
-<td class="trmhide"><%= transaction.reference %></td>
-<td>&#8358;<%= transaction.amount %></td>
-<td><%= transaction._doc.created_at %></td>
+<td><%= loan._doc.name %></td>
+<td class="trmhide"><%= loan.reference %></td>
+<td data-format="comma">&#8358;<%= loan.initial_amount %></td>
+<td><%= loan._doc.created_at %></td>
 <% let statusMap = { "success": "success", "pending": "info", "failed": "danger" } %>
-<td class="text-capitalize kt-font-<%= statusMap[transaction.status] %>"><%= transaction.status %></td>
-<td>
-	<% if(transaction.data.type == "manual") { %>
-	<a href="/admin/loan/<%= transaction._id %>" class="btn btn-secondary btn-sm pending-button">View</a>
-	<% } %>
-</td>
+<td class="text-capitalize kt-font-<%= statusMap[loan.status] %>"><%= loan.status %></td>
+<td><a href="/admin/loan/<%= loan._id %>" class="btn btn-secondary btn-sm pending-button">View</a></td>
 </tr>
 <% }) %>
 </tbody>	

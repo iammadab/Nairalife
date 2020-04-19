@@ -22,7 +22,9 @@ Details on your Nairalife car instalment plan
 </tr>
 <tr>
 <td>Weekly Instalment:</td>
-<td class="text-right">&#8358;27,390</td>
+<% let weeklyAmount = user.plan.amount %>
+<% if(user.status == "payment_one"){ weeklyAmount = user.payment_one.amount * 7 } %>
+<td class="text-right">&#8358;<%= weeklyAmount %></td>
 </tr>
 <tr>
 <td>Current Payment:</td>
@@ -34,7 +36,7 @@ Details on your Nairalife car instalment plan
 </tr>
 <tr>
 <td>Remaining Weeks:</td>
-<td class="text-right">104</td>
+<td class="text-right"><%= Math.ceil(remainingPayment / weeklyAmout) %> weeks</td>
 </tr>
 <% } %>
 

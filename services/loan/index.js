@@ -1,13 +1,11 @@
 const createLoan = require("./loan.create")
 const calculateLoan = require("./loan.calculate")
-const approveLoan = require("./loan.approve")
-const cancelLoan = require("./loan.cancel")
+const updateLoan = require("./loan.update")
 
 const loanServices = {
 	createLoan,
 	calculateLoan,
-	approveLoan,
-	cancelLoan
+	updateLoan
 }
 
 module.exports = loanServices
