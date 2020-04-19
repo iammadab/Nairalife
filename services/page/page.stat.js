@@ -29,6 +29,8 @@ async function stat(req, res, next){
 		totalWeeklyLoanPayment += weekly
 	}
 
+	let totalPendingLoanAmount = pendingLoans.reduce((acc, curr) => acc + curr.initial_amount, 0)
+
 	req.body.pageData = {
 		allMembersCount: allMembers.length,
 		verifiedMembersCount: verifiedMembers.length,
@@ -39,6 +41,7 @@ async function stat(req, res, next){
 
 		allLoansCount: allLoans.length,
 		pendingLoansCount: pendingLoans.length,
+		pendingLoansAmount: totalPendingLoanAmount,
 		activeLoansCount: activeLoans.length,
 		activeLoansAmount: totalActiveLoanAmount,
 		weeklyLoan: totalWeeklyLoanPayment
