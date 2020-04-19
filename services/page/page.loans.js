@@ -9,6 +9,8 @@ async function loans(req, res, next){
 		loan._doc.created_at = pageFunctions.createDate(loan.created_at).getHypenDate()
 	})
 
+	loans.reverse()
+
 	req.body.pageData = {
 		loans
 	}
