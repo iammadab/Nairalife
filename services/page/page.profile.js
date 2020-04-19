@@ -11,8 +11,11 @@ async function profile(req, res, next){
 	if(userObj)
 		userObj.created_at = pageFunctions.createDate(userObj._id.getTimestamp()).getDate()
 
-	allHigherPurchaseTransactions.forEach(transaction => {
+	higherPurchaseTransactions.forEach(transaction => {
 		transaction._doc.created_at = pageFunctions.createDate(transaction._id.getTimestamp()).getHypenDate()
+	})
+	
+	allHigherPurchaseTransactions.forEach(transaction => {
 		if(transaction.status == "success")
 			totalPayment += Number(transaction.amount)
 	})
