@@ -1,0 +1,107 @@
+<div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-margin-10">
+
+
+<div class="naira__header">
+<h3 class="naira__title">
+Hire Purchase Summary
+</h3>
+<span class="naira__desc">
+Details of your active car instalment plan
+</span>
+</div>
+<div class="table-responsive">
+<table class="table">
+<tbody>
+<% if(user.plan.total_amount){ %>
+<tr>
+<td>Car Model:</td>
+<td class="text-right"><%= user.plan.car_name %></td>
+</tr>
+<tr>
+<td>Total Price:</td>
+<td class="text-right">&#8358;<span data-format="comma"><%= user.plan.total_amount %></span></td>
+</tr>
+<tr>
+<td>Weekly Instalment:</td>
+<% let weeklyAmount = user.plan.amount %>
+<% if(user.status == "payment_one"){ weeklyAmount = user.payment_one.amount * 7 } %>
+<td class="text-right" data-format="comma">&#8358;<%= weeklyAmount %></td>
+</tr>
+<tr>
+<td>Current Payment:</td>
+<td class="text-right">&#8358;<span data-format="comma"><%= totalPayment %></span></td>
+</tr>
+<tr>
+<td>Remaining Payment:</td>
+<td class="text-right">&#8358;<span data-format="comma"><%= remainingPayment %></span></td>
+</tr>
+<tr>
+<td>Remaining Weeks:</td>
+<td class="text-right"><%= Math.ceil(remainingPayment / weeklyAmount) %> weeks</td>
+</tr>
+<% } %>
+
+<% if(!user.plan.total_amount){ %>
+<tr><td colspan="2">You currently do not have any hire purchase plan</td></tr>
+<% } %>
+</tbody>
+</table>
+</div>
+
+
+
+
+<div class="naira__header kt-margin-t-10">
+<h3 class="naira__title">
+Instalment Loan Summary
+</h3>
+<span class="naira__desc">
+Details of your active loan
+</span>
+</div>
+<div class="table-responsive">
+<table class="table kt-margin-b-0">
+<tbody>
+<% if(loan){ %>
+<tr>
+<td>Loan Amount:</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.initial_amount %></td>
+</tr>
+<tr>
+<td>Interest Rate:</td>
+<td class="text-right"><%= loan.interest %>%</td>
+</tr>
+<tr>
+<td>Interest:</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount - loan.initial_amount %></td>
+</tr>
+<tr>
+<td>Total Payment:</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount %></td>
+</tr>
+<tr>
+<td>Weekly Instalment:</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan._doc.weekly_payment %></td>
+</tr>
+<tr>
+<td>Remaining Payment:</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount %></td>
+</tr>
+<tr>
+<td>Loan Period:</td>
+<td class="text-right"><%= loan.weeks %> Weeks</td>
+</tr>
+<% } %>
+<% if(!loan){ %>
+<tr><td colspan="2">You currently do not have any active instalment loan</td></tr>
+<% } %>
+</tbody>
+</table>
+</div>
+
+
+</div>
+<!--end of kt-portlet-body-->
+</div>
+<!--end of kt-portlet-->

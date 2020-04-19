@@ -19,7 +19,7 @@
 <td><%= i + 1 %></td>
 <td class="text-capitalize"><%= transaction.username %></td>
 <td class="trmhide"><%= transaction.reference %></td>
-<td>&#8358;<%= transaction.amount %></td>
+<td data-format="comma">&#8358;<%= transaction.amount %></td>
 <td><%= transaction._doc.created_at %></td>
 <% let statusMap = { "success": "success", "pending": "info", "failed": "danger" } %>
 <td class="text-capitalize kt-font-<%= statusMap[transaction.status] %>"><%= transaction.status %></td>

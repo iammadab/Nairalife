@@ -158,11 +158,11 @@ viewRouter.get("/admin/dashboard", cookieNotFound("/admin/login", "atoken"), ver
 })
 
 viewRouter.get("/admin/payments", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transactions, (req, res) => {
-	res.render("admin/payments", {title: "Nairalife Payments", link: "payments", ...req.body.pageData })
+	res.render("admin/payments", {title: "Nairalife Payments", link: "Payments", ...req.body.pageData })
 })
 
 viewRouter.get("/admin/payment/:transaction_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.transaction, (req, res) => {
-	res.render("admin/payment", {title: "Transaction", link: "payment", ...req.body.pageData })
+	res.render("admin/payment", {title: `#${req.body.pageData.transaction.reference}`, link: `#${req.body.pageData.transaction.reference}`, ...req.body.pageData })
 })
 
 viewRouter.get("/admin/loans", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.allLoans, (req, res) => {
@@ -170,7 +170,7 @@ viewRouter.get("/admin/loans", cookieNotFound("/admin/login", "atoken"), verifyT
 })
 
 viewRouter.get("/admin/loan/:loan_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.eachLoan, (req, res) => {
-	res.render("admin/loan", {title: `Instalment Loan #${req.body.pageData.loan.reference}`, link: `#${req.body.pageData.loan.reference}`, ...req.body.pageData })
+	res.render("admin/loan", {title: `Loan #${req.body.pageData.loan.reference}`, link: `#${req.body.pageData.loan.reference}`, ...req.body.pageData })
 })
 
 viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.members, (req, res) => {
