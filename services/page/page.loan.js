@@ -17,9 +17,6 @@ async function loan(req, res, next){
 	else if(userObj.loan_stage == "request")
 		res.render("loan", { title: "Instalment Loans", link: "loan",...req.body.pageData })
 
-	else if(userObj.loan_stage == "requested")
-		res.redirect("/home")
-
 }
 
 module.exports = loan
