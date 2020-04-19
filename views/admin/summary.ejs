@@ -17,7 +17,7 @@ Nairalife statistics and other useful information
 </tr>
 <tr>
 <td>Verified Members:</td>
-<td class="text-right" data-format="number"><%= activeMembersCount %></td>
+<td class="text-right" data-format="number"><%= verifiedMembersCount %></td>
 </tr>
 <tr>
 <td>Hire Purchase Total Payment:</td>
@@ -33,7 +33,7 @@ Nairalife statistics and other useful information
 </tr>
 <tr>
 <td>Loan Requests (No):</td>
-<td class="text-right" data-format="number"><span data-format="comma">0</span></td>
+<td class="text-right" data-format="number"><span data-format="comma"><%= allLoansCount %></span></td>
 </tr>
 <tr>
 <td>Loan Requests (Amount):</td>
@@ -41,15 +41,15 @@ Nairalife statistics and other useful information
 </tr>
 <tr>
 <td>Active Loans (No):</td>
-<td class="text-right" data-format="number"><span data-format="comma">0</span></td>
+<td class="text-right" data-format="number"><span data-format="comma"><%= activeLoansCount %></span></td>
 </tr>
 <tr>
 <td>Active Loans (Amount):</td>
-<td class="text-right" data-format="number">&#8358;<span data-format="comma">0</span></td>
+<td class="text-right" data-format="number">&#8358;<span data-format="comma"><%= activeLoansAmount %></span></td>
 </tr>
 <tr>
 <td>Expected Weekly (Loans):</td>
-<td class="text-right" data-format="number">&#8358;<span data-format="comma">0</span></td>
+<td class="text-right" data-format="number">&#8358;<span data-format="comma"><%= weeklyLoan %></span></td>
 </tr>
 <!-- <tr>
 <td>Total Members Cars:</td>
