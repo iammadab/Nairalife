@@ -19,7 +19,9 @@ async function profile(req, res, next){
 	remainingPayment = Number(userObj.plan.total_amount) - totalPayment
 
 	let loanObj = await loanDb.findOneWith({ status: "approved", user_id: userObj.user_id })
-
+	if(loanObj)
+		loanObj._doc.weekly_payment = loanObj.final_amount / loanObj.weeks
+	
 	req.body.pageData = {
 		user: userObj,
 		loan: loanObj,
