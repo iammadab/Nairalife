@@ -115,7 +115,7 @@ viewRouter.get("/pay", cookieNotFound("/login"), verifyToken(), stageRouter("act
 })
 
 viewRouter.get("/transaction/:transaction_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.transaction, (req, res) => {
-	res.render("transaction", { title: `Transaction ${req.body.pageData.transaction.reference}`, link: `${req.body.pageData.transaction.reference}`, ...req.body.pageData })
+	res.render("transaction", { title: `Transaction #${req.body.pageData.transaction.reference}`, link: `${req.body.pageData.transaction.reference}`, ...req.body.pageData })
 })
 
 
@@ -182,7 +182,7 @@ viewRouter.get("/admin/deduct", cookieNotFound("/admin/login", "atoken"), verify
 })
 
 viewRouter.get("/admin/profile/:user_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.profile, (req, res) => {
-	res.render("admin/profile", { title: "Account Profile", link: "profile", ...req.body.pageData })
+	res.render("admin/profile", { title: `${req.body.pageData.user.fullname}`, link: "profile", ...req.body.pageData })
 })
 
 

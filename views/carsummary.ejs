@@ -14,7 +14,7 @@ Details on your Nairalife car instalment plan
 <% if(user.plan.total_amount){ %>
 <tr>
 <td>Car Model:</td>
-<td class="text-right"></td>
+<td class="text-right"><%= user.plan.car_name %></td>
 </tr>
 <tr>
 <td>Total Price:</td>
@@ -24,7 +24,7 @@ Details on your Nairalife car instalment plan
 <td>Weekly Instalment:</td>
 <% let weeklyAmount = user.plan.amount %>
 <% if(user.status == "payment_one"){ weeklyAmount = user.payment_one.amount * 7 } %>
-<td class="text-right">&#8358;<%= weeklyAmount %></td>
+<td class="text-right" data-format="comma">&#8358;<%= weeklyAmount %></td>
 </tr>
 <tr>
 <td>Current Payment:</td>
@@ -36,12 +36,12 @@ Details on your Nairalife car instalment plan
 </tr>
 <tr>
 <td>Remaining Weeks:</td>
-<td class="text-right"><%= Math.ceil(remainingPayment / weeklyAmout) %> weeks</td>
+<td class="text-right"><%= Math.ceil(remainingPayment / weeklyAmount) %> weeks</td>
 </tr>
 <% } %>
 
 <% if(!user.plan.total_amount){ %>
-<tr><td class="kt-font-bold" colspan="2">You currently do not have any hire purchase plan on Nairalife</td></tr>
+<tr><td colspan="2">You currently do not have any hire purchase plan on Nairalife</td></tr>
 <% } %>
 </tbody>
 </table>

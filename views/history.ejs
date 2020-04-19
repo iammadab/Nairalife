@@ -28,7 +28,7 @@
 <tr>
 <td><%= i + 1 %></td>
 <td class="trmhide"><%= transaction.reference %></td>
-<td>&#8358;<%= transaction.amount %></td>
+<td data-format="comma">&#8358;<%= transaction.amount %></td>
 <td><%= transaction.created_at %></td>
 <% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
 <% let color = stateMap[transaction.status] %>
