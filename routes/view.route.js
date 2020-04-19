@@ -115,7 +115,7 @@ viewRouter.get("/pay", cookieNotFound("/login"), verifyToken(), stageRouter("act
 })
 
 viewRouter.get("/transaction/:transaction_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.transaction, (req, res) => {
-	res.render("transaction", { title: "Transaction #", link: "#", ...req.body.pageData })
+	res.render("transaction", { title: `Transaction ${req.body.pageData.transaction.reference}`, link: `${req.body.pageData.transaction.reference}`, ...req.body.pageData })
 })
 
 
