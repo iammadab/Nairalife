@@ -2,8 +2,9 @@
 <h3 class="naira__title">
 Place of Residence
 </h3>
+<% if(user.house){ %>
 <span class="naira__desc">
-Block 6, Plot H, Journalist Estate, Phase 2, Arepo, Ogun State
+<%= user.house.address %>
 </span>
 </div>
 
@@ -12,17 +13,20 @@ Block 6, Plot H, Journalist Estate, Phase 2, Arepo, Ogun State
 <tbody>
 <tr>
 <td>Landmark:</td>
-<td class="text-right">Arepo Bus Stop</td>
+<td class="text-right"><%= user.house.landmark %></td>
 </tr>
 <tr>
 <td>City:</td>
-<td class="text-right">Arepo</td>
+<td class="text-right"><%= user.house.city %></td>
 </tr>
 <tr>
 <td>State:</td>
-<td class="text-right">Ogun</td>
+<td class="text-right"><%= user.house.state %></td>
 </tr>
+<% } %>
+<% if(!user.house){ %> 
 <tr><td colspan="2">Member has not added residence</td></tr>
+<% } %>
 </tbody>
 </table>
 </div>
