@@ -28,8 +28,9 @@ async function createLoan(data){
 	if(!interest)
 		return { status: 403, code: "INVALID_WEEKS" }
 
-	let final_amount = twoDp(((interest / 100) * initial_amount) + initial_amount)
-	let weekly_amount = twoDp(final_amount / weeks)
+	let final = ((interest / 100) * initial_amount) + initial_amount.number
+	let final_amount = twoDp(final)
+	let weekly_amount = twoDp(final / weeks)
 
 	let loanObj = await loanDb.createLoan({
 		user_id: userObj.user_id,
