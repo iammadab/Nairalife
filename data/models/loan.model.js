@@ -6,6 +6,7 @@ const loanSchema = mongoose.Schema({
 	interest: { type: Number, required: true },
 	initial_amount: { type: Number, required: true },
 	final_amount: { type: Number, required: true },
+	weekly_amount: { type: Number, required: true },
 	reason: { type: String, required: true },
 	weeks: { type: Number, required: true },
 	weeks_before_payment: { type: Number, required: true },
