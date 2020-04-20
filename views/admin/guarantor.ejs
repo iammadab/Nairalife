@@ -1,18 +1,15 @@
-<div class="naira__header">
+<% if(user.guarantor.fullname){ %>
+<div class="naira__header kt-margin-t-20">
 <h3 class="naira__title">
 Gurantor Information
 </h3>
-<% if(user.guarantor.fullname){ %>
 <span class="naira__desc">
 <%= user.guarantor.relationship %>
 </span>
-<% } %>
 </div>
-
 <div class="table-responsive">
 <table class="table">
 <tbody>
-<% if(user.guarantor.fullname){ %>
 <tr>
 <td>Full Name:</td>
 <td class="text-right text-capitalize"><%= user.guarantor.fullname %></td>
@@ -37,11 +34,7 @@ Gurantor Information
 <td>Nature of Employment:</td>
 <td class="text-right"><%= user.guarantor.description_of_work %></td>
 </tr>
-<% } %>
-
-<% if(!user.guarantor.fullname){ %> 
-<tr><td colspan="2">Member currently has no guarantor</td></tr>
-<% } %>
 </tbody>
 </table>
 </div>
+<% } %>
