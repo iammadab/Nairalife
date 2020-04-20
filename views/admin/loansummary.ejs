@@ -9,35 +9,40 @@ Details on member's active loan
 <div class="table-responsive">
 <table class="table">
 <tbody>
+<% if(loan){ %>
 <tr>
 <td>Loan Amount:</td>
-<td class="text-right" data-format="comma">&#8358;0</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.initial_amount %></td>
 </tr>
 <tr>
 <td>Interest Rate:</td>
-<td class="text-right">0%</td>
+<td class="text-right"><%= loan.interest %>%</td>
 </tr>
 <tr>
 <td>Interest:</td>
-<td class="text-right" data-format="comma">&#8358;0</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount - loan.initial_amount %></td>
 </tr>
 <tr>
 <td>Total Payment:</td>
-<td class="text-right" data-format="comma">&#8358;0</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount %></td>
 </tr>
 <tr>
 <td>Weekly Instalment:</td>
-<td class="text-right" data-format="comma">&#8358;0</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.weekly_amount %></td>
 </tr>
 <tr>
 <td>Remaining Payment:</td>
-<td class="text-right" data-format="comma">&#8358;0</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount %></td>
 </tr>
 <tr>
 <td>Loan Period:</td>
-<td class="text-right">0 Weeks</td>
+<td class="text-right"><%= loan.weeks %> Weeks</td>
 </tr>
+<% } %>
+
+<% if(!loan){ %>
 <tr><td colspan="2">Member currently does not have any active loan</td></tr>
+<% } %>
 </tbody>
 </table>
 </div>

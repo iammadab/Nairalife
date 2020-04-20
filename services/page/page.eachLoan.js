@@ -21,7 +21,6 @@ async function eachLoan(req, res, next){
 
 
 	loanObj._doc.created_at = pageFunctions.createDate(loanObj.created_at).getHypenDate()
-	loanObj._doc.weekly_payment = loanObj.final_amount / loanObj.weeks
 	loanObj._doc.beforeText = loanObj.weeks_before_payment > 1 ? `${loanObj.weeks_before_payment} weeks` : `${loanObj.weeks_before_payment} week`
 
 	req.body.pageData = {

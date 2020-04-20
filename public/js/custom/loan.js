@@ -68,9 +68,9 @@ function newInput(event){
 		let responseHTML = `
 			<div class="alert-text text-muted">
 				If your loan request is approved by Nairalife, you will pay back on instalment 
-				<span class="kt-font-bolder">&#8358;${addComma(data.weeklyPayments)}</span> 
+				<span class="kt-font-bolder">&#8358;${addCommaDecimal(data.weeklyPayments)}</span> 
 				weekly for ${data.weeks} weeks for a total of 
-				<span class="kt-font-bolder">&#8358;${addComma(data.finalAmount)}</span> 
+				<span class="kt-font-bolder">&#8358;${addCommaDecimal(data.finalAmount)}</span> 
 				and at an interest rate of ${data.interest}%.
 			</div>	
 		`

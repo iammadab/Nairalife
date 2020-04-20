@@ -12,6 +12,8 @@ async function allLoans(req, res, next){
 		loan._doc.name = userObj.fullname
 	}
 
+	allLoans.reverse()
+
 	req.body.pageData = {
 		loans: allLoans
 	}

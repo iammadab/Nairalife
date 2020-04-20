@@ -3,7 +3,7 @@
 Ride-hailing Business
 </h3>
 <span class="naira__desc">
-I like the experience so far and I am glad that I have the chance to do a job I really like
+<%= user.business.work_description %>
 </span>
 </div>
 
@@ -13,28 +13,32 @@ I like the experience so far and I am glad that I have the chance to do a job I 
 <tr>
 <td>Driving For (Company):</td>
 <td class="text-right text-capitalize">
-Taxify & Uber
+<%= user.business.partner %>
 </td>
 </tr>
 <tr>
 <td>Driving For (Period):</td>
-<td class="text-right">Above 24 Months</td>
+<td class="text-right"><%= user.business.work_duration %></td>
 </tr>
 <tr>
 <td>Current Rating:</td>
-<td class="text-right">4.76</td>
+<td class="text-right"><%= user.business.rating %></td>
 </tr>
 <tr>
 <td>Total Trips:</td>
-<td class="text-right">170,000 KM</td>
+<td class="text-right" data-format="comma"><%= user.business.trips %> KM</td>
 </tr>
 <tr>
 <td>Drives In:</td>
-<td class="text-right">Lagos</td>
+<td class="text-right text-capitalize"><%= user.business.city %></td>
+</tr>
+<tr>
+<td>Car Status:</td>
+<td class="text-right text-capitalize"><%= user.business.own_car %></td>
 </tr>
 <tr>
 <td>Weekly Income:</td>
-<td class="text-right text-capitalize">28,000 naira</td>
+<td class="text-right text-capitalize" data-format="comma"><%= user.business.weekly_earning %> naira</td>
 </tr>
 </tbody>
 </table>

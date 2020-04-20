@@ -28,13 +28,16 @@ async function createLoan(data){
 	if(!interest)
 		return { status: 403, code: "INVALID_WEEKS" }
 
-	let final_amount = ((interest / 100) * initial_amount) + initial_amount
+	let final = ((interest / 100) * initial_amount) + initial_amount
+	let final_amount = twoDp(final)
+	let weekly_amount = twoDp(final / weeks)
 
 	let loanObj = await loanDb.createLoan({
 		user_id: userObj.user_id,
 		interest,
 		initial_amount,
 		final_amount,
+		weekly_amount,
 		weeks,
 		weeks_before_payment,
 		reason
@@ -47,3 +50,7 @@ async function createLoan(data){
 }
 
 module.exports = createLoan
+
+function twoDp(number){
+	return Math.ceil(number * 100) / 100
+}

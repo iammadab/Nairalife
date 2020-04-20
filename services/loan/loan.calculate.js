@@ -12,11 +12,16 @@ async function calculateLoan(data){
 	let { initial_amount, weeks, weeks_before_payment } = validationResult.data
 
 	let totalWeeks = weeks + weeks_before_payment, interest = getInterest(totalWeeks)
-	let finalAmount = ((interest / 100) * initial_amount) + initial_amount
-	let weeklyPayments = finalAmount / weeks
+	let final = ((interest / 100) * initial_amount) + initial_amount
+	let finalAmount = twoDp(final)
+	let weeklyPayments = twoDp(final / weeks)
 
 	return { status: 200, code: "LOAN_CALCULATED", weeklyPayments, finalAmount, interest, weeks }
 
 }
 
 module.exports = calculateLoan
+
+function twoDp(number){
+	return Math.ceil(number * 100) / 100
+}

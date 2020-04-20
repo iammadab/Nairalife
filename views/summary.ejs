@@ -38,7 +38,10 @@ Details of your active car instalment plan
 </tr>
 <tr>
 <td>Remaining Weeks:</td>
-<td class="text-right"><%= Math.ceil(remainingPayment / weeklyAmount) %> weeks</td>
+<% let weeksLeft = 0 %>
+<% if(user.status == "payment_one"){  weeksLeft = 102 + ((user.payment_one.total - totalPayment) / weeklyAmount) } %>
+<% if(user.status == "payment_two"){ weeksLeft = remainingPayment / weeklyAmount } %>
+<td class="text-right"><%= Math.ceil(weeksLeft) %> weeks</td>
 </tr>
 <% } %>
 
@@ -82,7 +85,7 @@ Details of your active loan
 </tr>
 <tr>
 <td>Weekly Instalment:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan._doc.weekly_payment %></td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.weekly_amount %></td>
 </tr>
 <tr>
 <td>Remaining Payment:</td>

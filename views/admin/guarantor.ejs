@@ -2,40 +2,46 @@
 <h3 class="naira__title">
 Gurantor Information
 </h3>
+<% if(user.guarantor.fullname){ %>
 <span class="naira__desc">
-Relationship with member
+<%= user.guarantor.relationship %>
 </span>
+<% } %>
 </div>
 
 <div class="table-responsive">
 <table class="table">
 <tbody>
+<% if(user.guarantor.fullname){ %>
 <tr>
 <td>Full Name:</td>
-<td class="text-right text-capitalize">
-</td>
+<td class="text-right text-capitalize"><%= user.guarantor.fullname %></td>
 </tr>
 <tr>
 <td>Phone Number:</td>
-<td class="text-right"></td>
+<td class="text-right"><%= user.guarantor.phone %></td>
 </tr>
 <tr>
 <td>House Address:</td>
-<td class="text-right"></td>
+<td class="text-right"><%= user.guarantor.house_address %></td>
 </tr>
 <tr>
 <td>Type of Employer:</td>
-<td class="text-right"></td>
+<td class="text-right"><%= user.guarantor.type_of_employer %></td>
 </tr>
 <tr>
 <td>Place of Employment:</td>
-<td class="text-right"></td>
+<td class="text-right"><%= user.guarantor.place_of_work %></td>
 </tr>
 <tr>
 <td>Nature of Employment:</td>
-<td class="text-right"></td>
+<td class="text-right"><%= user.guarantor.description_of_work %></td>
 </tr>
+<% } %>
+
+<% if(!user.guarantor.fullname){ %> 
 <tr><td colspan="2">Member currently has no guarantor</td></tr>
+<% } %>
 </tbody>
 </table>
 </div>

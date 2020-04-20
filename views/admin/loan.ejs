@@ -40,7 +40,7 @@ Details of loan and current status
 </tr>
 <tr>
 <td>Weekly Payment:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan._doc.weekly_payment %></td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.weekly_amount %></td>
 </tr>
 <tr>
 <td>Loan Period:</td>
@@ -110,7 +110,7 @@ Nairalife agreement with member
 
 <div class="aboutn">
 <p>
-<span class="text-capitalize"><%= user.fullname %></span> promised to repay on instalment &#8358;<span data-format="comma"><%= loan._doc.weekly_payment %></span> weekly for <%= loan.weeks %> weeks for a total of &#8358;<span data-format="comma"><%= loan.final_amount %></span> and at an interest rate of <%= loan.interest %>% starting <%= loan._doc.beforeText %> after receiving this loan.
+<span class="text-capitalize"><%= user.fullname %></span> promised to repay on instalment &#8358;<span data-format="comma"><%= loan.weekly_amount %></span> weekly for <%= loan.weeks %> weeks for a total of &#8358;<span data-format="comma"><%= loan.final_amount %></span> and at an interest rate of <%= loan.interest %>% starting <%= loan._doc.beforeText %> after receiving this loan.
 </p>
 </div>
 
