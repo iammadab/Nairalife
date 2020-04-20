@@ -28,7 +28,7 @@ async function createLoan(data){
 	if(!interest)
 		return { status: 403, code: "INVALID_WEEKS" }
 
-	let final = ((interest / 100) * initial_amount) + initial_amount.number
+	let final = ((interest / 100) * initial_amount) + initial_amount
 	let final_amount = twoDp(final)
 	let weekly_amount = twoDp(final / weeks)
 
