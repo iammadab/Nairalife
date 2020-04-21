@@ -24,6 +24,7 @@
 </thead>
 
 <tbody>
+<% if(allTransactions.length > 0){ %> 
 <% allTransactions.forEach((transaction, i) => { %> 
 <tr>
 <td><%= i + 1 %></td>
@@ -40,7 +41,11 @@
 </td>
 </tr>
 <% }) %>
+<% } %>
 
+<% if(allTransactions.length == 0){ %>
+<tr><td colspan="6">You have not made any instalment payment</td></tr>
+<% } %>
 </tbody>
 </table>
 </div>
