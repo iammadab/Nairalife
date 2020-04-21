@@ -69,8 +69,8 @@ viewRouter.get("/business", cookieNotFound("/login"), verifyToken(), stageRouter
 })
 
 
-viewRouter.get("/docs", cookieNotFound("/login"), verifyToken(), stageRouter("add_proof"), pageService.user, (req, res) => {
-	res.render("docs", { title: "Documents", ...req.body.pageData })
+viewRouter.get("/verification", cookieNotFound("/login"), verifyToken(), stageRouter("add_proof"), pageService.user, (req, res) => {
+	res.render("verification", { title: "Account Verification", ...req.body.pageData })
 })
 
 
@@ -111,7 +111,7 @@ viewRouter.get("/cancel", cookieNotFound("/login"), verifyToken(), stageRouter("
 })
 
 viewRouter.get("/pay", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.user, (req, res) => {
-	res.render("pay", { title: "Send Money", link: "Pay", ...req.body.pageData })
+	res.render("pay", { title: "Pay Nairalife", link: "Pay", ...req.body.pageData })
 })
 
 viewRouter.get("/transaction/:transaction_id", cookieNotFound("/login"), verifyToken(), stageRouter("active"), pageService.transaction, (req, res) => {
