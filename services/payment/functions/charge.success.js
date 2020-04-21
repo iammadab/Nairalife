@@ -1,7 +1,7 @@
 const transactionDb = require("../../../data/db/transaction.db")
 const userDb = require("../../../data/db/user.db")
 const verifyCard = require("../payment.verifyCard")
-const sendMessage = require("../../../lib/whatsapp")
+const sendMessage = require("../../../lib/sms")
 
 async function charge_success(data){
 	console.log("Charge success")

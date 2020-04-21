@@ -1,5 +1,5 @@
 const { createValidator } = require("lazy-validator")
-const sendMessage = require("../../lib/whatsapp")
+const sendMessage = require("../../lib/sms")
 
 const saveValidator = createValidator("user_id.number")
 
