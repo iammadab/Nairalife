@@ -6,8 +6,7 @@ const loanDb = require("../../data/db/loan.db")
 const userDb = require("../../data/db/user.db")
 
 function updateLoanStatus(status){
-	return async function cancelLoan(req){
-		let data = req.body
+	return async function cancelLoan(data){
 		let validationResult = loanCancelValidator.parse(data)
 		if(validationResult.error)
 			return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
@@ -25,7 +24,8 @@ function updateLoanStatus(status){
 			return { status: 403, code: "INVALID_LOAN_ID" }
 		}
 
-		if(req.url.includes("admin"))
+		console.log(data)
+		if(data["atoken"])
 			userObj = await userDb.findOneWith({ user_id: loanObj.user_id })
 		else
 			userObj = await userDb.findOneWith({ _id: data.user.id })
