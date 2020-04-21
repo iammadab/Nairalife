@@ -13,6 +13,9 @@ const path = require("path")
 
 connectToDb()
 
+if(PORT)
+	app.set("trust proxy", true)
+
 app.use(isDbConnected)
 app.use(morgan("combined"))
 app.use(fileUpload({
