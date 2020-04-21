@@ -13,7 +13,7 @@ const path = require("path")
 
 connectToDb()
 
-if(PORT)
+if(process.env.PORT)
 	app.set("trust proxy", true)
 
 app.use(isDbConnected)
