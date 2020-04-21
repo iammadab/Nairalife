@@ -45,4 +45,5 @@ function funnel(stages, stageUpdate){
 	
 }
 
-// funnel(["plan_approval", "choose_plan"],  "enter_info")
+// let allStages = ["enter_info", "enter_business", "choose_plan", "plan_approval", "start_plan", "active", "add_house", "add_guarantor", "add_proof", "change_card"]
+// funnel(allStages,  "enter_info")
