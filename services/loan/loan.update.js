@@ -23,8 +23,7 @@ function updateLoanStatus(status){
 		} catch(e){
 			return { status: 403, code: "INVALID_LOAN_ID" }
 		}
-
-		console.log(data)
+		
 		if(data["atoken"])
 			userObj = await userDb.findOneWith({ user_id: loanObj.user_id })
 		else
