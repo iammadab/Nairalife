@@ -36,11 +36,11 @@ function saveInformation(event){
 	event.preventDefault()
 	saveButton()
 	let profileDetails = extractForm(store.profileElementTag)
-	let missingKeys = hasKeys(profileDetails, ["fullname", "phone", "email", "sex", "title", "relationship", "bio"])
+	let missingKeys = hasKeys(profileDetails, ["fullname", "phone", "email", "sex", "relationship", "bio"])
 	if(missingKeys.length > 0){
 		scrollTo(0, 100)
 		saveButton("normal")
-		return showAlert("profile-error", `Sorry, you didn't enter ${missingKeys[0]}`)
+		return showAlert("profile-error", `Sorry, you didn't enter your ${missingKeys[0]}`)
 	}
 
 	return api("user/profile", { ...profileDetails, token: getToken() })

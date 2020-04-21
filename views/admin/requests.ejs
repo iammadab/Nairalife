@@ -1,0 +1,37 @@
+<div class="naira__header kt-margin-t-20">
+<h3 class="naira__title">
+Instalment Loan Requests
+</h3>
+<span class="naira__desc">
+Last 10 recent requests on Nairalife
+</span>
+</div>
+
+<div class="table-responsive">
+<table class="table">
+<tr>
+<th>Reference</th>
+<th>Amount</th>
+<th>Date</th>
+<th>Status</th>
+</tr>
+<tbody>
+<% if(allLoans.length > 1) { %>
+<% allLoans.forEach(loan => { %>
+<tr>
+<td><%= loan.reference %></td>
+<td>&#8358;<span data-format="comma"><%= loan.initial_amount %></span></td>
+<td><%= loan._doc.created_at %></td>
+<% let statusMap = { "approved": "success", "pending": "info", "failed": "danger", "cancelled": "danger" } %>
+<td class="text-capitalize kt-font-<%= statusMap[loan.status] %>"><%= loan.status %></td>
+</tr>
+<% }) %>
+<% } %>
+
+<% if(allLoans.length == 0){ %>
+<tr><td colspan="2">Member currently has no loan request</td></tr>
+<% } %>
+
+</tbody>
+</table>
+</div>

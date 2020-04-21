@@ -15,6 +15,10 @@ const profile = require("./page.profile")
 const stat = require("./page.stat")
 const transaction = require("./page.transaction")
 const cars = require("./page.cars")
+const loan = require("./page.loan")
+const loans = require("./page.loans")
+const eachLoan = require("./page.eachLoan")
+const allLoans = require("./page.allLoans")
 
 const pageServices = {
 	dashboard,
@@ -33,7 +37,11 @@ const pageServices = {
 	profile,
 	stat,
 	transaction,
-	cars
+	cars,
+	loan,
+	loans,
+	eachLoan,
+	allLoans
 }
 
 module.exports = pageServices

@@ -110,7 +110,7 @@ color: #008000;
 text-decoration: none;
 background-color: transparent; }
 a:hover {
-color: #2739c1;
+/*color: #2739c1;*/
 text-decoration: underline; }
 
 a:not([href]):not([tabindex]) {
@@ -511,7 +511,7 @@ background-color: transparent;
 }
 .table th,
 .table td {
-padding: 1rem 0.75rem;
+padding: 1rem 0rem;
 vertical-align: middle;
 border-top: 1px solid #e1e1e1;
 font-size:1.2rem;
@@ -544,7 +544,7 @@ height: calc(1.5em + 1.3rem + 2px);
 padding: 0.65rem 1rem;
 font-size: 1.3rem;
 font-weight: 400;
-color: #000;
+color: #333;
 background-color: #fff;
 background-clip: padding-box;
 border: 1px solid #e1e1e1;
@@ -558,7 +558,7 @@ background-color: transparent;
 border: 0; }
 
 .form-control:focus {
-color: #000;
+color: #333;
 background-color: #fff;
 border-color: #008000;
 outline: 0;
@@ -603,12 +603,13 @@ background-color: #fff; }
 
 
 .form-control-lg {
-height: calc(1.18em + 2.3rem + 2px);
+height: calc(1.5em + 2.3rem + 2px);
 padding: 1.15rem 1.65rem;
 font-size: 1.3rem;
 font-weight: 400;
 line-height: 1.5rem;
 border-radius: 0.3rem;
+color:#333;
 }
 
 select.form-control[size], select.form-control[multiple] {
@@ -1042,7 +1043,7 @@ outline-color:#008000;
 }
 
 .custom-select-lg {
-height: calc(1.18em + 2.3rem + 2px);
+height: calc(1.5em + 2.3rem + 2px);
 padding-top: 1.15rem;
 padding-bottom: 1.15rem;
 padding-left: 1.65rem;
@@ -1668,6 +1669,9 @@ color: #666 !important;
 font-weight:300;
 }
 
+.text-mute{
+color:#a7abc3 !important;	
+}
 
 .alert {
 display: -webkit-box;
@@ -2238,6 +2242,7 @@ background-color: #f7f8fa; }
 .table:not(.table-bordered) thead th, .table:not(.table-bordered) thead td {
 border-top: 0; }
 
+
 .nav-tabs {
 margin: 0 0 25px 0; }
 
@@ -2430,6 +2435,13 @@ body {
 font-size: 12px; } 
 .kt-padding-tm-5{
 padding-top:5px; 	
+}
+
+.trmhide {
+display:none;	
+}
+.kt-text-align-left-mobile{	
+text-align:left;
 }
 }
 
@@ -2860,7 +2872,7 @@ border: 1px solid #e1e1e1;
 background-color: #ffffff;
 margin-bottom: 20px;
 border-radius: 4px;
-min-height:240px;
+min-height:auto;
 height:auto;
 }
 /*.kt-page-content-white .kt-portlet {
@@ -2878,7 +2890,7 @@ align-items: stretch;
 -ms-flex-pack: justify;
 justify-content: space-between;
 position: relative;
-padding: 15px 10px;
+padding: 15px 0;
 border-bottom: 1px solid #e1e1e1;
 margin:0 10px;
 border-top-left-radius: 4px;
@@ -2903,6 +2915,7 @@ padding: 0;
 font-size: 1.2rem;
 font-weight:600;
 color: #008000;
+text-transform:capitalize;
 }
 .kt-portlet .kt-portlet__body .kt-portlet__content {
 padding: 0;
@@ -4860,10 +4873,17 @@ height: 1600px;
 overflow: hidden;
 }
 
+.kt-text-align-left-mobile{	
+text-align:center;
+}
+
 @media (max-width: 768px) {
 .aboutn.truncate{
 height: 2260px;
 overflow: hidden;
+}
+.kt-text-align-left-mobile{	
+text-align:left;
 }
 }
 
@@ -4985,12 +5005,12 @@ padding: 0; }
 padding: 0 2rem 0 2rem; }
 
 .kt-invoice-2 .kt-invoice__wrapper .kt-invoice__head .kt-invoice__container .kt-invoice__logo {
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-pack: justify;
--ms-flex-pack: justify;
-justify-content: center;
+display:-webkit-box;
+display:-ms-flexbox;
+display:flex;
+-webkit-box-pack:justify;
+-ms-flex-pack:justify;
+justify-content:center;
 padding-top:2rem;
 }
 
@@ -5023,12 +5043,12 @@ color: #333;
 }
 
 .kt-invoice-2 .kt-invoice__wrapper .kt-invoice__head .kt-invoice__container .kt-invoice__items {
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
+display:-webkit-box;
+display:-ms-flexbox;
+display:flex;
 text-align:center;
-padding: 4rem 0 3rem 0;
-border-top: 1px solid #e1e1e1;
+padding:4rem 0 3rem 0;
+border-top:1px solid #e1e1e1;
 }
 
 .kt-invoice-2 .kt-invoice__wrapper .kt-invoice__head .kt-invoice__container .kt-invoice__items .kt-invoice__item {
@@ -5124,4 +5144,34 @@ padding-right: 0; }
 padding-right: 1.5rem; }
 .kt-invoice-2 .kt-invoice__wrapper .kt-invoice__body table tbody tr td:last-child {
 padding-right: 0; }
+}
+
+
+
+.naira__header {
+padding: 0;
+margin-bottom:1rem;
+}
+
+.naira__header__no{
+border-bottom:1px solid #e1e1e1;
+padding-bottom:1rem;
+margin-bottom:2rem;
+}
+
+.naira__header .naira__title {
+font-size: 1.2rem;
+font-weight: 500;
+margin-bottom: 0;
+color: #008000;
+font-weight:600;
+}
+.naira__header .naira__desc {
+display: inline-block;
+margin-top: 0.2rem;
+color: #a7abc3;
+}
+
+.nairahide {
+display:none;	
 }

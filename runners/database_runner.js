@@ -7,7 +7,8 @@ function connectToDb(){
 }
 
 function connectToOnlineDb(mongoose){
-	return mongoose.connect(`mongodb+srv://${process.env.DB_NAME}:${process.env.DB_KEY}@cluster0-oaogc.mongodb.net/nairalife?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
+	let uri = `mongodb://${process.env.DB_NAME}:${process.env.DB_KEY}@cluster0-shard-00-00-oaogc.mongodb.net:27017,cluster0-shard-00-01-oaogc.mongodb.net:27017,cluster0-shard-00-02-oaogc.mongodb.net:27017/nairalife?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority`
+	return mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
         .then(() => console.log("Connected to online db"))
         .catch(err => console.log("Error connecting to online db", err))
 }

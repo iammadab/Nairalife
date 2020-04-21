@@ -2,6 +2,7 @@ const createUser = require("./user.create")
 const loginUser = require("./user.login")
 const userExist = require("./user.exist")
 const userPreference = require("./user.preference")
+const userBusiness = require("./user.business")
 const updateProfile = require("./user.updateProfile")
 const changePassword = require("./user.changePassword")
 const forgotPassword = require("./user.forgotPassword")
@@ -18,6 +19,7 @@ let userService = {
 	loginUser,
 	userExist,
 	userPreference,
+	userBusiness,
 	updateProfile,
 	changePassword,
 	forgotPassword,

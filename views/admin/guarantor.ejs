@@ -1,37 +1,40 @@
-<div class="tab-pane" id="kt_tabs_7_4" role="tabpanel">
-<div class="kt-section__content table-responsive">
-<table class="table kt-margin-b-0">
+<% if(user.guarantor.fullname){ %>
+<div class="naira__header kt-margin-t-20">
+<h3 class="naira__title">
+Gurantor Information
+</h3>
+<span class="naira__desc">
+<%= user.guarantor.relationship %>
+</span>
+</div>
+<div class="table-responsive">
+<table class="table">
 <tbody>
-<tr style="border-top:0">
-<td class="kt-font-bold" style="border-top:0">Full Name:</td>
-<td class="text-right text-capitalize" style="border-top:0">
-</td>
+<tr>
+<td>Full Name:</td>
+<td class="text-right text-capitalize"><%= user.guarantor.fullname %></td>
 </tr>
 <tr>
-<td class="kt-font-bold">Phone Number:</td>
-<td class="text-right"></td>
+<td>Phone Number:</td>
+<td class="text-right"><%= user.guarantor.phone %></td>
 </tr>
 <tr>
-<td class="kt-font-bold">House Address:</td>
-<td class="text-right"></td>
+<td>House Address:</td>
+<td class="text-right"><%= user.guarantor.house_address %></td>
 </tr>
 <tr>
-<td class="kt-font-bold">Type of Employer:</td>
-<td class="text-right"></td>
+<td>Type of Employer:</td>
+<td class="text-right"><%= user.guarantor.type_of_employer %></td>
 </tr>
 <tr>
-<td class="kt-font-bold">Place of Employment:</td>
-<td class="text-right"></td>
+<td>Place of Employment:</td>
+<td class="text-right"><%= user.guarantor.place_of_work %></td>
 </tr>
 <tr>
-<td class="kt-font-bold">Nature of Employment:</td>
-<td class="text-right"></td>
-</tr>
-<tr>
-<td class="kt-font-bold">Relationship:</td>
-<td class="text-right"></td>
+<td>Nature of Employment:</td>
+<td class="text-right"><%= user.guarantor.description_of_work %></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
+<% } %>

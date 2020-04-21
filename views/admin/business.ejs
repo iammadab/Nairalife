@@ -1,0 +1,45 @@
+<div class="naira__header kt-margin-t-20">
+<h3 class="naira__title">
+Ride-hailing Business
+</h3>
+<span class="naira__desc">
+<%= user.business.work_description %>
+</span>
+</div>
+
+<div class="table-responsive">
+<table class="table">
+<tbody>
+<tr>
+<td>Driving For (Company):</td>
+<td class="text-right text-capitalize">
+<%= user.business.partner %>
+</td>
+</tr>
+<tr>
+<td>Driving For (Period):</td>
+<td class="text-right"><%= user.business.work_duration %></td>
+</tr>
+<tr>
+<td>Current Rating:</td>
+<td class="text-right"><%= user.business.rating %></td>
+</tr>
+<tr>
+<td>Total Trips:</td>
+<td class="text-right" data-format="comma"><%= user.business.trips %> KM</td>
+</tr>
+<tr>
+<td>Drives In:</td>
+<td class="text-right text-capitalize"><%= user.business.city %></td>
+</tr>
+<tr>
+<td>Car Status:</td>
+<td class="text-right text-capitalize"><%= user.business.own_car %></td>
+</tr>
+<tr>
+<td>Weekly Income:</td>
+<td class="text-right text-capitalize" data-format="comma"><%= user.business.weekly_earning %> naira</td>
+</tr>
+</tbody>
+</table>
+</div>

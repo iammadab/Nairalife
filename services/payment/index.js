@@ -4,6 +4,7 @@ const verifyCard = require("./payment.verifyCard")
 const withdraw = require("./payment.withdraw")
 const charge = require("./payment.charge")
 const manual = require("./payment.manual")
+const getBank = require("./payment.getBank")
 
 const paymentServices = {
 	verifyBank,
@@ -11,7 +12,8 @@ const paymentServices = {
 	verifyCard,
 	withdraw,
 	charge,
-	manual
+	manual,
+	getBank
 }
 
 module.exports = paymentServices

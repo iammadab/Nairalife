@@ -9,6 +9,7 @@ const authenticationService = require("../services/authentication")
 
 userRouter.post("/exist", bodyResponder(userService.userExist))
 userRouter.post("/preference", authenticationService.verifyToken(), bodyResponder(userService.userPreference))
+userRouter.post("/business", authenticationService.verifyToken(), bodyResponder(userService.userBusiness))
 userRouter.post("/plan", authenticationService.verifyToken(), bodyResponder(userService.userPlan))
 userRouter.post("/profile", authenticationService.verifyToken(), bodyResponder(userService.updateProfile))
 userRouter.post("/password", authenticationService.verifyToken(), bodyResponder(userService.changePassword))

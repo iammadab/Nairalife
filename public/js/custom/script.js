@@ -23,6 +23,7 @@
 	deleteCookie
 	createButton
 	addComma
+	addCommaDecimal
 */
 
 ;(function toggleNav(){
@@ -73,7 +74,7 @@
 	let toProcess = Array.from(document.querySelectorAll("[data-format]"))
 	toProcess.forEach(element => {
 		if(element.dataset.format == "comma")
-			element.innerText = addComma(element.innerText)
+			element.innerText = addCommaDecimal(element.innerText)
 	})
 })()
 
@@ -107,6 +108,7 @@ function showView(viewName){
 }
 
 function showError(errorName, errorMessage){
+	errorName = errorName.split("").filter(a => a != ".").join("")
 	let errorBox = document.querySelector(`.${errorName}`),
 		errorText = document.querySelector(`.${errorName} .alert-text`)
 
@@ -120,6 +122,7 @@ function showError(errorName, errorMessage){
 let showAlert = showError
 
 function hideError(errorName){
+	errorName = errorName.split("").filter(a => a != ".").join("")
 	let errorBox = document.querySelector(`.${errorName}`)
 	if(errorBox)
 		errorBox.style.display = "none"
@@ -227,4 +230,10 @@ function createButton(element, normal, active){
 
 function addComma(number){
 	return String(number).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+}
+
+function addCommaDecimal(number){
+	let [main, fraction] = String(number).split(".")
+	main = addComma(main)
+	return `${main}${fraction ? "." : "" }${fraction ? fraction : ""}`
 }
