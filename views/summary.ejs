@@ -1,7 +1,7 @@
 <div class="kt-portlet btopzero">
 <div class="kt-portlet__body kt-margin-10">
 
-
+<% if(user.plan.total_amount){ %>
 <div class="naira__header">
 <h3 class="naira__title">
 Hire Purchase Summary
@@ -10,10 +10,9 @@ Hire Purchase Summary
 Details of your active car instalment plan
 </span>
 </div>
-<div class="table-responsive">
+<div class="table-responsive kt-margin-b-10">
 <table class="table">
 <tbody>
-<% if(user.plan.total_amount){ %>
 <tr>
 <td>Car Model:</td>
 <td class="text-right"><%= user.plan.car_name %></td>
@@ -43,19 +42,15 @@ Details of your active car instalment plan
 <% if(user.status == "payment_two"){ weeksLeft = remainingPayment / weeklyAmount } %>
 <td class="text-right"><%= Math.ceil(weeksLeft) %> weeks</td>
 </tr>
-<% } %>
 
-<% if(!user.plan.total_amount){ %>
-<tr><td colspan="2">You currently do not have any hire purchase plan</td></tr>
-<% } %>
 </tbody>
 </table>
 </div>
+<% } %>
 
 
 
-
-<div class="naira__header kt-margin-t-10">
+<div class="naira__header">
 <h3 class="naira__title">
 Instalment Loan Summary
 </h3>
