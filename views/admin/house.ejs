@@ -6,11 +6,13 @@ Place of Residence
 <span class="naira__desc">
 <%= user.house.address %>
 </span>
+<% } %>
 </div>
 
 <div class="table-responsive">
 <table class="table">
 <tbody>
+<% if(user.house){ %>
 <tr>
 <td>Landmark:</td>
 <td class="text-right"><%= user.house.landmark %></td>

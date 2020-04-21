@@ -38,7 +38,7 @@ function verifyBank(event){
 	function handleResponse(response){
 		// console.log(response)
 		if(response.status == 200)
-			sendBvn(bankDetails.bvn)
+			return sendBvn(bankDetails.bvn)
 		else if(response.code == "ACCOUNT_VERIFICATION_FAILED")
 			return showAlert("bank-error", response.message)
 		verifyButton("normal")

@@ -16,6 +16,7 @@ Last 10 recent requests on Nairalife
 <th>Status</th>
 </tr>
 <tbody>
+<% if(allLoans.length > 1) { %>
 <% allLoans.forEach(loan => { %>
 <tr>
 <td><%= loan.reference %></td>
@@ -25,7 +26,12 @@ Last 10 recent requests on Nairalife
 <td class="text-capitalize kt-font-<%= statusMap[loan.status] %>"><%= loan.status %></td>
 </tr>
 <% }) %>
-</tbody>
+<% } %>
+
+<% if(allLoans.length == 0){ %>
 <tr><td colspan="2">Member currently has no loan request</td></tr>
+<% } %>
+
+</tbody>
 </table>
 </div>

@@ -15,7 +15,7 @@ let businessFunction = createFormFunction({
 		data: ["token", ...fields]
 	},
 	handlers: {
-		200: "redirect:docs"
+		200: "redirect:verification"
 	},
 	nameMap: {
 		partner: "choose your partner",

@@ -71,8 +71,10 @@ function execAction(action, store){
 	let [command, info] = action.split(":")
 	if(command == "redirect")
 		return redirect(info)
-	else if(command == "error")
+	else if(command == "error"){
 		showAlert(store.error, info)
+		scrollTo(0, 100)
+	}
 	else if(command == "view")
 		showView(info)
 	else if(command == "success-clear")
