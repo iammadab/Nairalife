@@ -19,24 +19,22 @@
 <th class="kt-font-bolder kt-font-success">Amount</th>
 <th class="kt-font-bolder kt-font-success">Date</th>
 <th class="kt-font-bolder kt-font-success">Status</th>
-<th class="kt-font-bolder kt-font-success"></th>
+<th></th>
 </tr>
 </thead>
 
 <tbody>
-<% allTransactions.forEach((transaction, i) => { %> 
+<% loans.forEach((loan, i) => { %> 
 <tr>
 <td><%= i + 1 %></td>
-<td class="trmhide"><%= transaction.reference %></td>
-<td data-format="comma">&#8358;<%= transaction.amount %></td>
-<td><%= transaction.created_at %></td>
-<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
-<% let color = stateMap[transaction.status] %>
-<td class="text-capitalize kt-font-<%= color %>"><%= transaction.status %></td>
+<td class="trmhide">#<%= loan.reference %></td>
+<td data-format="comma">&#8358;<%= loan.initial_amount %></td>
+<td><%= loan._doc.created_at %></td>
+<% let stateMap = { pending: "info", approved: "success", declined: "danger", cancelled: "danger" } %>
+<% let color = stateMap[loan.status] %>
+<td class="text-capitalize kt-font-<%= color %>"><%= loan.status %></td>
 <td>
-	<% if(transaction.data.type == "manual") { %>
-	<a href="/transaction/<%= transaction._id %>" class="btn btn-secondary btn-sm pending-button">View</a>
-	<% } %>
+	<a href="/request/<%= loan._id %>" class="btn btn-secondary btn-sm pending-button">View</a>
 </td>
 </tr>
 <% }) %>

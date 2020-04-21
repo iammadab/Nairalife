@@ -1,0 +1,99 @@
+<% include meta %>
+<% include header %>
+<% include link %>
+
+
+<!--begin::Portlet-->
+<div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-margin-10">
+
+<div class="naira__header naira__header__no">
+<h3 class="naira__title">
+Make A Loan Request
+</h3>
+<span class="naira__desc">
+Tell us how much you need and what you need it for
+</span>
+</div>
+
+
+<div class="alert alert-danger alert-bold fade show kt-margin-t-10 otp-error loan-error" role="alert">
+<div class="alert-icon"><i class="la la-warning"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>	
+
+<div class="alert alert-success alert-bold fade show kt-margin-t-10 otp-error loan-success" role="alert">
+<div class="alert-icon"><i class="la la-check"></i></div>
+<div class="alert-text">
+Invalid Username or Password
+</div>
+</div>	
+
+<!--begin::Form-->
+<form class="kt-form kt-margin-t-10 loan-form" action="" novalidate="novalidate">
+<div class="form-group">
+<input class="form-control form-control-lg" type="number" placeholder="How much do you need?" name="initial_amount" 
+required="true">
+</div>
+
+
+
+<div class="form-group">
+<textarea class="form-control" placeholder="Please explain what you need it for" name="reason" style="height:95px" required="true">
+</textarea>
+</div>
+
+<div class="form-group">
+<select class="custom-select custom-select-lg" name="weeks">
+<option value="">How long do you want to pay it back for?</option>
+<option value="4">4 Weeks</option>
+<option value="8">8 Weeks</option>
+<option value="12">12 Weeks</option>
+</select>
+</div>
+
+<div class="form-group">
+<select class="custom-select custom-select-lg" name="weeks_before_payment">
+<option value="">When do you want to start repayment?</option>
+<option value="1">In 1 Week</option>
+<option value="2">In 2 Weeks</option>
+<option value="3">In 3 Weeks</option>
+<option value="4">In 4 Weeks</option>
+</select>
+</div>
+
+
+<div class="alert kt-margin-t-20 kt-padding-20 plan-alert nairahide" data-format="comma" role="alert" style="border:1px solid #e1e1e1;">
+</div>
+
+
+
+<!--begin::Action-->
+<div class="kt-margin-t-30 kt-margin-b-20">
+<p class="text-muted">
+<b><span class="kt-font-danger">*</span>Please note:</b> by clicking on "Make Request" you agree with the Nairalife loan terms above
+</p>
+</div>
+<!--end::Action-->
+
+
+
+<div class="kt-login__btn">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-taller btn-pill btn-wider kt-login__btn-primary loan-submit">
+<i class="la la-edit"></i><span class="loan-text">Make Request</span>
+</button>
+</div>
+</form>
+<!--end::Form-->
+
+</div>
+<!--end::portlet__body-->
+</div>
+<!--end::Portlet-->
+<% include footer %>
+
+<script type="text/javascript" src="js/custom/script.js"></script>
+<script type="text/javascript" src="js/custom/formfunction.js"></script>
+<script type="text/javascript" src="js/custom/loan.js"></script>

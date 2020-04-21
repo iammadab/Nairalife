@@ -1,0 +1,150 @@
+<% include meta %>
+<% include header %>
+<% include link %>
+
+<div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-margin-10">
+
+<div class="naira__header">
+<h3 class="naira__title">
+Instalment Loan Summary
+</h3>
+<span class="naira__desc">
+Details of loan request and current status
+</span>
+</div>
+
+<div class="table-responsive">
+<table class="table">
+<tbody>
+<tr>
+<td>Loan Amount:</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.initial_amount %></td>
+</tr>
+<tr>
+<td>Interest Rate:</td>
+<td class="text-right"><%= loan.interest %>%</td>
+</tr>
+<tr>
+<td>Interest:</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount - loan.initial_amount %></td>
+</tr>
+<tr>
+<td>Total Amount:</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount %></td>
+</tr>
+<tr>
+<td>Weekly Payment:</td>
+<td class="text-right" data-format="comma">&#8358;<%= loan.weekly_amount %></td>
+</tr>
+<tr>
+<td>Loan Period:</td>
+<td class="text-right"><%= loan.weeks %> Weeks</td>
+</tr>
+<tr>
+<td>Loan Status:</td>
+<% let stateMap = { pending: "info", approved: "success", declined: "danger", cancelled: "danger" } %>
+<% let color = stateMap[loan.status] %>
+<td class="text-capitalize text-right kt-font-<%= color %>"><%= loan.status %></td>
+</tr>
+</tbody>
+</table>
+<% if(loan.status == "pending"){ %>
+<div class="alert alert-bold fade show kt-margin-b-20" role="alert" style="border:1px solid #e1e1e1; color:#666">
+<div class="alert-icon"><i class="la la-info-circle"></i></div>
+<div class="alert-text">
+We are currently processing your loan request and we apologise for the delay
+</div>
+</div>
+<% } %>
+</div>
+
+
+<div class="naira__header">
+<h3 class="naira__title">
+Account Details
+</h3>
+<span class="naira__desc">
+Your bank account information
+</span>
+</div>
+<div class="table-responsive">
+<table class="table">
+<tbody>	
+<tr>
+<td>Account Name:</td>
+<td class="text-capitalize text-right"><%= account.account_name.toLowerCase() %></td>
+</tr>
+<tr>
+<td>Bank Name:</td>
+<td class="text-right"><%= bankName %></td>
+</tr>
+<tr>
+<td>Account No:</td>
+<td class="text-right"><%= account.account_number %></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="naira__header">
+<h3 class="naira__title">
+Instalment Loan Need
+</h3>
+<span class="naira__desc">
+Why did you request for the loan?
+</span>
+</div>
+<div class="aboutn kt-margin-b-10">
+<p>
+<%= loan.reason %>
+</p>
+</div>
+
+
+<div class="naira__header">
+<h3 class="naira__title">
+Instalment Loan Term
+</h3>
+<span class="naira__desc">
+Your agreement with Nairalife
+</span>
+</div>
+
+<div class="aboutn">
+<p>
+I promise to repay on instalment &#8358;<span data-format="comma"><%= loan.weekly_amount %></span> weekly for <%= loan.weeks %> weeks for a total of &#8358;<span data-format="comma"><%= loan.final_amount %></span> and at an interest rate of <%= loan.interest %>% starting <%= loan._doc.beforeText %>  after receiving this loan.
+</p>
+</div>
+
+<% if(loan.status == "pending"){ %>
+<div class="kt-login__btn kt-margin-t-20">
+<button class="btn btn-secondary btn-taller btn-pill btn-wider kt-margin-r-5 cancel-button" data-loan_id="<%= loan._id %>">
+<i class="la la-close"></i>Cancel Request
+</button>
+<a href="tel:08127574549" class="btn btn-warning btn-taller btn-pill btn-wider">
+<i class="la la-phone"></i>Contact Us
+</a>
+</div>
+<% } %>
+
+</div>
+<!--end of kt-portlet-body-->
+</div>
+<!--end of kt-portlet-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/custom/script.js"></script>
+<script type="text/javascript" src="/js/custom/request.js"></script>
+<% include footer %>

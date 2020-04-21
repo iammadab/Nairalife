@@ -1,35 +1,40 @@
 <% include meta %>
-<link href="css/login.css" rel="stylesheet" type="text/css" />
-<!-- begin::Body -->
-<body class="kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--fixed kt-subheader--enabled kt-subheader--solid kt-aside--enabled kt-aside--fixed kt-page--loading">
-<!-- begin:: Page -->
-<div class="kt-grid kt-grid--ver kt-grid--root">
-<div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
-<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
-<!--begin::Content-->
-<div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
-<!--begin::Body-->
-<div class="kt-login__body" id="login-section">
-<!--begin::Signin-->
-<div class="kt-login__form">
-<% include formhead %>
-<div class="kt-login__title">
-<h3>Select Car</h3>
-<p>Choose your preferred Toyota model</p>
-</div>
-<div class="alert alert-danger alert-bold fade show kt-margin-t-30 otp-error plan-error" role="alert">
+<% include header %>
+<% include link %>
+
+
+<!--begin::Portlet-->
+<div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-margin-10">
+
+<div class="naira__header naira__header__no">
+<h3 class="naira__title">
+Make A Car Request
+</h3>
+<span class="naira__desc">
+Tell us why we should consider your request and select a car
+</span>
+</div>	
+
+<!--begin::Form-->
+<form class="kt-form plan-form" action="" novalidate="novalidate">
+
+<div class="alert alert-danger alert-bold fade show kt-margin-t-10 otp-error plan-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
 </div>
 </div>
-<!--begin::Form-->
-<form class="kt-form plan-form" action="" novalidate="novalidate">
 
+<div class="form-group kt-margin-t-10">
+<textarea class="form-control" placeholder="Please tell us why we should consider your request" name="why" style="height:95px" 
+required="true">
+</textarea>
+</div>
 
 <div class="form-group">
-<select class="custom-select car-select" name="vmake">
-<option value="">Select a car model</option>
+<select class="custom-select custom-select-lg car-select" name="vmake">
+<option value="">Select your preferred Toyota model</option>
 <% for(let i = 0; i < cars.length; i++){ %> 
 	<option value="<%= cars[i].id %>" data-amount="<%= cars[i].total_amount %>"><%= cars[i].name %></option>
 <% } %>
@@ -37,55 +42,32 @@ Invalid Username or Password
 </div>
 
 
-<!-- <div class="form-group">
-<select class="custom-select" name="total_amount">
-<option value="">Choose payment plan</option>
-<option value="2000000">2 million naira for 12 months</option>
-<option value="2500000">2.5 million naira for 20 months</option>
-</select>
-</div>
-
-<div class="form-group">
-<select class="custom-select" name="period">
-<option value="">Do you want to pay daily or weekly?</option>
-<option value="daily">Daily</option>
-<option value="weekly">Weekly</option>
-</select>
-</div> -->
-
 <div class="alert kt-margin-t-20 kt-padding-20 kt-margin-b-5 plan-alert" role="alert" style="border:1px solid #e1e1e1;">
 <div class="alert-text text-muted">
 Choose a type of car above
 </div>
 </div>
 
-<p class="kt-margin-t-20">
+<p class="kt-margin-t-30 kt-margin-b-20">
 <span class="text-muted">
-<b><span class="kt-font-danger">*</span>Please note:</b> that you will have to pay at least 90,000 naira <!-- for 90 days --> before you can get our car on higher purchase and you can cancel your payment at anytime but should you choose to cancel, there's a 20% penalty fee.
+<b><span class="kt-font-danger">*</span>Please note:</b> that by clicking on "Select Car" you agree with the Nairalife hire purchase terms above.
 </span>
 </p>
 
 
 
 <div class="kt-login__btn">
-<button id="kt_login_signin_submit" class="btn btn-primary btn-tall btn-pill kt-login__btn-primary select-car-button">
+<button id="kt_login_signin_submit" class="btn btn-primary btn-taller btn-pill btn-wider kt-login__btn-primary select-car-button">
 <i class="la la-car"></i><span class="select-car-text">Select Car</span>
 </button>
 </div>
 </form>
 <!--end::Form-->
 
-<% include footer2 %>
-
 </div>
-<!--end::kt-login__form-->
+<!--end::portlet__body-->
 </div>
-</div>
-</div>
-</div>
-</div>
-</body>
-<!-- end::Body -->
-</html>
+<!--end::Portlet-->
+<% include footer %>
 <script type="text/javascript" src="js/custom/script.js"></script>
 <script type="text/javascript" src="js/custom/plan.js"></script>

@@ -1,0 +1,68 @@
+<div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-margin-10">
+<div class="naira__header">
+<h3 class="naira__title">
+Nairalife Administrator Summary
+</h3>
+<span class="naira__desc">
+Nairalife statistics and other useful information
+</span>
+</div
+><div class="table-responsive">
+<table class="table kt-margin-b-0">
+<tbody>
+<tr>
+<td>Total Members:</td>
+<td class="text-right" data-format="number"><%= allMembersCount %></td>
+</tr>
+<tr>
+<td>Verified Members:</td>
+<td class="text-right" data-format="number"><%= verifiedMembersCount %></td>
+</tr>
+<tr>
+<td>Hire Purchase Total Payment:</td>
+<td class="text-right" data-format="number">&#8358;<span data-format="comma"><%= totalPaid %></span></td>
+</tr>
+<tr>
+<td>Hire Purchase Remaining Payment:</td>
+<td class="text-right" data-format="number">&#8358;<span data-format="comma"><%= toPay %></span></td>
+</tr>
+<tr>
+<td>Expected Weekly (Hire Purchase):</td>
+<td class="text-right" data-format="number">&#8358;<span data-format="comma"><%= weeklyHigherPurchase %></span></td>
+</tr>
+<tr>
+<td>Pending Loan (No):</td>
+<td class="text-right" data-format="number"><span data-format="comma"><%= pendingLoansCount %></span></td>
+</tr>
+<tr>
+<td>Pending Loan (Amount):</td>
+<td class="text-right" data-format="number">&#8358;<span data-format="comma"><%= pendingLoansAmount %></span></td>
+</tr>
+<tr>
+<td>Active Loans (No):</td>
+<td class="text-right" data-format="number"><span data-format="comma"><%= activeLoansCount %></span></td>
+</tr>
+<tr>
+<td>Active Loans (Amount):</td>
+<td class="text-right" data-format="number">&#8358;<span data-format="comma"><%= activeLoansAmount %></span></td>
+</tr>
+<tr>
+<td>Active Total Interest:</td>
+<td class="text-right" data-format="number">&#8358;<span data-format="comma"><%= activeInterest %></span></td>
+</tr>
+<tr>
+<td>Expected Weekly (Loans):</td>
+<td class="text-right" data-format="number">&#8358;<span data-format="comma"><%= weeklyLoan %></span></td>
+</tr>
+<!-- <tr>
+<td>Total Members Cars:</td>
+<td class="text-right" data-format="number"><%= carsCount %></td>
+</tr> -->
+</tbody>
+</table>
+</div>
+</div>
+<!--end of kt-portlet-body-->
+</div>
+<!--end of kt-portlet-->

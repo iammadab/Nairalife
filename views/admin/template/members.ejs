@@ -1,5 +1,5 @@
 <div class="kt-portlet btopzero">
-<div class="kt-portlet__body kt-padding-t-10 kt-padding-b-10">
+<div class="kt-portlet__body kt-margin-10">
 <div class="kt-section__content table-responsive">
 <table class="table kt-margin-b-0">
 <thead>
@@ -17,7 +17,8 @@
 <td class="text-capitalize"><%= member.fullname %></td>
 <td>0<%= member.phone %></td>
 <td><%= member.email %></td>
-<td><%= member.stage %></td>
+<% let stage = member.stage == "active" ? "Verified" : "Unverified" %>
+<td class="text-capitalize"><%= stage %></td>
 <td class="text-center"><a href="/admin/profile/<%= member.user_id %>" class="btn btn-secondary btn-sm">View</a></td>
 </tr>
 <% }) %>
