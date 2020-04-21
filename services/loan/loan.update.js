@@ -11,13 +11,17 @@ function updateLoanStatus(status){
 		if(validationResult.error)
 			return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
-		let { loan_id } = validationResult.data
+		let { loan_id } = validationResult.data, userObj
 
 		let possibleStatus = ["pending", "approved", "cancelled", "declined", "completed"]
 		if(!possibleStatus.includes(status))
 			return { status: 403, code: "INVALID_STATUS", message: `Valid Status: ${possibleStatus.join(", ")}` }
 
-		let userObj = await userDb.findOneWith({ _id: data.user.id })
+		if(req.url.includes("admin"))
+			userObj = await userDb.findOneWith({ user_id: loanObj.user_id }
+		else
+			userObj = await userDb.findOneWith({ _id: data.user.id })
+		
 		if(!userObj)
 			return { status: 403, code: "USER_DOES_NOT_EXIST" }
 
