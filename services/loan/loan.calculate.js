@@ -11,7 +11,7 @@ async function calculateLoan(data){
 
 	let { initial_amount, weeks, weeks_before_payment } = validationResult.data
 
-	let totalWeeks = weeks + weeks_before_payment, interest = getInterest(totalWeeks)
+	let totalWeeks = weeks, interest = getInterest(totalWeeks)
 	let final = ((interest / 100) * initial_amount) + initial_amount
 	let finalAmount = twoDp(final)
 	let weeklyPayments = twoDp(final / weeks)

@@ -24,7 +24,7 @@ async function createLoan(data){
 	if(activeLoan)
 		return { status: 403, code: "PENDING_LOAN" }
 
-	let interest = generateInterest(weeks + weeks_before_payment)
+	let interest = generateInterest(weeks)
 	if(!interest)
 		return { status: 403, code: "INVALID_WEEKS" }
 
