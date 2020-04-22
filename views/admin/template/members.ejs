@@ -21,8 +21,11 @@
 <% let stage = member.stage == "active" ? "Verified" : "Unverified" %>
 <td class="text-capitalize"><%= stage %></td>
 <td class="text-center"><a href="/admin/profile/<%= member.user_id %>" class="btn btn-secondary btn-sm">View</a></td>
-<%= if(member.stage == "add_proof"){ %>
+<% if(member.stage == "add_proof"){ %>
 <td class="text-center"><button data-user_id="<%= member.user_id %>" class="btn btn-warning btn-sm">Approve</button></td>
+<% } %>
+<% if(member.stage != "add_proof"){ %>
+<td></td>
 <% } %>
 </tr>
 <% }) %>

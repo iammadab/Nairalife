@@ -14,5 +14,11 @@ adminRouter.post(
 	authenticationService.validateAdmin,
 	bodyResponder(paymentService.charge)
 )
+adminRouter.post(
+	"/user/approve",
+	authenticationService.verifyToken("atoken"), 
+	authenticationService.validateAdmin,
+	bodyResponder(adminService.approveUser)
+)
 
 module.exports = adminRouter
