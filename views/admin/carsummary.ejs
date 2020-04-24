@@ -9,7 +9,7 @@ Details on member's active car instalment plan
 <div class="table-responsive">
 <table class="table">
 <tbody>
-<% if(user.plan.total_amount){ %>
+<% if(user.plan.total_amount && user.status){ %>
 <tr>
 <td>Car Model:</td>
 <td class="text-right"><%= user.plan.car_name %></td>
