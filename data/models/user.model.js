@@ -26,9 +26,11 @@ const userSchema = mongoose.Schema({
 	home_info: { type: Object, default: {} },
 	guarantor: { type: Object, default: {} },
 
-	car: { type: Object, default: {} }
+	car: { type: Object, default: {} },
 	// Not listed
 	// plan : { total_amount, period, amount }
+	last_ip: { type: String, default: "" },
+	ips: { type: Array, default: [] }
 })
 
 const userModel = mongoose.model("User", userSchema)

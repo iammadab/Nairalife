@@ -24,6 +24,7 @@
 </thead>
 
 <tbody>
+<% if(loans.length > 0) { %>
 <% loans.forEach((loan, i) => { %> 
 <tr>
 <td><%= i + 1 %></td>
@@ -38,8 +39,11 @@
 </td>
 </tr>
 <% }) %>
+<% } %>
 
+<% if(loans.length == 0){ %>
 <tr><td colspan="6">You have not made any loan request</td></tr>
+<% } %>
 
 </tbody>
 </table>

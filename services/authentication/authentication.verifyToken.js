@@ -2,6 +2,7 @@ const { promisify } = require("util")
 const { createValidator } = require("lazy-validator")
 
 const verify = promisify(require("jsonwebtoken").verify)
+const userDb = require("../../data/db/user.db")
 
 let validateToken = tokenName => (req, res, next) => {
 	tokenName = tokenName || "token"
@@ -14,6 +15,7 @@ let validateToken = tokenName => (req, res, next) => {
 
 	verifyToken()
 		.then(attachUserInfo)
+		.then(registerIp)
 		.then(next)
 		.catch(handleErrors)
 
@@ -24,6 +26,17 @@ let validateToken = tokenName => (req, res, next) => {
 	function attachUserInfo(decodedToken){
 		let user = decodedToken
 		req.body.user = user
+	}
+
+	async function registerIp(){
+		let userObj = await userDb.findOneWith({ _id: req.body.user.id })
+		if(req.ip != userObj.last_ip)
+			userObj = await userDb.appendDoc({ _id: req.body.user.id }, "last_ip", req.ip)
+		if(!userObj.ips.includes(req.ip)){
+			let newIps = Object.assign(userObj.ips)
+			newIps.push(req.ip)
+			userObj = await userDb.appendDoc({ _id: req.body.user.id }, "ips", newIps)
+		}
 	}
 
 	function handleErrors(error){
