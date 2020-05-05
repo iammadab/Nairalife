@@ -20,7 +20,7 @@
 <td data-format="comma">&#8358;<%= member._doc.totalPayment %></td>
 <td data-format="comma">&#8358;<%= member._doc.remainingPayment %></td>
 <td><%= member._doc.lastDate %></td>
-<td>
+<!-- <td>
 	<% if(member._doc.phase != "success") { %>
 		<% if(member._doc.phase == "pending") { %>
 		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm pending-button">Pending</button>
@@ -31,7 +31,7 @@
 		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm pending-button otp-error">Pending</button>
 		<% } %>
 	<% } %>
-</td>
+</td> -->
 </tr>
 <% }) %>
 </tbody>
