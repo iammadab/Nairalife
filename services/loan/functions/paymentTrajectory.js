@@ -1,22 +1,15 @@
-function shouldCharge(period, start, today){
+function paymentTrajectory(period, start, today){
 	start = new Date(start), today = today ? new Date(today) : new Date()
 
-	// Based on the start date and the period, the goal is to determine if the user should be charge on a particular day
+	// Based on the start date and the period, the goal is to generate the payment trajectory
 	// First we need to turn the dates to midnight
 	start = start.setHours(0, 0, 0, 0)
 	today = today.setHours(0, 0, 0, 0)
 
-	console.log(new Date(start).toLocaleString())
-	console.log(new Date(today).toLocaleString())
-
-	//Next, we have to figure out how many days has passed since the start and today
+	//This figures out how many days has passed since the start
 	const MILLISECONDS_PER_DAY = (1000 * 3600 * 24)
 	let millisecondsPassed = Number(today) - Number(start)
 	let days = millisecondsPassed / MILLISECONDS_PER_DAY
-
-	// If negative days has passed, just return false
-	if(days < 0)
-		return false
 
 	let periodMap = {
 		daily: 1,
@@ -31,7 +24,10 @@ function shouldCharge(period, start, today){
 		return false
 
 	//If we are here, then the user should be charged
-	return true 
+	return {
+		days,
+		period: periodCount
+	}
 }
 
-module.exports = shouldCharge
+module.exports = paymentTrajectory
