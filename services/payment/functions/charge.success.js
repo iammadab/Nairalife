@@ -150,10 +150,10 @@ async function updatePay(data){
 		return console.log("Problem updating the transaction obj", data.reference)
 
 	// Send the charge message here
-	if(userObj)
-		sendMessage({ phone: userObj.phone, message: `Your charge of N${transactionObj.amount} on nairalife was successful` })
-			.then(() => { console.log("Sent message") })
-			.catch(err => { console.log("Failed to send message ", err)})
+	// if(userObj)
+	// 	sendMessage({ phone: userObj.phone, message: `Your charge of N${transactionObj.amount} on nairalife was successful` })
+	// 		.then(() => { console.log("Sent message") })
+	// 		.catch(err => { console.log("Failed to send message ", err)})
 
 	return console.log("Updated the transaction obj successfully", data.reference)
 }
