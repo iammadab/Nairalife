@@ -19,6 +19,7 @@ const loan = require("./page.loan")
 const loans = require("./page.loans")
 const eachLoan = require("./page.eachLoan")
 const allLoans = require("./page.allLoans")
+const chargeLoans = require("./page.chargeLoans")
 
 const pageServices = {
 	dashboard,
@@ -41,7 +42,8 @@ const pageServices = {
 	loan,
 	loans,
 	eachLoan,
-	allLoans
+	allLoans,
+	chargeLoans
 }
 
 module.exports = pageServices

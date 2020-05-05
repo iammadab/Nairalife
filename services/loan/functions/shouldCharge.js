@@ -8,8 +8,8 @@ function shouldCharge(period, start, today){
 
 	//Next, we have to figure out how many days has passed since the start and today
 	const MILLISECONDS_PER_DAY = (1000 * 3600 * 24)
-	let daysPassedMilli = Number(today) - Number(start)
-	let days = daysPassedMilli / MILLISECONDS_PER_DAY
+	let millisecondsPassed = Number(today) - Number(start)
+	let days = millisecondsPassed / MILLISECONDS_PER_DAY
 
 	let periodMap = {
 		daily: 1,
