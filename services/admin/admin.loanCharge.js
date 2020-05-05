@@ -13,6 +13,8 @@ async function loanCharge(data){
 
 	let { user_id, loan_id } = validationResult.validData
 
+	let adminObj = await userDb.findOneWith({ _id: data.user.id })
+
 	let userObj = await userDb.findOneWith({ user_id })
 	if(!userObj)
 		return { status: 403, code: "USER_DOES_NOT_EXIST" }
@@ -24,6 +26,29 @@ async function loanCharge(data){
 	let chargedToday = await hasBeenChargedToday(user_id, loan_id)
 	if(chargedToday)
 		return { status: 403, code: "LOAN_CHARGED_TODAY" }
+
+	// Charge the user based on the amount they should pay weekly
+	let paymentAmount = loanObj.weekly_amount
+	let chargeResult = await charge({
+		user_id,
+		amount: paymentAmount
+	})
+
+	// Create a transaction object
+	let userTransaction = await transactionDb.createTransaction({
+		username: userObj.fullname,
+		user_id,
+		loan_id,
+		amount: paymentAmount,
+		reference: chargeResult.data.reference,
+		type: "loan",
+		status: chargeResult.data.status == "failed" ? "failed" : "pending",
+		data: {
+			admin: adminObj ? adminObj.fullname : "Automatic",
+			admin_id: adminObj ? adminObj.user_id : 0
+		}
+	})	
+
 }
 
 module.exports = loanCharge
