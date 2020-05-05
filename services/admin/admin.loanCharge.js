@@ -4,6 +4,7 @@ const loanChargeValidator = createValidator("user_id.string, loan_id.string")
 
 const userDb = require("../../data/db/user.db")
 const loanDb = require("../../data/db/loan.db")
+const transactionDb = require("../../data/db/transaction.db")
 
 async function loanCharge(data){
 	let validationResult = loanChargeValidator.parse(data)
@@ -19,6 +20,22 @@ async function loanCharge(data){
 	let loanObj = await loanDb.findOneWith({ _id: loan_id, user_id, status: "approved" })
 	if(!loanObj)
 		return { status: 403, code: "LOAN_NOT_FOUND" }
+
+	let chargedToday = await hasBeenChargedToday(user_id, loan_id)
+	if(chargedToday)
+		return { status: 403, code: "LOAN_CHARGED_TODAY" }
 }
 
 module.exports = loanCharge
+
+
+
+async function hasBeenChargedToday(user_id, loan_id){
+	// First I fetch all the non failed transactions for that loan today
+	let midnight = new Date((new Date()).setHours(0, 0, 0, 0))
+	let baseData = { user_id, type: "loan", loan_id }
+	let successfulTransactions = await transactionDb.findWith({ ...baseData, status: "success", created_at: { $gte: midnight }})
+	let pendingTransactions = await transactionDb.findWith({ ...baseData, status: "pending", created_at: { $gte: midnight }})
+
+	return successfulTransactions.length > 0 || pendingTransactions.length > 0
+}
