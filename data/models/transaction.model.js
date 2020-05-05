@@ -10,7 +10,7 @@ const transactionSchema = mongoose.Schema({
 	status: { type: String, required: true, enum: ["success", "pending", "failed"] },
 	attempts: { type: Number, default: 1 },
 	data: { type: Object, default: {} },
-	created_at: { type: Date, default: new Date() }
+	created_at: { type: Date, default: Date.now }
 })
 
 const transactionModel = mongoose.model("Transaction", transactionSchema)

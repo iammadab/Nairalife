@@ -11,9 +11,11 @@ const loanSchema = mongoose.Schema({
 	weeks: { type: Number, required: true },
 	weeks_before_payment: { type: Number, required: true },
 	status: { type: String, default: "pending", enum: ["pending", "approved", "cancelled", "declined", "completed"] },
+
+	// Dates
 	created_at: { type: Date, default: Date.now },
-	approved_at: { type: Date },
-	declined_at: { type: Date },
+	modified_at: { type: Date },
+	completed_at: { type : Date },
 	started_at: { type: Date }
 })
 
