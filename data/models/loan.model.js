@@ -13,6 +13,7 @@ const loanSchema = mongoose.Schema({
 	status: { type: String, default: "pending", enum: ["pending", "approved", "cancelled", "declined", "completed"] },
 	created_at: { type: Date, default: Date.now },
 	approved_at: { type: Date },
+	declined_at: { type: Date },
 	started_at: { type: Date }
 })
 
