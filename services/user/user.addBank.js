@@ -34,8 +34,9 @@ async function addBank(data){
 	// So at this point, I should have the updated version of the account and bvn then I save :)
 	let bankDetails = { account: accountObj, bvn: bvnObj }
 
+	// Append the new banks, as opposed to replacing the old bank
 	let userObjCopy = Object.assign({}, userObj._doc)
-	userObjCopy.bank[0] = bankDetails
+	userObjCopy.bank.unshift(bankDetails)
 	
 	userObj = await userDb.appendDoc({ _id: data.user.id }, "bank", userObjCopy.bank)
 
