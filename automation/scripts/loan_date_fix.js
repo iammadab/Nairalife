@@ -6,9 +6,9 @@ const loanDb = require("../../data/db/loan.db")
 const { addWeeks } = require("../../lib/date")
 
 // connectToDb()
-	// .then(getApprovedLoans)
-	// .then(addStartDate)
-	.then(exit)
+// 	.then(getApprovedLoans)
+// 	.then(addStartDate)
+// 	.then(exit)
 
 
 async function getApprovedLoans(){
@@ -16,12 +16,12 @@ async function getApprovedLoans(){
 }
 
 async function addStartDate(loans){
-	// let startDateUpdateStatus = await Promise.all(
-	// 	loans.map(loan => {
-	// 		let startDate = addWeeks(loan.created_at, loan.weeks_before_payment)
-	// 		return loanDb.appendDoc({ _id: loan._id }, "started_at", startDate)
-	// 	})
-	// )
+	let startDateUpdateStatus = await Promise.all(
+		loans.map(loan => {
+			let startDate = addWeeks(loan.created_at, loan.weeks_before_payment)
+			return loanDb.appendDoc({ _id: loan._id }, "started_at", startDate)
+		})
+	)
 	console.log(startDateUpdateStatus)
 	
 	loans.forEach(loan => {

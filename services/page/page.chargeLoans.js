@@ -1,9 +1,9 @@
 const pageFunctions = require("./functions")
 const loanDb = require("../../data/db/loan.db")
-const shouldCharge = require("../loan/functions/shouldCharge")
+const hasPendingPayment = require("../loan/functions/hasPendingPayment")
 
 async function chargeLoans(req, res, next){
-	// This service is responsible to showing all the loans approved loans
+	// This service is responsible for showing all the loans approved
 	// and determining if they should be charged or not
 
 	let currentLoans = await loanDb.findWith({ status: "approved" }),
@@ -12,12 +12,11 @@ async function chargeLoans(req, res, next){
 	for(let i = 0; i < size; i++){
 		let loan = currentLoans[i]
 
-		let chargeToday = shouldCharge(loan.period, loan.started_at)
+		let chargeToday = await hasPendingPayment(loan.user_id, loan.loan_id, loan.period, loan.started_at)
 		loan._doc.chargeToday = chargeToday
 	}
 
 	console.log(currentLoans)
-
 	req.body.pageData = {
 		loans
 	}
