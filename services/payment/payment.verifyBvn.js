@@ -31,10 +31,10 @@ async function verifyBvn(data){
 		return bvnVerificationResult
 
 	// If user already has an account, we verify the identity
-	if(userObj.bank.length > 0 && userObj.bank[0].account){
+	if(userObj.bank.length > 0 && userObj.bank[0].account && (Object.keys(userObj.bank[0].account).length > 0)){
 		let bvnDetails = bvnVerificationResult.data, newName = `${bvnDetails.first_name} ${bvnDetails.last_name}`
 		let accountDetails = userObj.bank[0].account
-		let similarity = match(accountDetails.account_name, bvnDetails.first_name)
+		let similarity = match(accountDetails.account_name, newName)
 
 		if(similarity < 0.5)
 			return { status: 403, code: "FAILED_IDENTITY_TEST" }

@@ -59,7 +59,7 @@ function sendBvn(bvn){
 			showAlert("bank-error", "Bvn number must be 11 digits long")
 		else if(response.code == "BVN_VERIFICATION_FAILED")
 			showAlert("bank-error", response.message)
-		else if(reponse.code == "FAILED_IDENTITY_TEST")
+		else if(response.code == "FAILED_IDENTITY_TEST")
 			showAlert("bank-error", "Sorry, your bvn and account number don't match")
 		verifyButton("normal")
 	}	
