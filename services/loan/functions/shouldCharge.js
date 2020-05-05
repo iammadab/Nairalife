@@ -6,10 +6,17 @@ function shouldCharge(period, start, today){
 	start = start.setHours(0, 0, 0, 0)
 	today = today.setHours(0, 0, 0, 0)
 
+	console.log(new Date(start).toLocaleString())
+	console.log(new Date(today).toLocaleString())
+
 	//Next, we have to figure out how many days has passed since the start and today
 	const MILLISECONDS_PER_DAY = (1000 * 3600 * 24)
 	let millisecondsPassed = Number(today) - Number(start)
 	let days = millisecondsPassed / MILLISECONDS_PER_DAY
+
+	// If negative days has passed, just return false
+	if(days < 0)
+		return false
 
 	let periodMap = {
 		daily: 1,
