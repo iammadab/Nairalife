@@ -13,7 +13,7 @@ async function chargeLoans(req, res, next){
 	for(let i = 0; i < size; i++){
 		let loan = currentLoans[i]
 
-		let chargeToday = await hasPendingPayment(loan.user_id, loan.loan_id, loan.period, loan.started_at)
+		let chargeToday = await hasPendingPayment(loan.user_id, loan._id, loan.period, loan.started_at)
 		let userObj = await userDb.findOneWith({ user_id: loan.user_id })
 		let totalPayments = await getTotalTransactions(loan._id)
 

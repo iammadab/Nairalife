@@ -38,6 +38,7 @@ async function dashboard(req, res, next){
 module.exports = dashboard
 
 async function getTotalTransactions(loan_id){
+	console.log(loan_id)
 	let allLoanTransactions = await transactionDb.findWith({ loan_id, status: "success" })
 	console.log("All", allLoanTransactions)
 	return allLoanTransactions.reduce((sum, transaction) => sum + transaction.amount, 0)

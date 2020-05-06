@@ -7,7 +7,7 @@ const userDb = require("../../data/db/user.db")
 const loanDb = require("../../data/db/loan.db")
 const transactionDb = require("../../data/db/transaction.db")
 
-// const charge = require("../payment/payment.charge")
+const charge = require("../payment/payment.charge")
 
 async function loanCharge(data){
 	let validationResult = loanChargeValidator.parse(data)
@@ -39,7 +39,7 @@ async function loanCharge(data){
 
 	// If the charge failed, we send the user a message telling them that we failed to charge their account
 	if(chargeResult.data.status == "failed")
-		sendMessage({ phone: userObj.phone, message: `Your charge of N${paymentAmount} on nairalife was unsuccessful. We will try again soon.` })
+		sendMessage({ phone: userObj.phone, message: `Your weekly charge of N${paymentAmount} on nairalife was unsuccessful. We will try again soon.` })
 			.then(() => console.log("Sent otp"))
 			.catch(err => console.log("Failed to send otp", err))
 
@@ -57,6 +57,7 @@ async function loanCharge(data){
 			admin_id: adminObj ? adminObj.user_id : 0
 		}
 	})	
+	console.log(userTransaction)
 
 	return { status: 200, code: "PAYMENT_SUCCESSFUL" }
 
@@ -74,13 +75,4 @@ async function hasBeenChargedToday(user_id, loan_id){
 	let pendingTransactions = await transactionDb.findWith({ ...baseData, status: "pending", created_at: { $gte: midnight }})
 
 	return successfulTransactions.length > 0 || pendingTransactions.length > 0
-}
-
-async function charge(){
-	return {
-		data: {
-			status: "failed",
-			reference: "testreference"
-		}
-	}
 }
