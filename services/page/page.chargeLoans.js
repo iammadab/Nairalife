@@ -5,7 +5,6 @@ const hasPendingPayment = require("../loan/functions/hasPendingPayment")
 async function chargeLoans(req, res, next){
 	// This service is responsible for showing all the loans approved
 	// and determining if they should be charged or not
-
 	let currentLoans = await loanDb.findWith({ status: "approved" }),
 			size = currentLoans.length
 
@@ -16,15 +15,11 @@ async function chargeLoans(req, res, next){
 		loan._doc.chargeToday = chargeToday
 	}
 
-	console.log(currentLoans)
 	req.body.pageData = {
 		loans
 	}
 
-	// next()
-
+	next()
 }
 
 module.exports = chargeLoans
-
-chargeLoans()
