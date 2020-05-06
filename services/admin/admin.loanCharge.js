@@ -1,4 +1,5 @@
 const { createValidator } = require("lazy-validator")
+const sendMessage = require("../../lib/sms")
 
 const loanChargeValidator = createValidator("user_id.string, loan_id.string")
 
@@ -6,12 +7,14 @@ const userDb = require("../../data/db/user.db")
 const loanDb = require("../../data/db/loan.db")
 const transactionDb = require("../../data/db/transaction.db")
 
+// const charge = require("../payment/payment.charge")
+
 async function loanCharge(data){
 	let validationResult = loanChargeValidator.parse(data)
 	if(validationResult.error)
 		return { status: 400, code: "BAD_REQUEST_ERROR", errors: validationResult.errors }
 
-	let { user_id, loan_id } = validationResult.validData
+	let { user_id, loan_id } = validationResult.data
 
 	let adminObj = await userDb.findOneWith({ _id: data.user.id })
 
@@ -34,6 +37,12 @@ async function loanCharge(data){
 		amount: paymentAmount
 	})
 
+	// If the charge failed, we send the user a message telling them that we failed to charge their account
+	if(chargeResult.data.status == "failed")
+		sendMessage({ phone: userObj.phone, message: `Your charge of N${paymentAmount} on nairalife was unsuccessful. We will try again soon.` })
+			.then(() => console.log("Sent otp"))
+			.catch(err => console.log("Failed to send otp", err))
+
 	// Create a transaction object
 	let userTransaction = await transactionDb.createTransaction({
 		username: userObj.fullname,
@@ -49,6 +58,8 @@ async function loanCharge(data){
 		}
 	})	
 
+	return { status: 200, code: "PAYMENT_SUCCESSFUL" }
+
 }
 
 module.exports = loanCharge
@@ -63,4 +74,13 @@ async function hasBeenChargedToday(user_id, loan_id){
 	let pendingTransactions = await transactionDb.findWith({ ...baseData, status: "pending", created_at: { $gte: midnight }})
 
 	return successfulTransactions.length > 0 || pendingTransactions.length > 0
+}
+
+async function charge(){
+	return {
+		data: {
+			status: "failed",
+			reference: "testreference"
+		}
+	}
 }

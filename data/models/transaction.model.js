@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const transactionSchema = mongoose.Schema({
 	username: { type: String, required: true },
 	user_id: { type: Number, required: true },
-	loan_id: { type: Number },
+	loan_id: { type: mongoose.Types.ObjectId },
 	group_id: { type: Number },
 	amount: { type: Number, required: true },
 	reference: { type: String, required: true },
