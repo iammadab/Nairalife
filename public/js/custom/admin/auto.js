@@ -1,6 +1,5 @@
 let store = {
-	saveButtons: document.querySelectorAll(".save-button"),
-
+	saveButtons: document.querySelectorAll(".save-button")
 }
 
 ;(function attachEvents(){

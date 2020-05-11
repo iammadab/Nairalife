@@ -1,0 +1,37 @@
+<div class="kt-portlet btopzero">
+<div class="kt-portlet__body kt-padding-t-10 kt-padding-b-10">
+<div class="kt-section__content table-responsive">
+<table class="table kt-margin-b-10">
+<thead>
+<tr>
+<th>Member</th>
+<!-- <th>Reference</th> -->
+<th>Total Payment</th>
+<th>Remaining Payment</th>
+<th>Weekly Payment</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<% loans.forEach((loan, i) => { %>
+<tr>
+<td><%= loan._doc.user.fullname %></td>
+<!-- <td data-format="comma">&#8358;<%= loan.reference %></td> -->
+<td data-format="comma">&#8358;<%= loan.final_amount %></td>
+<td data-format="comma">&#8358;<%= loan._doc.remainingPayment %></td>
+<td data-format="comma">&#8358;<%= loan.weekly_amount %></td>
+<td>
+	<% if(loan._doc.chargeToday){ %>
+		<button data-user_id="<%= loan.user_id %>" data-loan_id="<%= loan._id %>" class="btn btn-secondary btn-sm save-button save-button-text-<%=loan.user_id%>">Charge</button>
+		<button data-user_id="<%= loan.user_id %>" data-loan_id="<%= loan._id %>" class="btn btn-secondary btn-sm pending-button otp-error">Pending</button>
+	<% } %>
+</td>
+</tr>
+<% }) %>
+</tbody>
+</table>
+</div>
+</div>
+<!--end of kt-portlet-body-->
+</div>
+<!--end of kt-portlet-->

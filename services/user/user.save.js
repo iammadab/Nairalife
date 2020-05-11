@@ -86,7 +86,6 @@ async function save(data){
 	})	
 
 	return { status: 200, code: "PAYMENT_SUCCESSFUL" }
-	
 }
 
 module.exports = save

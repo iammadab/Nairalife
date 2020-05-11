@@ -6,8 +6,7 @@ async function auto(req, res, next){
 	// We also want to determine if the user has saved so we can display or not display the save button
 
 	// First we fetch all the active users
-	// Eventually, we will have active users that are not saving, so this clause will have to get more specific
-	// It's good enough for now
+	// Because some active users are not paying, we check if they are in payment one or two
 	let higherPurchaseMembers = await pageFunctions.fetchUsers({ stage: "active", status: { $in: ["payment_one", "payment_two"] } })
 
 	// Now I go through each member, calculate the amount they have paid and how much is remaining for rendering

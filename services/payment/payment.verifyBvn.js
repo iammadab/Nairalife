@@ -3,6 +3,7 @@ const { createValidator } = require("lazy-validator")
 
 const bvnValidator = createValidator("bvn.number")
 
+const match = require("../../lib/match")
 const userDb = require("../../data/db/user.db")
 
 const userService = require("../user")
@@ -29,8 +30,15 @@ async function verifyBvn(data){
 	if(bvnVerificationResult.status != 200)
 		return bvnVerificationResult
 
-	// if(!hasAll(userObj.fullname, bvnVerificationResult.data.first_name, bvnVerificationResult.data.last_name))
-	// 	return { status: 403, code: "BVN_VERIFICATION_FAILED", message: "Name mismatch" }
+	// If user already has an account, we verify the identity
+	if(userObj.bank.length > 0 && userObj.bank[0].account && (Object.keys(userObj.bank[0].account).length > 0)){
+		let bvnDetails = bvnVerificationResult.data, newName = `${bvnDetails.first_name} ${bvnDetails.last_name}`
+		let accountDetails = userObj.bank[0].account
+		let similarity = match(accountDetails.account_name, newName)
+
+		if(similarity < 0.5)
+			return { status: 403, code: "FAILED_IDENTITY_TEST" }
+	}
 	
 	let addBankResult = await userService.addBank({ bvnResult: bvnVerificationResult.data, ...data })
 	if(addBankResult.status != 200)

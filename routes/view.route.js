@@ -193,6 +193,10 @@ viewRouter.get("/admin/deduct", cookieNotFound("/admin/login", "atoken"), verify
 	res.render("admin/deduct", {title: "Nairalife Deductions", link: "Manual", ...req.body.pageData })
 })
 
+viewRouter.get("/admin/deduct/loans", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.chargeLoans, (req, res) => {
+	res.render("admin/deductloans", { title: "Nairalife Deductions", link: "Manual", ...req.body.pageData })
+})
+
 viewRouter.get("/admin/profile/:user_id", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.profile, (req, res) => {
 	res.render("admin/profile", { title: `${req.body.pageData.user.fullname}`, link: "profile", ...req.body.pageData })
 })
