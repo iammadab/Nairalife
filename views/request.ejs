@@ -2,92 +2,125 @@
 <% include header %>
 <% include link %>
 
-<div class="kt-portlet btopzero">
-<div class="kt-portlet__body kt-margin-10">
 
-<div class="naira__header">
-<h3 class="naira__title">
-Instalment Loan Summary
-</h3>
-<span class="naira__desc">
-Details of loan request and current status
-</span>
+<div class="alert alert-bold fade show" role="alert" style="border:1px solid #e1e1e1;background:transparent;">
+<div class="alert-icon kt-font-success"><i class="la la-slack"></i></div>
+<div class="alert-text" data-format="comma">
+<b>&#8358;<%= loan.initial_amount %> has been sent to your bank account and you should get it within 5 minutes!
+</div>
 </div>
 
-<div class="table-responsive">
-<table class="table">
-<tbody>
-<tr>
-<td>Loan Amount:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan.initial_amount %></td>
-</tr>
-<tr>
-<td>Interest Rate:</td>
-<td class="text-right"><%= loan.interest %>%</td>
-</tr>
-<tr>
-<td>Interest:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount - loan.initial_amount %></td>
-</tr>
-<tr>
-<td>Total Amount:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount %></td>
-</tr>
-<tr>
-<td>Weekly Payment:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan.weekly_amount %></td>
-</tr>
-<tr>
-<td>Loan Period:</td>
-<td class="text-right"><%= loan.weeks %> Weeks</td>
-</tr>
-<tr>
-<td>Loan Status:</td>
-<% let stateMap = { pending: "info", approved: "success", declined: "danger", cancelled: "danger" } %>
+
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
+Loan Summary
+</h4>
+<span class="kt-widget24__desc">
+#<%= loan.reference %>
+</span>
+</div>
+<span class="kt-widget24__stats" data-format="comma">
+&#8358;<%= loan.initial_amount %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Interest Rate
+</span>
+<span class="kt-widget24__number">
+<%= loan.interest %>%
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Interest
+</span>
+<span class="kt-widget24__number" data-format="comma">
+&#8358;<%= loan.final_amount - loan.initial_amount %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Total
+</span>
+<span class="kt-widget24__number" data-format="comma">
+&#8358;<%= loan.final_amount %>	
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Loan Duration
+</span>
+<span class="kt-widget24__number">
+<%= loan.weeks %> Weeks
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Weekly Payment
+</span>
+<span class="kt-widget24__number" data-format="comma">
+&#8358;<%= loan.weekly_amount %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Next Payment
+</span>
+<span class="kt-widget24__number">
+<a href="#">03 March, 2020</a>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Status
+</span>
+<% let stateMap = { approved: "info", complete: "success"} %>
 <% let color = stateMap[loan.status] %>
-<td class="text-capitalize text-right kt-font-<%= color %>"><%= loan.status %></td>
-</tr>
-</tbody>
-</table>
-<% if(loan.status == "pending"){ %>
-<div class="alert alert-bold fade show kt-margin-b-20" role="alert" style="border:1px solid #e1e1e1; color:#666">
-<div class="alert-icon"><i class="la la-info-circle"></i></div>
-<div class="alert-text">
-We are currently processing your loan request and we apologise for the delay
-</div>
-</div>
-<% } %>
-</div>
-
-
-<div class="naira__header">
-<h3 class="naira__title">
-Account Details
-</h3>
-<span class="naira__desc">
-Your bank account information
+<span class="kt-widget24__number kt-font-<%= color %> text-capitalize">
+<%= loan.status %>
 </span>
 </div>
-<div class="table-responsive">
-<table class="table">
-<tbody>	
-<tr>
-<td>Account Name:</td>
-<td class="text-capitalize text-right"><%= account.account_name.toLowerCase() %></td>
-</tr>
-<tr>
-<td>Bank Name:</td>
-<td class="text-right"><%= bankName %></td>
-</tr>
-<tr>
-<td>Account No:</td>
-<td class="text-right"><%= account.account_number %></td>
-</tr>
-</tbody>
-</table>
 </div>
 
-<div class="naira__header">
+
+
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
+Account Details
+</h4>
+<span class="kt-widget24__desc">
+Your Bank account information
+</span>
+</div>
+<span class="kt-widget24__stats">
+<%= account.account_number %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Account Name
+</span>
+<span class="kt-widget24__number text-capitalize">
+<%= account.account_name.toLowerCase() %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Bank
+</span>
+<span class="kt-widget24__number">
+<%= bankName %>
+</span>
+</div>
+</div>
+
+
+<!-- <div class="naira__header">
 <h3 class="naira__title">
 Instalment Loan Need
 </h3>
@@ -99,10 +132,30 @@ Why did you request for the loan?
 <p>
 <%= loan.reason %>
 </p>
+</div> -->
+
+
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
+Loan Terms
+</h4>
+<span class="kt-widget24__desc">
+Your agreement with Nairalife
+</span>
+</div>
+</div>
+<div class="kt-widget24__action">
+<p class="kt-margin-b-0">
+Weekly payment of &#8358;<span data-format="comma"><%= loan.weekly_amount %></span> for <%= loan.weeks %> weeks for a total of &#8358;
+<span data-format="comma"><%= loan.final_amount %></span> and at an interest rate of <%= loan.interest %>% starting <%= loan._doc.beforeText %>  after receiving this loan
+</p>
+</div>
 </div>
 
 
-<div class="naira__header">
+<!-- <div class="naira__header">
 <h3 class="naira__title">
 Instalment Loan Term
 </h3>
@@ -115,28 +168,7 @@ Your agreement with Nairalife
 <p>
 I promise to repay on instalment &#8358;<span data-format="comma"><%= loan.weekly_amount %></span> weekly for <%= loan.weeks %> weeks for a total of &#8358;<span data-format="comma"><%= loan.final_amount %></span> and at an interest rate of <%= loan.interest %>% starting <%= loan._doc.beforeText %>  after receiving this loan.
 </p>
-</div>
-
-<% if(loan.status == "pending"){ %>
-<div class="kt-login__btn">
-<button class="btn btn-secondary btn-taller btn-pill btn-wide kt-margin-t-20 kt-margin-r-5 cancel-button" data-loan_id="<%= loan._id %>">
-<i class="la la-close"></i>Cancel Request
-</button>
-<a href="tel:08127574549" class="btn btn-warning btn-taller btn-pill btn-wide kt-margin-t-20">
-<i class="la la-phone"></i>Contact Us
-</a>
-</div>
-<% } %>
-
-</div>
-<!--end of kt-portlet-body-->
-</div>
-<!--end of kt-portlet-->
-
-
-
-
-
+</div> -->
 
 
 
@@ -146,5 +178,5 @@ I promise to repay on instalment &#8358;<span data-format="comma"><%= loan.weekl
 
 
 <script type="text/javascript" src="/js/custom/script.js"></script>
-<script type="text/javascript" src="/js/custom/request.js"></script>
-<% include footer %>
+<!-- <script type="text/javascript" src="/js/custom/request.js"></script> -->
+<% include footer3 %>

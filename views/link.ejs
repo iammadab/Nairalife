@@ -1,32 +1,21 @@
-<!-- begin:: Subheader -->
-<div class="kt-subheader   kt-grid__item" id="kt_subheader">
+<div class="kt-subheader">
+<h3>
+<% if(title==="Home"){ %>
+Hi, Akin Wumi
+<a href="/loan" class="btn btn-secondary btn-secondary2 kt-margin-l-10">
+Get Loan <i class="la la-arrow-right kt-margin-l-5" style="padding-right:0"></i>
+</a>
+<% }
+else{
+ %>	
+<%= title %>
+<% } %>
+</h3>
 <div class="kt-subheader__main">	
-<h3 class="kt-subheader__title"><%= title %></h3>
-<div class="kt-subheader__breadcrumbs">
-<a href="/" class="kt-subheader__breadcrumbs-home"><i class="la la-home"></i></a>
-<a href="/home" class="kt-subheader__breadcrumbs-link">
-Home
-</a>
+<h3 class="kt-subheader__title"><a href="/home"><i class="la la-home"></i> Home</a></h3>
 <% if(link){ %>
-<span class="kt-subheader__breadcrumbs-separator"></span>
-<a href="<%= link %>" class="kt-subheader__breadcrumbs-link">
-<%= link %>
-</a>
+<span class="kt-subheader__separator kt-subheader__separator--v"></span>
+<span class="kt-subheader__desc"><%= link %></span>
 <% } %>
 </div>
-
 </div>
-
-<div class="kt-subheader__toolbar">
-<div class="kt-subheader__wrapper">
-<a href="/car" class="btn btn-secondary kt-subheader__btn-options kt-margin-r-5">
-<span class="la la-car kt-margin-r-5"></span> Car Request
-</a>
-<a href="/loan" class="btn btn-warning kt-subheader__btn-options"> 
-<span class="la la-slack kt-margin-r-5"></span> Loan Request
-</a>
-
-</div>
-</div>
-</div>
-<!-- end:: Subheader -->

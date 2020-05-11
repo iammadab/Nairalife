@@ -15,7 +15,7 @@ async function loan(req, res, next){
 		res.render("residence", { title: "Place of Residence", link: "residence", ...req.body.pageData })
 
 	else if(userObj.loan_stage == "request")
-		res.render("loan", { title: "Instalment Loans", link: "loan",...req.body.pageData })
+		res.render("loan", { title: "Get Instant Loan", link: "loan",...req.body.pageData })
 
 }
 

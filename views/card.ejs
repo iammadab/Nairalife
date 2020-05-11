@@ -2,31 +2,22 @@
 <% include header %>
 <% include link %>
 <!--begin::Portlet-->
-<div class="kt-portlet btopzero">
-<div class="kt-portlet__body kt-margin-10">
-
-<div class="naira__header naira__header__no">
-<h3 class="naira__title">
-Add Card
-</h3>
-<span class="naira__desc">
-Link your ATM card to Nairalife for automatic repayment
-</span>
+<div class="kt-portlet">
+<div class="alert alert-secondary alert-bold fade show" role="alert">
+<div class="alert-icon"><i class="la la-credit-card"></i></div>
+<div class="alert-text">
+We will automatically charge this card for your loan repayments. 
+<b>Please note:</b> &#8358;100 charges will be deducted from this card and added to your loan available balance
 </div>
-
-<div class="aboutn">
-<p>&#8358;100 will be deducted from your account by paystack as a test and added to your current payment balance</p>
 </div>
-<div class="kt-login__btn kt-margin-t-10">
+<div class="kt-login__btn">
 <button class="btn btn-primary btn-taller btn-pill btn-wider" onclick="payWithPaystack()">
-<i class="la la-cc-diners-club"></i>Add ATM Card
+<i class="la la-credit-card"></i>Add Card
 </button>
 </div>
 </div>
-<!--end::portlet__body-->
-</div>
 <!--end::Portlet-->
-<% include footer %>
+<% include footer3 %>
 
 <script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
@@ -56,3 +47,4 @@ window.location.href = window.location.href
 }, 4000)
 }
 </script>
+<script type="text/javascript" src="js/custom/script.js"></script>

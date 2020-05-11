@@ -3,10 +3,7 @@
 <% include link %>
 
 
-<div class="kt-portlet btopzero">
-
-
-<div class="kt-portlet__body kt-margin-10">
+<div class="kt-portlet">
 
 <div class="table-responsive">
 <table class="table">
@@ -35,7 +32,7 @@
 <% let color = stateMap[loan.status] %>
 <td class="text-capitalize kt-font-<%= color %>"><%= loan.status %></td>
 <td>
-	<a href="/request/<%= loan._id %>" class="btn btn-secondary btn-sm pending-button">View</a>
+	<a href="/loan/<%= loan._id %>" class="btn btn-secondary btn-sm pending-button">View</a>
 </td>
 </tr>
 <% }) %>
@@ -52,9 +49,7 @@
 
 
 </div>
-<!--end of kt-portlet-body-->
-</div>
 <!--end of kt-portlet-->
+<% include footer3 %>
 
 <script type="text/javascript" src="js/custom/script.js"></script>
-<% include footer %>

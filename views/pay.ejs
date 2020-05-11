@@ -4,42 +4,28 @@
 
 
 <!--begin::Portlet-->
-<div class="kt-portlet btopzero">
+<div class="kt-portlet">
 
-<div class="kt-portlet__body kt-margin-10">
-<div class="naira__header naira__header__no">
-<h3 class="naira__title">
-Bank Transfer
-</h3>
-<span class="naira__desc">
-Can't pay with your card? Send money directly to our bank account
-</span>
-</div>
-
-<div class="alert alert-danger alert-bold fade show kt-margin-b-10 login-error pay-error" role="alert">
+<div class="alert alert-danger alert-bold fade show login-error pay-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Phone Number or Password
 </div>
 </div>
-
-
-<form class="kt-form kt-margin-t-10" action="" novalidate="novalidate">
+<form class="kt-form" action="" novalidate="novalidate">
 <div class="form-group manual-form">
 <input type="number" class="form-control form-control-lg manual-pay-input" name="amount" placeholder="Enter Amount">
 </div>
-<div class="kt-login__btn kt-margin-t-30">
+<div class="kt-login__btn">
 <button class="btn btn-primary btn-taller btn-pill btn-wider kt-login__btn-primary manual-pay-button">
-<span class="add-text">Get Account Details <i class="la la-angle-double-right"></i></span>
+<span class="add-text">Get Account Details <i class="la la-arrow-right kt-padding-r-0"></i>
 </button>
 </div>
 </form>
-
-
-</div>
-<!--end::portlet__body-->
 </div>
 <!--end::Portlet-->
+
+
 <% include footer %>
 
 <script type="text/javascript" src="js/custom/script.js"></script>

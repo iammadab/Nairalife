@@ -2,232 +2,160 @@
 <% include header %>
 <% include link %>
 
-<% let match = (a,b) => String(a).lowerCase() == String(b).lowerCase() ? "selected" : "" %>
-
-<!--begin::Portlet-->
-<div class="kt-portlet btopzero">
-
-<div class="kt-portlet__body kt-padding-20">
-
-<ul class="nav nav-tabs  nav-tabs-line nav-tabs-bolder nav-tabs-line-primary kt-margin-b-20" role="tablist">
-<li class="nav-item">
-<a class="nav-link active" data-toggle="tab" href="#kt_tabs_7_1" role="tab">
-<i class="la la-user"></i> Profile Info
-</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" data-toggle="tab" href="#kt_tabs_7_2" role="tab">
-<i class="la la-edit"></i> Bank Account
-</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" data-toggle="tab" href="#kt_tabs_7_4" role="tab">
-<i class="la la-unlock"></i>Password
-</a>
-</li>
-</ul>
-
-<div class="tab-content">
+<!-- <% let match = (a,b) => String(a).lowerCase() == String(b).lowerCase() ? "selected" : "" %> -->
 
 
-
-<div class="tab-pane active profile-section" id="kt_tabs_7_1" role="tabpanel">
-
-<div class="alert alert-danger alert-bold fade show kt-margin-t-10 kt-margin-b-20 otp-error profile-error" role="alert">
+<div class="naira__set">
+<div class="naira__header">
+<h3 class="naira__title">Profile Information</h3>
+</div>
+<div class="alert alert-danger alert-bold fade show otp-error profile-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
 </div>
 </div>
-
-<div class="alert alert-success alert-bold fade show kt-margin-t-10 kt-margin-b-20 otp-error profile-success" role="alert">
+<div class="alert alert-success alert-bold fade show otp-error profile-success" role="alert">
 <div class="alert-icon"><i class="la la-check-circle"></i></div>
 <div class="alert-text">
 Invalid Username or Password
 </div>
 </div>
-	
 <div class="form-group">
-<label>Full Name</label>
-<input type="text" class="form-control form-control-lg info-name text-capitalize" name="fullname" value="<%= user.fullname %>" 
-readonly="readonly">
-<span class="text-muted">to change your full name, please call us or message us on whatsapp on 08127574549</span>
+<input type="text" class="form-control form-control-lg info-age" name="age" value="" placeholder="Age">
 </div>
-
 <div class="form-group">
-<label>Phone Number</label>
-<input type="text" class="form-control form-control-lg info-phone" name="phone" value="0<%= user.phone %>" readonly="readonly">
-<span class="text-muted">to change your phone number, please call us or message us on whatsapp on 08127574549</span>
-</div>
-
-<div class="form-group">
-<label>Email Address</label>
-<input type="text" class="form-control form-control-lg info-email" name="email" value="<%= user.email %>" readonly="readonly">
-<span class="text-muted">to change your email address, please call us or message us on whatsapp on 08127574549</span>
-</div>
-
-
-<div class="form-group">
-<label>Sex</label>	
-<select name="sex" data-defaultvalue="<%= user.about.sex %>" class="custom-select bank-name" style="height:55px;">
+<select name="sex" data-defaultvalue="<%= user.about.sex %>" class="custom-select custom-select-lg">
+<option value="">Sex</option>
 <option value="female">Female</option>
 <option value="male">Male</option>
 </select>
 </div>
-
-
-<!-- <div class="form-group">
-<label>Official Title</label>	
-<select  name="title" data-defaultvalue="<%= user.about.title %>" class="custom-select bank-name" style="height:55px;">
-<option value="mr.">Mr.</option>
-<option value="mrs.">Mrs.</option>
-<option value="miss.">Miss.</option>
-<option value="dr.">Dr.</option>
-<option value="mazi">Mazi</option>
-<option value="ogbeni">Ogbeni</option>
-<option value="otunba">Otunba</option>
-<option value="chairman">Chairman</option>
-<option value="chairwoman">Chairwoman</option>
-</select>
-</div> -->
-
-
 <div class="form-group">
-<label>Relationship Status</label>	
-<select name="relationship" data-defaultvalue="<%= user.about.relationship %>" class="custom-select bank-name" style="height:55px;">
+<select name="relationship" data-defaultvalue="<%= user.about.relationship %>" class="custom-select custom-select-lg">
+<option value="">Relationship Status</option>
 <option value="single">Single</option>
 <option value="engaged">Engaged</option>
 <option value="married">Married</option>
 <option value="divorced">Divorced</option>
 </select>
 </div>
-
 <div class="form-group">
-<label>Bio</label>	
-<textarea class="form-control" name="bio" style="height:95px"><%= user.about.bio %></textarea>
+<select name="education" data-defaultvalue="<%= user.about.education %>" class="custom-select custom-select-lg">
+<option value="">Education</option>
+<option value="Secondary">Secondary</option>
+<option value="Graduate">Graduate</option>
+<option value="Masters">Masters</option>
+<option value="Doctorate">Doctorate</option>
+<option value="None">None</option>
+</select>
 </div>
-
-
-
-<div class="kt-form__actions kt-text-align-center-mobile kt-margin-t-30">
-<button class="btn btn-primary btn-taller btn-pill btn-wide kt-font-bold save-information-button">
-<i class="la la-edit"></i><span class="save-text">Save Profile</span>
+<div class="form-group">
+<textarea class="form-control" name="bio" style="height:95px" placeholder="Bio"><%= user.about.bio %></textarea>
+</div>
+<div class="kt-form__actions">
+<button class="btn btn-primary btn-pill btn-sm save-information-button">
+<i class="la la-edit" style="padding-right:0"></i> <span class="save-text">Save Profile</span>
 </button>
 </div>
-<!--end: Form Actions -->
-
 </div>
-<!--end: tab-pane -->
 
 
 
-
-<div class="tab-pane bank-section" id="kt_tabs_7_2" role="tabpanel">
-
-<!-- <div class="form-group">
-<label>Account Name</label>
-<input type="text" class="form-control form-control-lg info-account-name" name="account_name" value="Akin Wumi">
-</div> -->
-<div class="alert alert-danger alert-bold fade show kt-margin-t-10 kt-margin-b-20 otp-error bank-error" role="alert">
+<div class="naira__set">
+<div class="naira__header">
+<h3 class="naira__title">Bank Account</h3>
+</div>
+<div class="alert alert-danger alert-bold fade show otp-error bank-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
 </div>
 </div>
-<div class="alert alert-success alert-bold fade show kt-margin-t-10 kt-margin-b-20 otp-error bank-success" role="alert">
+<div class="alert alert-success alert-bold fade show otp-error bank-success" role="alert">
 <div class="alert-icon"><i class="la la-check-circle"></i></div>
 <div class="alert-text">
 Invalid Username or Password
 </div>
 </div>
-
 <div class="form-group">
-<label>Account Number</label>
-<input type="text" class="form-control form-control-lg info-account-number" name="account_number" value="<%= user.bank[0].account.account_number %>">
-</div>
-
-<div class="form-group">
-<label>Bank Name</label>	
-<select class="custom-select custom-select-lg bank-name" data-defaultvalue="<%= user.bank[0].account.bank_code %>" name="bank_code">
+<select class="custom-select custom-select-lg" data-defaultvalue="<%= user.bank[0].account.bank_code %>" name="bank_code">
 <option value="">Select Bank</option>
-
 <% banks.forEach(bank => { %>
 <option value="<%= bank.code %>"><%= bank.name %></option>
 <% }) %>
 </select>
-</div>	
-<!-- <div class="form-group">
-<label>Bank Name</label>
-<input type="text" class="form-control form-control-lg info-bank-name" name="bank_name" value="Access Bank (Diamond)">
-</div> -->
-
-<div class="kt-form__actions kt-text-align-center-mobile kt-margin-t-30">
-<button class="btn btn-primary btn-taller btn-pill btn-wide kt-font-bold update-bank-button">
-<i class="la la-money"></i><span class="bank-text">Update Bank</span>
+</div>
+<div class="form-group">
+<input type="text" class="form-control form-control-lg info-account-number" name="account_number" placeholder="Account No" 
+value="<%= user.bank[0].account.account_number %>">
+</div>
+<div class="kt-form__actions">
+<button class="btn btn-primary btn-pill btn-sm update-bank-button">
+<i class="la la-upload" style="padding-right:0"></i> <span class="bank-text">Update Bank</span>
 </button>
 </div>
 <!--end: Form Actions -->
-
 </div>
-<!--end: tab-pane -->
 
 
 
-<div class="tab-pane password-section" id="kt_tabs_7_4" role="tabpanel">
+<div class="naira__set">
+<div class="naira__header">
+<h3 class="naira__title">Payment Card</h3>
+</div>
+<div class="alert alert-secondary alert-bold fade show" role="alert">
+<div class="alert-icon"><i class="la la-credit-card"></i></div>
+<div class="alert-text">
+We will automatically charge this card for your loan repayments. 
+<b>Please note:</b> &#8358;100 charges will be deducted from this card and added to your loan available balance
+</div>
+</div>
+<div class="kt-form__actions">
+<button class="btn btn-primary btn-pill btn-sm">
+<i class="la la-credit-card" style="padding-right:0"></i> <span class="bank-text">Change Card</span>
+</button>
+</div>
+<!--end: Form Actions -->
+</div>
 
-<div class="alert alert-danger alert-bold fade show kt-margin-t-10 kt-margin-b-20 otp-error password-error" role="alert">
+
+
+<div class="naira__set lastdiv">
+<div class="naira__header">
+<h3 class="naira__title">Change Password</h3>
+</div>
+<div class="alert alert-danger alert-bold fade show otp-error password-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
 </div>
 </div>
-
-<div class="alert alert-success alert-bold fade show kt-margin-t-10 kt-margin-b-20 otp-error password-success" role="alert">
+<div class="alert alert-success alert-bold fade show otp-error password-success" role="alert">
 <div class="alert-icon"><i class="la la-check-circle"></i></div>
 <div class="alert-text">
 Invalid Username or Password
 </div>
 </div>
-
 <div class="form-group">
-<label>Current Password</label>
-<input type="password" class="form-control form-control-lg current-password" name="oldPassword">
+<input type="password" class="form-control form-control-lg current-password" name="oldPassword" placeholder="Old Password">
 </div>
-
 <div class="form-group">
-<label>New Password</label>
-<input type="password" class="form-control form-control-lg new-password" name="newPassword">
+<input type="password" class="form-control form-control-lg new-password" name="newPassword" placeholder="New Password">
 <p class="settings-pass-error" style="color: red; display: none;">password must be at least 6 characters</p>
 </div>
-
-
 <div class="form-group">
-<label>Repeat New Password</label>
-<input type="password" class="form-control form-control-lg repeat-new-password" name="newPassword2">
+<input type="password" class="form-control form-control-lg repeat-new-password" name="newPassword2" placeholder="Repeat New Password">
 </div>
-
-
-
-<div class="kt-form__actions kt-text-align-center-mobile kt-margin-t-30">
-<button class="btn btn-primary btn-taller btn-pill btn-wide kt-font-bold change-password-button">
-<i class="la la-unlock"></i><span class="password-text">Change Password</span>
+<div class="kt-form__actions">
+<button class="btn btn-primary btn-pill btn-sm change-password-button">
+<i class="la la-unlock" style="padding-right:0"></i> <span class="password-text">Change Password</span>
 </button>
 </div>
-<!--end: Form Actions -->
-
 </div>
-<!--end: tab-pane -->
 
 
-
-</div>
-<!--end::tab-content-->
-</div>
-<!--end::portlet__body-->
-</div>
-<!--end::Portlet-->
-
+<% include footer3 %>
 
 <script type="text/javascript" src="js/custom/script.js"></script>
 <script type="text/javascript" src="js/custom/settings.js"></script>
-<% include footer %>

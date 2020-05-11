@@ -1,105 +1,226 @@
-<div class="kt-portlet btopzero">
-<div class="kt-portlet__body kt-margin-10">
-
-<% if(user.plan.total_amount){ %>
-<div class="naira__header">
-<h3 class="naira__title">
-Hire Purchase Summary
-</h3>
-<span class="naira__desc">
-Details of your active car instalment plan
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
+Current Loan Limit
+</h4>
+<span class="kt-widget24__desc">
+Maximum amount of loan you can get
 </span>
 </div>
-<div class="table-responsive kt-margin-b-10">
-<table class="table">
-<tbody>
-<tr>
-<td>Car Model:</td>
-<td class="text-right"><%= user.plan.car_name %></td>
-</tr>
-<tr>
-<td>Total Price:</td>
-<td class="text-right">&#8358;<span data-format="comma"><%= user.plan.total_amount %></span></td>
-</tr>
-<tr>
-<td>Weekly Instalment:</td>
+<span class="kt-widget24__stats" data-format="comma">
+&#8358;50000
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Next Limit
+</span>
+<span class="kt-widget24__number" data-format="comma">
+&#8358;62000
+</span>
+</div>
+<!-- <div class="kt-margin-t-10">
+<a class="btn btn-secondary btn-pill btn-sm" href="/help">
+<i class="la la-question-circle" style="padding-right:0;"></i> Help
+</a>
+</div> -->
+<div class="kt-widget24__action kt-padding-b-0">
+<span>For more information on your next loan limit and more, <a href="/help#limit">click here</a></span>
+</div>
+</div>
+
+
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
+Unpaid Loans
+</h4>
+<span class="kt-widget24__desc">
+Total amount you currently owe
+</span>
+</div>
+<span class="kt-widget24__stats" data-format="comma">
+&#8358;30000
+</span>
+</div>
+<div class="kt-margin-t-10">
+<a class="btn btn-secondary btn-pill btn-sm" href="/loans">
+<i class="la la-history" style="padding-right:0;"></i> Loan History
+</a>
+</div>
+</div>
+
+
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
+Remaining Amount
+</h4>
+<span class="kt-widget24__desc">
+Current amount still available
+</span>
+</div>
+<span class="kt-widget24__stats" data-format="comma">
+&#8358;20000
+</span>
+</div>
+<!-- <div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Loan Available
+</span>
+<span class="kt-widget24__number">
+<a href="#" class="kt-link">Get Loan</a>
+</span>
+</div> -->
+<div class="kt-margin-t-10">
+<a class="btn btn-secondary btn-pill btn-sm" href="/loan">
+Get Loan <i class="la la-arrow-right" style="padding-right:0;"></i>
+</a>
+</div>
+</div>
+
+
+
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
+Interest Rate
+</h4>
+<span class="kt-widget24__desc">
+Current interest charged weekly for you
+</span>
+</div>
+<span class="kt-widget24__stats">
+2.5%
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Next Rate
+</span>
+<span class="kt-widget24__number">
+1.8%
+</span>
+</div>
+<div class="kt-widget24__action kt-padding-b-0">
+<span>For more information on your next interest rate and more, <a href="/help#interest">click here</a></span>	
+</div>
+</div>
+
+
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
+Loan
+</h4>
+<span class="kt-widget24__desc">
+#<%= loan.reference %>
+</span>
+</div>
+<span class="kt-widget24__stats" data-format="comma">
+&#8358;<%= loan.initial_amount %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Interest Rate
+</span>
+<span class="kt-widget24__number">
+<%= loan.interest %>%
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Loan Duration
+</span>
+<span class="kt-widget24__number">
+<%= loan.weeks %> Weeks
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Weekly Payment
+</span>
+<span class="kt-widget24__number" data-format="comma">
+&#8358;<%= loan.weekly_amount %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Next Payment
+</span>
+<span class="kt-widget24__number">
+<a href="#">03 March, 2020</a>
+</span>
+</div>
+<div class="kt-margin-t-10">
+<a class="btn btn-secondary btn-pill btn-sm" href="/loan/<%= loan._id %>">
+<i class="la la-info-circle" style="padding-right:0"></i> View More
+</a>
+<!-- <a class="btn btn-warning btn-pill btn-sm" href="#">
+Pay Now <i class="la la-arrow-right" style="padding-right:0"></i>
+</a> -->
+</div>
+</div>
+
+
+
+<% if(user.plan.total_amount){ %>
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
+Hire Purchase
+</h4>
+<span class="kt-widget24__desc">
+Details of your car instalment
+</span>
+</div>
+<span class="kt-widget24__stats" data-format="comma">
+&#8358;<%= user.plan.total_amount %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Weekly Payment
+</span>
+<span class="kt-widget24__number" data-format="comma">
 <% let weeklyAmount = user.plan.amount %>
 <% if(user.status == "payment_one"){ weeklyAmount = user.payment_one.amount * 7 } %>
-<td class="text-right" data-format="comma">&#8358;<%= weeklyAmount %></td>
-</tr>
-<tr>
-<td>Current Payment:</td>
-<td class="text-right">&#8358;<span data-format="comma"><%= totalPayment %></span></td>
-</tr>
-<tr>
-<td>Remaining Payment:</td>
-<td class="text-right">&#8358;<span data-format="comma"><%= remainingPayment %></span></td>
-</tr>
-<tr>
-<td>Remaining Weeks:</td>
+&#8358;<%= weeklyAmount %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Total Payment
+</span>
+<span class="kt-widget24__number" data-format="comma">
+&#8358;<%= totalPayment %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Next Payment
+</span>
+<span class="kt-widget24__number">
+<a href="#" class="kt-link">03 March, 2020</a>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Remaining Weeks
+</span>
+<span class="kt-widget24__number">
 <% let weeksLeft = 0 %>
 <% if(user.status == "payment_one"){  weeksLeft = 102 + ((user.payment_one.total - totalPayment) / weeklyAmount) } %>
 <% if(user.status == "payment_two"){ weeksLeft = remainingPayment / weeklyAmount } %>
-<td class="text-right"><%= Math.ceil(weeksLeft) %> weeks</td>
-</tr>
-
-</tbody>
-</table>
-</div>
-<% } %>
-
-
-
-<div class="naira__header">
-<h3 class="naira__title">
-Instalment Loan Summary
-</h3>
-<span class="naira__desc">
-Details of your active loan
+<%= Math.ceil(weeksLeft) %> weeks
 </span>
 </div>
-<div class="table-responsive">
-<table class="table kt-margin-b-0">
-<tbody>
-<% if(loan){ %>
-<tr>
-<td>Loan Amount:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan.initial_amount %></td>
-</tr>
-<tr>
-<td>Interest Rate:</td>
-<td class="text-right"><%= loan.interest %>%</td>
-</tr>
-<tr>
-<td>Interest:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount - loan.initial_amount %></td>
-</tr>
-<tr>
-<td>Total Payment:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount %></td>
-</tr>
-<tr>
-<td>Weekly Instalment:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan.weekly_amount %></td>
-</tr>
-<tr>
-<td>Remaining Payment:</td>
-<td class="text-right" data-format="comma">&#8358;<%= loan.final_amount %></td>
-</tr>
-<tr>
-<td>Loan Period:</td>
-<td class="text-right"><%= loan.weeks %> Weeks</td>
-</tr>
+</div>
 <% } %>
-<% if(!loan){ %>
-<tr><td colspan="2">You currently do not have any active instalment loan</td></tr>
-<% } %>
-</tbody>
-</table>
-</div>
-
-
-</div>
-<!--end of kt-portlet-body-->
-</div>
-<!--end of kt-portlet-->

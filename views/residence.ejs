@@ -4,20 +4,17 @@
 
 
 <!--begin::Portlet-->
-<div class="kt-portlet btopzero kt-padding-10">
+<div class="kt-portlet">
 
-<div class="kt-portlet__body">
-<div class="naira__header naira__header__no">
-<h3 class="naira__title">
-Where do you live?
-</h3>
-<span class="naira__desc">
-You are almost there, please tell us more about where you reside
-</span>
+<div class="alert alert-secondary alert-bold fade show" role="alert">
+<div class="alert-icon"><i class="la la-map-marker"></i></div>
+<div class="alert-text">
+You are almost there! Tell us about where you currently live in Nigeria
+</div>
 </div>
 
 
-<div class="alert alert-danger alert-bold fade show kt-margin-t-10 otp-error residence-error" role="alert">
+<div class="alert alert-danger alert-bold fade show otp-error residence-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
@@ -25,7 +22,7 @@ Invalid Username or Password
 </div>	
 
 <!--begin::Form-->
-<form class="kt-form residence-form kt-margin-t-10" action="" novalidate="novalidate">
+<form class="kt-form residence-form" action="" novalidate="novalidate">
 <div class="form-group">
 <textarea class="form-control" placeholder="Enter your house address" name="address" style="height:95px" required="true">
 </textarea>
@@ -35,7 +32,7 @@ Invalid Username or Password
 required="true">
 </div>
 <div class="form-group">
-<input class="form-control form-control-lg" type="text" placeholder="Enter city" name="city" required="true">
+<input class="form-control form-control-lg" type="text" placeholder="Enter City" name="city" required="true">
 </div>
 <div class="form-group">
 <select class="custom-select custom-select-lg" name="state">
@@ -49,7 +46,7 @@ required="true">
 </div>
 
 
-<div class="kt-login__btn kt-margin-t-30">
+<div class="kt-login__btn">
 <button id="kt_login_signin_submit" class="btn btn-primary btn-taller btn-pill btn-wider kt-login__btn-primary residence-submit">
 <i class="la la-map-marker"></i><span class="residence-text">Save Residence</span>
 </button>
@@ -58,10 +55,8 @@ required="true">
 <!--end::Form-->
 
 </div>
-<!--end::portlet__body-->
-</div>
 <!--end::Portlet-->
-<% include footer %>
+<% include footer3 %>
 
 <script type="text/javascript" src="js/custom/script.js"></script>
 <script type="text/javascript" src="js/custom/residence.js"></script>

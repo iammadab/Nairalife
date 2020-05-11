@@ -7,7 +7,7 @@ let loanFunction = createFormFunction({
 	button: {
 		main: ".loan-submit",
 		text: ".loan-text",
-		active: "Requesting..."
+		active: "Transferring..."
 	},
 	error: ".loan-error",
 	success: ".loan-success",
@@ -21,7 +21,7 @@ let loanFunction = createFormFunction({
 	},
 	nameMap: {
 		// Assume each error is prefaced with "Sorry, you didn't"
-		initial_amount: "enter how much you need",
+		initial_amount: "enter the amount",
 		reason: "enter what you need the money for",
 		weeks: "choose how long you want to pay",
 		weeks_before_payment: "choose when you want to start payment"
@@ -67,7 +67,7 @@ function newInput(event){
 	function renderResponse(data){
 		let responseHTML = `
 			<div class="alert-text text-muted">
-				If your loan request is approved by Nairalife, you will pay back on instalment 
+				You will pay back on instalment 
 				<span class="kt-font-bolder">&#8358;${addCommaDecimal(data.weeklyPayments)}</span> 
 				weekly for ${data.weeks} weeks for a total of 
 				<span class="kt-font-bolder">&#8358;${addCommaDecimal(data.finalAmount)}</span> 

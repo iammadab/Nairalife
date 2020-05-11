@@ -2,46 +2,94 @@
 <% include header %>
 <% include link %>
 
-<div class="kt-portlet btopzero">
-<div class="kt-portlet__body kt-margin-10">
-
-
-<div class="naira__header">
-<h3 class="naira__title">
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
 Transaction Summary
-</h3>
-<span class="naira__desc">
-Details of transaction and current status
+</h4>
+<span class="kt-widget24__desc">
+Details of transaction
 </span>
 </div>
-
-<div class="table-responsive">
-<table class="table">
-<tbody>
-<tr>
-<td>Reference No:</td>
-<td class="text-right"><%= transaction.reference %></td>
-</tr>
-<tr>
-<td>Amount:</td>
-<td class="text-right" data-format="comma">&#8358;<%= transaction.amount %></td>
-</tr>
-<tr>
-<td>Date Created:</td>
-<td class="text-right"><%= transaction.created_at %></td>
-</tr>
-<tr>
-<td>Payment Status:</td>
-<td class="text-right"><% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
+<span class="kt-widget24__stats" data-format="comma">
+&#8358;<%= transaction.amount %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Reference No
+</span>
+<span class="kt-widget24__number">
+<%= transaction.reference %>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Date Created
+</span>
+<span class="kt-widget24__number">
+<a href="#"><%= transaction.created_at %></a>
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Status
+</span>
+<% let stateMap = { pending: "info", success: "success", failed: "danger" } %>
 <% let color = stateMap[transaction.status] %>
-<span class="kt-font-<%= color %> text-capitalize"><%= transaction.status %></span></td>
-</tr>
-</tbody>
-</table>
+<span class="kt-widget24__number kt-font-<%= color %> text-capitalize">
+<%= transaction.status %>
+</span>
+</div>
 </div>
 
 
-<div class="naira__header">
+
+
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
+Nairalife Account Details
+</h4>
+<span class="kt-widget24__desc">
+Bank account information
+</span>
+</div>
+<span class="kt-widget24__stats">
+0762936409
+</span>
+</div>
+<!-- <div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Account No
+</span>
+<span class="kt-widget24__number">
+0762936409
+</span>
+</div> -->
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Account Name
+</span>
+<span class="kt-widget24__number">
+Token Technologies Limited
+</span>
+</div>
+<div class="kt-widget24__action">
+<span class="kt-widget24__change">
+Bank
+</span>
+<span class="kt-widget24__number">
+Access Bank
+</span>
+</div>
+</div>
+
+
+
+<!-- <div class="naira__header">
 <h3 class="naira__title">
 Nairalife Account Details
 </h3>
@@ -66,43 +114,37 @@ Our bank account information
 </tr>
 </tbody>
 </table>
-</div>
+</div> -->
 
 
 
 <% if(transaction.status == "pending") { %>
-<div class="naira__header">
-<h3 class="naira__title">
+<div class="kt-widget24">
+<div class="kt-widget24__details">
+<div class="kt-widget24__info">
+<h4 class="kt-widget24__title">
 Payment Instruction
-</h3>
-<span class="naira__desc">
-How to make payment to Nairalife
+</h4>
+<span class="kt-widget24__desc">
+How to make payment
 </span>
 </div>
-
-<div class="aboutn">
-<p>
-Send exactly <b data-format="comma"> &#8358;<%= transaction.amount %></b> to the Nairalife account details above. If your payment is not confirmed after 24 hours, please contact us below 
+</div>
+<div class="kt-widget24__action">
+<p data-format="comma">
+Send exactly &#8358;<%= transaction.amount %> to the Nairalife account details above. If your payment is not confirmed after 24 hours, please contact us 
 </p>
 </div>
-
-
-<div class="kt-login__btn">
-<a href="#" data-transaction_id="<%= transaction._id %>" class="btn btn-secondary btn-taller btn-pill btn-wide kt-margin-t-20 kt-margin-r-5 transaction-cancel">
-<i class="la la-close"></i><span class="cancel-text">Cancel Payment</span>
+<div>
+<a class="btn btn-secondary btn-pill btn-sm" href="#" data-transaction_id="<%= transaction._id %>">
+<i class="la la-close" style="padding-right:0"></i> <span class="cancel-text">Cancel</span>
 </a>
-<a href="tel:08127574549" class="btn btn-warning btn-taller btn-pill btn-wide kt-margin-t-20">
-<i class="la la-phone"></i>Contact Us
+<a class="btn btn-warning btn-pill btn-sm" href="el:08127574549">
+<i class="la la-phone" style="padding-right:0"></i> Contact Us
 </a>
 </div>
-
+</div>
 <% } %>
-
-</div>
-<!--end of kt-portlet-body-->
-</div>
-<!--end of kt-portlet-->
-
 
 
 <script type="text/javascript" src="/js/custom/script.js"></script>

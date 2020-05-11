@@ -2,22 +2,18 @@
 <% include header %>
 <% include link %>
 
-
 <!--begin::Portlet-->
-<div class="kt-portlet btopzero kt-padding-10">
+<div class="kt-portlet">
 
-<div class="kt-portlet__body">
 
-<div class="naira__header naira__header__no">
-<h3 class="naira__title">
-Add Bank Account
-</h3>
-<span class="naira__desc">
-If your loan request is granted, your money will be sent to this account
-</span>
+<div class="alert alert-secondary alert-bold fade show" role="alert">
+<div class="alert-icon"><i class="la la-plus-circle"></i></div>
+<div class="alert-text">
+Add your bank account. Your loans will be automatically sent to this account
+</div>
 </div>
 
-<div class="alert alert-danger alert-bold fade show kt-margin-b-30 otp-error bank-error" role="alert">
+<div class="alert alert-danger alert-bold fade show otp-error bank-error" role="alert">
 <div class="alert-icon"><i class="la la-warning"></i></div>
 <div class="alert-text">
 Invalid Username or Password
@@ -48,17 +44,15 @@ We only request for your BVN to verify your identity and ensure that the account
 </div>
 </div>
 
-<div class="kt-login__btn kt-margin-t-30">
+<div class="kt-login__btn">
 <button class="btn btn-primary btn-taller btn-pill btn-wider kt-login__btn-primary verify-bank-button">
-<i class="la la-plus"></i><span class="verify-text">Add Account</span>
+<i class="la la-plus-circle"></i><span class="verify-text">Add Account</span>
 </button>
 </div>
 </form>
 </div>
-<!--end::portlet__body-->
-</div>
 <!--end::Portlet-->
-<% include footer %>
+<% include footer3 %>
 
 <script type="text/javascript" src="js/custom/script.js"></script>
 <script type="text/javascript" src="js/custom/account.js"></script>

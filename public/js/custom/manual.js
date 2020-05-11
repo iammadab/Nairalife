@@ -4,7 +4,7 @@ let store = {
 	manualPayInputs: Array.from(document.querySelectorAll(".manual-form input"))
 }
 
-let addButton = createButton(".add-text", "Add Money", "Adding...")
+let addButton = createButton(".add-text", "Get Account Details", "Submitting...")
 
 ;(function attachEvent(){
 	addEvent([store.manualPayButton], "click", makeManualPayment)
