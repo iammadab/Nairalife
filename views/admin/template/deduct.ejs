@@ -8,7 +8,7 @@
 <th>HP Plan</th>
 <th>Total Payment</th>
 <th>Remaining Payment</th>
-<th>Last Time</th>
+<th>Weekly Payment</th>
 <th></th>
 </tr>
 </thead>
@@ -19,19 +19,13 @@
 <td data-format="comma">&#8358;<%= member.plan.total_amount %></td>
 <td data-format="comma">&#8358;<%= member._doc.totalPayment %></td>
 <td data-format="comma">&#8358;<%= member._doc.remainingPayment %></td>
-<td><%= member._doc.lastDate %></td>
-<!-- <td>
-	<% if(member._doc.phase != "success") { %>
-		<% if(member._doc.phase == "pending") { %>
-		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm pending-button">Pending</button>
-		<% } %>
-
-		<% if(member._doc.phase == "noattempt" || member._doc.phase == "failed") { %>
+<td data-format="comma">&#8358;<%= member._doc.weeklyPayment %></td>
+<td>
+	<% if(member._doc.chargeToday == true) { %>
 		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm save-button save-button-text-<%=member.user_id%>">Charge</button>
 		<button data-user_id="<%= member.user_id %>" class="btn btn-secondary btn-sm pending-button otp-error">Pending</button>
-		<% } %>
 	<% } %>
-</td> -->
+</td>
 </tr>
 <% }) %>
 </tbody>
