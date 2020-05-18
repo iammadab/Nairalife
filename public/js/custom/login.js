@@ -35,8 +35,11 @@ function startLogin(event){
 				.then(handleLogin)
 
 	function handleLogin(response){
-		if(response.status == 200)
-			return redirect("/home")
+		if(response.status == 200){
+			let toRedirect = "/home", params = new URLSearchParams(window.location.search)
+			toRedirect = params.get("from") ? params.get("from") : toRedirect
+			return redirect(toRedirect)
+		}
 		else if(response.code == "USER_DOES_NOT_EXIST")
 			showAlert("login-error", "Sorry, no Nairalife account has that phone number")
 		else if(response.code == "INVALID_PASSWORD")
