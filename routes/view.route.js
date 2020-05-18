@@ -177,7 +177,7 @@ viewRouter.get("/admin/members", cookieNotFound("/admin/login", "atoken"), verif
 	res.render("admin/members", {title: "Nairalife Members", link: "members", ...req.body.pageData })
 })
 
-viewRouter.get("/admin/deduct", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.auto, (req, res) => {
+viewRouter.get("/admin/deduct", cookieNotFound("/admin/login", "atoken"), verifyToken("atoken"), pageService.chargeHp, (req, res) => {
 	res.render("admin/deduct", {title: "Nairalife Deductions", link: "Manual", ...req.body.pageData })
 })
 
