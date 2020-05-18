@@ -25,8 +25,11 @@ function loginAdmin(event){
 
 	function handleResponse(response){
 		// console.log(response)
-		if(response.status == 200)
-			redirect("/admin/dashboard")
+		if(response.status == 200){
+			let toRedirect = "/admin/dashboard", params = new URLSearchParams(window.location.search)
+			toRedirect = params.get("from") ? params.get("from") : toRedirect
+			redirect(toRedirect)
+		}
 		else if(response.code == "USER_DOES_NOT_EXIST")
 			showAlert("login-error", "Account not found")
 		else if(response.code == "USER_NOT_AUTHORIZED")
